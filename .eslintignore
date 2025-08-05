@@ -1,2 +1,2 @@
-# ignora todo lo que venga de Prisma Client generado
-/pages/generated/prisma/
+# Ignorar todo lo generado por Prisma Client
+pages/generated/**
