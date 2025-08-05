@@ -1,5 +1,5 @@
-// Consulta el rol del usuario desde la base de datos
-import prisma from '@/lib/prisma'
+// pages/api/user/[idFirebase].ts
+import prisma from '@/lib/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -11,14 +11,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         where: { idFirebase: String(idFirebase) },
       });
 
-      if (!user) return res.status(404).json({ error: 'Usuario no encontrado' });
+      if (!user) {
+        return res.status(404).json({ error: 'Usuario no encontrado' });
+      }
 
-      res.json({ role: user.role });
-    } catch (e) {
-      res.status(500).json({ error: 'Error al consultar el rol' });
+      return res.json({ role: user.role });
+    } catch (error) {
+      console.error('Error al consultar el rol:', error);
+      return res.status(500).json({ error: 'Error al consultar el rol' });
     }
   } else {
     res.setHeader('Allow', 'GET');
-    res.status(405).end('Method Not Allowed');
+    return res.status(405).end('Method Not Allowed');
   }
 }
