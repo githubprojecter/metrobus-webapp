@@ -4,38 +4,82 @@ import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
 import { requireRole } from '@/lib/requireRole';
 
-const handler = async (
+export default requireRole(['Operador', 'Coordinador'])(async (
   req: NextApiRequestWithUser,
   res: NextApiResponse
 ): Promise<void> => {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    res.status(405).end('Method Not Allowed');
-    return;           // ← ya no devolvemos el res
+  // GET  /api/panico    -> solo Coordinador ve los pánicos sin atender
+  // POST /api/panico    -> solo Operador envía un pánico con ubicación
+
+  const { method, role, uid } = req;
+
+  // 1) POST: Operador dispara pánico
+  if (method === 'POST') {
+    if (role !== 'Operador') {
+      res.status(403).json({ error: 'Access denied' });
+      return;
+    }
+
+    // Validate body
+    const { motivo, latitud, longitud } = req.body as {
+      motivo?: string;
+      latitud: number;
+      longitud: number;
+    };
+
+    // Buscar operador
+    const userRec = await prisma.userRole.findUnique({
+      where: { idFirebase: uid },
+      include: { operador: true },
+    });
+    if (!userRec?.operador) {
+      res.status(404).json({ error: 'Operador no encontrado' });
+      return;
+    }
+
+    // Crear pánico
+    const panic = await prisma.botonPanico.create({
+      data: {
+        operadorId: userRec.operador.id,
+        motivo: motivo ?? null,
+        latitud,
+        longitud,
+      },
+    });
+
+    res.status(201).json(panic);
+    return;
   }
 
-  const uid = req.uid;
-  const record = await prisma.userRole.findUnique({
-    where: { idFirebase: uid },
-    include: { operador: true },
-  });
+  // 2) GET: Coordinador consulta pánicos abiertos
+  if (method === 'GET') {
+    if (role !== 'Coordinador') {
+      res.status(403).json({ error: 'Access denied' });
+      return;
+    }
 
-  if (!record?.operador) {
-    res.status(404).json({ error: 'Operador no encontrado' });
-    return;           // ← idem
+    const panicos = await prisma.botonPanico.findMany({
+      where: { atendido: false },
+      include: {
+        operador: { select: { unidadAsignada: true } },
+      },
+      orderBy: { timestamp: 'desc' },
+    });
+
+    const dto = panicos.map((p) => ({
+      id: p.id,
+      motivo: p.motivo,
+      latitud: p.latitud,
+      longitud: p.longitud,
+      timestamp: p.timestamp.toISOString(),
+      unidad: p.operador.unidadAsignada,
+    }));
+
+    res.status(200).json(dto);
+    return;
   }
 
-  const { motivo } = req.body as { motivo?: string };
-
-  const nuevo = await prisma.botonPanico.create({
-    data: {
-      operadorId: record.operador.id,
-      motivo: motivo ?? null,
-    },
-  });
-
-  res.status(201).json(nuevo);  // ← no devolvemos el resultado
-  // y la función termina retornando void
-};
-
-export default requireRole(['Operador'])(handler);
+  // 3) Cualquier otro método no permitido
+  res.setHeader('Allow', ['GET', 'POST']);
+  res.status(405).end('Method Not Allowed');
+});

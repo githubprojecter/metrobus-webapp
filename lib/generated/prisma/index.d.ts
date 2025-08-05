@@ -2169,7 +2169,7 @@ export namespace Prisma {
     operador?: boolean | UserRole$operadorArgs<ExtArgs>
     supervisor?: boolean | UserRole$supervisorArgs<ExtArgs>
     patio?: boolean | UserRole$patioArgs<ExtArgs>
-    Coordinador?: boolean | UserRole$CoordinadorArgs<ExtArgs>
+    coordinador?: boolean | UserRole$coordinadorArgs<ExtArgs>
   }, ExtArgs["result"]["userRole"]>
 
 
@@ -2185,7 +2185,7 @@ export namespace Prisma {
     operador?: boolean | UserRole$operadorArgs<ExtArgs>
     supervisor?: boolean | UserRole$supervisorArgs<ExtArgs>
     patio?: boolean | UserRole$patioArgs<ExtArgs>
-    Coordinador?: boolean | UserRole$CoordinadorArgs<ExtArgs>
+    coordinador?: boolean | UserRole$coordinadorArgs<ExtArgs>
   }
 
   export type $UserRolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2194,7 +2194,7 @@ export namespace Prisma {
       operador: Prisma.$OperadorPayload<ExtArgs> | null
       supervisor: Prisma.$SupervisorPayload<ExtArgs> | null
       patio: Prisma.$PatioPayload<ExtArgs> | null
-      Coordinador: Prisma.$CoordinadorPayload<ExtArgs> | null
+      coordinador: Prisma.$CoordinadorPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2543,7 +2543,7 @@ export namespace Prisma {
     operador<T extends UserRole$operadorArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$operadorArgs<ExtArgs>>): Prisma__OperadorClient<$Result.GetResult<Prisma.$OperadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     supervisor<T extends UserRole$supervisorArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$supervisorArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     patio<T extends UserRole$patioArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$patioArgs<ExtArgs>>): Prisma__PatioClient<$Result.GetResult<Prisma.$PatioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    Coordinador<T extends UserRole$CoordinadorArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$CoordinadorArgs<ExtArgs>>): Prisma__CoordinadorClient<$Result.GetResult<Prisma.$CoordinadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    coordinador<T extends UserRole$coordinadorArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$coordinadorArgs<ExtArgs>>): Prisma__CoordinadorClient<$Result.GetResult<Prisma.$CoordinadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2976,9 +2976,9 @@ export namespace Prisma {
   }
 
   /**
-   * UserRole.Coordinador
+   * UserRole.coordinador
    */
-  export type UserRole$CoordinadorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserRole$coordinadorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Coordinador
      */
@@ -3038,6 +3038,10 @@ export namespace Prisma {
   export type OperadorMinAggregateOutputType = {
     id: number | null
     userRoleId: number | null
+    nombre: string | null
+    apellidos: string | null
+    telefono: string | null
+    correo: string | null
     unidadAsignada: string | null
     rutaAsignada: string | null
   }
@@ -3045,6 +3049,10 @@ export namespace Prisma {
   export type OperadorMaxAggregateOutputType = {
     id: number | null
     userRoleId: number | null
+    nombre: string | null
+    apellidos: string | null
+    telefono: string | null
+    correo: string | null
     unidadAsignada: string | null
     rutaAsignada: string | null
   }
@@ -3052,6 +3060,10 @@ export namespace Prisma {
   export type OperadorCountAggregateOutputType = {
     id: number
     userRoleId: number
+    nombre: number
+    apellidos: number
+    telefono: number
+    correo: number
     unidadAsignada: number
     rutaAsignada: number
     _all: number
@@ -3071,6 +3083,10 @@ export namespace Prisma {
   export type OperadorMinAggregateInputType = {
     id?: true
     userRoleId?: true
+    nombre?: true
+    apellidos?: true
+    telefono?: true
+    correo?: true
     unidadAsignada?: true
     rutaAsignada?: true
   }
@@ -3078,6 +3094,10 @@ export namespace Prisma {
   export type OperadorMaxAggregateInputType = {
     id?: true
     userRoleId?: true
+    nombre?: true
+    apellidos?: true
+    telefono?: true
+    correo?: true
     unidadAsignada?: true
     rutaAsignada?: true
   }
@@ -3085,6 +3105,10 @@ export namespace Prisma {
   export type OperadorCountAggregateInputType = {
     id?: true
     userRoleId?: true
+    nombre?: true
+    apellidos?: true
+    telefono?: true
+    correo?: true
     unidadAsignada?: true
     rutaAsignada?: true
     _all?: true
@@ -3179,6 +3203,10 @@ export namespace Prisma {
   export type OperadorGroupByOutputType = {
     id: number
     userRoleId: number
+    nombre: string | null
+    apellidos: string | null
+    telefono: string | null
+    correo: string | null
     unidadAsignada: string | null
     rutaAsignada: string | null
     _count: OperadorCountAggregateOutputType | null
@@ -3205,6 +3233,10 @@ export namespace Prisma {
   export type OperadorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userRoleId?: boolean
+    nombre?: boolean
+    apellidos?: boolean
+    telefono?: boolean
+    correo?: boolean
     unidadAsignada?: boolean
     rutaAsignada?: boolean
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
@@ -3219,11 +3251,15 @@ export namespace Prisma {
   export type OperadorSelectScalar = {
     id?: boolean
     userRoleId?: boolean
+    nombre?: boolean
+    apellidos?: boolean
+    telefono?: boolean
+    correo?: boolean
     unidadAsignada?: boolean
     rutaAsignada?: boolean
   }
 
-  export type OperadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId" | "unidadAsignada" | "rutaAsignada", ExtArgs["result"]["operador"]>
+  export type OperadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId" | "nombre" | "apellidos" | "telefono" | "correo" | "unidadAsignada" | "rutaAsignada", ExtArgs["result"]["operador"]>
   export type OperadorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
     botonesPanico?: boolean | Operador$botonesPanicoArgs<ExtArgs>
@@ -3243,6 +3279,16 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userRoleId: number
+      /**
+       * Campos de perfil
+       */
+      nombre: string | null
+      apellidos: string | null
+      telefono: string | null
+      correo: string | null
+      /**
+       * Campos existentes
+       */
       unidadAsignada: string | null
       rutaAsignada: string | null
     }, ExtArgs["result"]["operador"]>
@@ -3620,6 +3666,10 @@ export namespace Prisma {
   interface OperadorFieldRefs {
     readonly id: FieldRef<"Operador", 'Int'>
     readonly userRoleId: FieldRef<"Operador", 'Int'>
+    readonly nombre: FieldRef<"Operador", 'String'>
+    readonly apellidos: FieldRef<"Operador", 'String'>
+    readonly telefono: FieldRef<"Operador", 'String'>
+    readonly correo: FieldRef<"Operador", 'String'>
     readonly unidadAsignada: FieldRef<"Operador", 'String'>
     readonly rutaAsignada: FieldRef<"Operador", 'String'>
   }
@@ -4070,11 +4120,15 @@ export namespace Prisma {
   export type BotonPanicoAvgAggregateOutputType = {
     id: number | null
     operadorId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type BotonPanicoSumAggregateOutputType = {
     id: number | null
     operadorId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type BotonPanicoMinAggregateOutputType = {
@@ -4083,6 +4137,8 @@ export namespace Prisma {
     timestamp: Date | null
     motivo: string | null
     atendido: boolean | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type BotonPanicoMaxAggregateOutputType = {
@@ -4091,6 +4147,8 @@ export namespace Prisma {
     timestamp: Date | null
     motivo: string | null
     atendido: boolean | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type BotonPanicoCountAggregateOutputType = {
@@ -4099,6 +4157,8 @@ export namespace Prisma {
     timestamp: number
     motivo: number
     atendido: number
+    latitud: number
+    longitud: number
     _all: number
   }
 
@@ -4106,11 +4166,15 @@ export namespace Prisma {
   export type BotonPanicoAvgAggregateInputType = {
     id?: true
     operadorId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type BotonPanicoSumAggregateInputType = {
     id?: true
     operadorId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type BotonPanicoMinAggregateInputType = {
@@ -4119,6 +4183,8 @@ export namespace Prisma {
     timestamp?: true
     motivo?: true
     atendido?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type BotonPanicoMaxAggregateInputType = {
@@ -4127,6 +4193,8 @@ export namespace Prisma {
     timestamp?: true
     motivo?: true
     atendido?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type BotonPanicoCountAggregateInputType = {
@@ -4135,6 +4203,8 @@ export namespace Prisma {
     timestamp?: true
     motivo?: true
     atendido?: true
+    latitud?: true
+    longitud?: true
     _all?: true
   }
 
@@ -4230,6 +4300,8 @@ export namespace Prisma {
     timestamp: Date
     motivo: string | null
     atendido: boolean
+    latitud: number | null
+    longitud: number | null
     _count: BotonPanicoCountAggregateOutputType | null
     _avg: BotonPanicoAvgAggregateOutputType | null
     _sum: BotonPanicoSumAggregateOutputType | null
@@ -4257,6 +4329,8 @@ export namespace Prisma {
     timestamp?: boolean
     motivo?: boolean
     atendido?: boolean
+    latitud?: boolean
+    longitud?: boolean
     operador?: boolean | OperadorDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["botonPanico"]>
 
@@ -4268,9 +4342,11 @@ export namespace Prisma {
     timestamp?: boolean
     motivo?: boolean
     atendido?: boolean
+    latitud?: boolean
+    longitud?: boolean
   }
 
-  export type BotonPanicoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "operadorId" | "timestamp" | "motivo" | "atendido", ExtArgs["result"]["botonPanico"]>
+  export type BotonPanicoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "operadorId" | "timestamp" | "motivo" | "atendido" | "latitud" | "longitud", ExtArgs["result"]["botonPanico"]>
   export type BotonPanicoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operador?: boolean | OperadorDefaultArgs<ExtArgs>
   }
@@ -4286,6 +4362,8 @@ export namespace Prisma {
       timestamp: Date
       motivo: string | null
       atendido: boolean
+      latitud: number | null
+      longitud: number | null
     }, ExtArgs["result"]["botonPanico"]>
     composites: {}
   }
@@ -4661,6 +4739,8 @@ export namespace Prisma {
     readonly timestamp: FieldRef<"BotonPanico", 'DateTime'>
     readonly motivo: FieldRef<"BotonPanico", 'String'>
     readonly atendido: FieldRef<"BotonPanico", 'Boolean'>
+    readonly latitud: FieldRef<"BotonPanico", 'Float'>
+    readonly longitud: FieldRef<"BotonPanico", 'Float'>
   }
     
 
@@ -7053,16 +7133,28 @@ export namespace Prisma {
   export type CoordinadorMinAggregateOutputType = {
     id: number | null
     userRoleId: number | null
+    nombre: string | null
+    apellidos: string | null
+    telefono: string | null
+    correo: string | null
   }
 
   export type CoordinadorMaxAggregateOutputType = {
     id: number | null
     userRoleId: number | null
+    nombre: string | null
+    apellidos: string | null
+    telefono: string | null
+    correo: string | null
   }
 
   export type CoordinadorCountAggregateOutputType = {
     id: number
     userRoleId: number
+    nombre: number
+    apellidos: number
+    telefono: number
+    correo: number
     _all: number
   }
 
@@ -7080,16 +7172,28 @@ export namespace Prisma {
   export type CoordinadorMinAggregateInputType = {
     id?: true
     userRoleId?: true
+    nombre?: true
+    apellidos?: true
+    telefono?: true
+    correo?: true
   }
 
   export type CoordinadorMaxAggregateInputType = {
     id?: true
     userRoleId?: true
+    nombre?: true
+    apellidos?: true
+    telefono?: true
+    correo?: true
   }
 
   export type CoordinadorCountAggregateInputType = {
     id?: true
     userRoleId?: true
+    nombre?: true
+    apellidos?: true
+    telefono?: true
+    correo?: true
     _all?: true
   }
 
@@ -7182,6 +7286,10 @@ export namespace Prisma {
   export type CoordinadorGroupByOutputType = {
     id: number
     userRoleId: number
+    nombre: string | null
+    apellidos: string | null
+    telefono: string | null
+    correo: string | null
     _count: CoordinadorCountAggregateOutputType | null
     _avg: CoordinadorAvgAggregateOutputType | null
     _sum: CoordinadorSumAggregateOutputType | null
@@ -7206,6 +7314,10 @@ export namespace Prisma {
   export type CoordinadorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userRoleId?: boolean
+    nombre?: boolean
+    apellidos?: boolean
+    telefono?: boolean
+    correo?: boolean
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coordinador"]>
 
@@ -7214,9 +7326,13 @@ export namespace Prisma {
   export type CoordinadorSelectScalar = {
     id?: boolean
     userRoleId?: boolean
+    nombre?: boolean
+    apellidos?: boolean
+    telefono?: boolean
+    correo?: boolean
   }
 
-  export type CoordinadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId", ExtArgs["result"]["coordinador"]>
+  export type CoordinadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId" | "nombre" | "apellidos" | "telefono" | "correo", ExtArgs["result"]["coordinador"]>
   export type CoordinadorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
   }
@@ -7229,6 +7345,13 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userRoleId: number
+      /**
+       * Campos de perfil
+       */
+      nombre: string | null
+      apellidos: string | null
+      telefono: string | null
+      correo: string | null
     }, ExtArgs["result"]["coordinador"]>
     composites: {}
   }
@@ -7601,6 +7724,10 @@ export namespace Prisma {
   interface CoordinadorFieldRefs {
     readonly id: FieldRef<"Coordinador", 'Int'>
     readonly userRoleId: FieldRef<"Coordinador", 'Int'>
+    readonly nombre: FieldRef<"Coordinador", 'String'>
+    readonly apellidos: FieldRef<"Coordinador", 'String'>
+    readonly telefono: FieldRef<"Coordinador", 'String'>
+    readonly correo: FieldRef<"Coordinador", 'String'>
   }
     
 
@@ -8160,8 +8287,8 @@ export namespace Prisma {
     supervisorId?: boolean
     fechaAsignacion?: boolean
     reporteIncidenteId?: boolean
-    incidente?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    incidente?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["incidenteAsignado"]>
 
 
@@ -8175,15 +8302,15 @@ export namespace Prisma {
 
   export type IncidenteAsignadoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "fechaAsignacion" | "reporteIncidenteId", ExtArgs["result"]["incidenteAsignado"]>
   export type IncidenteAsignadoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    incidente?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    incidente?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
   }
 
   export type $IncidenteAsignadoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "IncidenteAsignado"
     objects: {
-      incidente: Prisma.$ReporteIncidentePayload<ExtArgs>
       supervisor: Prisma.$SupervisorPayload<ExtArgs>
+      incidente: Prisma.$ReporteIncidentePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8530,8 +8657,8 @@ export namespace Prisma {
    */
   export interface Prisma__IncidenteAsignadoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    incidente<T extends ReporteIncidenteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidenteDefaultArgs<ExtArgs>>): Prisma__ReporteIncidenteClient<$Result.GetResult<Prisma.$ReporteIncidentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     supervisor<T extends SupervisorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SupervisorDefaultArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    incidente<T extends ReporteIncidenteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidenteDefaultArgs<ExtArgs>>): Prisma__ReporteIncidenteClient<$Result.GetResult<Prisma.$ReporteIncidentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13964,6 +14091,10 @@ export namespace Prisma {
   export const OperadorScalarFieldEnum: {
     id: 'id',
     userRoleId: 'userRoleId',
+    nombre: 'nombre',
+    apellidos: 'apellidos',
+    telefono: 'telefono',
+    correo: 'correo',
     unidadAsignada: 'unidadAsignada',
     rutaAsignada: 'rutaAsignada'
   };
@@ -13976,7 +14107,9 @@ export namespace Prisma {
     operadorId: 'operadorId',
     timestamp: 'timestamp',
     motivo: 'motivo',
-    atendido: 'atendido'
+    atendido: 'atendido',
+    latitud: 'latitud',
+    longitud: 'longitud'
   };
 
   export type BotonPanicoScalarFieldEnum = (typeof BotonPanicoScalarFieldEnum)[keyof typeof BotonPanicoScalarFieldEnum]
@@ -14004,7 +14137,11 @@ export namespace Prisma {
 
   export const CoordinadorScalarFieldEnum: {
     id: 'id',
-    userRoleId: 'userRoleId'
+    userRoleId: 'userRoleId',
+    nombre: 'nombre',
+    apellidos: 'apellidos',
+    telefono: 'telefono',
+    correo: 'correo'
   };
 
   export type CoordinadorScalarFieldEnum = (typeof CoordinadorScalarFieldEnum)[keyof typeof CoordinadorScalarFieldEnum]
@@ -14102,6 +14239,10 @@ export namespace Prisma {
 
 
   export const OperadorOrderByRelevanceFieldEnum: {
+    nombre: 'nombre',
+    apellidos: 'apellidos',
+    telefono: 'telefono',
+    correo: 'correo',
     unidadAsignada: 'unidadAsignada',
     rutaAsignada: 'rutaAsignada'
   };
@@ -14121,6 +14262,16 @@ export namespace Prisma {
   };
 
   export type SupervisorOrderByRelevanceFieldEnum = (typeof SupervisorOrderByRelevanceFieldEnum)[keyof typeof SupervisorOrderByRelevanceFieldEnum]
+
+
+  export const CoordinadorOrderByRelevanceFieldEnum: {
+    nombre: 'nombre',
+    apellidos: 'apellidos',
+    telefono: 'telefono',
+    correo: 'correo'
+  };
+
+  export type CoordinadorOrderByRelevanceFieldEnum = (typeof CoordinadorOrderByRelevanceFieldEnum)[keyof typeof CoordinadorOrderByRelevanceFieldEnum]
 
 
   export const ReporteIncidenteOrderByRelevanceFieldEnum: {
@@ -14214,7 +14365,7 @@ export namespace Prisma {
     operador?: XOR<OperadorNullableScalarRelationFilter, OperadorWhereInput> | null
     supervisor?: XOR<SupervisorNullableScalarRelationFilter, SupervisorWhereInput> | null
     patio?: XOR<PatioNullableScalarRelationFilter, PatioWhereInput> | null
-    Coordinador?: XOR<CoordinadorNullableScalarRelationFilter, CoordinadorWhereInput> | null
+    coordinador?: XOR<CoordinadorNullableScalarRelationFilter, CoordinadorWhereInput> | null
   }
 
   export type UserRoleOrderByWithRelationInput = {
@@ -14224,7 +14375,7 @@ export namespace Prisma {
     operador?: OperadorOrderByWithRelationInput
     supervisor?: SupervisorOrderByWithRelationInput
     patio?: PatioOrderByWithRelationInput
-    Coordinador?: CoordinadorOrderByWithRelationInput
+    coordinador?: CoordinadorOrderByWithRelationInput
     _relevance?: UserRoleOrderByRelevanceInput
   }
 
@@ -14238,7 +14389,7 @@ export namespace Prisma {
     operador?: XOR<OperadorNullableScalarRelationFilter, OperadorWhereInput> | null
     supervisor?: XOR<SupervisorNullableScalarRelationFilter, SupervisorWhereInput> | null
     patio?: XOR<PatioNullableScalarRelationFilter, PatioWhereInput> | null
-    Coordinador?: XOR<CoordinadorNullableScalarRelationFilter, CoordinadorWhereInput> | null
+    coordinador?: XOR<CoordinadorNullableScalarRelationFilter, CoordinadorWhereInput> | null
   }, "id" | "idFirebase">
 
   export type UserRoleOrderByWithAggregationInput = {
@@ -14267,6 +14418,10 @@ export namespace Prisma {
     NOT?: OperadorWhereInput | OperadorWhereInput[]
     id?: IntFilter<"Operador"> | number
     userRoleId?: IntFilter<"Operador"> | number
+    nombre?: StringNullableFilter<"Operador"> | string | null
+    apellidos?: StringNullableFilter<"Operador"> | string | null
+    telefono?: StringNullableFilter<"Operador"> | string | null
+    correo?: StringNullableFilter<"Operador"> | string | null
     unidadAsignada?: StringNullableFilter<"Operador"> | string | null
     rutaAsignada?: StringNullableFilter<"Operador"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
@@ -14278,6 +14433,10 @@ export namespace Prisma {
   export type OperadorOrderByWithRelationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrderInput | SortOrder
+    apellidos?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    correo?: SortOrderInput | SortOrder
     unidadAsignada?: SortOrderInput | SortOrder
     rutaAsignada?: SortOrderInput | SortOrder
     user?: UserRoleOrderByWithRelationInput
@@ -14293,6 +14452,10 @@ export namespace Prisma {
     AND?: OperadorWhereInput | OperadorWhereInput[]
     OR?: OperadorWhereInput[]
     NOT?: OperadorWhereInput | OperadorWhereInput[]
+    nombre?: StringNullableFilter<"Operador"> | string | null
+    apellidos?: StringNullableFilter<"Operador"> | string | null
+    telefono?: StringNullableFilter<"Operador"> | string | null
+    correo?: StringNullableFilter<"Operador"> | string | null
     unidadAsignada?: StringNullableFilter<"Operador"> | string | null
     rutaAsignada?: StringNullableFilter<"Operador"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
@@ -14304,6 +14467,10 @@ export namespace Prisma {
   export type OperadorOrderByWithAggregationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrderInput | SortOrder
+    apellidos?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    correo?: SortOrderInput | SortOrder
     unidadAsignada?: SortOrderInput | SortOrder
     rutaAsignada?: SortOrderInput | SortOrder
     _count?: OperadorCountOrderByAggregateInput
@@ -14319,6 +14486,10 @@ export namespace Prisma {
     NOT?: OperadorScalarWhereWithAggregatesInput | OperadorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Operador"> | number
     userRoleId?: IntWithAggregatesFilter<"Operador"> | number
+    nombre?: StringNullableWithAggregatesFilter<"Operador"> | string | null
+    apellidos?: StringNullableWithAggregatesFilter<"Operador"> | string | null
+    telefono?: StringNullableWithAggregatesFilter<"Operador"> | string | null
+    correo?: StringNullableWithAggregatesFilter<"Operador"> | string | null
     unidadAsignada?: StringNullableWithAggregatesFilter<"Operador"> | string | null
     rutaAsignada?: StringNullableWithAggregatesFilter<"Operador"> | string | null
   }
@@ -14332,6 +14503,8 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"BotonPanico"> | Date | string
     motivo?: StringNullableFilter<"BotonPanico"> | string | null
     atendido?: BoolFilter<"BotonPanico"> | boolean
+    latitud?: FloatNullableFilter<"BotonPanico"> | number | null
+    longitud?: FloatNullableFilter<"BotonPanico"> | number | null
     operador?: XOR<OperadorScalarRelationFilter, OperadorWhereInput>
   }
 
@@ -14341,6 +14514,8 @@ export namespace Prisma {
     timestamp?: SortOrder
     motivo?: SortOrderInput | SortOrder
     atendido?: SortOrder
+    latitud?: SortOrderInput | SortOrder
+    longitud?: SortOrderInput | SortOrder
     operador?: OperadorOrderByWithRelationInput
     _relevance?: BotonPanicoOrderByRelevanceInput
   }
@@ -14354,6 +14529,8 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"BotonPanico"> | Date | string
     motivo?: StringNullableFilter<"BotonPanico"> | string | null
     atendido?: BoolFilter<"BotonPanico"> | boolean
+    latitud?: FloatNullableFilter<"BotonPanico"> | number | null
+    longitud?: FloatNullableFilter<"BotonPanico"> | number | null
     operador?: XOR<OperadorScalarRelationFilter, OperadorWhereInput>
   }, "id">
 
@@ -14363,6 +14540,8 @@ export namespace Prisma {
     timestamp?: SortOrder
     motivo?: SortOrderInput | SortOrder
     atendido?: SortOrder
+    latitud?: SortOrderInput | SortOrder
+    longitud?: SortOrderInput | SortOrder
     _count?: BotonPanicoCountOrderByAggregateInput
     _avg?: BotonPanicoAvgOrderByAggregateInput
     _max?: BotonPanicoMaxOrderByAggregateInput
@@ -14379,6 +14558,8 @@ export namespace Prisma {
     timestamp?: DateTimeWithAggregatesFilter<"BotonPanico"> | Date | string
     motivo?: StringNullableWithAggregatesFilter<"BotonPanico"> | string | null
     atendido?: BoolWithAggregatesFilter<"BotonPanico"> | boolean
+    latitud?: FloatNullableWithAggregatesFilter<"BotonPanico"> | number | null
+    longitud?: FloatNullableWithAggregatesFilter<"BotonPanico"> | number | null
   }
 
   export type SupervisorWhereInput = {
@@ -14501,13 +14682,22 @@ export namespace Prisma {
     NOT?: CoordinadorWhereInput | CoordinadorWhereInput[]
     id?: IntFilter<"Coordinador"> | number
     userRoleId?: IntFilter<"Coordinador"> | number
+    nombre?: StringNullableFilter<"Coordinador"> | string | null
+    apellidos?: StringNullableFilter<"Coordinador"> | string | null
+    telefono?: StringNullableFilter<"Coordinador"> | string | null
+    correo?: StringNullableFilter<"Coordinador"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
   }
 
   export type CoordinadorOrderByWithRelationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrderInput | SortOrder
+    apellidos?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    correo?: SortOrderInput | SortOrder
     user?: UserRoleOrderByWithRelationInput
+    _relevance?: CoordinadorOrderByRelevanceInput
   }
 
   export type CoordinadorWhereUniqueInput = Prisma.AtLeast<{
@@ -14516,12 +14706,20 @@ export namespace Prisma {
     AND?: CoordinadorWhereInput | CoordinadorWhereInput[]
     OR?: CoordinadorWhereInput[]
     NOT?: CoordinadorWhereInput | CoordinadorWhereInput[]
+    nombre?: StringNullableFilter<"Coordinador"> | string | null
+    apellidos?: StringNullableFilter<"Coordinador"> | string | null
+    telefono?: StringNullableFilter<"Coordinador"> | string | null
+    correo?: StringNullableFilter<"Coordinador"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
   }, "id" | "userRoleId">
 
   export type CoordinadorOrderByWithAggregationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrderInput | SortOrder
+    apellidos?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    correo?: SortOrderInput | SortOrder
     _count?: CoordinadorCountOrderByAggregateInput
     _avg?: CoordinadorAvgOrderByAggregateInput
     _max?: CoordinadorMaxOrderByAggregateInput
@@ -14535,6 +14733,10 @@ export namespace Prisma {
     NOT?: CoordinadorScalarWhereWithAggregatesInput | CoordinadorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Coordinador"> | number
     userRoleId?: IntWithAggregatesFilter<"Coordinador"> | number
+    nombre?: StringNullableWithAggregatesFilter<"Coordinador"> | string | null
+    apellidos?: StringNullableWithAggregatesFilter<"Coordinador"> | string | null
+    telefono?: StringNullableWithAggregatesFilter<"Coordinador"> | string | null
+    correo?: StringNullableWithAggregatesFilter<"Coordinador"> | string | null
   }
 
   export type IncidenteAsignadoWhereInput = {
@@ -14545,8 +14747,8 @@ export namespace Prisma {
     supervisorId?: IntFilter<"IncidenteAsignado"> | number
     fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
     reporteIncidenteId?: IntFilter<"IncidenteAsignado"> | number
-    incidente?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
     supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    incidente?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
   }
 
   export type IncidenteAsignadoOrderByWithRelationInput = {
@@ -14554,8 +14756,8 @@ export namespace Prisma {
     supervisorId?: SortOrder
     fechaAsignacion?: SortOrder
     reporteIncidenteId?: SortOrder
-    incidente?: ReporteIncidenteOrderByWithRelationInput
     supervisor?: SupervisorOrderByWithRelationInput
+    incidente?: ReporteIncidenteOrderByWithRelationInput
   }
 
   export type IncidenteAsignadoWhereUniqueInput = Prisma.AtLeast<{
@@ -14566,8 +14768,8 @@ export namespace Prisma {
     supervisorId?: IntFilter<"IncidenteAsignado"> | number
     fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
     reporteIncidenteId?: IntFilter<"IncidenteAsignado"> | number
-    incidente?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
     supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    incidente?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
   }, "id">
 
   export type IncidenteAsignadoOrderByWithAggregationInput = {
@@ -14920,7 +15122,7 @@ export namespace Prisma {
     operador?: OperadorCreateNestedOneWithoutUserInput
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
-    Coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorCreateNestedOneWithoutUserInput
   }
 
   export type UserRoleUncheckedCreateInput = {
@@ -14930,7 +15132,7 @@ export namespace Prisma {
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
-    Coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserRoleUpdateInput = {
@@ -14939,7 +15141,7 @@ export namespace Prisma {
     operador?: OperadorUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
-    Coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
   }
 
   export type UserRoleUncheckedUpdateInput = {
@@ -14949,7 +15151,7 @@ export namespace Prisma {
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
-    Coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserRoleCreateManyInput = {
@@ -14970,6 +15172,10 @@ export namespace Prisma {
   }
 
   export type OperadorCreateInput = {
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     user: UserRoleCreateNestedOneWithoutOperadorInput
@@ -14981,6 +15187,10 @@ export namespace Prisma {
   export type OperadorUncheckedCreateInput = {
     id?: number
     userRoleId: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoUncheckedCreateNestedManyWithoutOperadorInput
@@ -14989,6 +15199,10 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateInput = {
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutOperadorNestedInput
@@ -15000,6 +15214,10 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
@@ -15010,11 +15228,19 @@ export namespace Prisma {
   export type OperadorCreateManyInput = {
     id?: number
     userRoleId: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
   }
 
   export type OperadorUpdateManyMutationInput = {
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -15022,6 +15248,10 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -15030,6 +15260,8 @@ export namespace Prisma {
     timestamp?: Date | string
     motivo?: string | null
     atendido?: boolean
+    latitud?: number | null
+    longitud?: number | null
     operador: OperadorCreateNestedOneWithoutBotonesPanicoInput
   }
 
@@ -15039,12 +15271,16 @@ export namespace Prisma {
     timestamp?: Date | string
     motivo?: string | null
     atendido?: boolean
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type BotonPanicoUpdateInput = {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
     operador?: OperadorUpdateOneRequiredWithoutBotonesPanicoNestedInput
   }
 
@@ -15054,6 +15290,8 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type BotonPanicoCreateManyInput = {
@@ -15062,12 +15300,16 @@ export namespace Prisma {
     timestamp?: Date | string
     motivo?: string | null
     atendido?: boolean
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type BotonPanicoUpdateManyMutationInput = {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type BotonPanicoUncheckedUpdateManyInput = {
@@ -15076,6 +15318,8 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type SupervisorCreateInput = {
@@ -15181,41 +15425,68 @@ export namespace Prisma {
   }
 
   export type CoordinadorCreateInput = {
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     user: UserRoleCreateNestedOneWithoutCoordinadorInput
   }
 
   export type CoordinadorUncheckedCreateInput = {
     id?: number
     userRoleId: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
   }
 
   export type CoordinadorUpdateInput = {
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutCoordinadorNestedInput
   }
 
   export type CoordinadorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CoordinadorCreateManyInput = {
     id?: number
     userRoleId: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
   }
 
   export type CoordinadorUpdateManyMutationInput = {
-
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CoordinadorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IncidenteAsignadoCreateInput = {
     fechaAsignacion?: Date | string
-    incidente: ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput
     supervisor: SupervisorCreateNestedOneWithoutAsignacionesInput
+    incidente: ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput
   }
 
   export type IncidenteAsignadoUncheckedCreateInput = {
@@ -15227,8 +15498,8 @@ export namespace Prisma {
 
   export type IncidenteAsignadoUpdateInput = {
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidente?: ReporteIncidenteUpdateOneRequiredWithoutIncidenteAsignadoNestedInput
     supervisor?: SupervisorUpdateOneRequiredWithoutAsignacionesNestedInput
+    incidente?: ReporteIncidenteUpdateOneRequiredWithoutIncidenteAsignadoNestedInput
   }
 
   export type IncidenteAsignadoUncheckedUpdateInput = {
@@ -15745,6 +16016,10 @@ export namespace Prisma {
   export type OperadorCountOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrder
+    apellidos?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
     unidadAsignada?: SortOrder
     rutaAsignada?: SortOrder
   }
@@ -15757,6 +16032,10 @@ export namespace Prisma {
   export type OperadorMaxOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrder
+    apellidos?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
     unidadAsignada?: SortOrder
     rutaAsignada?: SortOrder
   }
@@ -15764,6 +16043,10 @@ export namespace Prisma {
   export type OperadorMinOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrder
+    apellidos?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
     unidadAsignada?: SortOrder
     rutaAsignada?: SortOrder
   }
@@ -15807,6 +16090,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type OperadorScalarRelationFilter = {
     is?: OperadorWhereInput
     isNot?: OperadorWhereInput
@@ -15824,11 +16118,15 @@ export namespace Prisma {
     timestamp?: SortOrder
     motivo?: SortOrder
     atendido?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type BotonPanicoAvgOrderByAggregateInput = {
     id?: SortOrder
     operadorId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type BotonPanicoMaxOrderByAggregateInput = {
@@ -15837,6 +16135,8 @@ export namespace Prisma {
     timestamp?: SortOrder
     motivo?: SortOrder
     atendido?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type BotonPanicoMinOrderByAggregateInput = {
@@ -15845,11 +16145,15 @@ export namespace Prisma {
     timestamp?: SortOrder
     motivo?: SortOrder
     atendido?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type BotonPanicoSumOrderByAggregateInput = {
     id?: SortOrder
     operadorId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -15872,6 +16176,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type UbicacionSupervisorListRelationFilter = {
@@ -16008,9 +16328,19 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type CoordinadorOrderByRelevanceInput = {
+    fields: CoordinadorOrderByRelevanceFieldEnum | CoordinadorOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type CoordinadorCountOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrder
+    apellidos?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
   }
 
   export type CoordinadorAvgOrderByAggregateInput = {
@@ -16021,11 +16351,19 @@ export namespace Prisma {
   export type CoordinadorMaxOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrder
+    apellidos?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
   }
 
   export type CoordinadorMinOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    nombre?: SortOrder
+    apellidos?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
   }
 
   export type CoordinadorSumOrderByAggregateInput = {
@@ -16628,6 +16966,14 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type OperadorUpdateOneRequiredWithoutBotonesPanicoNestedInput = {
     create?: XOR<OperadorCreateWithoutBotonesPanicoInput, OperadorUncheckedCreateWithoutBotonesPanicoInput>
     connectOrCreate?: OperadorCreateOrConnectWithoutBotonesPanicoInput
@@ -16812,24 +17158,16 @@ export namespace Prisma {
     update?: XOR<XOR<UserRoleUpdateToOneWithWhereWithoutCoordinadorInput, UserRoleUpdateWithoutCoordinadorInput>, UserRoleUncheckedUpdateWithoutCoordinadorInput>
   }
 
-  export type ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput = {
-    create?: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
-    connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutIncidenteAsignadoInput
-    connect?: ReporteIncidenteWhereUniqueInput
-  }
-
   export type SupervisorCreateNestedOneWithoutAsignacionesInput = {
     create?: XOR<SupervisorCreateWithoutAsignacionesInput, SupervisorUncheckedCreateWithoutAsignacionesInput>
     connectOrCreate?: SupervisorCreateOrConnectWithoutAsignacionesInput
     connect?: SupervisorWhereUniqueInput
   }
 
-  export type ReporteIncidenteUpdateOneRequiredWithoutIncidenteAsignadoNestedInput = {
+  export type ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput = {
     create?: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
     connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutIncidenteAsignadoInput
-    upsert?: ReporteIncidenteUpsertWithoutIncidenteAsignadoInput
     connect?: ReporteIncidenteWhereUniqueInput
-    update?: XOR<XOR<ReporteIncidenteUpdateToOneWithWhereWithoutIncidenteAsignadoInput, ReporteIncidenteUpdateWithoutIncidenteAsignadoInput>, ReporteIncidenteUncheckedUpdateWithoutIncidenteAsignadoInput>
   }
 
   export type SupervisorUpdateOneRequiredWithoutAsignacionesNestedInput = {
@@ -16838,6 +17176,14 @@ export namespace Prisma {
     upsert?: SupervisorUpsertWithoutAsignacionesInput
     connect?: SupervisorWhereUniqueInput
     update?: XOR<XOR<SupervisorUpdateToOneWithWhereWithoutAsignacionesInput, SupervisorUpdateWithoutAsignacionesInput>, SupervisorUncheckedUpdateWithoutAsignacionesInput>
+  }
+
+  export type ReporteIncidenteUpdateOneRequiredWithoutIncidenteAsignadoNestedInput = {
+    create?: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
+    connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutIncidenteAsignadoInput
+    upsert?: ReporteIncidenteUpsertWithoutIncidenteAsignadoInput
+    connect?: ReporteIncidenteWhereUniqueInput
+    update?: XOR<XOR<ReporteIncidenteUpdateToOneWithWhereWithoutIncidenteAsignadoInput, ReporteIncidenteUpdateWithoutIncidenteAsignadoInput>, ReporteIncidenteUncheckedUpdateWithoutIncidenteAsignadoInput>
   }
 
   export type FotoIncidenteCreateNestedManyWithoutReporteInput = {
@@ -17262,6 +17608,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -17282,6 +17639,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -17316,18 +17689,11 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type OperadorCreateWithoutUserInput = {
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoCreateNestedManyWithoutOperadorInput
@@ -17337,6 +17703,10 @@ export namespace Prisma {
 
   export type OperadorUncheckedCreateWithoutUserInput = {
     id?: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoUncheckedCreateNestedManyWithoutOperadorInput
@@ -17386,11 +17756,18 @@ export namespace Prisma {
   }
 
   export type CoordinadorCreateWithoutUserInput = {
-
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
   }
 
   export type CoordinadorUncheckedCreateWithoutUserInput = {
     id?: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
   }
 
   export type CoordinadorCreateOrConnectWithoutUserInput = {
@@ -17410,6 +17787,10 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateWithoutUserInput = {
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUpdateManyWithoutOperadorNestedInput
@@ -17419,6 +17800,10 @@ export namespace Prisma {
 
   export type OperadorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
@@ -17486,11 +17871,18 @@ export namespace Prisma {
   }
 
   export type CoordinadorUpdateWithoutUserInput = {
-
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CoordinadorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserRoleCreateWithoutOperadorInput = {
@@ -17498,7 +17890,7 @@ export namespace Prisma {
     role: $Enums.Role
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
-    Coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorCreateNestedOneWithoutUserInput
   }
 
   export type UserRoleUncheckedCreateWithoutOperadorInput = {
@@ -17507,7 +17899,7 @@ export namespace Prisma {
     role: $Enums.Role
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
-    Coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserRoleCreateOrConnectWithoutOperadorInput = {
@@ -17519,6 +17911,8 @@ export namespace Prisma {
     timestamp?: Date | string
     motivo?: string | null
     atendido?: boolean
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type BotonPanicoUncheckedCreateWithoutOperadorInput = {
@@ -17526,6 +17920,8 @@ export namespace Prisma {
     timestamp?: Date | string
     motivo?: string | null
     atendido?: boolean
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type BotonPanicoCreateOrConnectWithoutOperadorInput = {
@@ -17612,7 +18008,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
-    Coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
   }
 
   export type UserRoleUncheckedUpdateWithoutOperadorInput = {
@@ -17621,7 +18017,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
-    Coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type BotonPanicoUpsertWithWhereUniqueWithoutOperadorInput = {
@@ -17649,6 +18045,8 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"BotonPanico"> | Date | string
     motivo?: StringNullableFilter<"BotonPanico"> | string | null
     atendido?: BoolFilter<"BotonPanico"> | boolean
+    latitud?: FloatNullableFilter<"BotonPanico"> | number | null
+    longitud?: FloatNullableFilter<"BotonPanico"> | number | null
   }
 
   export type RegistroSalidaUnidadUpsertWithWhereUniqueWithoutOperadorInput = {
@@ -17712,6 +18110,10 @@ export namespace Prisma {
   }
 
   export type OperadorCreateWithoutBotonesPanicoInput = {
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     user: UserRoleCreateNestedOneWithoutOperadorInput
@@ -17722,6 +18124,10 @@ export namespace Prisma {
   export type OperadorUncheckedCreateWithoutBotonesPanicoInput = {
     id?: number
     userRoleId: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     RegistroSalidaUnidad?: RegistroSalidaUnidadUncheckedCreateNestedManyWithoutOperadorInput
@@ -17745,6 +18151,10 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateWithoutBotonesPanicoInput = {
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutOperadorNestedInput
@@ -17755,6 +18165,10 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateWithoutBotonesPanicoInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     RegistroSalidaUnidad?: RegistroSalidaUnidadUncheckedUpdateManyWithoutOperadorNestedInput
@@ -17766,7 +18180,7 @@ export namespace Prisma {
     role: $Enums.Role
     operador?: OperadorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
-    Coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorCreateNestedOneWithoutUserInput
   }
 
   export type UserRoleUncheckedCreateWithoutSupervisorInput = {
@@ -17775,7 +18189,7 @@ export namespace Prisma {
     role: $Enums.Role
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
-    Coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserRoleCreateOrConnectWithoutSupervisorInput = {
@@ -17874,7 +18288,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     operador?: OperadorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
-    Coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
   }
 
   export type UserRoleUncheckedUpdateWithoutSupervisorInput = {
@@ -17883,7 +18297,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
-    Coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UbicacionSupervisorUpsertWithWhereUniqueWithoutSupervisorInput = {
@@ -18064,6 +18478,26 @@ export namespace Prisma {
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
   }
 
+  export type SupervisorCreateWithoutAsignacionesInput = {
+    nombre: string
+    user: UserRoleCreateNestedOneWithoutSupervisorInput
+    ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorUncheckedCreateWithoutAsignacionesInput = {
+    id?: number
+    userRoleId: number
+    nombre: string
+    ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorCreateOrConnectWithoutAsignacionesInput = {
+    where: SupervisorWhereUniqueInput
+    create: XOR<SupervisorCreateWithoutAsignacionesInput, SupervisorUncheckedCreateWithoutAsignacionesInput>
+  }
+
   export type ReporteIncidenteCreateWithoutIncidenteAsignadoInput = {
     fecha?: Date | string
     descripcion: string
@@ -18090,24 +18524,30 @@ export namespace Prisma {
     create: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
   }
 
-  export type SupervisorCreateWithoutAsignacionesInput = {
-    nombre: string
-    user: UserRoleCreateNestedOneWithoutSupervisorInput
-    ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
-    reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
-  }
-
-  export type SupervisorUncheckedCreateWithoutAsignacionesInput = {
-    id?: number
-    userRoleId: number
-    nombre: string
-    ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
-    reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
-  }
-
-  export type SupervisorCreateOrConnectWithoutAsignacionesInput = {
-    where: SupervisorWhereUniqueInput
+  export type SupervisorUpsertWithoutAsignacionesInput = {
+    update: XOR<SupervisorUpdateWithoutAsignacionesInput, SupervisorUncheckedUpdateWithoutAsignacionesInput>
     create: XOR<SupervisorCreateWithoutAsignacionesInput, SupervisorUncheckedCreateWithoutAsignacionesInput>
+    where?: SupervisorWhereInput
+  }
+
+  export type SupervisorUpdateToOneWithWhereWithoutAsignacionesInput = {
+    where?: SupervisorWhereInput
+    data: XOR<SupervisorUpdateWithoutAsignacionesInput, SupervisorUncheckedUpdateWithoutAsignacionesInput>
+  }
+
+  export type SupervisorUpdateWithoutAsignacionesInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
+    ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type SupervisorUncheckedUpdateWithoutAsignacionesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type ReporteIncidenteUpsertWithoutIncidenteAsignadoInput = {
@@ -18140,32 +18580,6 @@ export namespace Prisma {
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
     fotos?: FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput
-  }
-
-  export type SupervisorUpsertWithoutAsignacionesInput = {
-    update: XOR<SupervisorUpdateWithoutAsignacionesInput, SupervisorUncheckedUpdateWithoutAsignacionesInput>
-    create: XOR<SupervisorCreateWithoutAsignacionesInput, SupervisorUncheckedCreateWithoutAsignacionesInput>
-    where?: SupervisorWhereInput
-  }
-
-  export type SupervisorUpdateToOneWithWhereWithoutAsignacionesInput = {
-    where?: SupervisorWhereInput
-    data: XOR<SupervisorUpdateWithoutAsignacionesInput, SupervisorUncheckedUpdateWithoutAsignacionesInput>
-  }
-
-  export type SupervisorUpdateWithoutAsignacionesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-    user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
-    ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
-    reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
-  }
-
-  export type SupervisorUncheckedUpdateWithoutAsignacionesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
-    reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type FotoIncidenteCreateWithoutReporteInput = {
@@ -18358,7 +18772,7 @@ export namespace Prisma {
     role: $Enums.Role
     operador?: OperadorCreateNestedOneWithoutUserInput
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
-    Coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorCreateNestedOneWithoutUserInput
   }
 
   export type UserRoleUncheckedCreateWithoutPatioInput = {
@@ -18367,7 +18781,7 @@ export namespace Prisma {
     role: $Enums.Role
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
-    Coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserRoleCreateOrConnectWithoutPatioInput = {
@@ -18449,7 +18863,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     operador?: OperadorUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
-    Coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
   }
 
   export type UserRoleUncheckedUpdateWithoutPatioInput = {
@@ -18458,7 +18872,7 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
-    Coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type RegistroSalidaUnidadUpsertWithWhereUniqueWithoutPatioInput = {
@@ -18510,6 +18924,10 @@ export namespace Prisma {
   }
 
   export type OperadorCreateWithoutRegistroSalidaUnidadInput = {
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     user: UserRoleCreateNestedOneWithoutOperadorInput
@@ -18520,6 +18938,10 @@ export namespace Prisma {
   export type OperadorUncheckedCreateWithoutRegistroSalidaUnidadInput = {
     id?: number
     userRoleId: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoUncheckedCreateNestedManyWithoutOperadorInput
@@ -18565,6 +18987,10 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateWithoutRegistroSalidaUnidadInput = {
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutOperadorNestedInput
@@ -18575,6 +19001,10 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateWithoutRegistroSalidaUnidadInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
@@ -18598,6 +19028,10 @@ export namespace Prisma {
   }
 
   export type OperadorCreateWithoutAsignacionUnidadInput = {
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     user: UserRoleCreateNestedOneWithoutOperadorInput
@@ -18608,6 +19042,10 @@ export namespace Prisma {
   export type OperadorUncheckedCreateWithoutAsignacionUnidadInput = {
     id?: number
     userRoleId: number
+    nombre?: string | null
+    apellidos?: string | null
+    telefono?: string | null
+    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoUncheckedCreateNestedManyWithoutOperadorInput
@@ -18653,6 +19091,10 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateWithoutAsignacionUnidadInput = {
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutOperadorNestedInput
@@ -18663,6 +19105,10 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateWithoutAsignacionUnidadInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
@@ -18674,6 +19120,8 @@ export namespace Prisma {
     timestamp?: Date | string
     motivo?: string | null
     atendido?: boolean
+    latitud?: number | null
+    longitud?: number | null
   }
 
   export type RegistroSalidaUnidadCreateManyOperadorInput = {
@@ -18700,6 +19148,8 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type BotonPanicoUncheckedUpdateWithoutOperadorInput = {
@@ -18707,6 +19157,8 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type BotonPanicoUncheckedUpdateManyWithoutOperadorInput = {
@@ -18714,6 +19166,8 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     motivo?: NullableStringFieldUpdateOperationsInput | string | null
     atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type RegistroSalidaUnidadUpdateWithoutOperadorInput = {
