@@ -17,9 +17,20 @@ export default requireRole(['Coordinador'])(async (
   }
   // Tomamos última ubicación de cada supervisor
   const locs = await prisma.ubicacionSupervisor.findMany({
-    orderBy: { createdAt: 'desc' },
+    orderBy: { timestamp: 'desc' },
     distinct: ['supervisorId'],
-    include: { supervisor: { select: { id: true, userRole: { select: { idFirebase: true } } } } },
+    include: {
+     supervisor: {
+       select: {
+         id: true,
+         user: {
+           select: {
+             idFirebase: true
+           }
+         }
+       }
+     }
+   },
   });
   // Si quieres traer nombre de Firebase, conviene cachearlo; aquí lo omitimos y usamos id
   const result = locs.map(l => ({
