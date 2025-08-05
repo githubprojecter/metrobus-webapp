@@ -4,7 +4,7 @@ import type {
   NextApiResponse,
   NextApiHandler,
 } from 'next';
-import type { Role } from '@/pages/generated/prisma';
+import type { Role } from '@/lib/generated/prisma';
 import { adminAuth } from './firebaseAdmin';
 import prisma from './prisma';
 
