@@ -1,32 +1,41 @@
 // pages/api/panico.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
-import type { Role } from '@/pages/generated/prisma';
+import type { NextApiResponse } from 'next';
+import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
 import { requireRole } from '@/lib/requireRole';
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (
+  req: NextApiRequestWithUser,
+  res: NextApiResponse
+): Promise<void> => {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
-    return res.status(405).end('Method Not Allowed');
+    res.status(405).end('Method Not Allowed');
+    return;           // ← ya no devolvemos el res
   }
 
-  const uid = (req as any).uid as string;
-  const userWithOperador = await prisma.userRole.findUnique({
+  const uid = req.uid;
+  const record = await prisma.userRole.findUnique({
     where: { idFirebase: uid },
     include: { operador: true },
   });
 
-  if (!userWithOperador?.operador) {
-    return res.status(404).json({ error: 'Operador no encontrado' });
+  if (!record?.operador) {
+    res.status(404).json({ error: 'Operador no encontrado' });
+    return;           // ← idem
   }
+
+  const { motivo } = req.body as { motivo?: string };
 
   const nuevo = await prisma.botonPanico.create({
     data: {
-      operadorId: userWithOperador.operador.id,
-      motivo: req.body.motivo ?? null,
+      operadorId: record.operador.id,
+      motivo: motivo ?? null,
     },
   });
-  return res.status(201).json(nuevo);
+
+  res.status(201).json(nuevo);  // ← no devolvemos el resultado
+  // y la función termina retornando void
 };
 
-export default requireRole([ 'Operador' ] as Role[])(handler);
+export default requireRole(['Operador'])(handler);
