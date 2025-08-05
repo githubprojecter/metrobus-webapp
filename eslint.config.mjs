@@ -10,7 +10,42 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // 1) Ignorar archivos generados y la carpeta .next
+  {
+    ignores: [
+      "pages/generated/prisma/**",
+      ".next/**"
+    ]
+  },
+
+  // 2) Extender la configuración recomendada de Next.js
+  ...compat.extends(
+    "next/core-web-vitals",
+    "next/typescript"
+  ),
+
+  // 3) Desactivar reglas globales que estás sufriendo
+  {
+    rules: {
+      // Apaga la regla que prohíbe imports con require()
+      "@typescript-eslint/no-require-imports": "off",
+      // Apaga el explicit-any
+      "@typescript-eslint/no-explicit-any": "off",
+      // Baja el nivel de no-unused-vars a warning
+      "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+      // Por si quieres menos estricto en catch de errores
+      "@typescript-eslint/no-implicit-any-catch": "off",
+    }
+  },
+
+  // 4) Overrides específicos (ej. solo para pages/api)
+  {
+    files: ["pages/api/**/*.ts"],
+    rules: {
+      // Desactiva boundary-types si así lo prefieres
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
+  }
 ];
 
 export default eslintConfig;

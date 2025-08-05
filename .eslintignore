@@ -1,5 +1,0 @@
-# Ignorar carpeta de ficheros de Prisma generados
-pages/generated/prisma/**
-
-# Ignorar el output de Next.js
-.next/**
