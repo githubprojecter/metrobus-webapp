@@ -2,7 +2,6 @@
 import type { NextApiResponse } from 'next';
 import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import { requireRole } from '@/lib/requireRole';
-import prisma from '@/lib/prisma';
 import { adminAuth } from '@/lib/firebaseAdmin';
 
 export default requireRole(['Coordinador'])(async (

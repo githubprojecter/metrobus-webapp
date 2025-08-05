@@ -16,7 +16,7 @@ export default requireRole(['Coordinador'])(async (
   const { panicoId, supervisorId } = req.body as { panicoId: number; supervisorId: number };
   // Crear asignación
   await prisma.incidenteAsignado.create({
-    data: { incidenteId: panicoId, supervisorId },
+    data: { reporteIncidenteId: panicoId, supervisorId },
   });
   res.status(200).json({ message: 'Supervisor asignado' });
 });
