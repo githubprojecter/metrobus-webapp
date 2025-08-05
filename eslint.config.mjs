@@ -13,7 +13,7 @@ const eslintConfig = [
   // 1) Ignorar archivos generados y la carpeta .next
   {
     ignores: [
-      "pages/generated/prisma/**",
+      "lib/generated/prisma/**",
       ".next/**"
     ]
   },
