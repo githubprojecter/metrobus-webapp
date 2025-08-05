@@ -47,7 +47,11 @@ export default requireRole(['Coordinador'])(async (
   registros.forEach(({ operador, kmInicial, kmFinal }) => {
     const km = (kmFinal ?? kmInicial) - kmInicial;
     if (!opMap[operador.id]) {
-      opMap[operador.id] = { id: operador.id, unidad: operador.unidadAsignada, km };
+      opMap[operador.id] = {
+        id: operador.id,
+        unidad: operador.unidadAsignada ?? '–',
+        km,
+      };
     } else {
       opMap[operador.id].km += km;
     }
