@@ -1,0 +1,187 @@
+generator client {
+  provider = "prisma-client-js" // Genera el cliente Prisma para consultas desde Node.js
+  output   = "../pages/generated/prisma"
+}
+
+datasource db {
+  provider          = "mysql" // Motor de base de datos
+  url               = env("DATABASE_URL") // URL de conexión definida en .env
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+//
+// ENUM: Roles permitidos en el sistema
+//
+enum Role {
+  Coordinador
+  Operador
+  Supervisor
+  Dirección
+  Patio
+}
+
+//
+// Modelo central que relaciona el ID de Firebase con el rol asignado
+//
+model UserRole {
+  id         Int    @id @default(autoincrement())
+  idFirebase String @unique // UID del usuario en Firebase
+  role       Role // Rol asignado al usuario
+
+  // Relaciones uno a uno opcionales con los modelos por rol
+  operador    Operador?
+  supervisor  Supervisor?
+  patio       Patio?
+  Coordinador Coordinador?
+}
+
+//
+// Modelo del operador (chofer)
+//
+model Operador {
+  id             Int     @id @default(autoincrement())
+  userRoleId     Int     @unique // Relación 1 a 1 con UserRole
+  unidadAsignada String? // Unidad que conduce
+  rutaAsignada   String? // Ruta asignada
+
+  user                 UserRole               @relation(fields: [userRoleId], references: [id])
+  botonesPanico        BotonPanico[] // Botones de pánico presionados por este operador
+  RegistroSalidaUnidad RegistroSalidaUnidad[]
+  AsignacionUnidad     AsignacionUnidad[]
+}
+
+//
+// Reporte generado al presionar el botón de pánico
+//
+model BotonPanico {
+  id         Int      @id @default(autoincrement())
+  operadorId Int // FK al operador que lo activó
+  timestamp  DateTime @default(now()) // Fecha y hora del evento
+  motivo     String? // Motivo opcional
+  atendido   Boolean  @default(false) // Si el coordinador ya lo atendió
+
+  operador Operador @relation(fields: [operadorId], references: [id])
+}
+
+//
+// Modelo del supervisor
+//
+model Supervisor {
+  id         Int    @id @default(autoincrement())
+  userRoleId Int    @unique // FK 1:1 con UserRole
+  nombre     String // Nombre del supervisor
+
+  user         UserRole              @relation(fields: [userRoleId], references: [id])
+  ubicaciones  UbicacionSupervisor[] // Historial de ubicaciones
+  reportes     ReporteIncidente[] // Reportes levantados
+  asignaciones IncidenteAsignado[] // Incidentes asignados por coordinador
+}
+
+//
+// Ubicación enviada por el supervisor (en tiempo real bajo solicitud del coordinador)
+//
+model UbicacionSupervisor {
+  id           Int      @id @default(autoincrement())
+  supervisorId Int // FK supervisor
+  timestamp    DateTime @default(now()) // Fecha y hora de la ubicación
+  latitud      Float
+  longitud     Float
+
+  supervisor Supervisor @relation(fields: [supervisorId], references: [id])
+}
+
+//
+// Modelo del coordinador (por si deseas extender más adelante)
+//
+model Coordinador {
+  id         Int      @id @default(autoincrement())
+  userRoleId Int      @unique
+  user       UserRole @relation(fields: [userRoleId], references: [id])
+}
+
+//
+// Incidente asignado a un supervisor desde el coordinador
+//
+model IncidenteAsignado {
+  id              Int              @id @default(autoincrement())
+  supervisorId    Int // A quién se le asignó
+  fechaAsignacion DateTime         @default(now()) // Cuándo se asignó
+  incidente       ReporteIncidente @relation(fields: [reporteIncidenteId], references: [id]) // Incidente en sí
+
+  supervisor         Supervisor @relation(fields: [supervisorId], references: [id])
+  reporteIncidenteId Int
+}
+
+//
+// Reporte de incidente levantado por el supervisor
+//
+model ReporteIncidente {
+  id           Int      @id @default(autoincrement())
+  supervisorId Int // Quién lo levantó
+  fecha        DateTime @default(now()) // Cuándo se levantó
+  descripcion  String // Detalles del incidente
+  ambulancia   Boolean  @default(false) // ¿Se llamó ambulancia?
+  policia      Boolean  @default(false) // ¿Hubo policía?
+  heridos      Boolean
+
+  fotos             FotoIncidente[] // Fotos relacionadas
+  supervisor        Supervisor          @relation(fields: [supervisorId], references: [id])
+  IncidenteAsignado IncidenteAsignado[]
+}
+
+//
+// Foto asociada a un incidente (podría subirla el supervisor)
+//
+model FotoIncidente {
+  id        Int    @id @default(autoincrement())
+  reporteId Int // A qué incidente pertenece
+  url       String // URL del archivo
+
+  reporte ReporteIncidente @relation(fields: [reporteId], references: [id])
+}
+
+//
+// Usuario con rol de Patio (logística de salida)
+//
+model Patio {
+  id         Int      @id @default(autoincrement())
+  userRoleId Int      @unique
+  user       UserRole @relation(fields: [userRoleId], references: [id])
+
+  registrosSalida RegistroSalidaUnidad[] // Registros diarios de salida de unidades
+  asignaciones    AsignacionUnidad[] // Asignaciones operador-unidad
+}
+
+//
+// Registro de salida de una unidad, lo llena el usuario del rol Patio
+//
+model RegistroSalidaUnidad {
+  id          Int      @id @default(autoincrement())
+  patioId     Int // Quién lo registró
+  unidad      String // ID o placa de la unidad
+  operadorId  Int // Quién conducía
+  fechaSalida DateTime // Fecha completa
+  horaInicio  String // Hora de inicio de turno
+  vueltas     Int // Cuántas vueltas dio en el día
+  kmInicial   Int // Kilometraje inicial
+  kmFinal     Int? // Kilometraje final
+  condiciones String // Observaciones sobre condiciones de salida
+
+  patio    Patio    @relation(fields: [patioId], references: [id])
+  operador Operador @relation(fields: [operadorId], references: [id])
+}
+
+//
+// Asignación de unidad y ruta a un operador, gestionado desde el módulo Patio
+//
+model AsignacionUnidad {
+  id         Int      @id @default(autoincrement())
+  patioId    Int
+  operadorId Int
+  unidad     String // ID de la unidad
+  ruta       String // Nombre de la ruta
+  fecha      DateTime @default(now())
+
+  patio    Patio    @relation(fields: [patioId], references: [id])
+  operador Operador @relation(fields: [operadorId], references: [id])
+}
