@@ -22,6 +22,13 @@ model UserRole {
   idFirebase String @unique
   role       Role
 
+  nombre          String?
+  apellidoPaterno String?
+  apellidoMaterno String?
+  profilePhotoUrl String?
+  telefono        String?
+  correo          String?
+
   operador    Operador?
   supervisor  Supervisor?
   patio       Patio?
@@ -31,12 +38,6 @@ model UserRole {
 model Operador {
   id             Int     @id @default(autoincrement())
   userRoleId     Int     @unique
-  /// Campos de perfil
-  nombre         String?
-  apellidos      String?
-  telefono       String?
-  correo         String?
-  /// Campos existentes
   unidadAsignada String?
   rutaAsignada   String?
 
@@ -59,9 +60,8 @@ model BotonPanico {
 }
 
 model Supervisor {
-  id         Int    @id @default(autoincrement())
-  userRoleId Int    @unique
-  nombre     String
+  id         Int @id @default(autoincrement())
+  userRoleId Int @unique
 
   user         UserRole              @relation(fields: [userRoleId], references: [id])
   ubicaciones  UbicacionSupervisor[]
@@ -80,13 +80,8 @@ model UbicacionSupervisor {
 }
 
 model Coordinador {
-  id         Int     @id @default(autoincrement())
-  userRoleId Int     @unique
-  /// Campos de perfil
-  nombre     String?
-  apellidos  String?
-  telefono   String?
-  correo     String?
+  id         Int @id @default(autoincrement())
+  userRoleId Int @unique
 
   user UserRole @relation(fields: [userRoleId], references: [id])
 }
@@ -116,9 +111,10 @@ model ReporteIncidente {
 }
 
 model FotoIncidente {
-  id        Int    @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   reporteId Int
   url       String
+  createdAt DateTime @default(now())
 
   reporte ReporteIncidente @relation(fields: [reporteId], references: [id])
 }

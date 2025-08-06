@@ -2008,18 +2008,36 @@ export namespace Prisma {
     id: number | null
     idFirebase: string | null
     role: $Enums.Role | null
+    nombre: string | null
+    apellidoPaterno: string | null
+    apellidoMaterno: string | null
+    profilePhotoUrl: string | null
+    telefono: string | null
+    correo: string | null
   }
 
   export type UserRoleMaxAggregateOutputType = {
     id: number | null
     idFirebase: string | null
     role: $Enums.Role | null
+    nombre: string | null
+    apellidoPaterno: string | null
+    apellidoMaterno: string | null
+    profilePhotoUrl: string | null
+    telefono: string | null
+    correo: string | null
   }
 
   export type UserRoleCountAggregateOutputType = {
     id: number
     idFirebase: number
     role: number
+    nombre: number
+    apellidoPaterno: number
+    apellidoMaterno: number
+    profilePhotoUrl: number
+    telefono: number
+    correo: number
     _all: number
   }
 
@@ -2036,18 +2054,36 @@ export namespace Prisma {
     id?: true
     idFirebase?: true
     role?: true
+    nombre?: true
+    apellidoPaterno?: true
+    apellidoMaterno?: true
+    profilePhotoUrl?: true
+    telefono?: true
+    correo?: true
   }
 
   export type UserRoleMaxAggregateInputType = {
     id?: true
     idFirebase?: true
     role?: true
+    nombre?: true
+    apellidoPaterno?: true
+    apellidoMaterno?: true
+    profilePhotoUrl?: true
+    telefono?: true
+    correo?: true
   }
 
   export type UserRoleCountAggregateInputType = {
     id?: true
     idFirebase?: true
     role?: true
+    nombre?: true
+    apellidoPaterno?: true
+    apellidoMaterno?: true
+    profilePhotoUrl?: true
+    telefono?: true
+    correo?: true
     _all?: true
   }
 
@@ -2141,6 +2177,12 @@ export namespace Prisma {
     id: number
     idFirebase: string
     role: $Enums.Role
+    nombre: string | null
+    apellidoPaterno: string | null
+    apellidoMaterno: string | null
+    profilePhotoUrl: string | null
+    telefono: string | null
+    correo: string | null
     _count: UserRoleCountAggregateOutputType | null
     _avg: UserRoleAvgAggregateOutputType | null
     _sum: UserRoleSumAggregateOutputType | null
@@ -2166,6 +2208,12 @@ export namespace Prisma {
     id?: boolean
     idFirebase?: boolean
     role?: boolean
+    nombre?: boolean
+    apellidoPaterno?: boolean
+    apellidoMaterno?: boolean
+    profilePhotoUrl?: boolean
+    telefono?: boolean
+    correo?: boolean
     operador?: boolean | UserRole$operadorArgs<ExtArgs>
     supervisor?: boolean | UserRole$supervisorArgs<ExtArgs>
     patio?: boolean | UserRole$patioArgs<ExtArgs>
@@ -2178,9 +2226,15 @@ export namespace Prisma {
     id?: boolean
     idFirebase?: boolean
     role?: boolean
+    nombre?: boolean
+    apellidoPaterno?: boolean
+    apellidoMaterno?: boolean
+    profilePhotoUrl?: boolean
+    telefono?: boolean
+    correo?: boolean
   }
 
-  export type UserRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idFirebase" | "role", ExtArgs["result"]["userRole"]>
+  export type UserRoleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idFirebase" | "role" | "nombre" | "apellidoPaterno" | "apellidoMaterno" | "profilePhotoUrl" | "telefono" | "correo", ExtArgs["result"]["userRole"]>
   export type UserRoleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operador?: boolean | UserRole$operadorArgs<ExtArgs>
     supervisor?: boolean | UserRole$supervisorArgs<ExtArgs>
@@ -2200,6 +2254,12 @@ export namespace Prisma {
       id: number
       idFirebase: string
       role: $Enums.Role
+      nombre: string | null
+      apellidoPaterno: string | null
+      apellidoMaterno: string | null
+      profilePhotoUrl: string | null
+      telefono: string | null
+      correo: string | null
     }, ExtArgs["result"]["userRole"]>
     composites: {}
   }
@@ -2576,6 +2636,12 @@ export namespace Prisma {
     readonly id: FieldRef<"UserRole", 'Int'>
     readonly idFirebase: FieldRef<"UserRole", 'String'>
     readonly role: FieldRef<"UserRole", 'Role'>
+    readonly nombre: FieldRef<"UserRole", 'String'>
+    readonly apellidoPaterno: FieldRef<"UserRole", 'String'>
+    readonly apellidoMaterno: FieldRef<"UserRole", 'String'>
+    readonly profilePhotoUrl: FieldRef<"UserRole", 'String'>
+    readonly telefono: FieldRef<"UserRole", 'String'>
+    readonly correo: FieldRef<"UserRole", 'String'>
   }
     
 
@@ -3038,10 +3104,6 @@ export namespace Prisma {
   export type OperadorMinAggregateOutputType = {
     id: number | null
     userRoleId: number | null
-    nombre: string | null
-    apellidos: string | null
-    telefono: string | null
-    correo: string | null
     unidadAsignada: string | null
     rutaAsignada: string | null
   }
@@ -3049,10 +3111,6 @@ export namespace Prisma {
   export type OperadorMaxAggregateOutputType = {
     id: number | null
     userRoleId: number | null
-    nombre: string | null
-    apellidos: string | null
-    telefono: string | null
-    correo: string | null
     unidadAsignada: string | null
     rutaAsignada: string | null
   }
@@ -3060,10 +3118,6 @@ export namespace Prisma {
   export type OperadorCountAggregateOutputType = {
     id: number
     userRoleId: number
-    nombre: number
-    apellidos: number
-    telefono: number
-    correo: number
     unidadAsignada: number
     rutaAsignada: number
     _all: number
@@ -3083,10 +3137,6 @@ export namespace Prisma {
   export type OperadorMinAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
-    apellidos?: true
-    telefono?: true
-    correo?: true
     unidadAsignada?: true
     rutaAsignada?: true
   }
@@ -3094,10 +3144,6 @@ export namespace Prisma {
   export type OperadorMaxAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
-    apellidos?: true
-    telefono?: true
-    correo?: true
     unidadAsignada?: true
     rutaAsignada?: true
   }
@@ -3105,10 +3151,6 @@ export namespace Prisma {
   export type OperadorCountAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
-    apellidos?: true
-    telefono?: true
-    correo?: true
     unidadAsignada?: true
     rutaAsignada?: true
     _all?: true
@@ -3203,10 +3245,6 @@ export namespace Prisma {
   export type OperadorGroupByOutputType = {
     id: number
     userRoleId: number
-    nombre: string | null
-    apellidos: string | null
-    telefono: string | null
-    correo: string | null
     unidadAsignada: string | null
     rutaAsignada: string | null
     _count: OperadorCountAggregateOutputType | null
@@ -3233,10 +3271,6 @@ export namespace Prisma {
   export type OperadorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userRoleId?: boolean
-    nombre?: boolean
-    apellidos?: boolean
-    telefono?: boolean
-    correo?: boolean
     unidadAsignada?: boolean
     rutaAsignada?: boolean
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
@@ -3251,15 +3285,11 @@ export namespace Prisma {
   export type OperadorSelectScalar = {
     id?: boolean
     userRoleId?: boolean
-    nombre?: boolean
-    apellidos?: boolean
-    telefono?: boolean
-    correo?: boolean
     unidadAsignada?: boolean
     rutaAsignada?: boolean
   }
 
-  export type OperadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId" | "nombre" | "apellidos" | "telefono" | "correo" | "unidadAsignada" | "rutaAsignada", ExtArgs["result"]["operador"]>
+  export type OperadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId" | "unidadAsignada" | "rutaAsignada", ExtArgs["result"]["operador"]>
   export type OperadorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
     botonesPanico?: boolean | Operador$botonesPanicoArgs<ExtArgs>
@@ -3279,16 +3309,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userRoleId: number
-      /**
-       * Campos de perfil
-       */
-      nombre: string | null
-      apellidos: string | null
-      telefono: string | null
-      correo: string | null
-      /**
-       * Campos existentes
-       */
       unidadAsignada: string | null
       rutaAsignada: string | null
     }, ExtArgs["result"]["operador"]>
@@ -3666,10 +3686,6 @@ export namespace Prisma {
   interface OperadorFieldRefs {
     readonly id: FieldRef<"Operador", 'Int'>
     readonly userRoleId: FieldRef<"Operador", 'Int'>
-    readonly nombre: FieldRef<"Operador", 'String'>
-    readonly apellidos: FieldRef<"Operador", 'String'>
-    readonly telefono: FieldRef<"Operador", 'String'>
-    readonly correo: FieldRef<"Operador", 'String'>
     readonly unidadAsignada: FieldRef<"Operador", 'String'>
     readonly rutaAsignada: FieldRef<"Operador", 'String'>
   }
@@ -5127,19 +5143,16 @@ export namespace Prisma {
   export type SupervisorMinAggregateOutputType = {
     id: number | null
     userRoleId: number | null
-    nombre: string | null
   }
 
   export type SupervisorMaxAggregateOutputType = {
     id: number | null
     userRoleId: number | null
-    nombre: string | null
   }
 
   export type SupervisorCountAggregateOutputType = {
     id: number
     userRoleId: number
-    nombre: number
     _all: number
   }
 
@@ -5157,19 +5170,16 @@ export namespace Prisma {
   export type SupervisorMinAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
   }
 
   export type SupervisorMaxAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
   }
 
   export type SupervisorCountAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
     _all?: true
   }
 
@@ -5262,7 +5272,6 @@ export namespace Prisma {
   export type SupervisorGroupByOutputType = {
     id: number
     userRoleId: number
-    nombre: string
     _count: SupervisorCountAggregateOutputType | null
     _avg: SupervisorAvgAggregateOutputType | null
     _sum: SupervisorSumAggregateOutputType | null
@@ -5287,7 +5296,6 @@ export namespace Prisma {
   export type SupervisorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userRoleId?: boolean
-    nombre?: boolean
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
     ubicaciones?: boolean | Supervisor$ubicacionesArgs<ExtArgs>
     reportes?: boolean | Supervisor$reportesArgs<ExtArgs>
@@ -5300,10 +5308,9 @@ export namespace Prisma {
   export type SupervisorSelectScalar = {
     id?: boolean
     userRoleId?: boolean
-    nombre?: boolean
   }
 
-  export type SupervisorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId" | "nombre", ExtArgs["result"]["supervisor"]>
+  export type SupervisorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId", ExtArgs["result"]["supervisor"]>
   export type SupervisorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
     ubicaciones?: boolean | Supervisor$ubicacionesArgs<ExtArgs>
@@ -5323,7 +5330,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userRoleId: number
-      nombre: string
     }, ExtArgs["result"]["supervisor"]>
     composites: {}
   }
@@ -5699,7 +5705,6 @@ export namespace Prisma {
   interface SupervisorFieldRefs {
     readonly id: FieldRef<"Supervisor", 'Int'>
     readonly userRoleId: FieldRef<"Supervisor", 'Int'>
-    readonly nombre: FieldRef<"Supervisor", 'String'>
   }
     
 
@@ -7133,28 +7138,16 @@ export namespace Prisma {
   export type CoordinadorMinAggregateOutputType = {
     id: number | null
     userRoleId: number | null
-    nombre: string | null
-    apellidos: string | null
-    telefono: string | null
-    correo: string | null
   }
 
   export type CoordinadorMaxAggregateOutputType = {
     id: number | null
     userRoleId: number | null
-    nombre: string | null
-    apellidos: string | null
-    telefono: string | null
-    correo: string | null
   }
 
   export type CoordinadorCountAggregateOutputType = {
     id: number
     userRoleId: number
-    nombre: number
-    apellidos: number
-    telefono: number
-    correo: number
     _all: number
   }
 
@@ -7172,28 +7165,16 @@ export namespace Prisma {
   export type CoordinadorMinAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
-    apellidos?: true
-    telefono?: true
-    correo?: true
   }
 
   export type CoordinadorMaxAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
-    apellidos?: true
-    telefono?: true
-    correo?: true
   }
 
   export type CoordinadorCountAggregateInputType = {
     id?: true
     userRoleId?: true
-    nombre?: true
-    apellidos?: true
-    telefono?: true
-    correo?: true
     _all?: true
   }
 
@@ -7286,10 +7267,6 @@ export namespace Prisma {
   export type CoordinadorGroupByOutputType = {
     id: number
     userRoleId: number
-    nombre: string | null
-    apellidos: string | null
-    telefono: string | null
-    correo: string | null
     _count: CoordinadorCountAggregateOutputType | null
     _avg: CoordinadorAvgAggregateOutputType | null
     _sum: CoordinadorSumAggregateOutputType | null
@@ -7314,10 +7291,6 @@ export namespace Prisma {
   export type CoordinadorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userRoleId?: boolean
-    nombre?: boolean
-    apellidos?: boolean
-    telefono?: boolean
-    correo?: boolean
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coordinador"]>
 
@@ -7326,13 +7299,9 @@ export namespace Prisma {
   export type CoordinadorSelectScalar = {
     id?: boolean
     userRoleId?: boolean
-    nombre?: boolean
-    apellidos?: boolean
-    telefono?: boolean
-    correo?: boolean
   }
 
-  export type CoordinadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId" | "nombre" | "apellidos" | "telefono" | "correo", ExtArgs["result"]["coordinador"]>
+  export type CoordinadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId", ExtArgs["result"]["coordinador"]>
   export type CoordinadorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
   }
@@ -7345,13 +7314,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userRoleId: number
-      /**
-       * Campos de perfil
-       */
-      nombre: string | null
-      apellidos: string | null
-      telefono: string | null
-      correo: string | null
     }, ExtArgs["result"]["coordinador"]>
     composites: {}
   }
@@ -7724,10 +7686,6 @@ export namespace Prisma {
   interface CoordinadorFieldRefs {
     readonly id: FieldRef<"Coordinador", 'Int'>
     readonly userRoleId: FieldRef<"Coordinador", 'Int'>
-    readonly nombre: FieldRef<"Coordinador", 'String'>
-    readonly apellidos: FieldRef<"Coordinador", 'String'>
-    readonly telefono: FieldRef<"Coordinador", 'String'>
-    readonly correo: FieldRef<"Coordinador", 'String'>
   }
     
 
@@ -10126,18 +10084,21 @@ export namespace Prisma {
     id: number | null
     reporteId: number | null
     url: string | null
+    createdAt: Date | null
   }
 
   export type FotoIncidenteMaxAggregateOutputType = {
     id: number | null
     reporteId: number | null
     url: string | null
+    createdAt: Date | null
   }
 
   export type FotoIncidenteCountAggregateOutputType = {
     id: number
     reporteId: number
     url: number
+    createdAt: number
     _all: number
   }
 
@@ -10156,18 +10117,21 @@ export namespace Prisma {
     id?: true
     reporteId?: true
     url?: true
+    createdAt?: true
   }
 
   export type FotoIncidenteMaxAggregateInputType = {
     id?: true
     reporteId?: true
     url?: true
+    createdAt?: true
   }
 
   export type FotoIncidenteCountAggregateInputType = {
     id?: true
     reporteId?: true
     url?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -10261,6 +10225,7 @@ export namespace Prisma {
     id: number
     reporteId: number
     url: string
+    createdAt: Date
     _count: FotoIncidenteCountAggregateOutputType | null
     _avg: FotoIncidenteAvgAggregateOutputType | null
     _sum: FotoIncidenteSumAggregateOutputType | null
@@ -10286,6 +10251,7 @@ export namespace Prisma {
     id?: boolean
     reporteId?: boolean
     url?: boolean
+    createdAt?: boolean
     reporte?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fotoIncidente"]>
 
@@ -10295,9 +10261,10 @@ export namespace Prisma {
     id?: boolean
     reporteId?: boolean
     url?: boolean
+    createdAt?: boolean
   }
 
-  export type FotoIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reporteId" | "url", ExtArgs["result"]["fotoIncidente"]>
+  export type FotoIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reporteId" | "url" | "createdAt", ExtArgs["result"]["fotoIncidente"]>
   export type FotoIncidenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     reporte?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
   }
@@ -10311,6 +10278,7 @@ export namespace Prisma {
       id: number
       reporteId: number
       url: string
+      createdAt: Date
     }, ExtArgs["result"]["fotoIncidente"]>
     composites: {}
   }
@@ -10684,6 +10652,7 @@ export namespace Prisma {
     readonly id: FieldRef<"FotoIncidente", 'Int'>
     readonly reporteId: FieldRef<"FotoIncidente", 'Int'>
     readonly url: FieldRef<"FotoIncidente", 'String'>
+    readonly createdAt: FieldRef<"FotoIncidente", 'DateTime'>
   }
     
 
@@ -14082,7 +14051,13 @@ export namespace Prisma {
   export const UserRoleScalarFieldEnum: {
     id: 'id',
     idFirebase: 'idFirebase',
-    role: 'role'
+    role: 'role',
+    nombre: 'nombre',
+    apellidoPaterno: 'apellidoPaterno',
+    apellidoMaterno: 'apellidoMaterno',
+    profilePhotoUrl: 'profilePhotoUrl',
+    telefono: 'telefono',
+    correo: 'correo'
   };
 
   export type UserRoleScalarFieldEnum = (typeof UserRoleScalarFieldEnum)[keyof typeof UserRoleScalarFieldEnum]
@@ -14091,10 +14066,6 @@ export namespace Prisma {
   export const OperadorScalarFieldEnum: {
     id: 'id',
     userRoleId: 'userRoleId',
-    nombre: 'nombre',
-    apellidos: 'apellidos',
-    telefono: 'telefono',
-    correo: 'correo',
     unidadAsignada: 'unidadAsignada',
     rutaAsignada: 'rutaAsignada'
   };
@@ -14117,8 +14088,7 @@ export namespace Prisma {
 
   export const SupervisorScalarFieldEnum: {
     id: 'id',
-    userRoleId: 'userRoleId',
-    nombre: 'nombre'
+    userRoleId: 'userRoleId'
   };
 
   export type SupervisorScalarFieldEnum = (typeof SupervisorScalarFieldEnum)[keyof typeof SupervisorScalarFieldEnum]
@@ -14137,11 +14107,7 @@ export namespace Prisma {
 
   export const CoordinadorScalarFieldEnum: {
     id: 'id',
-    userRoleId: 'userRoleId',
-    nombre: 'nombre',
-    apellidos: 'apellidos',
-    telefono: 'telefono',
-    correo: 'correo'
+    userRoleId: 'userRoleId'
   };
 
   export type CoordinadorScalarFieldEnum = (typeof CoordinadorScalarFieldEnum)[keyof typeof CoordinadorScalarFieldEnum]
@@ -14173,7 +14139,8 @@ export namespace Prisma {
   export const FotoIncidenteScalarFieldEnum: {
     id: 'id',
     reporteId: 'reporteId',
-    url: 'url'
+    url: 'url',
+    createdAt: 'createdAt'
   };
 
   export type FotoIncidenteScalarFieldEnum = (typeof FotoIncidenteScalarFieldEnum)[keyof typeof FotoIncidenteScalarFieldEnum]
@@ -14223,13 +14190,6 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const UserRoleOrderByRelevanceFieldEnum: {
-    idFirebase: 'idFirebase'
-  };
-
-  export type UserRoleOrderByRelevanceFieldEnum = (typeof UserRoleOrderByRelevanceFieldEnum)[keyof typeof UserRoleOrderByRelevanceFieldEnum]
-
-
   export const NullsOrder: {
     first: 'first',
     last: 'last'
@@ -14238,11 +14198,20 @@ export namespace Prisma {
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
-  export const OperadorOrderByRelevanceFieldEnum: {
+  export const UserRoleOrderByRelevanceFieldEnum: {
+    idFirebase: 'idFirebase',
     nombre: 'nombre',
-    apellidos: 'apellidos',
+    apellidoPaterno: 'apellidoPaterno',
+    apellidoMaterno: 'apellidoMaterno',
+    profilePhotoUrl: 'profilePhotoUrl',
     telefono: 'telefono',
-    correo: 'correo',
+    correo: 'correo'
+  };
+
+  export type UserRoleOrderByRelevanceFieldEnum = (typeof UserRoleOrderByRelevanceFieldEnum)[keyof typeof UserRoleOrderByRelevanceFieldEnum]
+
+
+  export const OperadorOrderByRelevanceFieldEnum: {
     unidadAsignada: 'unidadAsignada',
     rutaAsignada: 'rutaAsignada'
   };
@@ -14255,23 +14224,6 @@ export namespace Prisma {
   };
 
   export type BotonPanicoOrderByRelevanceFieldEnum = (typeof BotonPanicoOrderByRelevanceFieldEnum)[keyof typeof BotonPanicoOrderByRelevanceFieldEnum]
-
-
-  export const SupervisorOrderByRelevanceFieldEnum: {
-    nombre: 'nombre'
-  };
-
-  export type SupervisorOrderByRelevanceFieldEnum = (typeof SupervisorOrderByRelevanceFieldEnum)[keyof typeof SupervisorOrderByRelevanceFieldEnum]
-
-
-  export const CoordinadorOrderByRelevanceFieldEnum: {
-    nombre: 'nombre',
-    apellidos: 'apellidos',
-    telefono: 'telefono',
-    correo: 'correo'
-  };
-
-  export type CoordinadorOrderByRelevanceFieldEnum = (typeof CoordinadorOrderByRelevanceFieldEnum)[keyof typeof CoordinadorOrderByRelevanceFieldEnum]
 
 
   export const ReporteIncidenteOrderByRelevanceFieldEnum: {
@@ -14362,6 +14314,12 @@ export namespace Prisma {
     id?: IntFilter<"UserRole"> | number
     idFirebase?: StringFilter<"UserRole"> | string
     role?: EnumRoleFilter<"UserRole"> | $Enums.Role
+    nombre?: StringNullableFilter<"UserRole"> | string | null
+    apellidoPaterno?: StringNullableFilter<"UserRole"> | string | null
+    apellidoMaterno?: StringNullableFilter<"UserRole"> | string | null
+    profilePhotoUrl?: StringNullableFilter<"UserRole"> | string | null
+    telefono?: StringNullableFilter<"UserRole"> | string | null
+    correo?: StringNullableFilter<"UserRole"> | string | null
     operador?: XOR<OperadorNullableScalarRelationFilter, OperadorWhereInput> | null
     supervisor?: XOR<SupervisorNullableScalarRelationFilter, SupervisorWhereInput> | null
     patio?: XOR<PatioNullableScalarRelationFilter, PatioWhereInput> | null
@@ -14372,6 +14330,12 @@ export namespace Prisma {
     id?: SortOrder
     idFirebase?: SortOrder
     role?: SortOrder
+    nombre?: SortOrderInput | SortOrder
+    apellidoPaterno?: SortOrderInput | SortOrder
+    apellidoMaterno?: SortOrderInput | SortOrder
+    profilePhotoUrl?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    correo?: SortOrderInput | SortOrder
     operador?: OperadorOrderByWithRelationInput
     supervisor?: SupervisorOrderByWithRelationInput
     patio?: PatioOrderByWithRelationInput
@@ -14386,6 +14350,12 @@ export namespace Prisma {
     OR?: UserRoleWhereInput[]
     NOT?: UserRoleWhereInput | UserRoleWhereInput[]
     role?: EnumRoleFilter<"UserRole"> | $Enums.Role
+    nombre?: StringNullableFilter<"UserRole"> | string | null
+    apellidoPaterno?: StringNullableFilter<"UserRole"> | string | null
+    apellidoMaterno?: StringNullableFilter<"UserRole"> | string | null
+    profilePhotoUrl?: StringNullableFilter<"UserRole"> | string | null
+    telefono?: StringNullableFilter<"UserRole"> | string | null
+    correo?: StringNullableFilter<"UserRole"> | string | null
     operador?: XOR<OperadorNullableScalarRelationFilter, OperadorWhereInput> | null
     supervisor?: XOR<SupervisorNullableScalarRelationFilter, SupervisorWhereInput> | null
     patio?: XOR<PatioNullableScalarRelationFilter, PatioWhereInput> | null
@@ -14396,6 +14366,12 @@ export namespace Prisma {
     id?: SortOrder
     idFirebase?: SortOrder
     role?: SortOrder
+    nombre?: SortOrderInput | SortOrder
+    apellidoPaterno?: SortOrderInput | SortOrder
+    apellidoMaterno?: SortOrderInput | SortOrder
+    profilePhotoUrl?: SortOrderInput | SortOrder
+    telefono?: SortOrderInput | SortOrder
+    correo?: SortOrderInput | SortOrder
     _count?: UserRoleCountOrderByAggregateInput
     _avg?: UserRoleAvgOrderByAggregateInput
     _max?: UserRoleMaxOrderByAggregateInput
@@ -14410,6 +14386,12 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"UserRole"> | number
     idFirebase?: StringWithAggregatesFilter<"UserRole"> | string
     role?: EnumRoleWithAggregatesFilter<"UserRole"> | $Enums.Role
+    nombre?: StringNullableWithAggregatesFilter<"UserRole"> | string | null
+    apellidoPaterno?: StringNullableWithAggregatesFilter<"UserRole"> | string | null
+    apellidoMaterno?: StringNullableWithAggregatesFilter<"UserRole"> | string | null
+    profilePhotoUrl?: StringNullableWithAggregatesFilter<"UserRole"> | string | null
+    telefono?: StringNullableWithAggregatesFilter<"UserRole"> | string | null
+    correo?: StringNullableWithAggregatesFilter<"UserRole"> | string | null
   }
 
   export type OperadorWhereInput = {
@@ -14418,10 +14400,6 @@ export namespace Prisma {
     NOT?: OperadorWhereInput | OperadorWhereInput[]
     id?: IntFilter<"Operador"> | number
     userRoleId?: IntFilter<"Operador"> | number
-    nombre?: StringNullableFilter<"Operador"> | string | null
-    apellidos?: StringNullableFilter<"Operador"> | string | null
-    telefono?: StringNullableFilter<"Operador"> | string | null
-    correo?: StringNullableFilter<"Operador"> | string | null
     unidadAsignada?: StringNullableFilter<"Operador"> | string | null
     rutaAsignada?: StringNullableFilter<"Operador"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
@@ -14433,10 +14411,6 @@ export namespace Prisma {
   export type OperadorOrderByWithRelationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrderInput | SortOrder
-    apellidos?: SortOrderInput | SortOrder
-    telefono?: SortOrderInput | SortOrder
-    correo?: SortOrderInput | SortOrder
     unidadAsignada?: SortOrderInput | SortOrder
     rutaAsignada?: SortOrderInput | SortOrder
     user?: UserRoleOrderByWithRelationInput
@@ -14452,10 +14426,6 @@ export namespace Prisma {
     AND?: OperadorWhereInput | OperadorWhereInput[]
     OR?: OperadorWhereInput[]
     NOT?: OperadorWhereInput | OperadorWhereInput[]
-    nombre?: StringNullableFilter<"Operador"> | string | null
-    apellidos?: StringNullableFilter<"Operador"> | string | null
-    telefono?: StringNullableFilter<"Operador"> | string | null
-    correo?: StringNullableFilter<"Operador"> | string | null
     unidadAsignada?: StringNullableFilter<"Operador"> | string | null
     rutaAsignada?: StringNullableFilter<"Operador"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
@@ -14467,10 +14437,6 @@ export namespace Prisma {
   export type OperadorOrderByWithAggregationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrderInput | SortOrder
-    apellidos?: SortOrderInput | SortOrder
-    telefono?: SortOrderInput | SortOrder
-    correo?: SortOrderInput | SortOrder
     unidadAsignada?: SortOrderInput | SortOrder
     rutaAsignada?: SortOrderInput | SortOrder
     _count?: OperadorCountOrderByAggregateInput
@@ -14486,10 +14452,6 @@ export namespace Prisma {
     NOT?: OperadorScalarWhereWithAggregatesInput | OperadorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Operador"> | number
     userRoleId?: IntWithAggregatesFilter<"Operador"> | number
-    nombre?: StringNullableWithAggregatesFilter<"Operador"> | string | null
-    apellidos?: StringNullableWithAggregatesFilter<"Operador"> | string | null
-    telefono?: StringNullableWithAggregatesFilter<"Operador"> | string | null
-    correo?: StringNullableWithAggregatesFilter<"Operador"> | string | null
     unidadAsignada?: StringNullableWithAggregatesFilter<"Operador"> | string | null
     rutaAsignada?: StringNullableWithAggregatesFilter<"Operador"> | string | null
   }
@@ -14568,7 +14530,6 @@ export namespace Prisma {
     NOT?: SupervisorWhereInput | SupervisorWhereInput[]
     id?: IntFilter<"Supervisor"> | number
     userRoleId?: IntFilter<"Supervisor"> | number
-    nombre?: StringFilter<"Supervisor"> | string
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
     ubicaciones?: UbicacionSupervisorListRelationFilter
     reportes?: ReporteIncidenteListRelationFilter
@@ -14578,12 +14539,10 @@ export namespace Prisma {
   export type SupervisorOrderByWithRelationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
     user?: UserRoleOrderByWithRelationInput
     ubicaciones?: UbicacionSupervisorOrderByRelationAggregateInput
     reportes?: ReporteIncidenteOrderByRelationAggregateInput
     asignaciones?: IncidenteAsignadoOrderByRelationAggregateInput
-    _relevance?: SupervisorOrderByRelevanceInput
   }
 
   export type SupervisorWhereUniqueInput = Prisma.AtLeast<{
@@ -14592,7 +14551,6 @@ export namespace Prisma {
     AND?: SupervisorWhereInput | SupervisorWhereInput[]
     OR?: SupervisorWhereInput[]
     NOT?: SupervisorWhereInput | SupervisorWhereInput[]
-    nombre?: StringFilter<"Supervisor"> | string
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
     ubicaciones?: UbicacionSupervisorListRelationFilter
     reportes?: ReporteIncidenteListRelationFilter
@@ -14602,7 +14560,6 @@ export namespace Prisma {
   export type SupervisorOrderByWithAggregationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
     _count?: SupervisorCountOrderByAggregateInput
     _avg?: SupervisorAvgOrderByAggregateInput
     _max?: SupervisorMaxOrderByAggregateInput
@@ -14616,7 +14573,6 @@ export namespace Prisma {
     NOT?: SupervisorScalarWhereWithAggregatesInput | SupervisorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Supervisor"> | number
     userRoleId?: IntWithAggregatesFilter<"Supervisor"> | number
-    nombre?: StringWithAggregatesFilter<"Supervisor"> | string
   }
 
   export type UbicacionSupervisorWhereInput = {
@@ -14682,22 +14638,13 @@ export namespace Prisma {
     NOT?: CoordinadorWhereInput | CoordinadorWhereInput[]
     id?: IntFilter<"Coordinador"> | number
     userRoleId?: IntFilter<"Coordinador"> | number
-    nombre?: StringNullableFilter<"Coordinador"> | string | null
-    apellidos?: StringNullableFilter<"Coordinador"> | string | null
-    telefono?: StringNullableFilter<"Coordinador"> | string | null
-    correo?: StringNullableFilter<"Coordinador"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
   }
 
   export type CoordinadorOrderByWithRelationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrderInput | SortOrder
-    apellidos?: SortOrderInput | SortOrder
-    telefono?: SortOrderInput | SortOrder
-    correo?: SortOrderInput | SortOrder
     user?: UserRoleOrderByWithRelationInput
-    _relevance?: CoordinadorOrderByRelevanceInput
   }
 
   export type CoordinadorWhereUniqueInput = Prisma.AtLeast<{
@@ -14706,20 +14653,12 @@ export namespace Prisma {
     AND?: CoordinadorWhereInput | CoordinadorWhereInput[]
     OR?: CoordinadorWhereInput[]
     NOT?: CoordinadorWhereInput | CoordinadorWhereInput[]
-    nombre?: StringNullableFilter<"Coordinador"> | string | null
-    apellidos?: StringNullableFilter<"Coordinador"> | string | null
-    telefono?: StringNullableFilter<"Coordinador"> | string | null
-    correo?: StringNullableFilter<"Coordinador"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
   }, "id" | "userRoleId">
 
   export type CoordinadorOrderByWithAggregationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrderInput | SortOrder
-    apellidos?: SortOrderInput | SortOrder
-    telefono?: SortOrderInput | SortOrder
-    correo?: SortOrderInput | SortOrder
     _count?: CoordinadorCountOrderByAggregateInput
     _avg?: CoordinadorAvgOrderByAggregateInput
     _max?: CoordinadorMaxOrderByAggregateInput
@@ -14733,10 +14672,6 @@ export namespace Prisma {
     NOT?: CoordinadorScalarWhereWithAggregatesInput | CoordinadorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Coordinador"> | number
     userRoleId?: IntWithAggregatesFilter<"Coordinador"> | number
-    nombre?: StringNullableWithAggregatesFilter<"Coordinador"> | string | null
-    apellidos?: StringNullableWithAggregatesFilter<"Coordinador"> | string | null
-    telefono?: StringNullableWithAggregatesFilter<"Coordinador"> | string | null
-    correo?: StringNullableWithAggregatesFilter<"Coordinador"> | string | null
   }
 
   export type IncidenteAsignadoWhereInput = {
@@ -14875,6 +14810,7 @@ export namespace Prisma {
     id?: IntFilter<"FotoIncidente"> | number
     reporteId?: IntFilter<"FotoIncidente"> | number
     url?: StringFilter<"FotoIncidente"> | string
+    createdAt?: DateTimeFilter<"FotoIncidente"> | Date | string
     reporte?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
   }
 
@@ -14882,6 +14818,7 @@ export namespace Prisma {
     id?: SortOrder
     reporteId?: SortOrder
     url?: SortOrder
+    createdAt?: SortOrder
     reporte?: ReporteIncidenteOrderByWithRelationInput
     _relevance?: FotoIncidenteOrderByRelevanceInput
   }
@@ -14893,6 +14830,7 @@ export namespace Prisma {
     NOT?: FotoIncidenteWhereInput | FotoIncidenteWhereInput[]
     reporteId?: IntFilter<"FotoIncidente"> | number
     url?: StringFilter<"FotoIncidente"> | string
+    createdAt?: DateTimeFilter<"FotoIncidente"> | Date | string
     reporte?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
   }, "id">
 
@@ -14900,6 +14838,7 @@ export namespace Prisma {
     id?: SortOrder
     reporteId?: SortOrder
     url?: SortOrder
+    createdAt?: SortOrder
     _count?: FotoIncidenteCountOrderByAggregateInput
     _avg?: FotoIncidenteAvgOrderByAggregateInput
     _max?: FotoIncidenteMaxOrderByAggregateInput
@@ -14914,6 +14853,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"FotoIncidente"> | number
     reporteId?: IntWithAggregatesFilter<"FotoIncidente"> | number
     url?: StringWithAggregatesFilter<"FotoIncidente"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FotoIncidente"> | Date | string
   }
 
   export type PatioWhereInput = {
@@ -15119,6 +15059,12 @@ export namespace Prisma {
   export type UserRoleCreateInput = {
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     operador?: OperadorCreateNestedOneWithoutUserInput
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
@@ -15129,6 +15075,12 @@ export namespace Prisma {
     id?: number
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
@@ -15138,6 +15090,12 @@ export namespace Prisma {
   export type UserRoleUpdateInput = {
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: OperadorUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
@@ -15148,6 +15106,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
@@ -15158,24 +15122,38 @@ export namespace Prisma {
     id?: number
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
   }
 
   export type UserRoleUpdateManyMutationInput = {
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserRoleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type OperadorCreateInput = {
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     user: UserRoleCreateNestedOneWithoutOperadorInput
@@ -15187,10 +15165,6 @@ export namespace Prisma {
   export type OperadorUncheckedCreateInput = {
     id?: number
     userRoleId: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoUncheckedCreateNestedManyWithoutOperadorInput
@@ -15199,10 +15173,6 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutOperadorNestedInput
@@ -15214,10 +15184,6 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
@@ -15228,19 +15194,11 @@ export namespace Prisma {
   export type OperadorCreateManyInput = {
     id?: number
     userRoleId: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
   }
 
   export type OperadorUpdateManyMutationInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -15248,10 +15206,6 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -15323,7 +15277,6 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateInput = {
-    nombre: string
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
@@ -15333,14 +15286,12 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateInput = {
     id?: number
     userRoleId: number
-    nombre: string
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUpdateInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
@@ -15350,7 +15301,6 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -15359,17 +15309,15 @@ export namespace Prisma {
   export type SupervisorCreateManyInput = {
     id?: number
     userRoleId: number
-    nombre: string
   }
 
   export type SupervisorUpdateManyMutationInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
+
   }
 
   export type SupervisorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
   }
 
   export type UbicacionSupervisorCreateInput = {
@@ -15425,62 +15373,35 @@ export namespace Prisma {
   }
 
   export type CoordinadorCreateInput = {
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     user: UserRoleCreateNestedOneWithoutCoordinadorInput
   }
 
   export type CoordinadorUncheckedCreateInput = {
     id?: number
     userRoleId: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
   }
 
   export type CoordinadorUpdateInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutCoordinadorNestedInput
   }
 
   export type CoordinadorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CoordinadorCreateManyInput = {
     id?: number
     userRoleId: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
   }
 
   export type CoordinadorUpdateManyMutationInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
+
   }
 
   export type CoordinadorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IncidenteAsignadoCreateInput = {
@@ -15603,6 +15524,7 @@ export namespace Prisma {
 
   export type FotoIncidenteCreateInput = {
     url: string
+    createdAt?: Date | string
     reporte: ReporteIncidenteCreateNestedOneWithoutFotosInput
   }
 
@@ -15610,10 +15532,12 @@ export namespace Prisma {
     id?: number
     reporteId: number
     url: string
+    createdAt?: Date | string
   }
 
   export type FotoIncidenteUpdateInput = {
     url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reporte?: ReporteIncidenteUpdateOneRequiredWithoutFotosNestedInput
   }
 
@@ -15621,22 +15545,26 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     reporteId?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FotoIncidenteCreateManyInput = {
     id?: number
     reporteId: number
     url: string
+    createdAt?: Date | string
   }
 
   export type FotoIncidenteUpdateManyMutationInput = {
     url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FotoIncidenteUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     reporteId?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PatioCreateInput = {
@@ -15856,6 +15784,21 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type OperadorNullableScalarRelationFilter = {
     is?: OperadorWhereInput | null
     isNot?: OperadorWhereInput | null
@@ -15876,6 +15819,11 @@ export namespace Prisma {
     isNot?: CoordinadorWhereInput | null
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type UserRoleOrderByRelevanceInput = {
     fields: UserRoleOrderByRelevanceFieldEnum | UserRoleOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -15886,6 +15834,12 @@ export namespace Prisma {
     id?: SortOrder
     idFirebase?: SortOrder
     role?: SortOrder
+    nombre?: SortOrder
+    apellidoPaterno?: SortOrder
+    apellidoMaterno?: SortOrder
+    profilePhotoUrl?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
   }
 
   export type UserRoleAvgOrderByAggregateInput = {
@@ -15896,12 +15850,24 @@ export namespace Prisma {
     id?: SortOrder
     idFirebase?: SortOrder
     role?: SortOrder
+    nombre?: SortOrder
+    apellidoPaterno?: SortOrder
+    apellidoMaterno?: SortOrder
+    profilePhotoUrl?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
   }
 
   export type UserRoleMinOrderByAggregateInput = {
     id?: SortOrder
     idFirebase?: SortOrder
     role?: SortOrder
+    nombre?: SortOrder
+    apellidoPaterno?: SortOrder
+    apellidoMaterno?: SortOrder
+    profilePhotoUrl?: SortOrder
+    telefono?: SortOrder
+    correo?: SortOrder
   }
 
   export type UserRoleSumOrderByAggregateInput = {
@@ -15952,7 +15918,7 @@ export namespace Prisma {
     _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
     notIn?: string[] | null
@@ -15964,7 +15930,10 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type UserRoleScalarRelationFilter = {
@@ -15990,11 +15959,6 @@ export namespace Prisma {
     none?: AsignacionUnidadWhereInput
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type BotonPanicoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -16016,10 +15980,6 @@ export namespace Prisma {
   export type OperadorCountOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
-    apellidos?: SortOrder
-    telefono?: SortOrder
-    correo?: SortOrder
     unidadAsignada?: SortOrder
     rutaAsignada?: SortOrder
   }
@@ -16032,10 +15992,6 @@ export namespace Prisma {
   export type OperadorMaxOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
-    apellidos?: SortOrder
-    telefono?: SortOrder
-    correo?: SortOrder
     unidadAsignada?: SortOrder
     rutaAsignada?: SortOrder
   }
@@ -16043,10 +15999,6 @@ export namespace Prisma {
   export type OperadorMinOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
-    apellidos?: SortOrder
-    telefono?: SortOrder
-    correo?: SortOrder
     unidadAsignada?: SortOrder
     rutaAsignada?: SortOrder
   }
@@ -16054,24 +16006,6 @@ export namespace Prisma {
   export type OperadorSumOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -16224,16 +16158,9 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type SupervisorOrderByRelevanceInput = {
-    fields: SupervisorOrderByRelevanceFieldEnum | SupervisorOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
   export type SupervisorCountOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
   }
 
   export type SupervisorAvgOrderByAggregateInput = {
@@ -16244,13 +16171,11 @@ export namespace Prisma {
   export type SupervisorMaxOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
   }
 
   export type SupervisorMinOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
   }
 
   export type SupervisorSumOrderByAggregateInput = {
@@ -16328,19 +16253,9 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type CoordinadorOrderByRelevanceInput = {
-    fields: CoordinadorOrderByRelevanceFieldEnum | CoordinadorOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
   export type CoordinadorCountOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
-    apellidos?: SortOrder
-    telefono?: SortOrder
-    correo?: SortOrder
   }
 
   export type CoordinadorAvgOrderByAggregateInput = {
@@ -16351,19 +16266,11 @@ export namespace Prisma {
   export type CoordinadorMaxOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
-    apellidos?: SortOrder
-    telefono?: SortOrder
-    correo?: SortOrder
   }
 
   export type CoordinadorMinOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
-    nombre?: SortOrder
-    apellidos?: SortOrder
-    telefono?: SortOrder
-    correo?: SortOrder
   }
 
   export type CoordinadorSumOrderByAggregateInput = {
@@ -16475,6 +16382,7 @@ export namespace Prisma {
     id?: SortOrder
     reporteId?: SortOrder
     url?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FotoIncidenteAvgOrderByAggregateInput = {
@@ -16486,12 +16394,14 @@ export namespace Prisma {
     id?: SortOrder
     reporteId?: SortOrder
     url?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FotoIncidenteMinOrderByAggregateInput = {
     id?: SortOrder
     reporteId?: SortOrder
     url?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FotoIncidenteSumOrderByAggregateInput = {
@@ -16720,6 +16630,10 @@ export namespace Prisma {
     set?: $Enums.Role
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type OperadorUpdateOneWithoutUserNestedInput = {
     create?: XOR<OperadorCreateWithoutUserInput, OperadorUncheckedCreateWithoutUserInput>
     connectOrCreate?: OperadorCreateOrConnectWithoutUserInput
@@ -16854,10 +16768,6 @@ export namespace Prisma {
     connectOrCreate?: AsignacionUnidadCreateOrConnectWithoutOperadorInput | AsignacionUnidadCreateOrConnectWithoutOperadorInput[]
     createMany?: AsignacionUnidadCreateManyOperadorInputEnvelope
     connect?: AsignacionUnidadWhereUniqueInput | AsignacionUnidadWhereUniqueInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type UserRoleUpdateOneRequiredWithoutOperadorNestedInput = {
@@ -17493,6 +17403,21 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -17546,21 +17471,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleFilter<$PrismaModel>
     _max?: NestedEnumRoleFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17690,10 +17600,6 @@ export namespace Prisma {
   }
 
   export type OperadorCreateWithoutUserInput = {
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoCreateNestedManyWithoutOperadorInput
@@ -17703,10 +17609,6 @@ export namespace Prisma {
 
   export type OperadorUncheckedCreateWithoutUserInput = {
     id?: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoUncheckedCreateNestedManyWithoutOperadorInput
@@ -17720,7 +17622,6 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutUserInput = {
-    nombre: string
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
@@ -17728,7 +17629,6 @@ export namespace Prisma {
 
   export type SupervisorUncheckedCreateWithoutUserInput = {
     id?: number
-    nombre: string
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
@@ -17756,18 +17656,11 @@ export namespace Prisma {
   }
 
   export type CoordinadorCreateWithoutUserInput = {
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
+
   }
 
   export type CoordinadorUncheckedCreateWithoutUserInput = {
     id?: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
   }
 
   export type CoordinadorCreateOrConnectWithoutUserInput = {
@@ -17787,10 +17680,6 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateWithoutUserInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUpdateManyWithoutOperadorNestedInput
@@ -17800,10 +17689,6 @@ export namespace Prisma {
 
   export type OperadorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
@@ -17823,7 +17708,6 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutUserInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
@@ -17831,7 +17715,6 @@ export namespace Prisma {
 
   export type SupervisorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -17871,23 +17754,22 @@ export namespace Prisma {
   }
 
   export type CoordinadorUpdateWithoutUserInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
+
   }
 
   export type CoordinadorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserRoleCreateWithoutOperadorInput = {
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorCreateNestedOneWithoutUserInput
@@ -17897,6 +17779,12 @@ export namespace Prisma {
     id?: number
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
@@ -18006,6 +17894,12 @@ export namespace Prisma {
   export type UserRoleUpdateWithoutOperadorInput = {
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
@@ -18015,6 +17909,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
@@ -18110,10 +18010,6 @@ export namespace Prisma {
   }
 
   export type OperadorCreateWithoutBotonesPanicoInput = {
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     user: UserRoleCreateNestedOneWithoutOperadorInput
@@ -18124,10 +18020,6 @@ export namespace Prisma {
   export type OperadorUncheckedCreateWithoutBotonesPanicoInput = {
     id?: number
     userRoleId: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     RegistroSalidaUnidad?: RegistroSalidaUnidadUncheckedCreateNestedManyWithoutOperadorInput
@@ -18151,10 +18043,6 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateWithoutBotonesPanicoInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutOperadorNestedInput
@@ -18165,10 +18053,6 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateWithoutBotonesPanicoInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     RegistroSalidaUnidad?: RegistroSalidaUnidadUncheckedUpdateManyWithoutOperadorNestedInput
@@ -18178,6 +18062,12 @@ export namespace Prisma {
   export type UserRoleCreateWithoutSupervisorInput = {
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     operador?: OperadorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorCreateNestedOneWithoutUserInput
@@ -18187,6 +18077,12 @@ export namespace Prisma {
     id?: number
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
@@ -18286,6 +18182,12 @@ export namespace Prisma {
   export type UserRoleUpdateWithoutSupervisorInput = {
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: OperadorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
@@ -18295,6 +18197,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
@@ -18383,7 +18291,6 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutUbicacionesInput = {
-    nombre: string
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
@@ -18392,7 +18299,6 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateWithoutUbicacionesInput = {
     id?: number
     userRoleId: number
-    nombre: string
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
   }
@@ -18414,7 +18320,6 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutUbicacionesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
@@ -18423,7 +18328,6 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateWithoutUbicacionesInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
   }
@@ -18431,6 +18335,12 @@ export namespace Prisma {
   export type UserRoleCreateWithoutCoordinadorInput = {
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     operador?: OperadorCreateNestedOneWithoutUserInput
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
@@ -18440,6 +18350,12 @@ export namespace Prisma {
     id?: number
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
@@ -18464,6 +18380,12 @@ export namespace Prisma {
   export type UserRoleUpdateWithoutCoordinadorInput = {
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: OperadorUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
@@ -18473,13 +18395,18 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type SupervisorCreateWithoutAsignacionesInput = {
-    nombre: string
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
@@ -18488,7 +18415,6 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateWithoutAsignacionesInput = {
     id?: number
     userRoleId: number
-    nombre: string
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
@@ -18536,7 +18462,6 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutAsignacionesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
@@ -18545,7 +18470,6 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateWithoutAsignacionesInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
@@ -18584,11 +18508,13 @@ export namespace Prisma {
 
   export type FotoIncidenteCreateWithoutReporteInput = {
     url: string
+    createdAt?: Date | string
   }
 
   export type FotoIncidenteUncheckedCreateWithoutReporteInput = {
     id?: number
     url: string
+    createdAt?: Date | string
   }
 
   export type FotoIncidenteCreateOrConnectWithoutReporteInput = {
@@ -18602,7 +18528,6 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutReportesInput = {
-    nombre: string
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
@@ -18611,7 +18536,6 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateWithoutReportesInput = {
     id?: number
     userRoleId: number
-    nombre: string
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
   }
@@ -18665,6 +18589,7 @@ export namespace Prisma {
     id?: IntFilter<"FotoIncidente"> | number
     reporteId?: IntFilter<"FotoIncidente"> | number
     url?: StringFilter<"FotoIncidente"> | string
+    createdAt?: DateTimeFilter<"FotoIncidente"> | Date | string
   }
 
   export type SupervisorUpsertWithoutReportesInput = {
@@ -18679,7 +18604,6 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutReportesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
@@ -18688,7 +18612,6 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateWithoutReportesInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
   }
@@ -18770,6 +18693,12 @@ export namespace Prisma {
   export type UserRoleCreateWithoutPatioInput = {
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     operador?: OperadorCreateNestedOneWithoutUserInput
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorCreateNestedOneWithoutUserInput
@@ -18779,6 +18708,12 @@ export namespace Prisma {
     id?: number
     idFirebase: string
     role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
@@ -18861,6 +18796,12 @@ export namespace Prisma {
   export type UserRoleUpdateWithoutPatioInput = {
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: OperadorUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
@@ -18870,6 +18811,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idFirebase?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
@@ -18924,10 +18871,6 @@ export namespace Prisma {
   }
 
   export type OperadorCreateWithoutRegistroSalidaUnidadInput = {
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     user: UserRoleCreateNestedOneWithoutOperadorInput
@@ -18938,10 +18881,6 @@ export namespace Prisma {
   export type OperadorUncheckedCreateWithoutRegistroSalidaUnidadInput = {
     id?: number
     userRoleId: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoUncheckedCreateNestedManyWithoutOperadorInput
@@ -18987,10 +18926,6 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateWithoutRegistroSalidaUnidadInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutOperadorNestedInput
@@ -19001,10 +18936,6 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateWithoutRegistroSalidaUnidadInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
@@ -19028,10 +18959,6 @@ export namespace Prisma {
   }
 
   export type OperadorCreateWithoutAsignacionUnidadInput = {
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     user: UserRoleCreateNestedOneWithoutOperadorInput
@@ -19042,10 +18969,6 @@ export namespace Prisma {
   export type OperadorUncheckedCreateWithoutAsignacionUnidadInput = {
     id?: number
     userRoleId: number
-    nombre?: string | null
-    apellidos?: string | null
-    telefono?: string | null
-    correo?: string | null
     unidadAsignada?: string | null
     rutaAsignada?: string | null
     botonesPanico?: BotonPanicoUncheckedCreateNestedManyWithoutOperadorInput
@@ -19091,10 +19014,6 @@ export namespace Prisma {
   }
 
   export type OperadorUpdateWithoutAsignacionUnidadInput = {
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutOperadorNestedInput
@@ -19105,10 +19024,6 @@ export namespace Prisma {
   export type OperadorUncheckedUpdateWithoutAsignacionUnidadInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
-    nombre?: NullableStringFieldUpdateOperationsInput | string | null
-    apellidos?: NullableStringFieldUpdateOperationsInput | string | null
-    telefono?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: NullableStringFieldUpdateOperationsInput | string | null
     unidadAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
@@ -19320,6 +19235,7 @@ export namespace Prisma {
   export type FotoIncidenteCreateManyReporteInput = {
     id?: number
     url: string
+    createdAt?: Date | string
   }
 
   export type IncidenteAsignadoCreateManyIncidenteInput = {
@@ -19330,16 +19246,19 @@ export namespace Prisma {
 
   export type FotoIncidenteUpdateWithoutReporteInput = {
     url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FotoIncidenteUncheckedUpdateWithoutReporteInput = {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FotoIncidenteUncheckedUpdateManyWithoutReporteInput = {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IncidenteAsignadoUpdateWithoutIncidenteInput = {
