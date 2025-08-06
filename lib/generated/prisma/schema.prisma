@@ -33,6 +33,7 @@ model UserRole {
   supervisor  Supervisor?
   patio       Patio?
   coordinador Coordinador?
+  DeviceToken DeviceToken[]
 }
 
 model Operador {
@@ -154,4 +155,13 @@ model AsignacionUnidad {
 
   patio    Patio    @relation(fields: [patioId], references: [id])
   operador Operador @relation(fields: [operadorId], references: [id])
+}
+
+model DeviceToken {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  userRoleId Int
+  createdAt  DateTime @default(now())
+
+  userRole UserRole @relation(fields: [userRoleId], references: [id])
 }

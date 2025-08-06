@@ -14,6 +14,7 @@ import prisma from './prisma';
 export interface NextApiRequestWithUser extends NextApiRequest {
   uid: string;
   role: Role;
+  userRoleId: number; 
 }
 
 /**
@@ -60,6 +61,7 @@ export function requireRole(allowedRoles: Role[]) {
         const reqWithUser = req as NextApiRequestWithUser;
         reqWithUser.uid = firebaseUid;
         reqWithUser.role = user.role;
+        reqWithUser.userRoleId = user.id;
 
         // Ejecutar el handler original
         await handler(reqWithUser, res);

@@ -73,6 +73,11 @@ export type RegistroSalidaUnidad = $Result.DefaultSelection<Prisma.$RegistroSali
  * 
  */
 export type AsignacionUnidad = $Result.DefaultSelection<Prisma.$AsignacionUnidadPayload>
+/**
+ * Model DeviceToken
+ * 
+ */
+export type DeviceToken = $Result.DefaultSelection<Prisma.$DeviceTokenPayload>
 
 /**
  * Enums
@@ -338,6 +343,16 @@ export class PrismaClient<
     * ```
     */
   get asignacionUnidad(): Prisma.AsignacionUnidadDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.deviceToken`: Exposes CRUD operations for the **DeviceToken** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DeviceTokens
+    * const deviceTokens = await prisma.deviceToken.findMany()
+    * ```
+    */
+  get deviceToken(): Prisma.DeviceTokenDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -789,7 +804,8 @@ export namespace Prisma {
     FotoIncidente: 'FotoIncidente',
     Patio: 'Patio',
     RegistroSalidaUnidad: 'RegistroSalidaUnidad',
-    AsignacionUnidad: 'AsignacionUnidad'
+    AsignacionUnidad: 'AsignacionUnidad',
+    DeviceToken: 'DeviceToken'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -808,7 +824,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "userRole" | "operador" | "botonPanico" | "supervisor" | "ubicacionSupervisor" | "coordinador" | "incidenteAsignado" | "reporteIncidente" | "fotoIncidente" | "patio" | "registroSalidaUnidad" | "asignacionUnidad"
+      modelProps: "userRole" | "operador" | "botonPanico" | "supervisor" | "ubicacionSupervisor" | "coordinador" | "incidenteAsignado" | "reporteIncidente" | "fotoIncidente" | "patio" | "registroSalidaUnidad" | "asignacionUnidad" | "deviceToken"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1604,6 +1620,72 @@ export namespace Prisma {
           }
         }
       }
+      DeviceToken: {
+        payload: Prisma.$DeviceTokenPayload<ExtArgs>
+        fields: Prisma.DeviceTokenFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DeviceTokenFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DeviceTokenFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+          }
+          findFirst: {
+            args: Prisma.DeviceTokenFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DeviceTokenFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+          }
+          findMany: {
+            args: Prisma.DeviceTokenFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload>[]
+          }
+          create: {
+            args: Prisma.DeviceTokenCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+          }
+          createMany: {
+            args: Prisma.DeviceTokenCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.DeviceTokenDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+          }
+          update: {
+            args: Prisma.DeviceTokenUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+          }
+          deleteMany: {
+            args: Prisma.DeviceTokenDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DeviceTokenUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.DeviceTokenUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+          }
+          aggregate: {
+            args: Prisma.DeviceTokenAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDeviceToken>
+          }
+          groupBy: {
+            args: Prisma.DeviceTokenGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DeviceTokenGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DeviceTokenCountArgs<ExtArgs>
+            result: $Utils.Optional<DeviceTokenCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1708,6 +1790,7 @@ export namespace Prisma {
     patio?: PatioOmit
     registroSalidaUnidad?: RegistroSalidaUnidadOmit
     asignacionUnidad?: AsignacionUnidadOmit
+    deviceToken?: DeviceTokenOmit
   }
 
   /* Types for Logging */
@@ -1800,6 +1883,37 @@ export namespace Prisma {
   /**
    * Count Types
    */
+
+
+  /**
+   * Count Type UserRoleCountOutputType
+   */
+
+  export type UserRoleCountOutputType = {
+    DeviceToken: number
+  }
+
+  export type UserRoleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    DeviceToken?: boolean | UserRoleCountOutputTypeCountDeviceTokenArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserRoleCountOutputType without action
+   */
+  export type UserRoleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserRoleCountOutputType
+     */
+    select?: UserRoleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserRoleCountOutputType without action
+   */
+  export type UserRoleCountOutputTypeCountDeviceTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DeviceTokenWhereInput
+  }
 
 
   /**
@@ -2218,6 +2332,8 @@ export namespace Prisma {
     supervisor?: boolean | UserRole$supervisorArgs<ExtArgs>
     patio?: boolean | UserRole$patioArgs<ExtArgs>
     coordinador?: boolean | UserRole$coordinadorArgs<ExtArgs>
+    DeviceToken?: boolean | UserRole$DeviceTokenArgs<ExtArgs>
+    _count?: boolean | UserRoleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userRole"]>
 
 
@@ -2240,6 +2356,8 @@ export namespace Prisma {
     supervisor?: boolean | UserRole$supervisorArgs<ExtArgs>
     patio?: boolean | UserRole$patioArgs<ExtArgs>
     coordinador?: boolean | UserRole$coordinadorArgs<ExtArgs>
+    DeviceToken?: boolean | UserRole$DeviceTokenArgs<ExtArgs>
+    _count?: boolean | UserRoleCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $UserRolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2249,6 +2367,7 @@ export namespace Prisma {
       supervisor: Prisma.$SupervisorPayload<ExtArgs> | null
       patio: Prisma.$PatioPayload<ExtArgs> | null
       coordinador: Prisma.$CoordinadorPayload<ExtArgs> | null
+      DeviceToken: Prisma.$DeviceTokenPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2604,6 +2723,7 @@ export namespace Prisma {
     supervisor<T extends UserRole$supervisorArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$supervisorArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     patio<T extends UserRole$patioArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$patioArgs<ExtArgs>>): Prisma__PatioClient<$Result.GetResult<Prisma.$PatioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     coordinador<T extends UserRole$coordinadorArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$coordinadorArgs<ExtArgs>>): Prisma__CoordinadorClient<$Result.GetResult<Prisma.$CoordinadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    DeviceToken<T extends UserRole$DeviceTokenArgs<ExtArgs> = {}>(args?: Subset<T, UserRole$DeviceTokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3058,6 +3178,30 @@ export namespace Prisma {
      */
     include?: CoordinadorInclude<ExtArgs> | null
     where?: CoordinadorWhereInput
+  }
+
+  /**
+   * UserRole.DeviceToken
+   */
+  export type UserRole$DeviceTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    where?: DeviceTokenWhereInput
+    orderBy?: DeviceTokenOrderByWithRelationInput | DeviceTokenOrderByWithRelationInput[]
+    cursor?: DeviceTokenWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DeviceTokenScalarFieldEnum | DeviceTokenScalarFieldEnum[]
   }
 
   /**
@@ -14035,6 +14179,962 @@ export namespace Prisma {
 
 
   /**
+   * Model DeviceToken
+   */
+
+  export type AggregateDeviceToken = {
+    _count: DeviceTokenCountAggregateOutputType | null
+    _avg: DeviceTokenAvgAggregateOutputType | null
+    _sum: DeviceTokenSumAggregateOutputType | null
+    _min: DeviceTokenMinAggregateOutputType | null
+    _max: DeviceTokenMaxAggregateOutputType | null
+  }
+
+  export type DeviceTokenAvgAggregateOutputType = {
+    id: number | null
+    userRoleId: number | null
+  }
+
+  export type DeviceTokenSumAggregateOutputType = {
+    id: number | null
+    userRoleId: number | null
+  }
+
+  export type DeviceTokenMinAggregateOutputType = {
+    id: number | null
+    token: string | null
+    userRoleId: number | null
+    createdAt: Date | null
+  }
+
+  export type DeviceTokenMaxAggregateOutputType = {
+    id: number | null
+    token: string | null
+    userRoleId: number | null
+    createdAt: Date | null
+  }
+
+  export type DeviceTokenCountAggregateOutputType = {
+    id: number
+    token: number
+    userRoleId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type DeviceTokenAvgAggregateInputType = {
+    id?: true
+    userRoleId?: true
+  }
+
+  export type DeviceTokenSumAggregateInputType = {
+    id?: true
+    userRoleId?: true
+  }
+
+  export type DeviceTokenMinAggregateInputType = {
+    id?: true
+    token?: true
+    userRoleId?: true
+    createdAt?: true
+  }
+
+  export type DeviceTokenMaxAggregateInputType = {
+    id?: true
+    token?: true
+    userRoleId?: true
+    createdAt?: true
+  }
+
+  export type DeviceTokenCountAggregateInputType = {
+    id?: true
+    token?: true
+    userRoleId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type DeviceTokenAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DeviceToken to aggregate.
+     */
+    where?: DeviceTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeviceTokens to fetch.
+     */
+    orderBy?: DeviceTokenOrderByWithRelationInput | DeviceTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DeviceTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeviceTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeviceTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DeviceTokens
+    **/
+    _count?: true | DeviceTokenCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DeviceTokenAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DeviceTokenSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DeviceTokenMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DeviceTokenMaxAggregateInputType
+  }
+
+  export type GetDeviceTokenAggregateType<T extends DeviceTokenAggregateArgs> = {
+        [P in keyof T & keyof AggregateDeviceToken]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDeviceToken[P]>
+      : GetScalarType<T[P], AggregateDeviceToken[P]>
+  }
+
+
+
+
+  export type DeviceTokenGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DeviceTokenWhereInput
+    orderBy?: DeviceTokenOrderByWithAggregationInput | DeviceTokenOrderByWithAggregationInput[]
+    by: DeviceTokenScalarFieldEnum[] | DeviceTokenScalarFieldEnum
+    having?: DeviceTokenScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DeviceTokenCountAggregateInputType | true
+    _avg?: DeviceTokenAvgAggregateInputType
+    _sum?: DeviceTokenSumAggregateInputType
+    _min?: DeviceTokenMinAggregateInputType
+    _max?: DeviceTokenMaxAggregateInputType
+  }
+
+  export type DeviceTokenGroupByOutputType = {
+    id: number
+    token: string
+    userRoleId: number
+    createdAt: Date
+    _count: DeviceTokenCountAggregateOutputType | null
+    _avg: DeviceTokenAvgAggregateOutputType | null
+    _sum: DeviceTokenSumAggregateOutputType | null
+    _min: DeviceTokenMinAggregateOutputType | null
+    _max: DeviceTokenMaxAggregateOutputType | null
+  }
+
+  type GetDeviceTokenGroupByPayload<T extends DeviceTokenGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DeviceTokenGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DeviceTokenGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DeviceTokenGroupByOutputType[P]>
+            : GetScalarType<T[P], DeviceTokenGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DeviceTokenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    userRoleId?: boolean
+    createdAt?: boolean
+    userRole?: boolean | UserRoleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["deviceToken"]>
+
+
+
+  export type DeviceTokenSelectScalar = {
+    id?: boolean
+    token?: boolean
+    userRoleId?: boolean
+    createdAt?: boolean
+  }
+
+  export type DeviceTokenOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "userRoleId" | "createdAt", ExtArgs["result"]["deviceToken"]>
+  export type DeviceTokenInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userRole?: boolean | UserRoleDefaultArgs<ExtArgs>
+  }
+
+  export type $DeviceTokenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DeviceToken"
+    objects: {
+      userRole: Prisma.$UserRolePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      token: string
+      userRoleId: number
+      createdAt: Date
+    }, ExtArgs["result"]["deviceToken"]>
+    composites: {}
+  }
+
+  type DeviceTokenGetPayload<S extends boolean | null | undefined | DeviceTokenDefaultArgs> = $Result.GetResult<Prisma.$DeviceTokenPayload, S>
+
+  type DeviceTokenCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DeviceTokenFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DeviceTokenCountAggregateInputType | true
+    }
+
+  export interface DeviceTokenDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DeviceToken'], meta: { name: 'DeviceToken' } }
+    /**
+     * Find zero or one DeviceToken that matches the filter.
+     * @param {DeviceTokenFindUniqueArgs} args - Arguments to find a DeviceToken
+     * @example
+     * // Get one DeviceToken
+     * const deviceToken = await prisma.deviceToken.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DeviceTokenFindUniqueArgs>(args: SelectSubset<T, DeviceTokenFindUniqueArgs<ExtArgs>>): Prisma__DeviceTokenClient<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DeviceToken that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DeviceTokenFindUniqueOrThrowArgs} args - Arguments to find a DeviceToken
+     * @example
+     * // Get one DeviceToken
+     * const deviceToken = await prisma.deviceToken.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DeviceTokenFindUniqueOrThrowArgs>(args: SelectSubset<T, DeviceTokenFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DeviceTokenClient<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DeviceToken that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceTokenFindFirstArgs} args - Arguments to find a DeviceToken
+     * @example
+     * // Get one DeviceToken
+     * const deviceToken = await prisma.deviceToken.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DeviceTokenFindFirstArgs>(args?: SelectSubset<T, DeviceTokenFindFirstArgs<ExtArgs>>): Prisma__DeviceTokenClient<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DeviceToken that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceTokenFindFirstOrThrowArgs} args - Arguments to find a DeviceToken
+     * @example
+     * // Get one DeviceToken
+     * const deviceToken = await prisma.deviceToken.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DeviceTokenFindFirstOrThrowArgs>(args?: SelectSubset<T, DeviceTokenFindFirstOrThrowArgs<ExtArgs>>): Prisma__DeviceTokenClient<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DeviceTokens that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceTokenFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DeviceTokens
+     * const deviceTokens = await prisma.deviceToken.findMany()
+     * 
+     * // Get first 10 DeviceTokens
+     * const deviceTokens = await prisma.deviceToken.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const deviceTokenWithIdOnly = await prisma.deviceToken.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DeviceTokenFindManyArgs>(args?: SelectSubset<T, DeviceTokenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DeviceToken.
+     * @param {DeviceTokenCreateArgs} args - Arguments to create a DeviceToken.
+     * @example
+     * // Create one DeviceToken
+     * const DeviceToken = await prisma.deviceToken.create({
+     *   data: {
+     *     // ... data to create a DeviceToken
+     *   }
+     * })
+     * 
+     */
+    create<T extends DeviceTokenCreateArgs>(args: SelectSubset<T, DeviceTokenCreateArgs<ExtArgs>>): Prisma__DeviceTokenClient<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DeviceTokens.
+     * @param {DeviceTokenCreateManyArgs} args - Arguments to create many DeviceTokens.
+     * @example
+     * // Create many DeviceTokens
+     * const deviceToken = await prisma.deviceToken.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DeviceTokenCreateManyArgs>(args?: SelectSubset<T, DeviceTokenCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a DeviceToken.
+     * @param {DeviceTokenDeleteArgs} args - Arguments to delete one DeviceToken.
+     * @example
+     * // Delete one DeviceToken
+     * const DeviceToken = await prisma.deviceToken.delete({
+     *   where: {
+     *     // ... filter to delete one DeviceToken
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DeviceTokenDeleteArgs>(args: SelectSubset<T, DeviceTokenDeleteArgs<ExtArgs>>): Prisma__DeviceTokenClient<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DeviceToken.
+     * @param {DeviceTokenUpdateArgs} args - Arguments to update one DeviceToken.
+     * @example
+     * // Update one DeviceToken
+     * const deviceToken = await prisma.deviceToken.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DeviceTokenUpdateArgs>(args: SelectSubset<T, DeviceTokenUpdateArgs<ExtArgs>>): Prisma__DeviceTokenClient<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DeviceTokens.
+     * @param {DeviceTokenDeleteManyArgs} args - Arguments to filter DeviceTokens to delete.
+     * @example
+     * // Delete a few DeviceTokens
+     * const { count } = await prisma.deviceToken.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DeviceTokenDeleteManyArgs>(args?: SelectSubset<T, DeviceTokenDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DeviceTokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceTokenUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DeviceTokens
+     * const deviceToken = await prisma.deviceToken.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DeviceTokenUpdateManyArgs>(args: SelectSubset<T, DeviceTokenUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one DeviceToken.
+     * @param {DeviceTokenUpsertArgs} args - Arguments to update or create a DeviceToken.
+     * @example
+     * // Update or create a DeviceToken
+     * const deviceToken = await prisma.deviceToken.upsert({
+     *   create: {
+     *     // ... data to create a DeviceToken
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DeviceToken we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DeviceTokenUpsertArgs>(args: SelectSubset<T, DeviceTokenUpsertArgs<ExtArgs>>): Prisma__DeviceTokenClient<$Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DeviceTokens.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceTokenCountArgs} args - Arguments to filter DeviceTokens to count.
+     * @example
+     * // Count the number of DeviceTokens
+     * const count = await prisma.deviceToken.count({
+     *   where: {
+     *     // ... the filter for the DeviceTokens we want to count
+     *   }
+     * })
+    **/
+    count<T extends DeviceTokenCountArgs>(
+      args?: Subset<T, DeviceTokenCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DeviceTokenCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DeviceToken.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceTokenAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DeviceTokenAggregateArgs>(args: Subset<T, DeviceTokenAggregateArgs>): Prisma.PrismaPromise<GetDeviceTokenAggregateType<T>>
+
+    /**
+     * Group by DeviceToken.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeviceTokenGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DeviceTokenGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DeviceTokenGroupByArgs['orderBy'] }
+        : { orderBy?: DeviceTokenGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DeviceTokenGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDeviceTokenGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DeviceToken model
+   */
+  readonly fields: DeviceTokenFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DeviceToken.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DeviceTokenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    userRole<T extends UserRoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserRoleDefaultArgs<ExtArgs>>): Prisma__UserRoleClient<$Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DeviceToken model
+   */
+  interface DeviceTokenFieldRefs {
+    readonly id: FieldRef<"DeviceToken", 'Int'>
+    readonly token: FieldRef<"DeviceToken", 'String'>
+    readonly userRoleId: FieldRef<"DeviceToken", 'Int'>
+    readonly createdAt: FieldRef<"DeviceToken", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DeviceToken findUnique
+   */
+  export type DeviceTokenFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which DeviceToken to fetch.
+     */
+    where: DeviceTokenWhereUniqueInput
+  }
+
+  /**
+   * DeviceToken findUniqueOrThrow
+   */
+  export type DeviceTokenFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which DeviceToken to fetch.
+     */
+    where: DeviceTokenWhereUniqueInput
+  }
+
+  /**
+   * DeviceToken findFirst
+   */
+  export type DeviceTokenFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which DeviceToken to fetch.
+     */
+    where?: DeviceTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeviceTokens to fetch.
+     */
+    orderBy?: DeviceTokenOrderByWithRelationInput | DeviceTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DeviceTokens.
+     */
+    cursor?: DeviceTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeviceTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeviceTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DeviceTokens.
+     */
+    distinct?: DeviceTokenScalarFieldEnum | DeviceTokenScalarFieldEnum[]
+  }
+
+  /**
+   * DeviceToken findFirstOrThrow
+   */
+  export type DeviceTokenFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which DeviceToken to fetch.
+     */
+    where?: DeviceTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeviceTokens to fetch.
+     */
+    orderBy?: DeviceTokenOrderByWithRelationInput | DeviceTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DeviceTokens.
+     */
+    cursor?: DeviceTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeviceTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeviceTokens.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DeviceTokens.
+     */
+    distinct?: DeviceTokenScalarFieldEnum | DeviceTokenScalarFieldEnum[]
+  }
+
+  /**
+   * DeviceToken findMany
+   */
+  export type DeviceTokenFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * Filter, which DeviceTokens to fetch.
+     */
+    where?: DeviceTokenWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeviceTokens to fetch.
+     */
+    orderBy?: DeviceTokenOrderByWithRelationInput | DeviceTokenOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DeviceTokens.
+     */
+    cursor?: DeviceTokenWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeviceTokens from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeviceTokens.
+     */
+    skip?: number
+    distinct?: DeviceTokenScalarFieldEnum | DeviceTokenScalarFieldEnum[]
+  }
+
+  /**
+   * DeviceToken create
+   */
+  export type DeviceTokenCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DeviceToken.
+     */
+    data: XOR<DeviceTokenCreateInput, DeviceTokenUncheckedCreateInput>
+  }
+
+  /**
+   * DeviceToken createMany
+   */
+  export type DeviceTokenCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DeviceTokens.
+     */
+    data: DeviceTokenCreateManyInput | DeviceTokenCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DeviceToken update
+   */
+  export type DeviceTokenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DeviceToken.
+     */
+    data: XOR<DeviceTokenUpdateInput, DeviceTokenUncheckedUpdateInput>
+    /**
+     * Choose, which DeviceToken to update.
+     */
+    where: DeviceTokenWhereUniqueInput
+  }
+
+  /**
+   * DeviceToken updateMany
+   */
+  export type DeviceTokenUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DeviceTokens.
+     */
+    data: XOR<DeviceTokenUpdateManyMutationInput, DeviceTokenUncheckedUpdateManyInput>
+    /**
+     * Filter which DeviceTokens to update
+     */
+    where?: DeviceTokenWhereInput
+    /**
+     * Limit how many DeviceTokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DeviceToken upsert
+   */
+  export type DeviceTokenUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DeviceToken to update in case it exists.
+     */
+    where: DeviceTokenWhereUniqueInput
+    /**
+     * In case the DeviceToken found by the `where` argument doesn't exist, create a new DeviceToken with this data.
+     */
+    create: XOR<DeviceTokenCreateInput, DeviceTokenUncheckedCreateInput>
+    /**
+     * In case the DeviceToken was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DeviceTokenUpdateInput, DeviceTokenUncheckedUpdateInput>
+  }
+
+  /**
+   * DeviceToken delete
+   */
+  export type DeviceTokenDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+    /**
+     * Filter which DeviceToken to delete.
+     */
+    where: DeviceTokenWhereUniqueInput
+  }
+
+  /**
+   * DeviceToken deleteMany
+   */
+  export type DeviceTokenDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DeviceTokens to delete
+     */
+    where?: DeviceTokenWhereInput
+    /**
+     * Limit how many DeviceTokens to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DeviceToken without action
+   */
+  export type DeviceTokenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeviceToken
+     */
+    select?: DeviceTokenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeviceToken
+     */
+    omit?: DeviceTokenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeviceTokenInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -14182,6 +15282,16 @@ export namespace Prisma {
   export type AsignacionUnidadScalarFieldEnum = (typeof AsignacionUnidadScalarFieldEnum)[keyof typeof AsignacionUnidadScalarFieldEnum]
 
 
+  export const DeviceTokenScalarFieldEnum: {
+    id: 'id',
+    token: 'token',
+    userRoleId: 'userRoleId',
+    createdAt: 'createdAt'
+  };
+
+  export type DeviceTokenScalarFieldEnum = (typeof DeviceTokenScalarFieldEnum)[keyof typeof DeviceTokenScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -14257,6 +15367,13 @@ export namespace Prisma {
   export type AsignacionUnidadOrderByRelevanceFieldEnum = (typeof AsignacionUnidadOrderByRelevanceFieldEnum)[keyof typeof AsignacionUnidadOrderByRelevanceFieldEnum]
 
 
+  export const DeviceTokenOrderByRelevanceFieldEnum: {
+    token: 'token'
+  };
+
+  export type DeviceTokenOrderByRelevanceFieldEnum = (typeof DeviceTokenOrderByRelevanceFieldEnum)[keyof typeof DeviceTokenOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -14324,6 +15441,7 @@ export namespace Prisma {
     supervisor?: XOR<SupervisorNullableScalarRelationFilter, SupervisorWhereInput> | null
     patio?: XOR<PatioNullableScalarRelationFilter, PatioWhereInput> | null
     coordinador?: XOR<CoordinadorNullableScalarRelationFilter, CoordinadorWhereInput> | null
+    DeviceToken?: DeviceTokenListRelationFilter
   }
 
   export type UserRoleOrderByWithRelationInput = {
@@ -14340,6 +15458,7 @@ export namespace Prisma {
     supervisor?: SupervisorOrderByWithRelationInput
     patio?: PatioOrderByWithRelationInput
     coordinador?: CoordinadorOrderByWithRelationInput
+    DeviceToken?: DeviceTokenOrderByRelationAggregateInput
     _relevance?: UserRoleOrderByRelevanceInput
   }
 
@@ -14360,6 +15479,7 @@ export namespace Prisma {
     supervisor?: XOR<SupervisorNullableScalarRelationFilter, SupervisorWhereInput> | null
     patio?: XOR<PatioNullableScalarRelationFilter, PatioWhereInput> | null
     coordinador?: XOR<CoordinadorNullableScalarRelationFilter, CoordinadorWhereInput> | null
+    DeviceToken?: DeviceTokenListRelationFilter
   }, "id" | "idFirebase">
 
   export type UserRoleOrderByWithAggregationInput = {
@@ -15056,6 +16176,59 @@ export namespace Prisma {
     fecha?: DateTimeWithAggregatesFilter<"AsignacionUnidad"> | Date | string
   }
 
+  export type DeviceTokenWhereInput = {
+    AND?: DeviceTokenWhereInput | DeviceTokenWhereInput[]
+    OR?: DeviceTokenWhereInput[]
+    NOT?: DeviceTokenWhereInput | DeviceTokenWhereInput[]
+    id?: IntFilter<"DeviceToken"> | number
+    token?: StringFilter<"DeviceToken"> | string
+    userRoleId?: IntFilter<"DeviceToken"> | number
+    createdAt?: DateTimeFilter<"DeviceToken"> | Date | string
+    userRole?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
+  }
+
+  export type DeviceTokenOrderByWithRelationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    userRoleId?: SortOrder
+    createdAt?: SortOrder
+    userRole?: UserRoleOrderByWithRelationInput
+    _relevance?: DeviceTokenOrderByRelevanceInput
+  }
+
+  export type DeviceTokenWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    token?: string
+    AND?: DeviceTokenWhereInput | DeviceTokenWhereInput[]
+    OR?: DeviceTokenWhereInput[]
+    NOT?: DeviceTokenWhereInput | DeviceTokenWhereInput[]
+    userRoleId?: IntFilter<"DeviceToken"> | number
+    createdAt?: DateTimeFilter<"DeviceToken"> | Date | string
+    userRole?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
+  }, "id" | "token">
+
+  export type DeviceTokenOrderByWithAggregationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    userRoleId?: SortOrder
+    createdAt?: SortOrder
+    _count?: DeviceTokenCountOrderByAggregateInput
+    _avg?: DeviceTokenAvgOrderByAggregateInput
+    _max?: DeviceTokenMaxOrderByAggregateInput
+    _min?: DeviceTokenMinOrderByAggregateInput
+    _sum?: DeviceTokenSumOrderByAggregateInput
+  }
+
+  export type DeviceTokenScalarWhereWithAggregatesInput = {
+    AND?: DeviceTokenScalarWhereWithAggregatesInput | DeviceTokenScalarWhereWithAggregatesInput[]
+    OR?: DeviceTokenScalarWhereWithAggregatesInput[]
+    NOT?: DeviceTokenScalarWhereWithAggregatesInput | DeviceTokenScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DeviceToken"> | number
+    token?: StringWithAggregatesFilter<"DeviceToken"> | string
+    userRoleId?: IntWithAggregatesFilter<"DeviceToken"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"DeviceToken"> | Date | string
+  }
+
   export type UserRoleCreateInput = {
     idFirebase: string
     role: $Enums.Role
@@ -15069,6 +16242,7 @@ export namespace Prisma {
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleUncheckedCreateInput = {
@@ -15085,6 +16259,7 @@ export namespace Prisma {
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenUncheckedCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleUpdateInput = {
@@ -15100,6 +16275,7 @@ export namespace Prisma {
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UserRoleUncheckedUpdateInput = {
@@ -15116,6 +16292,7 @@ export namespace Prisma {
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUncheckedUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UserRoleCreateManyInput = {
@@ -15751,6 +16928,51 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DeviceTokenCreateInput = {
+    token: string
+    createdAt?: Date | string
+    userRole: UserRoleCreateNestedOneWithoutDeviceTokenInput
+  }
+
+  export type DeviceTokenUncheckedCreateInput = {
+    id?: number
+    token: string
+    userRoleId: number
+    createdAt?: Date | string
+  }
+
+  export type DeviceTokenUpdateInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userRole?: UserRoleUpdateOneRequiredWithoutDeviceTokenNestedInput
+  }
+
+  export type DeviceTokenUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeviceTokenCreateManyInput = {
+    id?: number
+    token: string
+    userRoleId: number
+    createdAt?: Date | string
+  }
+
+  export type DeviceTokenUpdateManyMutationInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeviceTokenUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -15819,9 +17041,19 @@ export namespace Prisma {
     isNot?: CoordinadorWhereInput | null
   }
 
+  export type DeviceTokenListRelationFilter = {
+    every?: DeviceTokenWhereInput
+    some?: DeviceTokenWhereInput
+    none?: DeviceTokenWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type DeviceTokenOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserRoleOrderByRelevanceInput = {
@@ -16574,6 +17806,43 @@ export namespace Prisma {
     operadorId?: SortOrder
   }
 
+  export type DeviceTokenOrderByRelevanceInput = {
+    fields: DeviceTokenOrderByRelevanceFieldEnum | DeviceTokenOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type DeviceTokenCountOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    userRoleId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DeviceTokenAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userRoleId?: SortOrder
+  }
+
+  export type DeviceTokenMaxOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    userRoleId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DeviceTokenMinOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    userRoleId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DeviceTokenSumOrderByAggregateInput = {
+    id?: SortOrder
+    userRoleId?: SortOrder
+  }
+
   export type OperadorCreateNestedOneWithoutUserInput = {
     create?: XOR<OperadorCreateWithoutUserInput, OperadorUncheckedCreateWithoutUserInput>
     connectOrCreate?: OperadorCreateOrConnectWithoutUserInput
@@ -16598,6 +17867,13 @@ export namespace Prisma {
     connect?: CoordinadorWhereUniqueInput
   }
 
+  export type DeviceTokenCreateNestedManyWithoutUserRoleInput = {
+    create?: XOR<DeviceTokenCreateWithoutUserRoleInput, DeviceTokenUncheckedCreateWithoutUserRoleInput> | DeviceTokenCreateWithoutUserRoleInput[] | DeviceTokenUncheckedCreateWithoutUserRoleInput[]
+    connectOrCreate?: DeviceTokenCreateOrConnectWithoutUserRoleInput | DeviceTokenCreateOrConnectWithoutUserRoleInput[]
+    createMany?: DeviceTokenCreateManyUserRoleInputEnvelope
+    connect?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+  }
+
   export type OperadorUncheckedCreateNestedOneWithoutUserInput = {
     create?: XOR<OperadorCreateWithoutUserInput, OperadorUncheckedCreateWithoutUserInput>
     connectOrCreate?: OperadorCreateOrConnectWithoutUserInput
@@ -16620,6 +17896,13 @@ export namespace Prisma {
     create?: XOR<CoordinadorCreateWithoutUserInput, CoordinadorUncheckedCreateWithoutUserInput>
     connectOrCreate?: CoordinadorCreateOrConnectWithoutUserInput
     connect?: CoordinadorWhereUniqueInput
+  }
+
+  export type DeviceTokenUncheckedCreateNestedManyWithoutUserRoleInput = {
+    create?: XOR<DeviceTokenCreateWithoutUserRoleInput, DeviceTokenUncheckedCreateWithoutUserRoleInput> | DeviceTokenCreateWithoutUserRoleInput[] | DeviceTokenUncheckedCreateWithoutUserRoleInput[]
+    connectOrCreate?: DeviceTokenCreateOrConnectWithoutUserRoleInput | DeviceTokenCreateOrConnectWithoutUserRoleInput[]
+    createMany?: DeviceTokenCreateManyUserRoleInputEnvelope
+    connect?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -16674,6 +17957,20 @@ export namespace Prisma {
     update?: XOR<XOR<CoordinadorUpdateToOneWithWhereWithoutUserInput, CoordinadorUpdateWithoutUserInput>, CoordinadorUncheckedUpdateWithoutUserInput>
   }
 
+  export type DeviceTokenUpdateManyWithoutUserRoleNestedInput = {
+    create?: XOR<DeviceTokenCreateWithoutUserRoleInput, DeviceTokenUncheckedCreateWithoutUserRoleInput> | DeviceTokenCreateWithoutUserRoleInput[] | DeviceTokenUncheckedCreateWithoutUserRoleInput[]
+    connectOrCreate?: DeviceTokenCreateOrConnectWithoutUserRoleInput | DeviceTokenCreateOrConnectWithoutUserRoleInput[]
+    upsert?: DeviceTokenUpsertWithWhereUniqueWithoutUserRoleInput | DeviceTokenUpsertWithWhereUniqueWithoutUserRoleInput[]
+    createMany?: DeviceTokenCreateManyUserRoleInputEnvelope
+    set?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+    disconnect?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+    delete?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+    connect?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+    update?: DeviceTokenUpdateWithWhereUniqueWithoutUserRoleInput | DeviceTokenUpdateWithWhereUniqueWithoutUserRoleInput[]
+    updateMany?: DeviceTokenUpdateManyWithWhereWithoutUserRoleInput | DeviceTokenUpdateManyWithWhereWithoutUserRoleInput[]
+    deleteMany?: DeviceTokenScalarWhereInput | DeviceTokenScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -16720,6 +18017,20 @@ export namespace Prisma {
     delete?: CoordinadorWhereInput | boolean
     connect?: CoordinadorWhereUniqueInput
     update?: XOR<XOR<CoordinadorUpdateToOneWithWhereWithoutUserInput, CoordinadorUpdateWithoutUserInput>, CoordinadorUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DeviceTokenUncheckedUpdateManyWithoutUserRoleNestedInput = {
+    create?: XOR<DeviceTokenCreateWithoutUserRoleInput, DeviceTokenUncheckedCreateWithoutUserRoleInput> | DeviceTokenCreateWithoutUserRoleInput[] | DeviceTokenUncheckedCreateWithoutUserRoleInput[]
+    connectOrCreate?: DeviceTokenCreateOrConnectWithoutUserRoleInput | DeviceTokenCreateOrConnectWithoutUserRoleInput[]
+    upsert?: DeviceTokenUpsertWithWhereUniqueWithoutUserRoleInput | DeviceTokenUpsertWithWhereUniqueWithoutUserRoleInput[]
+    createMany?: DeviceTokenCreateManyUserRoleInputEnvelope
+    set?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+    disconnect?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+    delete?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+    connect?: DeviceTokenWhereUniqueInput | DeviceTokenWhereUniqueInput[]
+    update?: DeviceTokenUpdateWithWhereUniqueWithoutUserRoleInput | DeviceTokenUpdateWithWhereUniqueWithoutUserRoleInput[]
+    updateMany?: DeviceTokenUpdateManyWithWhereWithoutUserRoleInput | DeviceTokenUpdateManyWithWhereWithoutUserRoleInput[]
+    deleteMany?: DeviceTokenScalarWhereInput | DeviceTokenScalarWhereInput[]
   }
 
   export type UserRoleCreateNestedOneWithoutOperadorInput = {
@@ -17370,6 +18681,20 @@ export namespace Prisma {
     update?: XOR<XOR<OperadorUpdateToOneWithWhereWithoutAsignacionUnidadInput, OperadorUpdateWithoutAsignacionUnidadInput>, OperadorUncheckedUpdateWithoutAsignacionUnidadInput>
   }
 
+  export type UserRoleCreateNestedOneWithoutDeviceTokenInput = {
+    create?: XOR<UserRoleCreateWithoutDeviceTokenInput, UserRoleUncheckedCreateWithoutDeviceTokenInput>
+    connectOrCreate?: UserRoleCreateOrConnectWithoutDeviceTokenInput
+    connect?: UserRoleWhereUniqueInput
+  }
+
+  export type UserRoleUpdateOneRequiredWithoutDeviceTokenNestedInput = {
+    create?: XOR<UserRoleCreateWithoutDeviceTokenInput, UserRoleUncheckedCreateWithoutDeviceTokenInput>
+    connectOrCreate?: UserRoleCreateOrConnectWithoutDeviceTokenInput
+    upsert?: UserRoleUpsertWithoutDeviceTokenInput
+    connect?: UserRoleWhereUniqueInput
+    update?: XOR<XOR<UserRoleUpdateToOneWithWhereWithoutDeviceTokenInput, UserRoleUpdateWithoutDeviceTokenInput>, UserRoleUncheckedUpdateWithoutDeviceTokenInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -17668,6 +18993,27 @@ export namespace Prisma {
     create: XOR<CoordinadorCreateWithoutUserInput, CoordinadorUncheckedCreateWithoutUserInput>
   }
 
+  export type DeviceTokenCreateWithoutUserRoleInput = {
+    token: string
+    createdAt?: Date | string
+  }
+
+  export type DeviceTokenUncheckedCreateWithoutUserRoleInput = {
+    id?: number
+    token: string
+    createdAt?: Date | string
+  }
+
+  export type DeviceTokenCreateOrConnectWithoutUserRoleInput = {
+    where: DeviceTokenWhereUniqueInput
+    create: XOR<DeviceTokenCreateWithoutUserRoleInput, DeviceTokenUncheckedCreateWithoutUserRoleInput>
+  }
+
+  export type DeviceTokenCreateManyUserRoleInputEnvelope = {
+    data: DeviceTokenCreateManyUserRoleInput | DeviceTokenCreateManyUserRoleInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OperadorUpsertWithoutUserInput = {
     update: XOR<OperadorUpdateWithoutUserInput, OperadorUncheckedUpdateWithoutUserInput>
     create: XOR<OperadorCreateWithoutUserInput, OperadorUncheckedCreateWithoutUserInput>
@@ -17761,6 +19107,32 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type DeviceTokenUpsertWithWhereUniqueWithoutUserRoleInput = {
+    where: DeviceTokenWhereUniqueInput
+    update: XOR<DeviceTokenUpdateWithoutUserRoleInput, DeviceTokenUncheckedUpdateWithoutUserRoleInput>
+    create: XOR<DeviceTokenCreateWithoutUserRoleInput, DeviceTokenUncheckedCreateWithoutUserRoleInput>
+  }
+
+  export type DeviceTokenUpdateWithWhereUniqueWithoutUserRoleInput = {
+    where: DeviceTokenWhereUniqueInput
+    data: XOR<DeviceTokenUpdateWithoutUserRoleInput, DeviceTokenUncheckedUpdateWithoutUserRoleInput>
+  }
+
+  export type DeviceTokenUpdateManyWithWhereWithoutUserRoleInput = {
+    where: DeviceTokenScalarWhereInput
+    data: XOR<DeviceTokenUpdateManyMutationInput, DeviceTokenUncheckedUpdateManyWithoutUserRoleInput>
+  }
+
+  export type DeviceTokenScalarWhereInput = {
+    AND?: DeviceTokenScalarWhereInput | DeviceTokenScalarWhereInput[]
+    OR?: DeviceTokenScalarWhereInput[]
+    NOT?: DeviceTokenScalarWhereInput | DeviceTokenScalarWhereInput[]
+    id?: IntFilter<"DeviceToken"> | number
+    token?: StringFilter<"DeviceToken"> | string
+    userRoleId?: IntFilter<"DeviceToken"> | number
+    createdAt?: DateTimeFilter<"DeviceToken"> | Date | string
+  }
+
   export type UserRoleCreateWithoutOperadorInput = {
     idFirebase: string
     role: $Enums.Role
@@ -17773,6 +19145,7 @@ export namespace Prisma {
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleUncheckedCreateWithoutOperadorInput = {
@@ -17788,6 +19161,7 @@ export namespace Prisma {
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenUncheckedCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleCreateOrConnectWithoutOperadorInput = {
@@ -17903,6 +19277,7 @@ export namespace Prisma {
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UserRoleUncheckedUpdateWithoutOperadorInput = {
@@ -17918,6 +19293,7 @@ export namespace Prisma {
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUncheckedUpdateManyWithoutUserRoleNestedInput
   }
 
   export type BotonPanicoUpsertWithWhereUniqueWithoutOperadorInput = {
@@ -18071,6 +19447,7 @@ export namespace Prisma {
     operador?: OperadorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleUncheckedCreateWithoutSupervisorInput = {
@@ -18086,6 +19463,7 @@ export namespace Prisma {
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenUncheckedCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleCreateOrConnectWithoutSupervisorInput = {
@@ -18191,6 +19569,7 @@ export namespace Prisma {
     operador?: OperadorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UserRoleUncheckedUpdateWithoutSupervisorInput = {
@@ -18206,6 +19585,7 @@ export namespace Prisma {
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUncheckedUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UbicacionSupervisorUpsertWithWhereUniqueWithoutSupervisorInput = {
@@ -18344,6 +19724,7 @@ export namespace Prisma {
     operador?: OperadorCreateNestedOneWithoutUserInput
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     patio?: PatioCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleUncheckedCreateWithoutCoordinadorInput = {
@@ -18359,6 +19740,7 @@ export namespace Prisma {
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     patio?: PatioUncheckedCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenUncheckedCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleCreateOrConnectWithoutCoordinadorInput = {
@@ -18389,6 +19771,7 @@ export namespace Prisma {
     operador?: OperadorUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     patio?: PatioUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UserRoleUncheckedUpdateWithoutCoordinadorInput = {
@@ -18404,6 +19787,7 @@ export namespace Prisma {
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUncheckedUpdateManyWithoutUserRoleNestedInput
   }
 
   export type SupervisorCreateWithoutAsignacionesInput = {
@@ -18702,6 +20086,7 @@ export namespace Prisma {
     operador?: OperadorCreateNestedOneWithoutUserInput
     supervisor?: SupervisorCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleUncheckedCreateWithoutPatioInput = {
@@ -18717,6 +20102,7 @@ export namespace Prisma {
     operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
     supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
     coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+    DeviceToken?: DeviceTokenUncheckedCreateNestedManyWithoutUserRoleInput
   }
 
   export type UserRoleCreateOrConnectWithoutPatioInput = {
@@ -18805,6 +20191,7 @@ export namespace Prisma {
     operador?: OperadorUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUpdateManyWithoutUserRoleNestedInput
   }
 
   export type UserRoleUncheckedUpdateWithoutPatioInput = {
@@ -18820,6 +20207,7 @@ export namespace Prisma {
     operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
     supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
     coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+    DeviceToken?: DeviceTokenUncheckedUpdateManyWithoutUserRoleNestedInput
   }
 
   export type RegistroSalidaUnidadUpsertWithWhereUniqueWithoutPatioInput = {
@@ -19028,6 +20416,107 @@ export namespace Prisma {
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     botonesPanico?: BotonPanicoUncheckedUpdateManyWithoutOperadorNestedInput
     RegistroSalidaUnidad?: RegistroSalidaUnidadUncheckedUpdateManyWithoutOperadorNestedInput
+  }
+
+  export type UserRoleCreateWithoutDeviceTokenInput = {
+    idFirebase: string
+    role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
+    operador?: OperadorCreateNestedOneWithoutUserInput
+    supervisor?: SupervisorCreateNestedOneWithoutUserInput
+    patio?: PatioCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorCreateNestedOneWithoutUserInput
+  }
+
+  export type UserRoleUncheckedCreateWithoutDeviceTokenInput = {
+    id?: number
+    idFirebase: string
+    role: $Enums.Role
+    nombre?: string | null
+    apellidoPaterno?: string | null
+    apellidoMaterno?: string | null
+    profilePhotoUrl?: string | null
+    telefono?: string | null
+    correo?: string | null
+    operador?: OperadorUncheckedCreateNestedOneWithoutUserInput
+    supervisor?: SupervisorUncheckedCreateNestedOneWithoutUserInput
+    patio?: PatioUncheckedCreateNestedOneWithoutUserInput
+    coordinador?: CoordinadorUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserRoleCreateOrConnectWithoutDeviceTokenInput = {
+    where: UserRoleWhereUniqueInput
+    create: XOR<UserRoleCreateWithoutDeviceTokenInput, UserRoleUncheckedCreateWithoutDeviceTokenInput>
+  }
+
+  export type UserRoleUpsertWithoutDeviceTokenInput = {
+    update: XOR<UserRoleUpdateWithoutDeviceTokenInput, UserRoleUncheckedUpdateWithoutDeviceTokenInput>
+    create: XOR<UserRoleCreateWithoutDeviceTokenInput, UserRoleUncheckedCreateWithoutDeviceTokenInput>
+    where?: UserRoleWhereInput
+  }
+
+  export type UserRoleUpdateToOneWithWhereWithoutDeviceTokenInput = {
+    where?: UserRoleWhereInput
+    data: XOR<UserRoleUpdateWithoutDeviceTokenInput, UserRoleUncheckedUpdateWithoutDeviceTokenInput>
+  }
+
+  export type UserRoleUpdateWithoutDeviceTokenInput = {
+    idFirebase?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: OperadorUpdateOneWithoutUserNestedInput
+    supervisor?: SupervisorUpdateOneWithoutUserNestedInput
+    patio?: PatioUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserRoleUncheckedUpdateWithoutDeviceTokenInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idFirebase?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    nombre?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoPaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    apellidoMaterno?: NullableStringFieldUpdateOperationsInput | string | null
+    profilePhotoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    telefono?: NullableStringFieldUpdateOperationsInput | string | null
+    correo?: NullableStringFieldUpdateOperationsInput | string | null
+    operador?: OperadorUncheckedUpdateOneWithoutUserNestedInput
+    supervisor?: SupervisorUncheckedUpdateOneWithoutUserNestedInput
+    patio?: PatioUncheckedUpdateOneWithoutUserNestedInput
+    coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type DeviceTokenCreateManyUserRoleInput = {
+    id?: number
+    token: string
+    createdAt?: Date | string
+  }
+
+  export type DeviceTokenUpdateWithoutUserRoleInput = {
+    token?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeviceTokenUncheckedUpdateWithoutUserRoleInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeviceTokenUncheckedUpdateManyWithoutUserRoleInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    token?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BotonPanicoCreateManyOperadorInput = {

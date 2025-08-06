@@ -3,6 +3,7 @@ import type { NextApiResponse } from 'next';
 import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
 import { requireRole } from '@/lib/requireRole';
+import { notifyRoleFCM } from '@/lib/notifications';
 
 export default requireRole(['Operador', 'Coordinador'])(async (
   req: NextApiRequestWithUser,
@@ -47,9 +48,17 @@ export default requireRole(['Operador', 'Coordinador'])(async (
       },
     });
 
+    await notifyRoleFCM(
+      'Coordinador',
+      '¡Alerta de pánico!',
+      `Operador ${userRec.operador.id} solicita ayuda.`,
+      { panicId: panic.id.toString() }
+    );
+
     res.status(201).json(panic);
     return;
   }
+  
 
   // 2) GET: Coordinador consulta pánicos abiertos
   if (method === 'GET') {

@@ -18,21 +18,22 @@ enum Role {
 }
 
 model UserRole {
-  id           Int      @id @default(autoincrement())
-  idFirebase   String   @unique
-  role         Role
+  id         Int    @id @default(autoincrement())
+  idFirebase String @unique
+  role       Role
 
-  nombre            String?
-  apellidoPaterno   String?
-  apellidoMaterno   String?
-  profilePhotoUrl   String?
-  telefono          String?
-  correo            String?
+  nombre          String?
+  apellidoPaterno String?
+  apellidoMaterno String?
+  profilePhotoUrl String?
+  telefono        String?
+  correo          String?
 
-  operador     Operador?
-  supervisor   Supervisor?
-  patio        Patio?
-  coordinador  Coordinador?
+  operador    Operador?
+  supervisor  Supervisor?
+  patio       Patio?
+  coordinador Coordinador?
+  DeviceToken DeviceToken[]
 }
 
 model Operador {
@@ -48,20 +49,20 @@ model Operador {
 }
 
 model BotonPanico {
-  id          Int      @id @default(autoincrement())
-  operadorId  Int
-  timestamp   DateTime @default(now())
-  motivo      String?  
-  atendido    Boolean  @default(false)
-  latitud     Float?   
-  longitud    Float?   
+  id         Int      @id @default(autoincrement())
+  operadorId Int
+  timestamp  DateTime @default(now())
+  motivo     String?
+  atendido   Boolean  @default(false)
+  latitud    Float?
+  longitud   Float?
 
-  operador    Operador @relation(fields: [operadorId], references: [id])
+  operador Operador @relation(fields: [operadorId], references: [id])
 }
 
 model Supervisor {
-  id           Int      @id @default(autoincrement())
-  userRoleId   Int      @unique
+  id         Int @id @default(autoincrement())
+  userRoleId Int @unique
 
   user         UserRole              @relation(fields: [userRoleId], references: [id])
   ubicaciones  UbicacionSupervisor[]
@@ -76,24 +77,24 @@ model UbicacionSupervisor {
   latitud      Float
   longitud     Float
 
-  supervisor   Supervisor @relation(fields: [supervisorId], references: [id])
+  supervisor Supervisor @relation(fields: [supervisorId], references: [id])
 }
 
 model Coordinador {
-  id           Int      @id @default(autoincrement())
-  userRoleId   Int      @unique
+  id         Int @id @default(autoincrement())
+  userRoleId Int @unique
 
-  user         UserRole @relation(fields: [userRoleId], references: [id])
+  user UserRole @relation(fields: [userRoleId], references: [id])
 }
 
 model IncidenteAsignado {
-  id                 Int              @id @default(autoincrement())
+  id                 Int      @id @default(autoincrement())
   supervisorId       Int
-  fechaAsignacion    DateTime         @default(now())
+  fechaAsignacion    DateTime @default(now())
   reporteIncidenteId Int
 
-  supervisor         Supervisor       @relation(fields: [supervisorId], references: [id])
-  incidente          ReporteIncidente @relation(fields: [reporteIncidenteId], references: [id])
+  supervisor Supervisor       @relation(fields: [supervisorId], references: [id])
+  incidente  ReporteIncidente @relation(fields: [reporteIncidenteId], references: [id])
 }
 
 model ReporteIncidente {
@@ -111,7 +112,7 @@ model ReporteIncidente {
 }
 
 model FotoIncidente {
-  id        Int    @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   reporteId Int
   url       String
   createdAt DateTime @default(now())
@@ -120,25 +121,25 @@ model FotoIncidente {
 }
 
 model Patio {
-  id           Int      @id @default(autoincrement())
-  userRoleId   Int      @unique
+  id         Int @id @default(autoincrement())
+  userRoleId Int @unique
 
-  user         UserRole @relation(fields: [userRoleId], references: [id])
-  registrosSalida   RegistroSalidaUnidad[]
-  asignaciones      AsignacionUnidad[]
+  user            UserRole               @relation(fields: [userRoleId], references: [id])
+  registrosSalida RegistroSalidaUnidad[]
+  asignaciones    AsignacionUnidad[]
 }
 
 model RegistroSalidaUnidad {
-  id            Int      @id @default(autoincrement())
-  patioId       Int
-  unidad        String
-  operadorId    Int
-  fechaSalida   DateTime
-  horaInicio    String
-  vueltas       Int
-  kmInicial     Int
-  kmFinal       Int?
-  condiciones   String
+  id          Int      @id @default(autoincrement())
+  patioId     Int
+  unidad      String
+  operadorId  Int
+  fechaSalida DateTime
+  horaInicio  String
+  vueltas     Int
+  kmInicial   Int
+  kmFinal     Int?
+  condiciones String
 
   patio    Patio    @relation(fields: [patioId], references: [id])
   operador Operador @relation(fields: [operadorId], references: [id])
@@ -154,4 +155,13 @@ model AsignacionUnidad {
 
   patio    Patio    @relation(fields: [patioId], references: [id])
   operador Operador @relation(fields: [operadorId], references: [id])
+}
+
+model DeviceToken {
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  userRoleId Int
+  createdAt  DateTime @default(now())
+
+  userRole UserRole @relation(fields: [userRoleId], references: [id])
 }

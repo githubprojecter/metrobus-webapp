@@ -2,6 +2,7 @@
 import type { NextApiResponse } from 'next';
 import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import { requireRole } from '@/lib/requireRole';
+import { notifyRoleFCM } from '@/lib/notifications';
 // Aquí podrías disparar un WebSocket o guardar un registro para que las apps de Supervisor reaccionen
 
 export default requireRole(['Coordinador'])(async (
@@ -13,6 +14,12 @@ export default requireRole(['Coordinador'])(async (
     res.status(405).end();
     return;
   }
+  await notifyRoleFCM(
+  'Supervisor',
+  'Comparte tu ubicación',
+  'El coordinador ha solicitado tu ubicación.',
+  {}
+);
   // TODO: notificar a supervisores via WebSocket o FCM
   res.status(200).json({ message: 'Supervisores notificados para compartir ubicación' });
 });
