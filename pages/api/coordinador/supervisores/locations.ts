@@ -1,4 +1,3 @@
-// pages/api/coordinador/supervisores/locations.ts
 import type { NextApiResponse } from 'next';
 import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import { requireRole } from '@/lib/requireRole';
@@ -8,36 +7,52 @@ type SupLoc = { id: number; nombre: string; latitud: number; longitud: number };
 
 export default requireRole(['Supervisor','Coordinador'])(async (
   req: NextApiRequestWithUser,
-  res: NextApiResponse<SupLoc[] | { success: boolean }>
+  res: NextApiResponse<SupLoc[] | { success: boolean; error?: string }>
 ): Promise<void> => {
   const { method, role, userRoleId } = req;
 
   // 1) POST /api/coordinador/supervisores/locations
   if (method === 'POST') {
     if (role !== 'Supervisor') {
-      res.status(403).json({ success: false });
+      res.status(403).json({ success: false, error: 'Solo para supervisores' });
       return;
     }
 
     const { latitud, longitud } = req.body as {
-      latitud: number;
-      longitud: number;
+      latitud?: number;
+      longitud?: number;
     };
+
     if (latitud == null || longitud == null) {
-      res.status(400).json({ success: false });
+      res.status(400).json({ success: false, error: 'Faltan latitud o longitud' });
       return;
     }
 
-    // Crea la ubicación del supervisor
-    await prisma.ubicacionSupervisor.create({
+  try {
+    // 1) Busca el registro de Supervisor para este userRoleId
+    const sup = await prisma.supervisor.findUnique({
+      where: { userRoleId },
+    });
+    if (!sup) {
+      res.status(404).json({ success: false, error: 'Supervisor no encontrado' });
+      return;
+    }
+
+    // 2) Crea la ubicación usando sup.id
+    const resp = await prisma.ubicacionSupervisor.create({
       data: {
-        supervisorId: userRoleId,
+        supervisorId: sup.id,
         latitud,
         longitud,
       },
     });
+    console.log('[LOC POST] creado:', resp);
 
     res.status(201).json({ success: true });
+  } catch (err: any) {
+    console.error('[LOC POST] error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
     return;
   }
 
@@ -48,7 +63,6 @@ export default requireRole(['Supervisor','Coordinador'])(async (
       return;
     }
 
-    // Tomamos última ubicación de cada supervisor
     const locs = await prisma.ubicacionSupervisor.findMany({
       orderBy: { timestamp: 'desc' },
       distinct: ['supervisorId'],
@@ -75,7 +89,7 @@ export default requireRole(['Supervisor','Coordinador'])(async (
     return;
   }
 
-  // 3) Otros métodos no permitidos
+  // 3) Otros métodos
   res.setHeader('Allow', ['GET', 'POST']);
   res.status(405).end();
 });

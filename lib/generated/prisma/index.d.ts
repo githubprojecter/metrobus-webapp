@@ -1966,6 +1966,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type BotonPanicoCountOutputType
+   */
+
+  export type BotonPanicoCountOutputType = {
+    IncidenteAsignado: number
+  }
+
+  export type BotonPanicoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    IncidenteAsignado?: boolean | BotonPanicoCountOutputTypeCountIncidenteAsignadoArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BotonPanicoCountOutputType without action
+   */
+  export type BotonPanicoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BotonPanicoCountOutputType
+     */
+    select?: BotonPanicoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BotonPanicoCountOutputType without action
+   */
+  export type BotonPanicoCountOutputTypeCountIncidenteAsignadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IncidenteAsignadoWhereInput
+  }
+
+
+  /**
    * Count Type SupervisorCountOutputType
    */
 
@@ -2020,12 +2051,10 @@ export namespace Prisma {
 
   export type ReporteIncidenteCountOutputType = {
     fotos: number
-    IncidenteAsignado: number
   }
 
   export type ReporteIncidenteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     fotos?: boolean | ReporteIncidenteCountOutputTypeCountFotosArgs
-    IncidenteAsignado?: boolean | ReporteIncidenteCountOutputTypeCountIncidenteAsignadoArgs
   }
 
   // Custom InputTypes
@@ -2044,13 +2073,6 @@ export namespace Prisma {
    */
   export type ReporteIncidenteCountOutputTypeCountFotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FotoIncidenteWhereInput
-  }
-
-  /**
-   * ReporteIncidenteCountOutputType without action
-   */
-  export type ReporteIncidenteCountOutputTypeCountIncidenteAsignadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: IncidenteAsignadoWhereInput
   }
 
 
@@ -4492,6 +4514,8 @@ export namespace Prisma {
     latitud?: boolean
     longitud?: boolean
     operador?: boolean | OperadorDefaultArgs<ExtArgs>
+    IncidenteAsignado?: boolean | BotonPanico$IncidenteAsignadoArgs<ExtArgs>
+    _count?: boolean | BotonPanicoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["botonPanico"]>
 
 
@@ -4509,12 +4533,15 @@ export namespace Prisma {
   export type BotonPanicoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "operadorId" | "timestamp" | "motivo" | "atendido" | "latitud" | "longitud", ExtArgs["result"]["botonPanico"]>
   export type BotonPanicoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operador?: boolean | OperadorDefaultArgs<ExtArgs>
+    IncidenteAsignado?: boolean | BotonPanico$IncidenteAsignadoArgs<ExtArgs>
+    _count?: boolean | BotonPanicoCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $BotonPanicoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "BotonPanico"
     objects: {
       operador: Prisma.$OperadorPayload<ExtArgs>
+      IncidenteAsignado: Prisma.$IncidenteAsignadoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4865,6 +4892,7 @@ export namespace Prisma {
   export interface Prisma__BotonPanicoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     operador<T extends OperadorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OperadorDefaultArgs<ExtArgs>>): Prisma__OperadorClient<$Result.GetResult<Prisma.$OperadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    IncidenteAsignado<T extends BotonPanico$IncidenteAsignadoArgs<ExtArgs> = {}>(args?: Subset<T, BotonPanico$IncidenteAsignadoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IncidenteAsignadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5241,6 +5269,30 @@ export namespace Prisma {
      * Limit how many BotonPanicos to delete.
      */
     limit?: number
+  }
+
+  /**
+   * BotonPanico.IncidenteAsignado
+   */
+  export type BotonPanico$IncidenteAsignadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the IncidenteAsignado
+     */
+    select?: IncidenteAsignadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the IncidenteAsignado
+     */
+    omit?: IncidenteAsignadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidenteAsignadoInclude<ExtArgs> | null
+    where?: IncidenteAsignadoWhereInput
+    orderBy?: IncidenteAsignadoOrderByWithRelationInput | IncidenteAsignadoOrderByWithRelationInput[]
+    cursor?: IncidenteAsignadoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: IncidenteAsignadoScalarFieldEnum | IncidenteAsignadoScalarFieldEnum[]
   }
 
   /**
@@ -8206,34 +8258,44 @@ export namespace Prisma {
   export type IncidenteAsignadoAvgAggregateOutputType = {
     id: number | null
     supervisorId: number | null
-    reporteIncidenteId: number | null
+    panicId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type IncidenteAsignadoSumAggregateOutputType = {
     id: number | null
     supervisorId: number | null
-    reporteIncidenteId: number | null
+    panicId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type IncidenteAsignadoMinAggregateOutputType = {
     id: number | null
     supervisorId: number | null
     fechaAsignacion: Date | null
-    reporteIncidenteId: number | null
+    panicId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type IncidenteAsignadoMaxAggregateOutputType = {
     id: number | null
     supervisorId: number | null
     fechaAsignacion: Date | null
-    reporteIncidenteId: number | null
+    panicId: number | null
+    latitud: number | null
+    longitud: number | null
   }
 
   export type IncidenteAsignadoCountAggregateOutputType = {
     id: number
     supervisorId: number
     fechaAsignacion: number
-    reporteIncidenteId: number
+    panicId: number
+    latitud: number
+    longitud: number
     _all: number
   }
 
@@ -8241,34 +8303,44 @@ export namespace Prisma {
   export type IncidenteAsignadoAvgAggregateInputType = {
     id?: true
     supervisorId?: true
-    reporteIncidenteId?: true
+    panicId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type IncidenteAsignadoSumAggregateInputType = {
     id?: true
     supervisorId?: true
-    reporteIncidenteId?: true
+    panicId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type IncidenteAsignadoMinAggregateInputType = {
     id?: true
     supervisorId?: true
     fechaAsignacion?: true
-    reporteIncidenteId?: true
+    panicId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type IncidenteAsignadoMaxAggregateInputType = {
     id?: true
     supervisorId?: true
     fechaAsignacion?: true
-    reporteIncidenteId?: true
+    panicId?: true
+    latitud?: true
+    longitud?: true
   }
 
   export type IncidenteAsignadoCountAggregateInputType = {
     id?: true
     supervisorId?: true
     fechaAsignacion?: true
-    reporteIncidenteId?: true
+    panicId?: true
+    latitud?: true
+    longitud?: true
     _all?: true
   }
 
@@ -8362,7 +8434,9 @@ export namespace Prisma {
     id: number
     supervisorId: number
     fechaAsignacion: Date
-    reporteIncidenteId: number
+    panicId: number
+    latitud: number
+    longitud: number
     _count: IncidenteAsignadoCountAggregateOutputType | null
     _avg: IncidenteAsignadoAvgAggregateOutputType | null
     _sum: IncidenteAsignadoSumAggregateOutputType | null
@@ -8388,9 +8462,12 @@ export namespace Prisma {
     id?: boolean
     supervisorId?: boolean
     fechaAsignacion?: boolean
-    reporteIncidenteId?: boolean
+    panicId?: boolean
+    latitud?: boolean
+    longitud?: boolean
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
-    incidente?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
+    panic?: boolean | BotonPanicoDefaultArgs<ExtArgs>
+    reporte?: boolean | IncidenteAsignado$reporteArgs<ExtArgs>
   }, ExtArgs["result"]["incidenteAsignado"]>
 
 
@@ -8399,26 +8476,32 @@ export namespace Prisma {
     id?: boolean
     supervisorId?: boolean
     fechaAsignacion?: boolean
-    reporteIncidenteId?: boolean
+    panicId?: boolean
+    latitud?: boolean
+    longitud?: boolean
   }
 
-  export type IncidenteAsignadoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "fechaAsignacion" | "reporteIncidenteId", ExtArgs["result"]["incidenteAsignado"]>
+  export type IncidenteAsignadoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "fechaAsignacion" | "panicId" | "latitud" | "longitud", ExtArgs["result"]["incidenteAsignado"]>
   export type IncidenteAsignadoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
-    incidente?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
+    panic?: boolean | BotonPanicoDefaultArgs<ExtArgs>
+    reporte?: boolean | IncidenteAsignado$reporteArgs<ExtArgs>
   }
 
   export type $IncidenteAsignadoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "IncidenteAsignado"
     objects: {
       supervisor: Prisma.$SupervisorPayload<ExtArgs>
-      incidente: Prisma.$ReporteIncidentePayload<ExtArgs>
+      panic: Prisma.$BotonPanicoPayload<ExtArgs>
+      reporte: Prisma.$ReporteIncidentePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       supervisorId: number
       fechaAsignacion: Date
-      reporteIncidenteId: number
+      panicId: number
+      latitud: number
+      longitud: number
     }, ExtArgs["result"]["incidenteAsignado"]>
     composites: {}
   }
@@ -8760,7 +8843,8 @@ export namespace Prisma {
   export interface Prisma__IncidenteAsignadoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     supervisor<T extends SupervisorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SupervisorDefaultArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    incidente<T extends ReporteIncidenteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidenteDefaultArgs<ExtArgs>>): Prisma__ReporteIncidenteClient<$Result.GetResult<Prisma.$ReporteIncidentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    panic<T extends BotonPanicoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BotonPanicoDefaultArgs<ExtArgs>>): Prisma__BotonPanicoClient<$Result.GetResult<Prisma.$BotonPanicoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reporte<T extends IncidenteAsignado$reporteArgs<ExtArgs> = {}>(args?: Subset<T, IncidenteAsignado$reporteArgs<ExtArgs>>): Prisma__ReporteIncidenteClient<$Result.GetResult<Prisma.$ReporteIncidentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8793,7 +8877,9 @@ export namespace Prisma {
     readonly id: FieldRef<"IncidenteAsignado", 'Int'>
     readonly supervisorId: FieldRef<"IncidenteAsignado", 'Int'>
     readonly fechaAsignacion: FieldRef<"IncidenteAsignado", 'DateTime'>
-    readonly reporteIncidenteId: FieldRef<"IncidenteAsignado", 'Int'>
+    readonly panicId: FieldRef<"IncidenteAsignado", 'Int'>
+    readonly latitud: FieldRef<"IncidenteAsignado", 'Float'>
+    readonly longitud: FieldRef<"IncidenteAsignado", 'Float'>
   }
     
 
@@ -9137,6 +9223,25 @@ export namespace Prisma {
   }
 
   /**
+   * IncidenteAsignado.reporte
+   */
+  export type IncidenteAsignado$reporteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReporteIncidente
+     */
+    select?: ReporteIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReporteIncidente
+     */
+    omit?: ReporteIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReporteIncidenteInclude<ExtArgs> | null
+    where?: ReporteIncidenteWhereInput
+  }
+
+  /**
    * IncidenteAsignado without action
    */
   export type IncidenteAsignadoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9170,16 +9275,19 @@ export namespace Prisma {
   export type ReporteIncidenteAvgAggregateOutputType = {
     id: number | null
     supervisorId: number | null
+    incidenteAsignadoId: number | null
   }
 
   export type ReporteIncidenteSumAggregateOutputType = {
     id: number | null
     supervisorId: number | null
+    incidenteAsignadoId: number | null
   }
 
   export type ReporteIncidenteMinAggregateOutputType = {
     id: number | null
     supervisorId: number | null
+    incidenteAsignadoId: number | null
     fecha: Date | null
     descripcion: string | null
     ambulancia: boolean | null
@@ -9190,6 +9298,7 @@ export namespace Prisma {
   export type ReporteIncidenteMaxAggregateOutputType = {
     id: number | null
     supervisorId: number | null
+    incidenteAsignadoId: number | null
     fecha: Date | null
     descripcion: string | null
     ambulancia: boolean | null
@@ -9200,6 +9309,7 @@ export namespace Prisma {
   export type ReporteIncidenteCountAggregateOutputType = {
     id: number
     supervisorId: number
+    incidenteAsignadoId: number
     fecha: number
     descripcion: number
     ambulancia: number
@@ -9212,16 +9322,19 @@ export namespace Prisma {
   export type ReporteIncidenteAvgAggregateInputType = {
     id?: true
     supervisorId?: true
+    incidenteAsignadoId?: true
   }
 
   export type ReporteIncidenteSumAggregateInputType = {
     id?: true
     supervisorId?: true
+    incidenteAsignadoId?: true
   }
 
   export type ReporteIncidenteMinAggregateInputType = {
     id?: true
     supervisorId?: true
+    incidenteAsignadoId?: true
     fecha?: true
     descripcion?: true
     ambulancia?: true
@@ -9232,6 +9345,7 @@ export namespace Prisma {
   export type ReporteIncidenteMaxAggregateInputType = {
     id?: true
     supervisorId?: true
+    incidenteAsignadoId?: true
     fecha?: true
     descripcion?: true
     ambulancia?: true
@@ -9242,6 +9356,7 @@ export namespace Prisma {
   export type ReporteIncidenteCountAggregateInputType = {
     id?: true
     supervisorId?: true
+    incidenteAsignadoId?: true
     fecha?: true
     descripcion?: true
     ambulancia?: true
@@ -9339,6 +9454,7 @@ export namespace Prisma {
   export type ReporteIncidenteGroupByOutputType = {
     id: number
     supervisorId: number
+    incidenteAsignadoId: number
     fecha: Date
     descripcion: string
     ambulancia: boolean
@@ -9368,14 +9484,15 @@ export namespace Prisma {
   export type ReporteIncidenteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     supervisorId?: boolean
+    incidenteAsignadoId?: boolean
     fecha?: boolean
     descripcion?: boolean
     ambulancia?: boolean
     policia?: boolean
     heridos?: boolean
-    fotos?: boolean | ReporteIncidente$fotosArgs<ExtArgs>
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
-    IncidenteAsignado?: boolean | ReporteIncidente$IncidenteAsignadoArgs<ExtArgs>
+    incidenteAsignado?: boolean | IncidenteAsignadoDefaultArgs<ExtArgs>
+    fotos?: boolean | ReporteIncidente$fotosArgs<ExtArgs>
     _count?: boolean | ReporteIncidenteCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reporteIncidente"]>
 
@@ -9384,6 +9501,7 @@ export namespace Prisma {
   export type ReporteIncidenteSelectScalar = {
     id?: boolean
     supervisorId?: boolean
+    incidenteAsignadoId?: boolean
     fecha?: boolean
     descripcion?: boolean
     ambulancia?: boolean
@@ -9391,24 +9509,25 @@ export namespace Prisma {
     heridos?: boolean
   }
 
-  export type ReporteIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "fecha" | "descripcion" | "ambulancia" | "policia" | "heridos", ExtArgs["result"]["reporteIncidente"]>
+  export type ReporteIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "incidenteAsignadoId" | "fecha" | "descripcion" | "ambulancia" | "policia" | "heridos", ExtArgs["result"]["reporteIncidente"]>
   export type ReporteIncidenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    fotos?: boolean | ReporteIncidente$fotosArgs<ExtArgs>
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
-    IncidenteAsignado?: boolean | ReporteIncidente$IncidenteAsignadoArgs<ExtArgs>
+    incidenteAsignado?: boolean | IncidenteAsignadoDefaultArgs<ExtArgs>
+    fotos?: boolean | ReporteIncidente$fotosArgs<ExtArgs>
     _count?: boolean | ReporteIncidenteCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $ReporteIncidentePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ReporteIncidente"
     objects: {
-      fotos: Prisma.$FotoIncidentePayload<ExtArgs>[]
       supervisor: Prisma.$SupervisorPayload<ExtArgs>
-      IncidenteAsignado: Prisma.$IncidenteAsignadoPayload<ExtArgs>[]
+      incidenteAsignado: Prisma.$IncidenteAsignadoPayload<ExtArgs>
+      fotos: Prisma.$FotoIncidentePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       supervisorId: number
+      incidenteAsignadoId: number
       fecha: Date
       descripcion: string
       ambulancia: boolean
@@ -9754,9 +9873,9 @@ export namespace Prisma {
    */
   export interface Prisma__ReporteIncidenteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    fotos<T extends ReporteIncidente$fotosArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidente$fotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FotoIncidentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     supervisor<T extends SupervisorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SupervisorDefaultArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    IncidenteAsignado<T extends ReporteIncidente$IncidenteAsignadoArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidente$IncidenteAsignadoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IncidenteAsignadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    incidenteAsignado<T extends IncidenteAsignadoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, IncidenteAsignadoDefaultArgs<ExtArgs>>): Prisma__IncidenteAsignadoClient<$Result.GetResult<Prisma.$IncidenteAsignadoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    fotos<T extends ReporteIncidente$fotosArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidente$fotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FotoIncidentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9788,6 +9907,7 @@ export namespace Prisma {
   interface ReporteIncidenteFieldRefs {
     readonly id: FieldRef<"ReporteIncidente", 'Int'>
     readonly supervisorId: FieldRef<"ReporteIncidente", 'Int'>
+    readonly incidenteAsignadoId: FieldRef<"ReporteIncidente", 'Int'>
     readonly fecha: FieldRef<"ReporteIncidente", 'DateTime'>
     readonly descripcion: FieldRef<"ReporteIncidente", 'String'>
     readonly ambulancia: FieldRef<"ReporteIncidente", 'Boolean'>
@@ -10157,30 +10277,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FotoIncidenteScalarFieldEnum | FotoIncidenteScalarFieldEnum[]
-  }
-
-  /**
-   * ReporteIncidente.IncidenteAsignado
-   */
-  export type ReporteIncidente$IncidenteAsignadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the IncidenteAsignado
-     */
-    select?: IncidenteAsignadoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the IncidenteAsignado
-     */
-    omit?: IncidenteAsignadoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IncidenteAsignadoInclude<ExtArgs> | null
-    where?: IncidenteAsignadoWhereInput
-    orderBy?: IncidenteAsignadoOrderByWithRelationInput | IncidenteAsignadoOrderByWithRelationInput[]
-    cursor?: IncidenteAsignadoWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: IncidenteAsignadoScalarFieldEnum | IncidenteAsignadoScalarFieldEnum[]
   }
 
   /**
@@ -15217,7 +15313,9 @@ export namespace Prisma {
     id: 'id',
     supervisorId: 'supervisorId',
     fechaAsignacion: 'fechaAsignacion',
-    reporteIncidenteId: 'reporteIncidenteId'
+    panicId: 'panicId',
+    latitud: 'latitud',
+    longitud: 'longitud'
   };
 
   export type IncidenteAsignadoScalarFieldEnum = (typeof IncidenteAsignadoScalarFieldEnum)[keyof typeof IncidenteAsignadoScalarFieldEnum]
@@ -15226,6 +15324,7 @@ export namespace Prisma {
   export const ReporteIncidenteScalarFieldEnum: {
     id: 'id',
     supervisorId: 'supervisorId',
+    incidenteAsignadoId: 'incidenteAsignadoId',
     fecha: 'fecha',
     descripcion: 'descripcion',
     ambulancia: 'ambulancia',
@@ -15588,6 +15687,7 @@ export namespace Prisma {
     latitud?: FloatNullableFilter<"BotonPanico"> | number | null
     longitud?: FloatNullableFilter<"BotonPanico"> | number | null
     operador?: XOR<OperadorScalarRelationFilter, OperadorWhereInput>
+    IncidenteAsignado?: IncidenteAsignadoListRelationFilter
   }
 
   export type BotonPanicoOrderByWithRelationInput = {
@@ -15599,6 +15699,7 @@ export namespace Prisma {
     latitud?: SortOrderInput | SortOrder
     longitud?: SortOrderInput | SortOrder
     operador?: OperadorOrderByWithRelationInput
+    IncidenteAsignado?: IncidenteAsignadoOrderByRelationAggregateInput
     _relevance?: BotonPanicoOrderByRelevanceInput
   }
 
@@ -15614,6 +15715,7 @@ export namespace Prisma {
     latitud?: FloatNullableFilter<"BotonPanico"> | number | null
     longitud?: FloatNullableFilter<"BotonPanico"> | number | null
     operador?: XOR<OperadorScalarRelationFilter, OperadorWhereInput>
+    IncidenteAsignado?: IncidenteAsignadoListRelationFilter
   }, "id">
 
   export type BotonPanicoOrderByWithAggregationInput = {
@@ -15801,18 +15903,24 @@ export namespace Prisma {
     id?: IntFilter<"IncidenteAsignado"> | number
     supervisorId?: IntFilter<"IncidenteAsignado"> | number
     fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
-    reporteIncidenteId?: IntFilter<"IncidenteAsignado"> | number
+    panicId?: IntFilter<"IncidenteAsignado"> | number
+    latitud?: FloatFilter<"IncidenteAsignado"> | number
+    longitud?: FloatFilter<"IncidenteAsignado"> | number
     supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
-    incidente?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
+    panic?: XOR<BotonPanicoScalarRelationFilter, BotonPanicoWhereInput>
+    reporte?: XOR<ReporteIncidenteNullableScalarRelationFilter, ReporteIncidenteWhereInput> | null
   }
 
   export type IncidenteAsignadoOrderByWithRelationInput = {
     id?: SortOrder
     supervisorId?: SortOrder
     fechaAsignacion?: SortOrder
-    reporteIncidenteId?: SortOrder
+    panicId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
     supervisor?: SupervisorOrderByWithRelationInput
-    incidente?: ReporteIncidenteOrderByWithRelationInput
+    panic?: BotonPanicoOrderByWithRelationInput
+    reporte?: ReporteIncidenteOrderByWithRelationInput
   }
 
   export type IncidenteAsignadoWhereUniqueInput = Prisma.AtLeast<{
@@ -15822,16 +15930,21 @@ export namespace Prisma {
     NOT?: IncidenteAsignadoWhereInput | IncidenteAsignadoWhereInput[]
     supervisorId?: IntFilter<"IncidenteAsignado"> | number
     fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
-    reporteIncidenteId?: IntFilter<"IncidenteAsignado"> | number
+    panicId?: IntFilter<"IncidenteAsignado"> | number
+    latitud?: FloatFilter<"IncidenteAsignado"> | number
+    longitud?: FloatFilter<"IncidenteAsignado"> | number
     supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
-    incidente?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
+    panic?: XOR<BotonPanicoScalarRelationFilter, BotonPanicoWhereInput>
+    reporte?: XOR<ReporteIncidenteNullableScalarRelationFilter, ReporteIncidenteWhereInput> | null
   }, "id">
 
   export type IncidenteAsignadoOrderByWithAggregationInput = {
     id?: SortOrder
     supervisorId?: SortOrder
     fechaAsignacion?: SortOrder
-    reporteIncidenteId?: SortOrder
+    panicId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
     _count?: IncidenteAsignadoCountOrderByAggregateInput
     _avg?: IncidenteAsignadoAvgOrderByAggregateInput
     _max?: IncidenteAsignadoMaxOrderByAggregateInput
@@ -15846,7 +15959,9 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"IncidenteAsignado"> | number
     supervisorId?: IntWithAggregatesFilter<"IncidenteAsignado"> | number
     fechaAsignacion?: DateTimeWithAggregatesFilter<"IncidenteAsignado"> | Date | string
-    reporteIncidenteId?: IntWithAggregatesFilter<"IncidenteAsignado"> | number
+    panicId?: IntWithAggregatesFilter<"IncidenteAsignado"> | number
+    latitud?: FloatWithAggregatesFilter<"IncidenteAsignado"> | number
+    longitud?: FloatWithAggregatesFilter<"IncidenteAsignado"> | number
   }
 
   export type ReporteIncidenteWhereInput = {
@@ -15855,32 +15970,35 @@ export namespace Prisma {
     NOT?: ReporteIncidenteWhereInput | ReporteIncidenteWhereInput[]
     id?: IntFilter<"ReporteIncidente"> | number
     supervisorId?: IntFilter<"ReporteIncidente"> | number
+    incidenteAsignadoId?: IntFilter<"ReporteIncidente"> | number
     fecha?: DateTimeFilter<"ReporteIncidente"> | Date | string
     descripcion?: StringFilter<"ReporteIncidente"> | string
     ambulancia?: BoolFilter<"ReporteIncidente"> | boolean
     policia?: BoolFilter<"ReporteIncidente"> | boolean
     heridos?: BoolFilter<"ReporteIncidente"> | boolean
-    fotos?: FotoIncidenteListRelationFilter
     supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
-    IncidenteAsignado?: IncidenteAsignadoListRelationFilter
+    incidenteAsignado?: XOR<IncidenteAsignadoScalarRelationFilter, IncidenteAsignadoWhereInput>
+    fotos?: FotoIncidenteListRelationFilter
   }
 
   export type ReporteIncidenteOrderByWithRelationInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
     policia?: SortOrder
     heridos?: SortOrder
-    fotos?: FotoIncidenteOrderByRelationAggregateInput
     supervisor?: SupervisorOrderByWithRelationInput
-    IncidenteAsignado?: IncidenteAsignadoOrderByRelationAggregateInput
+    incidenteAsignado?: IncidenteAsignadoOrderByWithRelationInput
+    fotos?: FotoIncidenteOrderByRelationAggregateInput
     _relevance?: ReporteIncidenteOrderByRelevanceInput
   }
 
   export type ReporteIncidenteWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    incidenteAsignadoId?: number
     AND?: ReporteIncidenteWhereInput | ReporteIncidenteWhereInput[]
     OR?: ReporteIncidenteWhereInput[]
     NOT?: ReporteIncidenteWhereInput | ReporteIncidenteWhereInput[]
@@ -15890,14 +16008,15 @@ export namespace Prisma {
     ambulancia?: BoolFilter<"ReporteIncidente"> | boolean
     policia?: BoolFilter<"ReporteIncidente"> | boolean
     heridos?: BoolFilter<"ReporteIncidente"> | boolean
-    fotos?: FotoIncidenteListRelationFilter
     supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
-    IncidenteAsignado?: IncidenteAsignadoListRelationFilter
-  }, "id">
+    incidenteAsignado?: XOR<IncidenteAsignadoScalarRelationFilter, IncidenteAsignadoWhereInput>
+    fotos?: FotoIncidenteListRelationFilter
+  }, "id" | "incidenteAsignadoId">
 
   export type ReporteIncidenteOrderByWithAggregationInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
@@ -15916,6 +16035,7 @@ export namespace Prisma {
     NOT?: ReporteIncidenteScalarWhereWithAggregatesInput | ReporteIncidenteScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ReporteIncidente"> | number
     supervisorId?: IntWithAggregatesFilter<"ReporteIncidente"> | number
+    incidenteAsignadoId?: IntWithAggregatesFilter<"ReporteIncidente"> | number
     fecha?: DateTimeWithAggregatesFilter<"ReporteIncidente"> | Date | string
     descripcion?: StringWithAggregatesFilter<"ReporteIncidente"> | string
     ambulancia?: BoolWithAggregatesFilter<"ReporteIncidente"> | boolean
@@ -16394,6 +16514,7 @@ export namespace Prisma {
     latitud?: number | null
     longitud?: number | null
     operador: OperadorCreateNestedOneWithoutBotonesPanicoInput
+    IncidenteAsignado?: IncidenteAsignadoCreateNestedManyWithoutPanicInput
   }
 
   export type BotonPanicoUncheckedCreateInput = {
@@ -16404,6 +16525,7 @@ export namespace Prisma {
     atendido?: boolean
     latitud?: number | null
     longitud?: number | null
+    IncidenteAsignado?: IncidenteAsignadoUncheckedCreateNestedManyWithoutPanicInput
   }
 
   export type BotonPanicoUpdateInput = {
@@ -16413,6 +16535,7 @@ export namespace Prisma {
     latitud?: NullableFloatFieldUpdateOperationsInput | number | null
     longitud?: NullableFloatFieldUpdateOperationsInput | number | null
     operador?: OperadorUpdateOneRequiredWithoutBotonesPanicoNestedInput
+    IncidenteAsignado?: IncidenteAsignadoUpdateManyWithoutPanicNestedInput
   }
 
   export type BotonPanicoUncheckedUpdateInput = {
@@ -16423,6 +16546,7 @@ export namespace Prisma {
     atendido?: BoolFieldUpdateOperationsInput | boolean
     latitud?: NullableFloatFieldUpdateOperationsInput | number | null
     longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    IncidenteAsignado?: IncidenteAsignadoUncheckedUpdateManyWithoutPanicNestedInput
   }
 
   export type BotonPanicoCreateManyInput = {
@@ -16583,46 +16707,64 @@ export namespace Prisma {
 
   export type IncidenteAsignadoCreateInput = {
     fechaAsignacion?: Date | string
+    latitud: number
+    longitud: number
     supervisor: SupervisorCreateNestedOneWithoutAsignacionesInput
-    incidente: ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput
+    panic: BotonPanicoCreateNestedOneWithoutIncidenteAsignadoInput
+    reporte?: ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput
   }
 
   export type IncidenteAsignadoUncheckedCreateInput = {
     id?: number
     supervisorId: number
     fechaAsignacion?: Date | string
-    reporteIncidenteId: number
+    panicId: number
+    latitud: number
+    longitud: number
+    reporte?: ReporteIncidenteUncheckedCreateNestedOneWithoutIncidenteAsignadoInput
   }
 
   export type IncidenteAsignadoUpdateInput = {
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
     supervisor?: SupervisorUpdateOneRequiredWithoutAsignacionesNestedInput
-    incidente?: ReporteIncidenteUpdateOneRequiredWithoutIncidenteAsignadoNestedInput
+    panic?: BotonPanicoUpdateOneRequiredWithoutIncidenteAsignadoNestedInput
+    reporte?: ReporteIncidenteUpdateOneWithoutIncidenteAsignadoNestedInput
   }
 
   export type IncidenteAsignadoUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    reporteIncidenteId?: IntFieldUpdateOperationsInput | number
+    panicId?: IntFieldUpdateOperationsInput | number
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    reporte?: ReporteIncidenteUncheckedUpdateOneWithoutIncidenteAsignadoNestedInput
   }
 
   export type IncidenteAsignadoCreateManyInput = {
     id?: number
     supervisorId: number
     fechaAsignacion?: Date | string
-    reporteIncidenteId: number
+    panicId: number
+    latitud: number
+    longitud: number
   }
 
   export type IncidenteAsignadoUpdateManyMutationInput = {
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
   }
 
   export type IncidenteAsignadoUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    reporteIncidenteId?: IntFieldUpdateOperationsInput | number
+    panicId?: IntFieldUpdateOperationsInput | number
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
   }
 
   export type ReporteIncidenteCreateInput = {
@@ -16631,21 +16773,21 @@ export namespace Prisma {
     ambulancia?: boolean
     policia?: boolean
     heridos: boolean
-    fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
     supervisor: SupervisorCreateNestedOneWithoutReportesInput
-    IncidenteAsignado?: IncidenteAsignadoCreateNestedManyWithoutIncidenteInput
+    incidenteAsignado: IncidenteAsignadoCreateNestedOneWithoutReporteInput
+    fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteUncheckedCreateInput = {
     id?: number
     supervisorId: number
+    incidenteAsignadoId: number
     fecha?: Date | string
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
     heridos: boolean
     fotos?: FotoIncidenteUncheckedCreateNestedManyWithoutReporteInput
-    IncidenteAsignado?: IncidenteAsignadoUncheckedCreateNestedManyWithoutIncidenteInput
   }
 
   export type ReporteIncidenteUpdateInput = {
@@ -16654,26 +16796,27 @@ export namespace Prisma {
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
-    fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
     supervisor?: SupervisorUpdateOneRequiredWithoutReportesNestedInput
-    IncidenteAsignado?: IncidenteAsignadoUpdateManyWithoutIncidenteNestedInput
+    incidenteAsignado?: IncidenteAsignadoUpdateOneRequiredWithoutReporteNestedInput
+    fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
+    incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
     fotos?: FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput
-    IncidenteAsignado?: IncidenteAsignadoUncheckedUpdateManyWithoutIncidenteNestedInput
   }
 
   export type ReporteIncidenteCreateManyInput = {
     id?: number
     supervisorId: number
+    incidenteAsignadoId: number
     fecha?: Date | string
     descripcion: string
     ambulancia?: boolean
@@ -16692,6 +16835,7 @@ export namespace Prisma {
   export type ReporteIncidenteUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
+    incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
@@ -17272,6 +17416,16 @@ export namespace Prisma {
     isNot?: OperadorWhereInput
   }
 
+  export type IncidenteAsignadoListRelationFilter = {
+    every?: IncidenteAsignadoWhereInput
+    some?: IncidenteAsignadoWhereInput
+    none?: IncidenteAsignadoWhereInput
+  }
+
+  export type IncidenteAsignadoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type BotonPanicoOrderByRelevanceInput = {
     fields: BotonPanicoOrderByRelevanceFieldEnum | BotonPanicoOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -17372,21 +17526,11 @@ export namespace Prisma {
     none?: ReporteIncidenteWhereInput
   }
 
-  export type IncidenteAsignadoListRelationFilter = {
-    every?: IncidenteAsignadoWhereInput
-    some?: IncidenteAsignadoWhereInput
-    none?: IncidenteAsignadoWhereInput
-  }
-
   export type UbicacionSupervisorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type ReporteIncidenteOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type IncidenteAsignadoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17510,42 +17654,62 @@ export namespace Prisma {
     userRoleId?: SortOrder
   }
 
-  export type ReporteIncidenteScalarRelationFilter = {
-    is?: ReporteIncidenteWhereInput
-    isNot?: ReporteIncidenteWhereInput
+  export type BotonPanicoScalarRelationFilter = {
+    is?: BotonPanicoWhereInput
+    isNot?: BotonPanicoWhereInput
+  }
+
+  export type ReporteIncidenteNullableScalarRelationFilter = {
+    is?: ReporteIncidenteWhereInput | null
+    isNot?: ReporteIncidenteWhereInput | null
   }
 
   export type IncidenteAsignadoCountOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
     fechaAsignacion?: SortOrder
-    reporteIncidenteId?: SortOrder
+    panicId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type IncidenteAsignadoAvgOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
-    reporteIncidenteId?: SortOrder
+    panicId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type IncidenteAsignadoMaxOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
     fechaAsignacion?: SortOrder
-    reporteIncidenteId?: SortOrder
+    panicId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type IncidenteAsignadoMinOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
     fechaAsignacion?: SortOrder
-    reporteIncidenteId?: SortOrder
+    panicId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type IncidenteAsignadoSumOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
-    reporteIncidenteId?: SortOrder
+    panicId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
+  }
+
+  export type IncidenteAsignadoScalarRelationFilter = {
+    is?: IncidenteAsignadoWhereInput
+    isNot?: IncidenteAsignadoWhereInput
   }
 
   export type FotoIncidenteListRelationFilter = {
@@ -17567,6 +17731,7 @@ export namespace Prisma {
   export type ReporteIncidenteCountOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
@@ -17577,11 +17742,13 @@ export namespace Prisma {
   export type ReporteIncidenteAvgOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    incidenteAsignadoId?: SortOrder
   }
 
   export type ReporteIncidenteMaxOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
@@ -17592,6 +17759,7 @@ export namespace Prisma {
   export type ReporteIncidenteMinOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
@@ -17602,6 +17770,12 @@ export namespace Prisma {
   export type ReporteIncidenteSumOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    incidenteAsignadoId?: SortOrder
+  }
+
+  export type ReporteIncidenteScalarRelationFilter = {
+    is?: ReporteIncidenteWhereInput
+    isNot?: ReporteIncidenteWhereInput
   }
 
   export type FotoIncidenteOrderByRelevanceInput = {
@@ -18179,6 +18353,20 @@ export namespace Prisma {
     connect?: OperadorWhereUniqueInput
   }
 
+  export type IncidenteAsignadoCreateNestedManyWithoutPanicInput = {
+    create?: XOR<IncidenteAsignadoCreateWithoutPanicInput, IncidenteAsignadoUncheckedCreateWithoutPanicInput> | IncidenteAsignadoCreateWithoutPanicInput[] | IncidenteAsignadoUncheckedCreateWithoutPanicInput[]
+    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutPanicInput | IncidenteAsignadoCreateOrConnectWithoutPanicInput[]
+    createMany?: IncidenteAsignadoCreateManyPanicInputEnvelope
+    connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+  }
+
+  export type IncidenteAsignadoUncheckedCreateNestedManyWithoutPanicInput = {
+    create?: XOR<IncidenteAsignadoCreateWithoutPanicInput, IncidenteAsignadoUncheckedCreateWithoutPanicInput> | IncidenteAsignadoCreateWithoutPanicInput[] | IncidenteAsignadoUncheckedCreateWithoutPanicInput[]
+    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutPanicInput | IncidenteAsignadoCreateOrConnectWithoutPanicInput[]
+    createMany?: IncidenteAsignadoCreateManyPanicInputEnvelope
+    connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -18201,6 +18389,34 @@ export namespace Prisma {
     upsert?: OperadorUpsertWithoutBotonesPanicoInput
     connect?: OperadorWhereUniqueInput
     update?: XOR<XOR<OperadorUpdateToOneWithWhereWithoutBotonesPanicoInput, OperadorUpdateWithoutBotonesPanicoInput>, OperadorUncheckedUpdateWithoutBotonesPanicoInput>
+  }
+
+  export type IncidenteAsignadoUpdateManyWithoutPanicNestedInput = {
+    create?: XOR<IncidenteAsignadoCreateWithoutPanicInput, IncidenteAsignadoUncheckedCreateWithoutPanicInput> | IncidenteAsignadoCreateWithoutPanicInput[] | IncidenteAsignadoUncheckedCreateWithoutPanicInput[]
+    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutPanicInput | IncidenteAsignadoCreateOrConnectWithoutPanicInput[]
+    upsert?: IncidenteAsignadoUpsertWithWhereUniqueWithoutPanicInput | IncidenteAsignadoUpsertWithWhereUniqueWithoutPanicInput[]
+    createMany?: IncidenteAsignadoCreateManyPanicInputEnvelope
+    set?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+    disconnect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+    delete?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+    connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+    update?: IncidenteAsignadoUpdateWithWhereUniqueWithoutPanicInput | IncidenteAsignadoUpdateWithWhereUniqueWithoutPanicInput[]
+    updateMany?: IncidenteAsignadoUpdateManyWithWhereWithoutPanicInput | IncidenteAsignadoUpdateManyWithWhereWithoutPanicInput[]
+    deleteMany?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
+  }
+
+  export type IncidenteAsignadoUncheckedUpdateManyWithoutPanicNestedInput = {
+    create?: XOR<IncidenteAsignadoCreateWithoutPanicInput, IncidenteAsignadoUncheckedCreateWithoutPanicInput> | IncidenteAsignadoCreateWithoutPanicInput[] | IncidenteAsignadoUncheckedCreateWithoutPanicInput[]
+    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutPanicInput | IncidenteAsignadoCreateOrConnectWithoutPanicInput[]
+    upsert?: IncidenteAsignadoUpsertWithWhereUniqueWithoutPanicInput | IncidenteAsignadoUpsertWithWhereUniqueWithoutPanicInput[]
+    createMany?: IncidenteAsignadoCreateManyPanicInputEnvelope
+    set?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+    disconnect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+    delete?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+    connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+    update?: IncidenteAsignadoUpdateWithWhereUniqueWithoutPanicInput | IncidenteAsignadoUpdateWithWhereUniqueWithoutPanicInput[]
+    updateMany?: IncidenteAsignadoUpdateManyWithWhereWithoutPanicInput | IncidenteAsignadoUpdateManyWithWhereWithoutPanicInput[]
+    deleteMany?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
   }
 
   export type UserRoleCreateNestedOneWithoutSupervisorInput = {
@@ -18385,7 +18601,19 @@ export namespace Prisma {
     connect?: SupervisorWhereUniqueInput
   }
 
+  export type BotonPanicoCreateNestedOneWithoutIncidenteAsignadoInput = {
+    create?: XOR<BotonPanicoCreateWithoutIncidenteAsignadoInput, BotonPanicoUncheckedCreateWithoutIncidenteAsignadoInput>
+    connectOrCreate?: BotonPanicoCreateOrConnectWithoutIncidenteAsignadoInput
+    connect?: BotonPanicoWhereUniqueInput
+  }
+
   export type ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput = {
+    create?: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
+    connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutIncidenteAsignadoInput
+    connect?: ReporteIncidenteWhereUniqueInput
+  }
+
+  export type ReporteIncidenteUncheckedCreateNestedOneWithoutIncidenteAsignadoInput = {
     create?: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
     connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutIncidenteAsignadoInput
     connect?: ReporteIncidenteWhereUniqueInput
@@ -18399,12 +18627,44 @@ export namespace Prisma {
     update?: XOR<XOR<SupervisorUpdateToOneWithWhereWithoutAsignacionesInput, SupervisorUpdateWithoutAsignacionesInput>, SupervisorUncheckedUpdateWithoutAsignacionesInput>
   }
 
-  export type ReporteIncidenteUpdateOneRequiredWithoutIncidenteAsignadoNestedInput = {
+  export type BotonPanicoUpdateOneRequiredWithoutIncidenteAsignadoNestedInput = {
+    create?: XOR<BotonPanicoCreateWithoutIncidenteAsignadoInput, BotonPanicoUncheckedCreateWithoutIncidenteAsignadoInput>
+    connectOrCreate?: BotonPanicoCreateOrConnectWithoutIncidenteAsignadoInput
+    upsert?: BotonPanicoUpsertWithoutIncidenteAsignadoInput
+    connect?: BotonPanicoWhereUniqueInput
+    update?: XOR<XOR<BotonPanicoUpdateToOneWithWhereWithoutIncidenteAsignadoInput, BotonPanicoUpdateWithoutIncidenteAsignadoInput>, BotonPanicoUncheckedUpdateWithoutIncidenteAsignadoInput>
+  }
+
+  export type ReporteIncidenteUpdateOneWithoutIncidenteAsignadoNestedInput = {
     create?: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
     connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutIncidenteAsignadoInput
     upsert?: ReporteIncidenteUpsertWithoutIncidenteAsignadoInput
+    disconnect?: ReporteIncidenteWhereInput | boolean
+    delete?: ReporteIncidenteWhereInput | boolean
     connect?: ReporteIncidenteWhereUniqueInput
     update?: XOR<XOR<ReporteIncidenteUpdateToOneWithWhereWithoutIncidenteAsignadoInput, ReporteIncidenteUpdateWithoutIncidenteAsignadoInput>, ReporteIncidenteUncheckedUpdateWithoutIncidenteAsignadoInput>
+  }
+
+  export type ReporteIncidenteUncheckedUpdateOneWithoutIncidenteAsignadoNestedInput = {
+    create?: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
+    connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutIncidenteAsignadoInput
+    upsert?: ReporteIncidenteUpsertWithoutIncidenteAsignadoInput
+    disconnect?: ReporteIncidenteWhereInput | boolean
+    delete?: ReporteIncidenteWhereInput | boolean
+    connect?: ReporteIncidenteWhereUniqueInput
+    update?: XOR<XOR<ReporteIncidenteUpdateToOneWithWhereWithoutIncidenteAsignadoInput, ReporteIncidenteUpdateWithoutIncidenteAsignadoInput>, ReporteIncidenteUncheckedUpdateWithoutIncidenteAsignadoInput>
+  }
+
+  export type SupervisorCreateNestedOneWithoutReportesInput = {
+    create?: XOR<SupervisorCreateWithoutReportesInput, SupervisorUncheckedCreateWithoutReportesInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutReportesInput
+    connect?: SupervisorWhereUniqueInput
+  }
+
+  export type IncidenteAsignadoCreateNestedOneWithoutReporteInput = {
+    create?: XOR<IncidenteAsignadoCreateWithoutReporteInput, IncidenteAsignadoUncheckedCreateWithoutReporteInput>
+    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutReporteInput
+    connect?: IncidenteAsignadoWhereUniqueInput
   }
 
   export type FotoIncidenteCreateNestedManyWithoutReporteInput = {
@@ -18414,19 +18674,6 @@ export namespace Prisma {
     connect?: FotoIncidenteWhereUniqueInput | FotoIncidenteWhereUniqueInput[]
   }
 
-  export type SupervisorCreateNestedOneWithoutReportesInput = {
-    create?: XOR<SupervisorCreateWithoutReportesInput, SupervisorUncheckedCreateWithoutReportesInput>
-    connectOrCreate?: SupervisorCreateOrConnectWithoutReportesInput
-    connect?: SupervisorWhereUniqueInput
-  }
-
-  export type IncidenteAsignadoCreateNestedManyWithoutIncidenteInput = {
-    create?: XOR<IncidenteAsignadoCreateWithoutIncidenteInput, IncidenteAsignadoUncheckedCreateWithoutIncidenteInput> | IncidenteAsignadoCreateWithoutIncidenteInput[] | IncidenteAsignadoUncheckedCreateWithoutIncidenteInput[]
-    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutIncidenteInput | IncidenteAsignadoCreateOrConnectWithoutIncidenteInput[]
-    createMany?: IncidenteAsignadoCreateManyIncidenteInputEnvelope
-    connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-  }
-
   export type FotoIncidenteUncheckedCreateNestedManyWithoutReporteInput = {
     create?: XOR<FotoIncidenteCreateWithoutReporteInput, FotoIncidenteUncheckedCreateWithoutReporteInput> | FotoIncidenteCreateWithoutReporteInput[] | FotoIncidenteUncheckedCreateWithoutReporteInput[]
     connectOrCreate?: FotoIncidenteCreateOrConnectWithoutReporteInput | FotoIncidenteCreateOrConnectWithoutReporteInput[]
@@ -18434,11 +18681,20 @@ export namespace Prisma {
     connect?: FotoIncidenteWhereUniqueInput | FotoIncidenteWhereUniqueInput[]
   }
 
-  export type IncidenteAsignadoUncheckedCreateNestedManyWithoutIncidenteInput = {
-    create?: XOR<IncidenteAsignadoCreateWithoutIncidenteInput, IncidenteAsignadoUncheckedCreateWithoutIncidenteInput> | IncidenteAsignadoCreateWithoutIncidenteInput[] | IncidenteAsignadoUncheckedCreateWithoutIncidenteInput[]
-    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutIncidenteInput | IncidenteAsignadoCreateOrConnectWithoutIncidenteInput[]
-    createMany?: IncidenteAsignadoCreateManyIncidenteInputEnvelope
-    connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+  export type SupervisorUpdateOneRequiredWithoutReportesNestedInput = {
+    create?: XOR<SupervisorCreateWithoutReportesInput, SupervisorUncheckedCreateWithoutReportesInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutReportesInput
+    upsert?: SupervisorUpsertWithoutReportesInput
+    connect?: SupervisorWhereUniqueInput
+    update?: XOR<XOR<SupervisorUpdateToOneWithWhereWithoutReportesInput, SupervisorUpdateWithoutReportesInput>, SupervisorUncheckedUpdateWithoutReportesInput>
+  }
+
+  export type IncidenteAsignadoUpdateOneRequiredWithoutReporteNestedInput = {
+    create?: XOR<IncidenteAsignadoCreateWithoutReporteInput, IncidenteAsignadoUncheckedCreateWithoutReporteInput>
+    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutReporteInput
+    upsert?: IncidenteAsignadoUpsertWithoutReporteInput
+    connect?: IncidenteAsignadoWhereUniqueInput
+    update?: XOR<XOR<IncidenteAsignadoUpdateToOneWithWhereWithoutReporteInput, IncidenteAsignadoUpdateWithoutReporteInput>, IncidenteAsignadoUncheckedUpdateWithoutReporteInput>
   }
 
   export type FotoIncidenteUpdateManyWithoutReporteNestedInput = {
@@ -18455,28 +18711,6 @@ export namespace Prisma {
     deleteMany?: FotoIncidenteScalarWhereInput | FotoIncidenteScalarWhereInput[]
   }
 
-  export type SupervisorUpdateOneRequiredWithoutReportesNestedInput = {
-    create?: XOR<SupervisorCreateWithoutReportesInput, SupervisorUncheckedCreateWithoutReportesInput>
-    connectOrCreate?: SupervisorCreateOrConnectWithoutReportesInput
-    upsert?: SupervisorUpsertWithoutReportesInput
-    connect?: SupervisorWhereUniqueInput
-    update?: XOR<XOR<SupervisorUpdateToOneWithWhereWithoutReportesInput, SupervisorUpdateWithoutReportesInput>, SupervisorUncheckedUpdateWithoutReportesInput>
-  }
-
-  export type IncidenteAsignadoUpdateManyWithoutIncidenteNestedInput = {
-    create?: XOR<IncidenteAsignadoCreateWithoutIncidenteInput, IncidenteAsignadoUncheckedCreateWithoutIncidenteInput> | IncidenteAsignadoCreateWithoutIncidenteInput[] | IncidenteAsignadoUncheckedCreateWithoutIncidenteInput[]
-    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutIncidenteInput | IncidenteAsignadoCreateOrConnectWithoutIncidenteInput[]
-    upsert?: IncidenteAsignadoUpsertWithWhereUniqueWithoutIncidenteInput | IncidenteAsignadoUpsertWithWhereUniqueWithoutIncidenteInput[]
-    createMany?: IncidenteAsignadoCreateManyIncidenteInputEnvelope
-    set?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-    disconnect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-    delete?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-    connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-    update?: IncidenteAsignadoUpdateWithWhereUniqueWithoutIncidenteInput | IncidenteAsignadoUpdateWithWhereUniqueWithoutIncidenteInput[]
-    updateMany?: IncidenteAsignadoUpdateManyWithWhereWithoutIncidenteInput | IncidenteAsignadoUpdateManyWithWhereWithoutIncidenteInput[]
-    deleteMany?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
-  }
-
   export type FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput = {
     create?: XOR<FotoIncidenteCreateWithoutReporteInput, FotoIncidenteUncheckedCreateWithoutReporteInput> | FotoIncidenteCreateWithoutReporteInput[] | FotoIncidenteUncheckedCreateWithoutReporteInput[]
     connectOrCreate?: FotoIncidenteCreateOrConnectWithoutReporteInput | FotoIncidenteCreateOrConnectWithoutReporteInput[]
@@ -18489,20 +18723,6 @@ export namespace Prisma {
     update?: FotoIncidenteUpdateWithWhereUniqueWithoutReporteInput | FotoIncidenteUpdateWithWhereUniqueWithoutReporteInput[]
     updateMany?: FotoIncidenteUpdateManyWithWhereWithoutReporteInput | FotoIncidenteUpdateManyWithWhereWithoutReporteInput[]
     deleteMany?: FotoIncidenteScalarWhereInput | FotoIncidenteScalarWhereInput[]
-  }
-
-  export type IncidenteAsignadoUncheckedUpdateManyWithoutIncidenteNestedInput = {
-    create?: XOR<IncidenteAsignadoCreateWithoutIncidenteInput, IncidenteAsignadoUncheckedCreateWithoutIncidenteInput> | IncidenteAsignadoCreateWithoutIncidenteInput[] | IncidenteAsignadoUncheckedCreateWithoutIncidenteInput[]
-    connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutIncidenteInput | IncidenteAsignadoCreateOrConnectWithoutIncidenteInput[]
-    upsert?: IncidenteAsignadoUpsertWithWhereUniqueWithoutIncidenteInput | IncidenteAsignadoUpsertWithWhereUniqueWithoutIncidenteInput[]
-    createMany?: IncidenteAsignadoCreateManyIncidenteInputEnvelope
-    set?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-    disconnect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-    delete?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-    connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
-    update?: IncidenteAsignadoUpdateWithWhereUniqueWithoutIncidenteInput | IncidenteAsignadoUpdateWithWhereUniqueWithoutIncidenteInput[]
-    updateMany?: IncidenteAsignadoUpdateManyWithWhereWithoutIncidenteInput | IncidenteAsignadoUpdateManyWithWhereWithoutIncidenteInput[]
-    deleteMany?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
   }
 
   export type ReporteIncidenteCreateNestedOneWithoutFotosInput = {
@@ -19175,6 +19395,7 @@ export namespace Prisma {
     atendido?: boolean
     latitud?: number | null
     longitud?: number | null
+    IncidenteAsignado?: IncidenteAsignadoCreateNestedManyWithoutPanicInput
   }
 
   export type BotonPanicoUncheckedCreateWithoutOperadorInput = {
@@ -19184,6 +19405,7 @@ export namespace Prisma {
     atendido?: boolean
     latitud?: number | null
     longitud?: number | null
+    IncidenteAsignado?: IncidenteAsignadoUncheckedCreateNestedManyWithoutPanicInput
   }
 
   export type BotonPanicoCreateOrConnectWithoutOperadorInput = {
@@ -19407,6 +19629,33 @@ export namespace Prisma {
     create: XOR<OperadorCreateWithoutBotonesPanicoInput, OperadorUncheckedCreateWithoutBotonesPanicoInput>
   }
 
+  export type IncidenteAsignadoCreateWithoutPanicInput = {
+    fechaAsignacion?: Date | string
+    latitud: number
+    longitud: number
+    supervisor: SupervisorCreateNestedOneWithoutAsignacionesInput
+    reporte?: ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput
+  }
+
+  export type IncidenteAsignadoUncheckedCreateWithoutPanicInput = {
+    id?: number
+    supervisorId: number
+    fechaAsignacion?: Date | string
+    latitud: number
+    longitud: number
+    reporte?: ReporteIncidenteUncheckedCreateNestedOneWithoutIncidenteAsignadoInput
+  }
+
+  export type IncidenteAsignadoCreateOrConnectWithoutPanicInput = {
+    where: IncidenteAsignadoWhereUniqueInput
+    create: XOR<IncidenteAsignadoCreateWithoutPanicInput, IncidenteAsignadoUncheckedCreateWithoutPanicInput>
+  }
+
+  export type IncidenteAsignadoCreateManyPanicInputEnvelope = {
+    data: IncidenteAsignadoCreateManyPanicInput | IncidenteAsignadoCreateManyPanicInput[]
+    skipDuplicates?: boolean
+  }
+
   export type OperadorUpsertWithoutBotonesPanicoInput = {
     update: XOR<OperadorUpdateWithoutBotonesPanicoInput, OperadorUncheckedUpdateWithoutBotonesPanicoInput>
     create: XOR<OperadorCreateWithoutBotonesPanicoInput, OperadorUncheckedCreateWithoutBotonesPanicoInput>
@@ -19433,6 +19682,34 @@ export namespace Prisma {
     rutaAsignada?: NullableStringFieldUpdateOperationsInput | string | null
     RegistroSalidaUnidad?: RegistroSalidaUnidadUncheckedUpdateManyWithoutOperadorNestedInput
     AsignacionUnidad?: AsignacionUnidadUncheckedUpdateManyWithoutOperadorNestedInput
+  }
+
+  export type IncidenteAsignadoUpsertWithWhereUniqueWithoutPanicInput = {
+    where: IncidenteAsignadoWhereUniqueInput
+    update: XOR<IncidenteAsignadoUpdateWithoutPanicInput, IncidenteAsignadoUncheckedUpdateWithoutPanicInput>
+    create: XOR<IncidenteAsignadoCreateWithoutPanicInput, IncidenteAsignadoUncheckedCreateWithoutPanicInput>
+  }
+
+  export type IncidenteAsignadoUpdateWithWhereUniqueWithoutPanicInput = {
+    where: IncidenteAsignadoWhereUniqueInput
+    data: XOR<IncidenteAsignadoUpdateWithoutPanicInput, IncidenteAsignadoUncheckedUpdateWithoutPanicInput>
+  }
+
+  export type IncidenteAsignadoUpdateManyWithWhereWithoutPanicInput = {
+    where: IncidenteAsignadoScalarWhereInput
+    data: XOR<IncidenteAsignadoUpdateManyMutationInput, IncidenteAsignadoUncheckedUpdateManyWithoutPanicInput>
+  }
+
+  export type IncidenteAsignadoScalarWhereInput = {
+    AND?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
+    OR?: IncidenteAsignadoScalarWhereInput[]
+    NOT?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
+    id?: IntFilter<"IncidenteAsignado"> | number
+    supervisorId?: IntFilter<"IncidenteAsignado"> | number
+    fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
+    panicId?: IntFilter<"IncidenteAsignado"> | number
+    latitud?: FloatFilter<"IncidenteAsignado"> | number
+    longitud?: FloatFilter<"IncidenteAsignado"> | number
   }
 
   export type UserRoleCreateWithoutSupervisorInput = {
@@ -19500,19 +19777,19 @@ export namespace Prisma {
     ambulancia?: boolean
     policia?: boolean
     heridos: boolean
+    incidenteAsignado: IncidenteAsignadoCreateNestedOneWithoutReporteInput
     fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
-    IncidenteAsignado?: IncidenteAsignadoCreateNestedManyWithoutIncidenteInput
   }
 
   export type ReporteIncidenteUncheckedCreateWithoutSupervisorInput = {
     id?: number
+    incidenteAsignadoId: number
     fecha?: Date | string
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
     heridos: boolean
     fotos?: FotoIncidenteUncheckedCreateNestedManyWithoutReporteInput
-    IncidenteAsignado?: IncidenteAsignadoUncheckedCreateNestedManyWithoutIncidenteInput
   }
 
   export type ReporteIncidenteCreateOrConnectWithoutSupervisorInput = {
@@ -19527,13 +19804,19 @@ export namespace Prisma {
 
   export type IncidenteAsignadoCreateWithoutSupervisorInput = {
     fechaAsignacion?: Date | string
-    incidente: ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput
+    latitud: number
+    longitud: number
+    panic: BotonPanicoCreateNestedOneWithoutIncidenteAsignadoInput
+    reporte?: ReporteIncidenteCreateNestedOneWithoutIncidenteAsignadoInput
   }
 
   export type IncidenteAsignadoUncheckedCreateWithoutSupervisorInput = {
     id?: number
     fechaAsignacion?: Date | string
-    reporteIncidenteId: number
+    panicId: number
+    latitud: number
+    longitud: number
+    reporte?: ReporteIncidenteUncheckedCreateNestedOneWithoutIncidenteAsignadoInput
   }
 
   export type IncidenteAsignadoCreateOrConnectWithoutSupervisorInput = {
@@ -19637,6 +19920,7 @@ export namespace Prisma {
     NOT?: ReporteIncidenteScalarWhereInput | ReporteIncidenteScalarWhereInput[]
     id?: IntFilter<"ReporteIncidente"> | number
     supervisorId?: IntFilter<"ReporteIncidente"> | number
+    incidenteAsignadoId?: IntFilter<"ReporteIncidente"> | number
     fecha?: DateTimeFilter<"ReporteIncidente"> | Date | string
     descripcion?: StringFilter<"ReporteIncidente"> | string
     ambulancia?: BoolFilter<"ReporteIncidente"> | boolean
@@ -19658,16 +19942,6 @@ export namespace Prisma {
   export type IncidenteAsignadoUpdateManyWithWhereWithoutSupervisorInput = {
     where: IncidenteAsignadoScalarWhereInput
     data: XOR<IncidenteAsignadoUpdateManyMutationInput, IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorInput>
-  }
-
-  export type IncidenteAsignadoScalarWhereInput = {
-    AND?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
-    OR?: IncidenteAsignadoScalarWhereInput[]
-    NOT?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
-    id?: IntFilter<"IncidenteAsignado"> | number
-    supervisorId?: IntFilter<"IncidenteAsignado"> | number
-    fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
-    reporteIncidenteId?: IntFilter<"IncidenteAsignado"> | number
   }
 
   export type SupervisorCreateWithoutUbicacionesInput = {
@@ -19808,14 +20082,38 @@ export namespace Prisma {
     create: XOR<SupervisorCreateWithoutAsignacionesInput, SupervisorUncheckedCreateWithoutAsignacionesInput>
   }
 
+  export type BotonPanicoCreateWithoutIncidenteAsignadoInput = {
+    timestamp?: Date | string
+    motivo?: string | null
+    atendido?: boolean
+    latitud?: number | null
+    longitud?: number | null
+    operador: OperadorCreateNestedOneWithoutBotonesPanicoInput
+  }
+
+  export type BotonPanicoUncheckedCreateWithoutIncidenteAsignadoInput = {
+    id?: number
+    operadorId: number
+    timestamp?: Date | string
+    motivo?: string | null
+    atendido?: boolean
+    latitud?: number | null
+    longitud?: number | null
+  }
+
+  export type BotonPanicoCreateOrConnectWithoutIncidenteAsignadoInput = {
+    where: BotonPanicoWhereUniqueInput
+    create: XOR<BotonPanicoCreateWithoutIncidenteAsignadoInput, BotonPanicoUncheckedCreateWithoutIncidenteAsignadoInput>
+  }
+
   export type ReporteIncidenteCreateWithoutIncidenteAsignadoInput = {
     fecha?: Date | string
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
     heridos: boolean
-    fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
     supervisor: SupervisorCreateNestedOneWithoutReportesInput
+    fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput = {
@@ -19858,6 +20156,36 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
+  export type BotonPanicoUpsertWithoutIncidenteAsignadoInput = {
+    update: XOR<BotonPanicoUpdateWithoutIncidenteAsignadoInput, BotonPanicoUncheckedUpdateWithoutIncidenteAsignadoInput>
+    create: XOR<BotonPanicoCreateWithoutIncidenteAsignadoInput, BotonPanicoUncheckedCreateWithoutIncidenteAsignadoInput>
+    where?: BotonPanicoWhereInput
+  }
+
+  export type BotonPanicoUpdateToOneWithWhereWithoutIncidenteAsignadoInput = {
+    where?: BotonPanicoWhereInput
+    data: XOR<BotonPanicoUpdateWithoutIncidenteAsignadoInput, BotonPanicoUncheckedUpdateWithoutIncidenteAsignadoInput>
+  }
+
+  export type BotonPanicoUpdateWithoutIncidenteAsignadoInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
+    atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    operador?: OperadorUpdateOneRequiredWithoutBotonesPanicoNestedInput
+  }
+
+  export type BotonPanicoUncheckedUpdateWithoutIncidenteAsignadoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    operadorId?: IntFieldUpdateOperationsInput | number
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
+    atendido?: BoolFieldUpdateOperationsInput | boolean
+    latitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
   export type ReporteIncidenteUpsertWithoutIncidenteAsignadoInput = {
     update: XOR<ReporteIncidenteUpdateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedUpdateWithoutIncidenteAsignadoInput>
     create: XOR<ReporteIncidenteCreateWithoutIncidenteAsignadoInput, ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput>
@@ -19875,8 +20203,8 @@ export namespace Prisma {
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
-    fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
     supervisor?: SupervisorUpdateOneRequiredWithoutReportesNestedInput
+    fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateWithoutIncidenteAsignadoInput = {
@@ -19888,6 +20216,46 @@ export namespace Prisma {
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
     fotos?: FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput
+  }
+
+  export type SupervisorCreateWithoutReportesInput = {
+    user: UserRoleCreateNestedOneWithoutSupervisorInput
+    ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorUncheckedCreateWithoutReportesInput = {
+    id?: number
+    userRoleId: number
+    ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorCreateOrConnectWithoutReportesInput = {
+    where: SupervisorWhereUniqueInput
+    create: XOR<SupervisorCreateWithoutReportesInput, SupervisorUncheckedCreateWithoutReportesInput>
+  }
+
+  export type IncidenteAsignadoCreateWithoutReporteInput = {
+    fechaAsignacion?: Date | string
+    latitud: number
+    longitud: number
+    supervisor: SupervisorCreateNestedOneWithoutAsignacionesInput
+    panic: BotonPanicoCreateNestedOneWithoutIncidenteAsignadoInput
+  }
+
+  export type IncidenteAsignadoUncheckedCreateWithoutReporteInput = {
+    id?: number
+    supervisorId: number
+    fechaAsignacion?: Date | string
+    panicId: number
+    latitud: number
+    longitud: number
+  }
+
+  export type IncidenteAsignadoCreateOrConnectWithoutReporteInput = {
+    where: IncidenteAsignadoWhereUniqueInput
+    create: XOR<IncidenteAsignadoCreateWithoutReporteInput, IncidenteAsignadoUncheckedCreateWithoutReporteInput>
   }
 
   export type FotoIncidenteCreateWithoutReporteInput = {
@@ -19911,43 +20279,56 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type SupervisorCreateWithoutReportesInput = {
-    user: UserRoleCreateNestedOneWithoutSupervisorInput
-    ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
-    asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
-  }
-
-  export type SupervisorUncheckedCreateWithoutReportesInput = {
-    id?: number
-    userRoleId: number
-    ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
-    asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
-  }
-
-  export type SupervisorCreateOrConnectWithoutReportesInput = {
-    where: SupervisorWhereUniqueInput
+  export type SupervisorUpsertWithoutReportesInput = {
+    update: XOR<SupervisorUpdateWithoutReportesInput, SupervisorUncheckedUpdateWithoutReportesInput>
     create: XOR<SupervisorCreateWithoutReportesInput, SupervisorUncheckedCreateWithoutReportesInput>
+    where?: SupervisorWhereInput
   }
 
-  export type IncidenteAsignadoCreateWithoutIncidenteInput = {
-    fechaAsignacion?: Date | string
-    supervisor: SupervisorCreateNestedOneWithoutAsignacionesInput
+  export type SupervisorUpdateToOneWithWhereWithoutReportesInput = {
+    where?: SupervisorWhereInput
+    data: XOR<SupervisorUpdateWithoutReportesInput, SupervisorUncheckedUpdateWithoutReportesInput>
   }
 
-  export type IncidenteAsignadoUncheckedCreateWithoutIncidenteInput = {
-    id?: number
-    supervisorId: number
-    fechaAsignacion?: Date | string
+  export type SupervisorUpdateWithoutReportesInput = {
+    user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
+    ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
   }
 
-  export type IncidenteAsignadoCreateOrConnectWithoutIncidenteInput = {
-    where: IncidenteAsignadoWhereUniqueInput
-    create: XOR<IncidenteAsignadoCreateWithoutIncidenteInput, IncidenteAsignadoUncheckedCreateWithoutIncidenteInput>
+  export type SupervisorUncheckedUpdateWithoutReportesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
-  export type IncidenteAsignadoCreateManyIncidenteInputEnvelope = {
-    data: IncidenteAsignadoCreateManyIncidenteInput | IncidenteAsignadoCreateManyIncidenteInput[]
-    skipDuplicates?: boolean
+  export type IncidenteAsignadoUpsertWithoutReporteInput = {
+    update: XOR<IncidenteAsignadoUpdateWithoutReporteInput, IncidenteAsignadoUncheckedUpdateWithoutReporteInput>
+    create: XOR<IncidenteAsignadoCreateWithoutReporteInput, IncidenteAsignadoUncheckedCreateWithoutReporteInput>
+    where?: IncidenteAsignadoWhereInput
+  }
+
+  export type IncidenteAsignadoUpdateToOneWithWhereWithoutReporteInput = {
+    where?: IncidenteAsignadoWhereInput
+    data: XOR<IncidenteAsignadoUpdateWithoutReporteInput, IncidenteAsignadoUncheckedUpdateWithoutReporteInput>
+  }
+
+  export type IncidenteAsignadoUpdateWithoutReporteInput = {
+    fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    supervisor?: SupervisorUpdateOneRequiredWithoutAsignacionesNestedInput
+    panic?: BotonPanicoUpdateOneRequiredWithoutIncidenteAsignadoNestedInput
+  }
+
+  export type IncidenteAsignadoUncheckedUpdateWithoutReporteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    panicId?: IntFieldUpdateOperationsInput | number
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
   }
 
   export type FotoIncidenteUpsertWithWhereUniqueWithoutReporteInput = {
@@ -19976,46 +20357,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"FotoIncidente"> | Date | string
   }
 
-  export type SupervisorUpsertWithoutReportesInput = {
-    update: XOR<SupervisorUpdateWithoutReportesInput, SupervisorUncheckedUpdateWithoutReportesInput>
-    create: XOR<SupervisorCreateWithoutReportesInput, SupervisorUncheckedCreateWithoutReportesInput>
-    where?: SupervisorWhereInput
-  }
-
-  export type SupervisorUpdateToOneWithWhereWithoutReportesInput = {
-    where?: SupervisorWhereInput
-    data: XOR<SupervisorUpdateWithoutReportesInput, SupervisorUncheckedUpdateWithoutReportesInput>
-  }
-
-  export type SupervisorUpdateWithoutReportesInput = {
-    user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
-    ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
-    asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
-  }
-
-  export type SupervisorUncheckedUpdateWithoutReportesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    userRoleId?: IntFieldUpdateOperationsInput | number
-    ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
-    asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
-  }
-
-  export type IncidenteAsignadoUpsertWithWhereUniqueWithoutIncidenteInput = {
-    where: IncidenteAsignadoWhereUniqueInput
-    update: XOR<IncidenteAsignadoUpdateWithoutIncidenteInput, IncidenteAsignadoUncheckedUpdateWithoutIncidenteInput>
-    create: XOR<IncidenteAsignadoCreateWithoutIncidenteInput, IncidenteAsignadoUncheckedCreateWithoutIncidenteInput>
-  }
-
-  export type IncidenteAsignadoUpdateWithWhereUniqueWithoutIncidenteInput = {
-    where: IncidenteAsignadoWhereUniqueInput
-    data: XOR<IncidenteAsignadoUpdateWithoutIncidenteInput, IncidenteAsignadoUncheckedUpdateWithoutIncidenteInput>
-  }
-
-  export type IncidenteAsignadoUpdateManyWithWhereWithoutIncidenteInput = {
-    where: IncidenteAsignadoScalarWhereInput
-    data: XOR<IncidenteAsignadoUpdateManyMutationInput, IncidenteAsignadoUncheckedUpdateManyWithoutIncidenteInput>
-  }
-
   export type ReporteIncidenteCreateWithoutFotosInput = {
     fecha?: Date | string
     descripcion: string
@@ -20023,18 +20364,18 @@ export namespace Prisma {
     policia?: boolean
     heridos: boolean
     supervisor: SupervisorCreateNestedOneWithoutReportesInput
-    IncidenteAsignado?: IncidenteAsignadoCreateNestedManyWithoutIncidenteInput
+    incidenteAsignado: IncidenteAsignadoCreateNestedOneWithoutReporteInput
   }
 
   export type ReporteIncidenteUncheckedCreateWithoutFotosInput = {
     id?: number
     supervisorId: number
+    incidenteAsignadoId: number
     fecha?: Date | string
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
     heridos: boolean
-    IncidenteAsignado?: IncidenteAsignadoUncheckedCreateNestedManyWithoutIncidenteInput
   }
 
   export type ReporteIncidenteCreateOrConnectWithoutFotosInput = {
@@ -20060,18 +20401,18 @@ export namespace Prisma {
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
     supervisor?: SupervisorUpdateOneRequiredWithoutReportesNestedInput
-    IncidenteAsignado?: IncidenteAsignadoUpdateManyWithoutIncidenteNestedInput
+    incidenteAsignado?: IncidenteAsignadoUpdateOneRequiredWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateWithoutFotosInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
+    incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
-    IncidenteAsignado?: IncidenteAsignadoUncheckedUpdateManyWithoutIncidenteNestedInput
   }
 
   export type UserRoleCreateWithoutPatioInput = {
@@ -20554,6 +20895,7 @@ export namespace Prisma {
     atendido?: BoolFieldUpdateOperationsInput | boolean
     latitud?: NullableFloatFieldUpdateOperationsInput | number | null
     longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    IncidenteAsignado?: IncidenteAsignadoUpdateManyWithoutPanicNestedInput
   }
 
   export type BotonPanicoUncheckedUpdateWithoutOperadorInput = {
@@ -20563,6 +20905,7 @@ export namespace Prisma {
     atendido?: BoolFieldUpdateOperationsInput | boolean
     latitud?: NullableFloatFieldUpdateOperationsInput | number | null
     longitud?: NullableFloatFieldUpdateOperationsInput | number | null
+    IncidenteAsignado?: IncidenteAsignadoUncheckedUpdateManyWithoutPanicNestedInput
   }
 
   export type BotonPanicoUncheckedUpdateManyWithoutOperadorInput = {
@@ -20632,6 +20975,39 @@ export namespace Prisma {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type IncidenteAsignadoCreateManyPanicInput = {
+    id?: number
+    supervisorId: number
+    fechaAsignacion?: Date | string
+    latitud: number
+    longitud: number
+  }
+
+  export type IncidenteAsignadoUpdateWithoutPanicInput = {
+    fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    supervisor?: SupervisorUpdateOneRequiredWithoutAsignacionesNestedInput
+    reporte?: ReporteIncidenteUpdateOneWithoutIncidenteAsignadoNestedInput
+  }
+
+  export type IncidenteAsignadoUncheckedUpdateWithoutPanicInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    reporte?: ReporteIncidenteUncheckedUpdateOneWithoutIncidenteAsignadoNestedInput
+  }
+
+  export type IncidenteAsignadoUncheckedUpdateManyWithoutPanicInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type UbicacionSupervisorCreateManySupervisorInput = {
     id?: number
     timestamp?: Date | string
@@ -20641,6 +21017,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteCreateManySupervisorInput = {
     id?: number
+    incidenteAsignadoId: number
     fecha?: Date | string
     descripcion: string
     ambulancia?: boolean
@@ -20651,7 +21028,9 @@ export namespace Prisma {
   export type IncidenteAsignadoCreateManySupervisorInput = {
     id?: number
     fechaAsignacion?: Date | string
-    reporteIncidenteId: number
+    panicId: number
+    latitud: number
+    longitud: number
   }
 
   export type UbicacionSupervisorUpdateWithoutSupervisorInput = {
@@ -20680,23 +21059,24 @@ export namespace Prisma {
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
+    incidenteAsignado?: IncidenteAsignadoUpdateOneRequiredWithoutReporteNestedInput
     fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
-    IncidenteAsignado?: IncidenteAsignadoUpdateManyWithoutIncidenteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateWithoutSupervisorInput = {
     id?: IntFieldUpdateOperationsInput | number
+    incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
     heridos?: BoolFieldUpdateOperationsInput | boolean
     fotos?: FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput
-    IncidenteAsignado?: IncidenteAsignadoUncheckedUpdateManyWithoutIncidenteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateManyWithoutSupervisorInput = {
     id?: IntFieldUpdateOperationsInput | number
+    incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
@@ -20706,31 +21086,33 @@ export namespace Prisma {
 
   export type IncidenteAsignadoUpdateWithoutSupervisorInput = {
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidente?: ReporteIncidenteUpdateOneRequiredWithoutIncidenteAsignadoNestedInput
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    panic?: BotonPanicoUpdateOneRequiredWithoutIncidenteAsignadoNestedInput
+    reporte?: ReporteIncidenteUpdateOneWithoutIncidenteAsignadoNestedInput
   }
 
   export type IncidenteAsignadoUncheckedUpdateWithoutSupervisorInput = {
     id?: IntFieldUpdateOperationsInput | number
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    reporteIncidenteId?: IntFieldUpdateOperationsInput | number
+    panicId?: IntFieldUpdateOperationsInput | number
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    reporte?: ReporteIncidenteUncheckedUpdateOneWithoutIncidenteAsignadoNestedInput
   }
 
   export type IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorInput = {
     id?: IntFieldUpdateOperationsInput | number
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    reporteIncidenteId?: IntFieldUpdateOperationsInput | number
+    panicId?: IntFieldUpdateOperationsInput | number
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
   }
 
   export type FotoIncidenteCreateManyReporteInput = {
     id?: number
     url: string
     createdAt?: Date | string
-  }
-
-  export type IncidenteAsignadoCreateManyIncidenteInput = {
-    id?: number
-    supervisorId: number
-    fechaAsignacion?: Date | string
   }
 
   export type FotoIncidenteUpdateWithoutReporteInput = {
@@ -20748,23 +21130,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type IncidenteAsignadoUpdateWithoutIncidenteInput = {
-    fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
-    supervisor?: SupervisorUpdateOneRequiredWithoutAsignacionesNestedInput
-  }
-
-  export type IncidenteAsignadoUncheckedUpdateWithoutIncidenteInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    supervisorId?: IntFieldUpdateOperationsInput | number
-    fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type IncidenteAsignadoUncheckedUpdateManyWithoutIncidenteInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    supervisorId?: IntFieldUpdateOperationsInput | number
-    fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RegistroSalidaUnidadCreateManyPatioInput = {

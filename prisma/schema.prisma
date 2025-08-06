@@ -57,7 +57,8 @@ model BotonPanico {
   latitud    Float?
   longitud   Float?
 
-  operador Operador @relation(fields: [operadorId], references: [id])
+  operador          Operador            @relation(fields: [operadorId], references: [id])
+  IncidenteAsignado IncidenteAsignado[]
 }
 
 model Supervisor {
@@ -88,27 +89,33 @@ model Coordinador {
 }
 
 model IncidenteAsignado {
-  id                 Int      @id @default(autoincrement())
-  supervisorId       Int
-  fechaAsignacion    DateTime @default(now())
-  reporteIncidenteId Int
+  id              Int      @id @default(autoincrement())
+  supervisorId    Int
+  fechaAsignacion DateTime @default(now())
 
-  supervisor Supervisor       @relation(fields: [supervisorId], references: [id])
-  incidente  ReporteIncidente @relation(fields: [reporteIncidenteId], references: [id])
+  panicId  Int // FK al botón de pánico
+  latitud  Float // coordenada de la alerta
+  longitud Float
+
+  supervisor Supervisor  @relation(fields: [supervisorId], references: [id])
+  panic      BotonPanico @relation(fields: [panicId], references: [id])
+
+  reporte ReporteIncidente? // back-relation, se rellena cuando el sup. inicia el reporte
 }
 
 model ReporteIncidente {
-  id           Int      @id @default(autoincrement())
-  supervisorId Int
-  fecha        DateTime @default(now())
-  descripcion  String
-  ambulancia   Boolean  @default(false)
-  policia      Boolean  @default(false)
-  heridos      Boolean
+  id                  Int      @id @default(autoincrement())
+  supervisorId        Int
+  incidenteAsignadoId Int      @unique
+  fecha               DateTime @default(now())
+  descripcion         String
+  ambulancia          Boolean  @default(false)
+  policia             Boolean  @default(false)
+  heridos             Boolean
 
+  supervisor        Supervisor        @relation(fields: [supervisorId], references: [id])
+  incidenteAsignado IncidenteAsignado @relation(fields: [incidenteAsignadoId], references: [id])
   fotos             FotoIncidente[]
-  supervisor        Supervisor          @relation(fields: [supervisorId], references: [id])
-  IncidenteAsignado IncidenteAsignado[]
 }
 
 model FotoIncidente {
