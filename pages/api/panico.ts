@@ -70,18 +70,28 @@ export default requireRole(['Operador', 'Coordinador'])(async (
     const panicos = await prisma.botonPanico.findMany({
       where: { atendido: false },
       include: {
-        operador: { select: { unidadAsignada: true } },
+        operador: { 
+          include: {
+          user: true,    // 'user' es tu relación Operador → UserRole
+        },
+         },
       },
       orderBy: { timestamp: 'desc' },
     });
 
     const dto = panicos.map((p) => ({
       id: p.id,
-      motivo: p.motivo,
-      latitud: p.latitud,
-      longitud: p.longitud,
-      timestamp: p.timestamp.toISOString(),
-      unidad: p.operador.unidadAsignada,
+    latitud: p.latitud,
+    longitud: p.longitud,
+    motivo: p.motivo,
+    operador: {
+      id: p.operador.id,
+      nombre: p.operador.user.nombre,
+      apellidoPaterno: p.operador.user.apellidoPaterno,
+      apellidoMaterno: p.operador.user.apellidoMaterno,
+      unidadAsignada: p.operador.unidadAsignada,
+      rutaAsignada: p.operador.rutaAsignada,
+    },
     }));
 
     res.status(200).json(dto);
