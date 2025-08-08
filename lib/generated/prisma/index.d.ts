@@ -9289,6 +9289,7 @@ export namespace Prisma {
     supervisorId: number | null
     incidenteAsignadoId: number | null
     fecha: Date | null
+    estado: string | null
     descripcion: string | null
     ambulancia: boolean | null
     policia: boolean | null
@@ -9300,6 +9301,7 @@ export namespace Prisma {
     supervisorId: number | null
     incidenteAsignadoId: number | null
     fecha: Date | null
+    estado: string | null
     descripcion: string | null
     ambulancia: boolean | null
     policia: boolean | null
@@ -9311,6 +9313,7 @@ export namespace Prisma {
     supervisorId: number
     incidenteAsignadoId: number
     fecha: number
+    estado: number
     descripcion: number
     ambulancia: number
     policia: number
@@ -9336,6 +9339,7 @@ export namespace Prisma {
     supervisorId?: true
     incidenteAsignadoId?: true
     fecha?: true
+    estado?: true
     descripcion?: true
     ambulancia?: true
     policia?: true
@@ -9347,6 +9351,7 @@ export namespace Prisma {
     supervisorId?: true
     incidenteAsignadoId?: true
     fecha?: true
+    estado?: true
     descripcion?: true
     ambulancia?: true
     policia?: true
@@ -9358,6 +9363,7 @@ export namespace Prisma {
     supervisorId?: true
     incidenteAsignadoId?: true
     fecha?: true
+    estado?: true
     descripcion?: true
     ambulancia?: true
     policia?: true
@@ -9456,6 +9462,7 @@ export namespace Prisma {
     supervisorId: number
     incidenteAsignadoId: number
     fecha: Date
+    estado: string | null
     descripcion: string
     ambulancia: boolean
     policia: boolean
@@ -9486,6 +9493,7 @@ export namespace Prisma {
     supervisorId?: boolean
     incidenteAsignadoId?: boolean
     fecha?: boolean
+    estado?: boolean
     descripcion?: boolean
     ambulancia?: boolean
     policia?: boolean
@@ -9503,13 +9511,14 @@ export namespace Prisma {
     supervisorId?: boolean
     incidenteAsignadoId?: boolean
     fecha?: boolean
+    estado?: boolean
     descripcion?: boolean
     ambulancia?: boolean
     policia?: boolean
     heridos?: boolean
   }
 
-  export type ReporteIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "incidenteAsignadoId" | "fecha" | "descripcion" | "ambulancia" | "policia" | "heridos", ExtArgs["result"]["reporteIncidente"]>
+  export type ReporteIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "incidenteAsignadoId" | "fecha" | "estado" | "descripcion" | "ambulancia" | "policia" | "heridos", ExtArgs["result"]["reporteIncidente"]>
   export type ReporteIncidenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
     incidenteAsignado?: boolean | IncidenteAsignadoDefaultArgs<ExtArgs>
@@ -9529,6 +9538,7 @@ export namespace Prisma {
       supervisorId: number
       incidenteAsignadoId: number
       fecha: Date
+      estado: string | null
       descripcion: string
       ambulancia: boolean
       policia: boolean
@@ -9909,6 +9919,7 @@ export namespace Prisma {
     readonly supervisorId: FieldRef<"ReporteIncidente", 'Int'>
     readonly incidenteAsignadoId: FieldRef<"ReporteIncidente", 'Int'>
     readonly fecha: FieldRef<"ReporteIncidente", 'DateTime'>
+    readonly estado: FieldRef<"ReporteIncidente", 'String'>
     readonly descripcion: FieldRef<"ReporteIncidente", 'String'>
     readonly ambulancia: FieldRef<"ReporteIncidente", 'Boolean'>
     readonly policia: FieldRef<"ReporteIncidente", 'Boolean'>
@@ -15326,6 +15337,7 @@ export namespace Prisma {
     supervisorId: 'supervisorId',
     incidenteAsignadoId: 'incidenteAsignadoId',
     fecha: 'fecha',
+    estado: 'estado',
     descripcion: 'descripcion',
     ambulancia: 'ambulancia',
     policia: 'policia',
@@ -15436,6 +15448,7 @@ export namespace Prisma {
 
 
   export const ReporteIncidenteOrderByRelevanceFieldEnum: {
+    estado: 'estado',
     descripcion: 'descripcion'
   };
 
@@ -15972,6 +15985,7 @@ export namespace Prisma {
     supervisorId?: IntFilter<"ReporteIncidente"> | number
     incidenteAsignadoId?: IntFilter<"ReporteIncidente"> | number
     fecha?: DateTimeFilter<"ReporteIncidente"> | Date | string
+    estado?: StringNullableFilter<"ReporteIncidente"> | string | null
     descripcion?: StringFilter<"ReporteIncidente"> | string
     ambulancia?: BoolFilter<"ReporteIncidente"> | boolean
     policia?: BoolFilter<"ReporteIncidente"> | boolean
@@ -15986,6 +16000,7 @@ export namespace Prisma {
     supervisorId?: SortOrder
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
+    estado?: SortOrderInput | SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
     policia?: SortOrder
@@ -16004,6 +16019,7 @@ export namespace Prisma {
     NOT?: ReporteIncidenteWhereInput | ReporteIncidenteWhereInput[]
     supervisorId?: IntFilter<"ReporteIncidente"> | number
     fecha?: DateTimeFilter<"ReporteIncidente"> | Date | string
+    estado?: StringNullableFilter<"ReporteIncidente"> | string | null
     descripcion?: StringFilter<"ReporteIncidente"> | string
     ambulancia?: BoolFilter<"ReporteIncidente"> | boolean
     policia?: BoolFilter<"ReporteIncidente"> | boolean
@@ -16018,6 +16034,7 @@ export namespace Prisma {
     supervisorId?: SortOrder
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
+    estado?: SortOrderInput | SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
     policia?: SortOrder
@@ -16037,6 +16054,7 @@ export namespace Prisma {
     supervisorId?: IntWithAggregatesFilter<"ReporteIncidente"> | number
     incidenteAsignadoId?: IntWithAggregatesFilter<"ReporteIncidente"> | number
     fecha?: DateTimeWithAggregatesFilter<"ReporteIncidente"> | Date | string
+    estado?: StringNullableWithAggregatesFilter<"ReporteIncidente"> | string | null
     descripcion?: StringWithAggregatesFilter<"ReporteIncidente"> | string
     ambulancia?: BoolWithAggregatesFilter<"ReporteIncidente"> | boolean
     policia?: BoolWithAggregatesFilter<"ReporteIncidente"> | boolean
@@ -16769,6 +16787,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteCreateInput = {
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -16783,6 +16802,7 @@ export namespace Prisma {
     supervisorId: number
     incidenteAsignadoId: number
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -16792,6 +16812,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteUpdateInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -16806,6 +16827,7 @@ export namespace Prisma {
     supervisorId?: IntFieldUpdateOperationsInput | number
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -16818,6 +16840,7 @@ export namespace Prisma {
     supervisorId: number
     incidenteAsignadoId: number
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -16826,6 +16849,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteUpdateManyMutationInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -16837,6 +16861,7 @@ export namespace Prisma {
     supervisorId?: IntFieldUpdateOperationsInput | number
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -17733,6 +17758,7 @@ export namespace Prisma {
     supervisorId?: SortOrder
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
+    estado?: SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
     policia?: SortOrder
@@ -17750,6 +17776,7 @@ export namespace Prisma {
     supervisorId?: SortOrder
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
+    estado?: SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
     policia?: SortOrder
@@ -17761,6 +17788,7 @@ export namespace Prisma {
     supervisorId?: SortOrder
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
+    estado?: SortOrder
     descripcion?: SortOrder
     ambulancia?: SortOrder
     policia?: SortOrder
@@ -19773,6 +19801,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteCreateWithoutSupervisorInput = {
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -19785,6 +19814,7 @@ export namespace Prisma {
     id?: number
     incidenteAsignadoId: number
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -19922,6 +19952,7 @@ export namespace Prisma {
     supervisorId?: IntFilter<"ReporteIncidente"> | number
     incidenteAsignadoId?: IntFilter<"ReporteIncidente"> | number
     fecha?: DateTimeFilter<"ReporteIncidente"> | Date | string
+    estado?: StringNullableFilter<"ReporteIncidente"> | string | null
     descripcion?: StringFilter<"ReporteIncidente"> | string
     ambulancia?: BoolFilter<"ReporteIncidente"> | boolean
     policia?: BoolFilter<"ReporteIncidente"> | boolean
@@ -20108,6 +20139,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteCreateWithoutIncidenteAsignadoInput = {
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -20120,6 +20152,7 @@ export namespace Prisma {
     id?: number
     supervisorId: number
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -20199,6 +20232,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteUpdateWithoutIncidenteAsignadoInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -20211,6 +20245,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -20359,6 +20394,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteCreateWithoutFotosInput = {
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -20372,6 +20408,7 @@ export namespace Prisma {
     supervisorId: number
     incidenteAsignadoId: number
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -20396,6 +20433,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteUpdateWithoutFotosInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -20409,6 +20447,7 @@ export namespace Prisma {
     supervisorId?: IntFieldUpdateOperationsInput | number
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -21019,6 +21058,7 @@ export namespace Prisma {
     id?: number
     incidenteAsignadoId: number
     fecha?: Date | string
+    estado?: string | null
     descripcion: string
     ambulancia?: boolean
     policia?: boolean
@@ -21055,6 +21095,7 @@ export namespace Prisma {
 
   export type ReporteIncidenteUpdateWithoutSupervisorInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -21067,6 +21108,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean
@@ -21078,6 +21120,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
     descripcion?: StringFieldUpdateOperationsInput | string
     ambulancia?: BoolFieldUpdateOperationsInput | boolean
     policia?: BoolFieldUpdateOperationsInput | boolean

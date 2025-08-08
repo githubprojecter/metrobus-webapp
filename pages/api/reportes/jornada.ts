@@ -14,6 +14,8 @@ export default requireRole(['Coordinador'])(async (
   req: NextApiRequestWithUser,
   res: NextApiResponse<JornadaDTO>
 ): Promise<void> => {
+  console.log('[JORNADA] petición de userRoleId:', req.userRoleId, 'query:', req.query);
+
   if (req.method !== 'GET') {
     res.setHeader('Allow','GET');
     res.status(405).end();

@@ -17,37 +17,36 @@ export default requireRole(['Supervisor'])(async (
     return
   }
 
-  // 1) Buscamos la última asignación de este supervisor (usando sup.id),
-  //    e incluimos 'reporte' para diferenciar estado
+  // 1) Buscamos la última asignación de este supervisor,
+  //    solo si panic.atendido === false
   const asign = await prisma.incidenteAsignado.findFirst({
-    where: { supervisorId: sup.id },
+    where: {
+      supervisorId: sup.id,
+      panic: { atendido: false },            // ← filtramos aquí
+    },
     orderBy: { fechaAsignacion: 'desc' },
-    include: { reporte: true },
-  })
-
-  if (!asign) {
-    res.status(404).json({ error: 'Sin asignaciones' })
-    return
-  }
-
-  // 2) Traemos la alerta original para datos de operador y detalles
-  const panic = await prisma.botonPanico.findUnique({
-    where: { id: asign.panicId },
     include: {
-      operador: {
+      reporte: true,
+      panic: {
         include: {
-          user: true,
+          operador: {
+            include: {
+              user: true,
+            },
+          },
         },
       },
     },
   })
 
-  if (!panic) {
-    res.status(404).json({ error: 'Alerta no encontrada' })
+  if (!asign) {
+    // No hay asignaciones pendientes → 404 para que el front muestre "No tienes incidentes asignados"
+    res.status(404).json({ error: 'Sin asignaciones' })
     return
   }
 
-  // 3) Armamos el DTO con lat/lng, operador, unidad y un status
+  // 2) Armamos el DTO con los datos que espera el front
+  const { panic } = asign
   res.status(200).json({
     id: asign.id,
     lat: asign.latitud,

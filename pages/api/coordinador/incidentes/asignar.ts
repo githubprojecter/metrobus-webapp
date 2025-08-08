@@ -47,7 +47,7 @@ export default requireRole(['Coordinador'])(async (
 
   // 3) Crear la asignación usando las coordenadas de la alerta
   try {
-    await prisma.incidenteAsignado.create({
+    const nuevo = await prisma.incidenteAsignado.create({
       data: {
         supervisorId,
         panicId,
@@ -55,7 +55,7 @@ export default requireRole(['Coordinador'])(async (
         longitud: panic.longitud ?? 0,
       },
     })
-    res.status(201).json({ success: true })
+    res.status(201).json({ success: true, incidentId: nuevo.id });
   } catch (err: any) {
     console.error('[ASIGNAR] error:', err)
     res.status(500).json({ error: err.message })

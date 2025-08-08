@@ -10,6 +10,8 @@ export default requireRole(['Coordinador'])(async (
   req: NextApiRequestWithUser,
   res: NextApiResponse<IncDTO[]>
 ): Promise<void> => {
+  console.log('[INCIDENTES] petición de userRoleId:', req.userRoleId, 'query:', req.query);
+
   if (req.method !== 'GET') {
     res.setHeader('Allow','GET');
     res.status(405).end();

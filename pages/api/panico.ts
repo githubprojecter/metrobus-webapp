@@ -4,41 +4,36 @@ import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
 import { requireRole } from '@/lib/requireRole';
 import { notifyRoleFCM } from '@/lib/notifications';
+import axios from 'axios';
 
 export default requireRole(['Operador', 'Coordinador'])(async (
   req: NextApiRequestWithUser,
   res: NextApiResponse
 ): Promise<void> => {
-  // GET  /api/panico    -> solo Coordinador ve los pánicos sin atender
-  // POST /api/panico    -> solo Operador envía un pánico con ubicación
-
   const { method, role, uid } = req;
 
   // 1) POST: Operador dispara pánico
   if (method === 'POST') {
     if (role !== 'Operador') {
-      res.status(403).json({ error: 'Access denied' });
-      return;
+      return res.status(403).json({ error: 'Access denied' });
     }
 
-    // Validate body
     const { motivo, latitud, longitud } = req.body as {
       motivo?: string;
       latitud: number;
       longitud: number;
     };
 
-    // Buscar operador
+    // Buscar usuario y operador
     const userRec = await prisma.userRole.findUnique({
       where: { idFirebase: uid },
       include: { operador: true },
     });
     if (!userRec?.operador) {
-      res.status(404).json({ error: 'Operador no encontrado' });
-      return;
+      return res.status(404).json({ error: 'Operador no encontrado' });
     }
 
-    // Crear pánico
+    // Crear pánico en BD
     const panic = await prisma.botonPanico.create({
       data: {
         operadorId: userRec.operador.id,
@@ -48,6 +43,31 @@ export default requireRole(['Operador', 'Coordinador'])(async (
       },
     });
 
+    // 1.a) Emitir al servidor de sockets
+    try {
+      await axios.post(
+        `${process.env.SOCKET_SERVER_URL}/emit-panic`,
+        {
+          id: panic.id,
+          latitud: panic.latitud,
+          longitud: panic.longitud,
+          motivo: panic.motivo,
+          atendido: panic.atendido,
+          operador: {
+            id: userRec.operador.id,
+            nombre: userRec.nombre ?? '',
+            apellidoPaterno: userRec.apellidoPaterno ?? '',
+            unidadAsignada: userRec.operador.unidadAsignada ?? '',
+            rutaAsignada: userRec.operador.rutaAsignada ?? '',
+          },
+        }
+      );
+    } catch (sockErr) {
+      console.error('[emit-panic] Error al notificar Socket.IO:', sockErr);
+      // no interrumpe el flujo principal
+    }
+
+    // 1.b) Notificar FCM al coordinador
     await notifyRoleFCM(
       'Coordinador',
       '¡Alerta de pánico!',
@@ -55,42 +75,39 @@ export default requireRole(['Operador', 'Coordinador'])(async (
       { panicId: panic.id.toString() }
     );
 
-    res.status(201).json(panic);
-    return;
+    return res.status(201).json(panic);
   }
-  
 
   // 2) GET: Coordinador consulta pánicos abiertos
   if (method === 'GET') {
     if (role !== 'Coordinador') {
-      res.status(403).json({ error: 'Access denied' });
-      return;
+      return res.status(403).json({ error: 'Access denied' });
     }
 
     const panicos = await prisma.botonPanico.findMany({
-    where: { atendido: false },
-    include: {
-      operador: {
-        include: {
-          // <-- aquí enlazamos Operador → UserRole
-          user: {
-            select: {
-              nombre: true,
-              apellidoPaterno: true,
-              apellidoMaterno: true,
-            }
-          }
-        }
-      }
-    },
-    orderBy: { timestamp: 'desc' },
-  });
+      where: { atendido: false },
+      include: {
+        operador: {
+          include: {
+            user: {
+              select: {
+                nombre: true,
+                apellidoPaterno: true,
+                apellidoMaterno: true,
+              },
+            },
+          },
+        },
+      },
+      orderBy: { timestamp: 'desc' },
+    });
 
     const dto = panicos.map((p) => ({
       id: p.id,
       latitud: p.latitud,
       longitud: p.longitud,
       motivo: p.motivo,
+      atendido: p.atendido,
       operador: {
         id: p.operador.id,
         nombre: p.operador.user.nombre,
@@ -101,11 +118,10 @@ export default requireRole(['Operador', 'Coordinador'])(async (
       },
     }));
 
-    res.status(200).json(dto);
-    return;
+    return res.status(200).json(dto);
   }
 
-  // 3) Cualquier otro método no permitido
+  // 3) Métodos no permitidos
   res.setHeader('Allow', ['GET', 'POST']);
   res.status(405).end('Method Not Allowed');
 });
