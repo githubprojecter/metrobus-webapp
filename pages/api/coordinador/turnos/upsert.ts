@@ -1,56 +1,69 @@
-// pages/api/coordinador/supervisores/upsert.ts
+// pages/api/coordinador/turnos/upsert.ts
 import type { NextApiResponse } from 'next';
 import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import { requireRole } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
+import { parseTurno5, ymdToLocalMidnight } from '@/lib/turnos';
 
 export default requireRole(['Coordinador'])(async (
   req: NextApiRequestWithUser,
   res: NextApiResponse
 ): Promise<void> => {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow','POST');
+    res.status(405).end();
+    return;
+  }
+
+  const { fecha, turno, supervisorIds } = req.body as {
+    fecha: string; turno: string; supervisorIds: number[];
+  };
+  if (!fecha || !turno || !Array.isArray(supervisorIds)) {
+    res.status(400).json({ error: 'payload inválido' });
+    return;
+  }
+
+  let t: ReturnType<typeof parseTurno5>;
   try {
-    if (req.method !== 'POST') {
-      res.setHeader('Allow', 'POST');
-      res.status(405).end();
-      return;
-    }
+    t = parseTurno5(turno);
+  } catch {
+    res.status(400).json({ error: 'turno inválido (T1..T5)' });
+    return;
+  }
 
-    const { fecha, turno, supervisorIds } = req.body as {
-      fecha?: string;
-      turno?: 'MATUTINO' | 'VESPERTINO' | 'NOCTURNO';
-      supervisorIds?: number[];
-    };
+  const day = ymdToLocalMidnight(fecha);
 
-    if (!fecha || !turno || !Array.isArray(supervisorIds)) {
-      res.status(400).json({ error: 'payload inválido' });
-      return;
-    }
+  const coord = await prisma.coordinador.findUnique({
+    where: { userRoleId: req.userRoleId! },
+    select: { id: true },
+  });
+  if (!coord) {
+    res.status(400).json({ error: 'Coordinador no encontrado para este usuario' });
+    return;
+  }
 
-    const day = new Date(`${fecha}T00:00:00.000Z`);
+  // Limpia turno del día y vuelve a crear los seleccionados
+  await prisma.turnoProgramado.deleteMany({ where: { fecha: day, turno: t } });
 
-    // 1) Borra asignaciones del día/turno
-    await prisma.turnoProgramado.deleteMany({
-      where: { fecha: day, turno },
-    });
+  if (supervisorIds.length) {
+    // (opcional) filtra ids válidos
+    const validSupIds = (await prisma.supervisor.findMany({
+      where: { id: { in: supervisorIds } },
+      select: { id: true },
+    })).map(s => s.id);
 
-    // 2) Crea nuevas asignaciones (si hay)
-    if (supervisorIds.length > 0) {
+    if (validSupIds.length) {
       await prisma.turnoProgramado.createMany({
-        data: supervisorIds.map((id) => ({
+        data: validSupIds.map(id => ({
           fecha: day,
-          turno,
+          turno: t,
           supervisorId: id,
-          coordinadorId: req.userRoleId!,
+          coordinadorId: coord.id, // 👈 usar Coordinador.id
         })),
         skipDuplicates: true,
       });
     }
-
-    res.status(200).json({ success: true, count: supervisorIds.length });
-    return;
-  } catch (err: any) {
-    console.error('[PROGRAMAR-TURNO]', err);
-    res.status(500).json({ error: err?.message ?? 'Error interno' });
-    return;
   }
+
+  res.status(200).json({ success: true, count: supervisorIds.length });
 });

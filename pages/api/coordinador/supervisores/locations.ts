@@ -6,7 +6,7 @@ import { requireRole } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
 
 
-type SupLoc = { id: number; nombre: string; latitud: number; longitud: number };
+type SupLoc = { id: number; nombre: string; latitud: number; longitud: number, assignedIncidentId: number | null; };
 
 export default requireRole(['Supervisor','Coordinador'])(async (
   req: NextApiRequestWithUser,
