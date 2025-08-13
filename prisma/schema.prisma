@@ -1,23 +1,23 @@
 // ---------------------- GENERADOR DE CLIENTE ----------------------
 generator client {
- provider = "prisma-client-js"
- output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
 }
 
 // ---------------------- CONEXIÓN A LA BASE DE DATOS ----------------------
 datasource db {
- provider          = "mysql"
- url               = env("DATABASE_URL")
- shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 // ---------------------- ENUMERACIÓN DE ROLES ----------------------
 enum Role {
- Coordinador
- Operador
- Supervisor
- Dirección
- Patio
+  Coordinador
+  Operador
+  Supervisor
+  Dirección
+  Patio
 }
 
 // ---------------------- MODELO GENERAL DE USUARIOS ----------------------
@@ -25,189 +25,236 @@ enum Role {
 //Entidad que rersguarda la información de los usuarios dados de alta en el sistema y la relación con 
 // La base de datos Firebase para la autenticación de usuarios
 model UserRole {
- id         Int    @id @default(autoincrement()) // ID único
- idFirebase String @unique                      // ID relacionado con Firebase
- role       Role                                // Rol del usuario declarados en enum
+  id         Int    @id @default(autoincrement()) // ID único
+  idFirebase String @unique // ID relacionado con Firebase
+  role       Role // Rol del usuario declarados en enum
 
- // Información personal de los trabajadores del metrobus
- nombre          String?
- apellidoPaterno String?
- apellidoMaterno String?
- profilePhotoUrl String?
- telefono        String?
- correo          String?
+  // Información personal de los trabajadores del metrobus
+  nombre          String?
+  apellidoPaterno String?
+  apellidoMaterno String?
+  profilePhotoUrl String?
+  telefono        String?
+  correo          String?
 
- // Relaciones uno a uno con los distintos roles
- // Se construyo una taba por cada uno de los roles existentes, con excepción de Dirección
- // Esto se realizo asi para mantener 
- // 1. Relaciones especializadas por rol
- // 2. Separación clara de responsabilidades
- // 3. Evitar sobrecargar el modelo UserRole
+  // Relaciones uno a uno con los distintos roles
+  // Se construyo una taba por cada uno de los roles existentes, con excepción de Dirección
+  // Esto se realizo asi para mantener 
+  // 1. Relaciones especializadas por rol
+  // 2. Separación clara de responsabilidades
+  // 3. Evitar sobrecargar el modelo UserRole
 
- // Cada tipo de usuario tiene relaciones únicas con otras tablas:
- // Operador → BotonPanico, RegistroSalidaUnidad, AsignacionUnidad
- // Supervisor → ReporteIncidente, UbicacionSupervisor, IncidenteAsignado
- // Patio → RegistroSalidaUnidad, AsignacionUnidad
- // Coordinador → tal vez tenga privilegios globales pero no relaciones directas aún
- // Esto evita meter condicionales y campos nulos en un solo modelo
- operador    Operador?
- supervisor  Supervisor?
- patio       Patio?
- coordinador Coordinador?
+  // Cada tipo de usuario tiene relaciones únicas con otras tablas:
+  // Operador → BotonPanico, RegistroSalidaUnidad, AsignacionUnidad
+  // Supervisor → ReporteIncidente, UbicacionSupervisor, IncidenteAsignado
+  // Patio → RegistroSalidaUnidad, AsignacionUnidad
+  // Coordinador → tal vez tenga privilegios globales pero no relaciones directas aún
+  // Esto evita meter condicionales y campos nulos en un solo modelo
+  operador    Operador?
+  supervisor  Supervisor?
+  patio       Patio?
+  coordinador Coordinador?
 
- // Tokens para notificaciones push
- DeviceToken DeviceToken[]
+  // Tokens para notificaciones push
+  DeviceToken DeviceToken[]
 }
 
 // ---------------------- MODELO DE OPERADOR ----------------------
 model Operador {
- id             Int     @id @default(autoincrement())
- userRoleId     Int     @unique                        // FK a UserRole
- unidadAsignada String?                              // Unidad asignada
- rutaAsignada   String?                              // Ruta asignada
+  id             Int     @id @default(autoincrement())
+  userRoleId     Int     @unique // FK a UserRole
+  unidadAsignada String? // Unidad asignada
+  rutaAsignada   String? // Ruta asignada
 
- user                 UserRole               @relation(fields: [userRoleId], references: [id])
- botonesPanico        BotonPanico[]          // Relación a eventos de pánico
- RegistroSalidaUnidad RegistroSalidaUnidad[] // Registro de salidas
- AsignacionUnidad     AsignacionUnidad[]     // Asignaciones desde patio
+  user                 UserRole               @relation(fields: [userRoleId], references: [id])
+  botonesPanico        BotonPanico[] // Relación a eventos de pánico
+  RegistroSalidaUnidad RegistroSalidaUnidad[] // Registro de salidas
+  AsignacionUnidad     AsignacionUnidad[] // Asignaciones desde patio
 }
 
 // ---------------------- BOTÓN DE PÁNICO ----------------------
 model BotonPanico {
- id         Int      @id @default(autoincrement())
- operadorId Int                                  // FK a Operador
- timestamp  DateTime @default(now())            // Fecha de activación
- motivo     String?                              // Motivo
- atendido   Boolean  @default(false)             // Estado de atención
- latitud    Float?                               // Ubicación
- longitud   Float?
+  id         Int      @id @default(autoincrement())
+  operadorId Int // FK a Operador
+  timestamp  DateTime @default(now()) // Fecha de activación
+  motivo     String? // Motivo
+  atendido   Boolean  @default(false) // Estado de atención
+  latitud    Float? // Ubicación
+  longitud   Float?
 
- operador          Operador            @relation(fields: [operadorId], references: [id])
- IncidenteAsignado IncidenteAsignado[] // Incidentes derivados de este botón
+  operador          Operador            @relation(fields: [operadorId], references: [id])
+  IncidenteAsignado IncidenteAsignado[] // Incidentes derivados de este botón
 }
 
 // ---------------------- MODELO DE SUPERVISOR ----------------------
 // Entidad que resguarda los identificadores de los supervisores
 // y las relaciones con las tablas que resguardan la información a la que tienen acceso
 model Supervisor {
- id         Int @id @default(autoincrement())
- userRoleId Int @unique                          // FK a UserRole
+  id         Int @id @default(autoincrement())
+  userRoleId Int @unique // FK a UserRole
 
- user         UserRole              @relation(fields: [userRoleId], references: [id])
- ubicaciones  UbicacionSupervisor[] // Posiciones geográficas
- reportes     ReporteIncidente[]    // Reportes realizados
- asignaciones IncidenteAsignado[]  // Incidentes asignados
+  user            UserRole              @relation(fields: [userRoleId], references: [id])
+  ubicaciones     UbicacionSupervisor[] // Posiciones geográficas
+  reportes        ReporteIncidente[] // Reportes realizados
+  asignaciones    IncidenteAsignado[] // Incidentes asignados
+  TurnoProgramado TurnoProgramado[]
+  Presente        Presente[]
 }
 
 // ---------------------- RASTREO DE UBICACIÓN DE SUPERVISOR ----------------------
 //Entidad que resguarda la información de la última ubicación conocida de los supervisores
 model UbicacionSupervisor {
- id           Int      @id @default(autoincrement())
- supervisorId Int                                 // FK a Supervisor
- timestamp    DateTime @default(now())            // Fecha de la posición
- latitud      Float                               
- longitud     Float
+  id           Int      @id @default(autoincrement())
+  supervisorId Int // FK a Supervisor
+  timestamp    DateTime @default(now()) // Fecha de la posición
+  latitud      Float
+  longitud     Float
 
- supervisor Supervisor @relation(fields: [supervisorId], references: [id])
+  supervisor Supervisor @relation(fields: [supervisorId], references: [id])
 }
 
 // ---------------------- MODELO DE COORDINADOR ----------------------
 model Coordinador {
- id         Int @id @default(autoincrement())
- userRoleId Int @unique
+  id         Int @id @default(autoincrement())
+  userRoleId Int @unique
 
- user UserRole @relation(fields: [userRoleId], references: [id])
+  user            UserRole          @relation(fields: [userRoleId], references: [id])
+  TurnoProgramado TurnoProgramado[]
+  ReportenseCall  ReportenseCall[]
 }
 
 // ---------------------- RELACIÓN: INCIDENTE ASIGNADO ----------------------
 model IncidenteAsignado {
- id              Int      @id @default(autoincrement())
- supervisorId    Int                                  // FK a Supervisor
- fechaAsignacion DateTime @default(now())            // Fecha en que se asigna
- panicId  Int         // FK al botón de pánico original
- latitud  Float       // Ubicación del incidente
- longitud Float
+  id              Int      @id @default(autoincrement())
+  supervisorId    Int // FK a Supervisor
+  fechaAsignacion DateTime @default(now()) // Fecha en que se asigna
+  panicId         Int // FK al botón de pánico original
+  latitud         Float // Ubicación del incidente
+  longitud        Float
 
- supervisor Supervisor  @relation(fields: [supervisorId], references: [id])
- panic      BotonPanico @relation(fields: [panicId], references: [id])
- reporte ReporteIncidente? // El reporte que llena el supervisor
+  supervisor Supervisor        @relation(fields: [supervisorId], references: [id])
+  panic      BotonPanico       @relation(fields: [panicId], references: [id])
+  reporte    ReporteIncidente? // El reporte que llena el supervisor
 }
 
 // ---------------------- REPORTE DE INCIDENTE ----------------------
 model ReporteIncidente {
- id                  Int      @id @default(autoincrement())
- supervisorId        Int                                  // FK a Supervisor
- incidenteAsignadoId Int      @unique                     // FK a IncidenteAsignado
- fecha               DateTime @default(now())
- estado              String?                               // En progreso o Finalizado
- descripcion         String                               
- ambulancia          Boolean  @default(false)
- policia             Boolean  @default(false)
- heridos             Boolean
+  id                  Int      @id @default(autoincrement())
+  supervisorId        Int // FK a Supervisor
+  incidenteAsignadoId Int      @unique // FK a IncidenteAsignado
+  fecha               DateTime @default(now())
+  estado              String? // En progreso o Finalizado
+  descripcion         String
+  ambulancia          Boolean  @default(false)
+  policia             Boolean  @default(false)
+  heridos             Boolean
 
- supervisor        Supervisor        @relation(fields: [supervisorId], references: [id])
- incidenteAsignado IncidenteAsignado @relation(fields: [incidenteAsignadoId], references: [id])
- fotos             FotoIncidente[]
+  supervisor        Supervisor        @relation(fields: [supervisorId], references: [id])
+  incidenteAsignado IncidenteAsignado @relation(fields: [incidenteAsignadoId], references: [id])
+  fotos             FotoIncidente[]
 }
 
 // ---------------------- FOTOS RELACIONADAS A INCIDENTE ----------------------
 model FotoIncidente {
- id        Int      @id @default(autoincrement())
- reporteId Int                                 // FK a ReporteIncidente
- url       String                              // URL de la imagen
- createdAt DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  reporteId Int // FK a ReporteIncidente
+  url       String // URL de la imagen
+  createdAt DateTime @default(now())
 
- reporte ReporteIncidente @relation(fields: [reporteId], references: [id])
+  reporte ReporteIncidente @relation(fields: [reporteId], references: [id])
 }
 
 // ---------------------- MODELO PATIO ----------------------
 model Patio {
- id         Int @id @default(autoincrement())
- userRoleId Int @unique
+  id         Int @id @default(autoincrement())
+  userRoleId Int @unique
 
- user            UserRole               @relation(fields: [userRoleId], references: [id])
- registrosSalida RegistroSalidaUnidad[] // Registros de salida de unidades
- asignaciones    AsignacionUnidad[]     // Asignaciones de unidad a operador
+  user            UserRole               @relation(fields: [userRoleId], references: [id])
+  registrosSalida RegistroSalidaUnidad[] // Registros de salida de unidades
+  asignaciones    AsignacionUnidad[] // Asignaciones de unidad a operador
 }
 
 // ---------------------- REGISTRO DE SALIDA DE UNIDADES ----------------------
 model RegistroSalidaUnidad {
- id          Int      @id @default(autoincrement())
- patioId     Int                                  // FK a Patio
- unidad      String                               // ID de unidad
- operadorId  Int                                  // FK a Operador
- fechaSalida DateTime
- horaInicio  String
- vueltas     Int
- kmInicial   Int
- kmFinal     Int?
- condiciones String
+  id          Int      @id @default(autoincrement())
+  patioId     Int // FK a Patio
+  unidad      String // ID de unidad
+  operadorId  Int // FK a Operador
+  fechaSalida DateTime
+  horaInicio  String
+  vueltas     Int
+  kmInicial   Int
+  kmFinal     Int?
+  condiciones String
 
- patio    Patio    @relation(fields: [patioId], references: [id])
- operador Operador @relation(fields: [operadorId], references: [id])
+  patio    Patio    @relation(fields: [patioId], references: [id])
+  operador Operador @relation(fields: [operadorId], references: [id])
 }
 
 // ---------------------- ASIGNACIÓN DE UNIDAD A OPERADOR ----------------------
 model AsignacionUnidad {
- id         Int      @id @default(autoincrement())
- patioId    Int                                  // FK a Patio
- operadorId Int                                  // FK a Operador
- unidad     String                               // Unidad asignada
- ruta       String                               // Ruta asignada
- fecha      DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  patioId    Int // FK a Patio
+  operadorId Int // FK a Operador
+  unidad     String // Unidad asignada
+  ruta       String // Ruta asignada
+  fecha      DateTime @default(now())
 
- patio    Patio    @relation(fields: [patioId], references: [id])
- operador Operador @relation(fields: [operadorId], references: [id])
+  patio    Patio    @relation(fields: [patioId], references: [id])
+  operador Operador @relation(fields: [operadorId], references: [id])
 }
 
 // ---------------------- TOKENS PARA NOTIFICACIONES PUSH ----------------------
 model DeviceToken {
- id         Int      @id @default(autoincrement())
- token      String   @unique
- userRoleId Int
- createdAt  DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  token      String   @unique
+  userRoleId Int
+  createdAt  DateTime @default(now())
 
- userRole UserRole @relation(fields: [userRoleId], references: [id])
+  userRole UserRole @relation(fields: [userRoleId], references: [id])
+}
+
+enum Turno {
+  MATUTINO
+  VESPERTINO
+  NOCTURNO
+}
+
+model TurnoProgramado {
+  id            Int      @id @default(autoincrement())
+  fecha         DateTime // usar fecha a medianoche (UTC) para el día del turno
+  turno         Turno
+  supervisorId  Int
+  coordinadorId Int
+  createdAt     DateTime @default(now())
+
+  supervisor  Supervisor  @relation(fields: [supervisorId], references: [id])
+  coordinador Coordinador @relation(fields: [coordinadorId], references: [id])
+
+  @@unique([fecha, turno, supervisorId])
+}
+
+// Registro de "llamado" (Reportense)
+model ReportenseCall {
+  id            Int        @id @default(autoincrement())
+  coordinadorId Int
+  turno         Turno
+  createdAt     DateTime   @default(now())
+  presentes     Presente[]
+
+  coordinador Coordinador @relation(fields: [coordinadorId], references: [id])
+}
+
+model Presente {
+  id           Int      @id @default(autoincrement())
+  supervisorId Int
+  callId       Int?
+  timestamp    DateTime @default(now())
+  latitud      Float
+  longitud     Float
+
+  supervisor Supervisor      @relation(fields: [supervisorId], references: [id])
+  call       ReportenseCall? @relation(fields: [callId], references: [id])
 }
 
 //
