@@ -93,10 +93,12 @@ model Supervisor {
   id         Int @id @default(autoincrement())
   userRoleId Int @unique // FK a UserRole
 
-  user         UserRole              @relation(fields: [userRoleId], references: [id])
-  ubicaciones  UbicacionSupervisor[] // Posiciones geográficas
-  reportes     ReporteIncidente[] // Reportes realizados
-  asignaciones IncidenteAsignado[] // Incidentes asignados
+  user            UserRole              @relation(fields: [userRoleId], references: [id])
+  ubicaciones     UbicacionSupervisor[] // Posiciones geográficas
+  reportes        ReporteIncidente[] // Reportes realizados
+  asignaciones    IncidenteAsignado[] // Incidentes asignados
+  TurnoProgramado TurnoProgramado[]
+  Presente        Presente[]
 }
 
 // ---------------------- RASTREO DE UBICACIÓN DE SUPERVISOR ----------------------
@@ -116,7 +118,9 @@ model Coordinador {
   id         Int @id @default(autoincrement())
   userRoleId Int @unique
 
-  user UserRole @relation(fields: [userRoleId], references: [id])
+  user            UserRole          @relation(fields: [userRoleId], references: [id])
+  TurnoProgramado TurnoProgramado[]
+  ReportenseCall  ReportenseCall[]
 }
 
 // ---------------------- RELACIÓN: INCIDENTE ASIGNADO ----------------------
@@ -208,6 +212,49 @@ model DeviceToken {
   createdAt  DateTime @default(now())
 
   userRole UserRole @relation(fields: [userRoleId], references: [id])
+}
+
+enum Turno {
+  MATUTINO
+  VESPERTINO
+  NOCTURNO
+}
+
+model TurnoProgramado {
+  id            Int      @id @default(autoincrement())
+  fecha         DateTime // usar fecha a medianoche (UTC) para el día del turno
+  turno         Turno
+  supervisorId  Int
+  coordinadorId Int
+  createdAt     DateTime @default(now())
+
+  supervisor  Supervisor  @relation(fields: [supervisorId], references: [id])
+  coordinador Coordinador @relation(fields: [coordinadorId], references: [id])
+
+  @@unique([fecha, turno, supervisorId])
+}
+
+// Registro de "llamado" (Reportense)
+model ReportenseCall {
+  id            Int        @id @default(autoincrement())
+  coordinadorId Int
+  turno         Turno
+  createdAt     DateTime   @default(now())
+  presentes     Presente[]
+
+  coordinador Coordinador @relation(fields: [coordinadorId], references: [id])
+}
+
+model Presente {
+  id           Int      @id @default(autoincrement())
+  supervisorId Int
+  callId       Int?
+  timestamp    DateTime @default(now())
+  latitud      Float
+  longitud     Float
+
+  supervisor Supervisor      @relation(fields: [supervisorId], references: [id])
+  call       ReportenseCall? @relation(fields: [callId], references: [id])
 }
 
 //

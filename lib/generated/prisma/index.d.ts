@@ -78,6 +78,21 @@ export type AsignacionUnidad = $Result.DefaultSelection<Prisma.$AsignacionUnidad
  * 
  */
 export type DeviceToken = $Result.DefaultSelection<Prisma.$DeviceTokenPayload>
+/**
+ * Model TurnoProgramado
+ * 
+ */
+export type TurnoProgramado = $Result.DefaultSelection<Prisma.$TurnoProgramadoPayload>
+/**
+ * Model ReportenseCall
+ * 
+ */
+export type ReportenseCall = $Result.DefaultSelection<Prisma.$ReportenseCallPayload>
+/**
+ * Model Presente
+ * 
+ */
+export type Presente = $Result.DefaultSelection<Prisma.$PresentePayload>
 
 /**
  * Enums
@@ -93,11 +108,24 @@ export namespace $Enums {
 
 export type Role = (typeof Role)[keyof typeof Role]
 
+
+export const Turno: {
+  MATUTINO: 'MATUTINO',
+  VESPERTINO: 'VESPERTINO',
+  NOCTURNO: 'NOCTURNO'
+};
+
+export type Turno = (typeof Turno)[keyof typeof Turno]
+
 }
 
 export type Role = $Enums.Role
 
 export const Role: typeof $Enums.Role
+
+export type Turno = $Enums.Turno
+
+export const Turno: typeof $Enums.Turno
 
 /**
  * ##  Prisma Client ʲˢ
@@ -353,6 +381,36 @@ export class PrismaClient<
     * ```
     */
   get deviceToken(): Prisma.DeviceTokenDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.turnoProgramado`: Exposes CRUD operations for the **TurnoProgramado** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TurnoProgramados
+    * const turnoProgramados = await prisma.turnoProgramado.findMany()
+    * ```
+    */
+  get turnoProgramado(): Prisma.TurnoProgramadoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.reportenseCall`: Exposes CRUD operations for the **ReportenseCall** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ReportenseCalls
+    * const reportenseCalls = await prisma.reportenseCall.findMany()
+    * ```
+    */
+  get reportenseCall(): Prisma.ReportenseCallDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.presente`: Exposes CRUD operations for the **Presente** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Presentes
+    * const presentes = await prisma.presente.findMany()
+    * ```
+    */
+  get presente(): Prisma.PresenteDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -805,7 +863,10 @@ export namespace Prisma {
     Patio: 'Patio',
     RegistroSalidaUnidad: 'RegistroSalidaUnidad',
     AsignacionUnidad: 'AsignacionUnidad',
-    DeviceToken: 'DeviceToken'
+    DeviceToken: 'DeviceToken',
+    TurnoProgramado: 'TurnoProgramado',
+    ReportenseCall: 'ReportenseCall',
+    Presente: 'Presente'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -824,7 +885,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "userRole" | "operador" | "botonPanico" | "supervisor" | "ubicacionSupervisor" | "coordinador" | "incidenteAsignado" | "reporteIncidente" | "fotoIncidente" | "patio" | "registroSalidaUnidad" | "asignacionUnidad" | "deviceToken"
+      modelProps: "userRole" | "operador" | "botonPanico" | "supervisor" | "ubicacionSupervisor" | "coordinador" | "incidenteAsignado" | "reporteIncidente" | "fotoIncidente" | "patio" | "registroSalidaUnidad" | "asignacionUnidad" | "deviceToken" | "turnoProgramado" | "reportenseCall" | "presente"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1686,6 +1747,204 @@ export namespace Prisma {
           }
         }
       }
+      TurnoProgramado: {
+        payload: Prisma.$TurnoProgramadoPayload<ExtArgs>
+        fields: Prisma.TurnoProgramadoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TurnoProgramadoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TurnoProgramadoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload>
+          }
+          findFirst: {
+            args: Prisma.TurnoProgramadoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TurnoProgramadoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload>
+          }
+          findMany: {
+            args: Prisma.TurnoProgramadoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload>[]
+          }
+          create: {
+            args: Prisma.TurnoProgramadoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload>
+          }
+          createMany: {
+            args: Prisma.TurnoProgramadoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TurnoProgramadoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload>
+          }
+          update: {
+            args: Prisma.TurnoProgramadoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload>
+          }
+          deleteMany: {
+            args: Prisma.TurnoProgramadoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TurnoProgramadoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TurnoProgramadoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TurnoProgramadoPayload>
+          }
+          aggregate: {
+            args: Prisma.TurnoProgramadoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTurnoProgramado>
+          }
+          groupBy: {
+            args: Prisma.TurnoProgramadoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TurnoProgramadoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TurnoProgramadoCountArgs<ExtArgs>
+            result: $Utils.Optional<TurnoProgramadoCountAggregateOutputType> | number
+          }
+        }
+      }
+      ReportenseCall: {
+        payload: Prisma.$ReportenseCallPayload<ExtArgs>
+        fields: Prisma.ReportenseCallFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ReportenseCallFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ReportenseCallFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload>
+          }
+          findFirst: {
+            args: Prisma.ReportenseCallFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ReportenseCallFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload>
+          }
+          findMany: {
+            args: Prisma.ReportenseCallFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload>[]
+          }
+          create: {
+            args: Prisma.ReportenseCallCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload>
+          }
+          createMany: {
+            args: Prisma.ReportenseCallCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ReportenseCallDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload>
+          }
+          update: {
+            args: Prisma.ReportenseCallUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload>
+          }
+          deleteMany: {
+            args: Prisma.ReportenseCallDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ReportenseCallUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ReportenseCallUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReportenseCallPayload>
+          }
+          aggregate: {
+            args: Prisma.ReportenseCallAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReportenseCall>
+          }
+          groupBy: {
+            args: Prisma.ReportenseCallGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReportenseCallGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ReportenseCallCountArgs<ExtArgs>
+            result: $Utils.Optional<ReportenseCallCountAggregateOutputType> | number
+          }
+        }
+      }
+      Presente: {
+        payload: Prisma.$PresentePayload<ExtArgs>
+        fields: Prisma.PresenteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PresenteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PresenteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload>
+          }
+          findFirst: {
+            args: Prisma.PresenteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PresenteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload>
+          }
+          findMany: {
+            args: Prisma.PresenteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload>[]
+          }
+          create: {
+            args: Prisma.PresenteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload>
+          }
+          createMany: {
+            args: Prisma.PresenteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PresenteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload>
+          }
+          update: {
+            args: Prisma.PresenteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload>
+          }
+          deleteMany: {
+            args: Prisma.PresenteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PresenteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PresenteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PresentePayload>
+          }
+          aggregate: {
+            args: Prisma.PresenteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePresente>
+          }
+          groupBy: {
+            args: Prisma.PresenteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PresenteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PresenteCountArgs<ExtArgs>
+            result: $Utils.Optional<PresenteCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1791,6 +2050,9 @@ export namespace Prisma {
     registroSalidaUnidad?: RegistroSalidaUnidadOmit
     asignacionUnidad?: AsignacionUnidadOmit
     deviceToken?: DeviceTokenOmit
+    turnoProgramado?: TurnoProgramadoOmit
+    reportenseCall?: ReportenseCallOmit
+    presente?: PresenteOmit
   }
 
   /* Types for Logging */
@@ -2004,12 +2266,16 @@ export namespace Prisma {
     ubicaciones: number
     reportes: number
     asignaciones: number
+    TurnoProgramado: number
+    Presente: number
   }
 
   export type SupervisorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ubicaciones?: boolean | SupervisorCountOutputTypeCountUbicacionesArgs
     reportes?: boolean | SupervisorCountOutputTypeCountReportesArgs
     asignaciones?: boolean | SupervisorCountOutputTypeCountAsignacionesArgs
+    TurnoProgramado?: boolean | SupervisorCountOutputTypeCountTurnoProgramadoArgs
+    Presente?: boolean | SupervisorCountOutputTypeCountPresenteArgs
   }
 
   // Custom InputTypes
@@ -2042,6 +2308,60 @@ export namespace Prisma {
    */
   export type SupervisorCountOutputTypeCountAsignacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: IncidenteAsignadoWhereInput
+  }
+
+  /**
+   * SupervisorCountOutputType without action
+   */
+  export type SupervisorCountOutputTypeCountTurnoProgramadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TurnoProgramadoWhereInput
+  }
+
+  /**
+   * SupervisorCountOutputType without action
+   */
+  export type SupervisorCountOutputTypeCountPresenteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PresenteWhereInput
+  }
+
+
+  /**
+   * Count Type CoordinadorCountOutputType
+   */
+
+  export type CoordinadorCountOutputType = {
+    TurnoProgramado: number
+    ReportenseCall: number
+  }
+
+  export type CoordinadorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    TurnoProgramado?: boolean | CoordinadorCountOutputTypeCountTurnoProgramadoArgs
+    ReportenseCall?: boolean | CoordinadorCountOutputTypeCountReportenseCallArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CoordinadorCountOutputType without action
+   */
+  export type CoordinadorCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CoordinadorCountOutputType
+     */
+    select?: CoordinadorCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CoordinadorCountOutputType without action
+   */
+  export type CoordinadorCountOutputTypeCountTurnoProgramadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TurnoProgramadoWhereInput
+  }
+
+  /**
+   * CoordinadorCountOutputType without action
+   */
+  export type CoordinadorCountOutputTypeCountReportenseCallArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReportenseCallWhereInput
   }
 
 
@@ -2113,6 +2433,37 @@ export namespace Prisma {
    */
   export type PatioCountOutputTypeCountAsignacionesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AsignacionUnidadWhereInput
+  }
+
+
+  /**
+   * Count Type ReportenseCallCountOutputType
+   */
+
+  export type ReportenseCallCountOutputType = {
+    presentes: number
+  }
+
+  export type ReportenseCallCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    presentes?: boolean | ReportenseCallCountOutputTypeCountPresentesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ReportenseCallCountOutputType without action
+   */
+  export type ReportenseCallCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCallCountOutputType
+     */
+    select?: ReportenseCallCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ReportenseCallCountOutputType without action
+   */
+  export type ReportenseCallCountOutputTypeCountPresentesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PresenteWhereInput
   }
 
 
@@ -5496,6 +5847,8 @@ export namespace Prisma {
     ubicaciones?: boolean | Supervisor$ubicacionesArgs<ExtArgs>
     reportes?: boolean | Supervisor$reportesArgs<ExtArgs>
     asignaciones?: boolean | Supervisor$asignacionesArgs<ExtArgs>
+    TurnoProgramado?: boolean | Supervisor$TurnoProgramadoArgs<ExtArgs>
+    Presente?: boolean | Supervisor$PresenteArgs<ExtArgs>
     _count?: boolean | SupervisorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["supervisor"]>
 
@@ -5512,6 +5865,8 @@ export namespace Prisma {
     ubicaciones?: boolean | Supervisor$ubicacionesArgs<ExtArgs>
     reportes?: boolean | Supervisor$reportesArgs<ExtArgs>
     asignaciones?: boolean | Supervisor$asignacionesArgs<ExtArgs>
+    TurnoProgramado?: boolean | Supervisor$TurnoProgramadoArgs<ExtArgs>
+    Presente?: boolean | Supervisor$PresenteArgs<ExtArgs>
     _count?: boolean | SupervisorCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5522,6 +5877,8 @@ export namespace Prisma {
       ubicaciones: Prisma.$UbicacionSupervisorPayload<ExtArgs>[]
       reportes: Prisma.$ReporteIncidentePayload<ExtArgs>[]
       asignaciones: Prisma.$IncidenteAsignadoPayload<ExtArgs>[]
+      TurnoProgramado: Prisma.$TurnoProgramadoPayload<ExtArgs>[]
+      Presente: Prisma.$PresentePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5870,6 +6227,8 @@ export namespace Prisma {
     ubicaciones<T extends Supervisor$ubicacionesArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$ubicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UbicacionSupervisorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reportes<T extends Supervisor$reportesArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$reportesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReporteIncidentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     asignaciones<T extends Supervisor$asignacionesArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$asignacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IncidenteAsignadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    TurnoProgramado<T extends Supervisor$TurnoProgramadoArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$TurnoProgramadoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Presente<T extends Supervisor$PresenteArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$PresenteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6313,6 +6672,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: IncidenteAsignadoScalarFieldEnum | IncidenteAsignadoScalarFieldEnum[]
+  }
+
+  /**
+   * Supervisor.TurnoProgramado
+   */
+  export type Supervisor$TurnoProgramadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    where?: TurnoProgramadoWhereInput
+    orderBy?: TurnoProgramadoOrderByWithRelationInput | TurnoProgramadoOrderByWithRelationInput[]
+    cursor?: TurnoProgramadoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TurnoProgramadoScalarFieldEnum | TurnoProgramadoScalarFieldEnum[]
+  }
+
+  /**
+   * Supervisor.Presente
+   */
+  export type Supervisor$PresenteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    where?: PresenteWhereInput
+    orderBy?: PresenteOrderByWithRelationInput | PresenteOrderByWithRelationInput[]
+    cursor?: PresenteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PresenteScalarFieldEnum | PresenteScalarFieldEnum[]
   }
 
   /**
@@ -7488,6 +7895,9 @@ export namespace Prisma {
     id?: boolean
     userRoleId?: boolean
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
+    TurnoProgramado?: boolean | Coordinador$TurnoProgramadoArgs<ExtArgs>
+    ReportenseCall?: boolean | Coordinador$ReportenseCallArgs<ExtArgs>
+    _count?: boolean | CoordinadorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coordinador"]>
 
 
@@ -7500,12 +7910,17 @@ export namespace Prisma {
   export type CoordinadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId", ExtArgs["result"]["coordinador"]>
   export type CoordinadorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
+    TurnoProgramado?: boolean | Coordinador$TurnoProgramadoArgs<ExtArgs>
+    ReportenseCall?: boolean | Coordinador$ReportenseCallArgs<ExtArgs>
+    _count?: boolean | CoordinadorCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $CoordinadorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Coordinador"
     objects: {
       user: Prisma.$UserRolePayload<ExtArgs>
+      TurnoProgramado: Prisma.$TurnoProgramadoPayload<ExtArgs>[]
+      ReportenseCall: Prisma.$ReportenseCallPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7851,6 +8266,8 @@ export namespace Prisma {
   export interface Prisma__CoordinadorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserRoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserRoleDefaultArgs<ExtArgs>>): Prisma__UserRoleClient<$Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    TurnoProgramado<T extends Coordinador$TurnoProgramadoArgs<ExtArgs> = {}>(args?: Subset<T, Coordinador$TurnoProgramadoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ReportenseCall<T extends Coordinador$ReportenseCallArgs<ExtArgs> = {}>(args?: Subset<T, Coordinador$ReportenseCallArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8222,6 +8639,54 @@ export namespace Prisma {
      * Limit how many Coordinadors to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Coordinador.TurnoProgramado
+   */
+  export type Coordinador$TurnoProgramadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    where?: TurnoProgramadoWhereInput
+    orderBy?: TurnoProgramadoOrderByWithRelationInput | TurnoProgramadoOrderByWithRelationInput[]
+    cursor?: TurnoProgramadoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TurnoProgramadoScalarFieldEnum | TurnoProgramadoScalarFieldEnum[]
+  }
+
+  /**
+   * Coordinador.ReportenseCall
+   */
+  export type Coordinador$ReportenseCallArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    where?: ReportenseCallWhereInput
+    orderBy?: ReportenseCallOrderByWithRelationInput | ReportenseCallOrderByWithRelationInput[]
+    cursor?: ReportenseCallWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReportenseCallScalarFieldEnum | ReportenseCallScalarFieldEnum[]
   }
 
   /**
@@ -15242,6 +15707,2991 @@ export namespace Prisma {
 
 
   /**
+   * Model TurnoProgramado
+   */
+
+  export type AggregateTurnoProgramado = {
+    _count: TurnoProgramadoCountAggregateOutputType | null
+    _avg: TurnoProgramadoAvgAggregateOutputType | null
+    _sum: TurnoProgramadoSumAggregateOutputType | null
+    _min: TurnoProgramadoMinAggregateOutputType | null
+    _max: TurnoProgramadoMaxAggregateOutputType | null
+  }
+
+  export type TurnoProgramadoAvgAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    coordinadorId: number | null
+  }
+
+  export type TurnoProgramadoSumAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    coordinadorId: number | null
+  }
+
+  export type TurnoProgramadoMinAggregateOutputType = {
+    id: number | null
+    fecha: Date | null
+    turno: $Enums.Turno | null
+    supervisorId: number | null
+    coordinadorId: number | null
+    createdAt: Date | null
+  }
+
+  export type TurnoProgramadoMaxAggregateOutputType = {
+    id: number | null
+    fecha: Date | null
+    turno: $Enums.Turno | null
+    supervisorId: number | null
+    coordinadorId: number | null
+    createdAt: Date | null
+  }
+
+  export type TurnoProgramadoCountAggregateOutputType = {
+    id: number
+    fecha: number
+    turno: number
+    supervisorId: number
+    coordinadorId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TurnoProgramadoAvgAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    coordinadorId?: true
+  }
+
+  export type TurnoProgramadoSumAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    coordinadorId?: true
+  }
+
+  export type TurnoProgramadoMinAggregateInputType = {
+    id?: true
+    fecha?: true
+    turno?: true
+    supervisorId?: true
+    coordinadorId?: true
+    createdAt?: true
+  }
+
+  export type TurnoProgramadoMaxAggregateInputType = {
+    id?: true
+    fecha?: true
+    turno?: true
+    supervisorId?: true
+    coordinadorId?: true
+    createdAt?: true
+  }
+
+  export type TurnoProgramadoCountAggregateInputType = {
+    id?: true
+    fecha?: true
+    turno?: true
+    supervisorId?: true
+    coordinadorId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TurnoProgramadoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TurnoProgramado to aggregate.
+     */
+    where?: TurnoProgramadoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TurnoProgramados to fetch.
+     */
+    orderBy?: TurnoProgramadoOrderByWithRelationInput | TurnoProgramadoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TurnoProgramadoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TurnoProgramados from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TurnoProgramados.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TurnoProgramados
+    **/
+    _count?: true | TurnoProgramadoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TurnoProgramadoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TurnoProgramadoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TurnoProgramadoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TurnoProgramadoMaxAggregateInputType
+  }
+
+  export type GetTurnoProgramadoAggregateType<T extends TurnoProgramadoAggregateArgs> = {
+        [P in keyof T & keyof AggregateTurnoProgramado]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTurnoProgramado[P]>
+      : GetScalarType<T[P], AggregateTurnoProgramado[P]>
+  }
+
+
+
+
+  export type TurnoProgramadoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TurnoProgramadoWhereInput
+    orderBy?: TurnoProgramadoOrderByWithAggregationInput | TurnoProgramadoOrderByWithAggregationInput[]
+    by: TurnoProgramadoScalarFieldEnum[] | TurnoProgramadoScalarFieldEnum
+    having?: TurnoProgramadoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TurnoProgramadoCountAggregateInputType | true
+    _avg?: TurnoProgramadoAvgAggregateInputType
+    _sum?: TurnoProgramadoSumAggregateInputType
+    _min?: TurnoProgramadoMinAggregateInputType
+    _max?: TurnoProgramadoMaxAggregateInputType
+  }
+
+  export type TurnoProgramadoGroupByOutputType = {
+    id: number
+    fecha: Date
+    turno: $Enums.Turno
+    supervisorId: number
+    coordinadorId: number
+    createdAt: Date
+    _count: TurnoProgramadoCountAggregateOutputType | null
+    _avg: TurnoProgramadoAvgAggregateOutputType | null
+    _sum: TurnoProgramadoSumAggregateOutputType | null
+    _min: TurnoProgramadoMinAggregateOutputType | null
+    _max: TurnoProgramadoMaxAggregateOutputType | null
+  }
+
+  type GetTurnoProgramadoGroupByPayload<T extends TurnoProgramadoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TurnoProgramadoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TurnoProgramadoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TurnoProgramadoGroupByOutputType[P]>
+            : GetScalarType<T[P], TurnoProgramadoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TurnoProgramadoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fecha?: boolean
+    turno?: boolean
+    supervisorId?: boolean
+    coordinadorId?: boolean
+    createdAt?: boolean
+    supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    coordinador?: boolean | CoordinadorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["turnoProgramado"]>
+
+
+
+  export type TurnoProgramadoSelectScalar = {
+    id?: boolean
+    fecha?: boolean
+    turno?: boolean
+    supervisorId?: boolean
+    coordinadorId?: boolean
+    createdAt?: boolean
+  }
+
+  export type TurnoProgramadoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fecha" | "turno" | "supervisorId" | "coordinadorId" | "createdAt", ExtArgs["result"]["turnoProgramado"]>
+  export type TurnoProgramadoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    coordinador?: boolean | CoordinadorDefaultArgs<ExtArgs>
+  }
+
+  export type $TurnoProgramadoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TurnoProgramado"
+    objects: {
+      supervisor: Prisma.$SupervisorPayload<ExtArgs>
+      coordinador: Prisma.$CoordinadorPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      fecha: Date
+      turno: $Enums.Turno
+      supervisorId: number
+      coordinadorId: number
+      createdAt: Date
+    }, ExtArgs["result"]["turnoProgramado"]>
+    composites: {}
+  }
+
+  type TurnoProgramadoGetPayload<S extends boolean | null | undefined | TurnoProgramadoDefaultArgs> = $Result.GetResult<Prisma.$TurnoProgramadoPayload, S>
+
+  type TurnoProgramadoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TurnoProgramadoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TurnoProgramadoCountAggregateInputType | true
+    }
+
+  export interface TurnoProgramadoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TurnoProgramado'], meta: { name: 'TurnoProgramado' } }
+    /**
+     * Find zero or one TurnoProgramado that matches the filter.
+     * @param {TurnoProgramadoFindUniqueArgs} args - Arguments to find a TurnoProgramado
+     * @example
+     * // Get one TurnoProgramado
+     * const turnoProgramado = await prisma.turnoProgramado.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TurnoProgramadoFindUniqueArgs>(args: SelectSubset<T, TurnoProgramadoFindUniqueArgs<ExtArgs>>): Prisma__TurnoProgramadoClient<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TurnoProgramado that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TurnoProgramadoFindUniqueOrThrowArgs} args - Arguments to find a TurnoProgramado
+     * @example
+     * // Get one TurnoProgramado
+     * const turnoProgramado = await prisma.turnoProgramado.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TurnoProgramadoFindUniqueOrThrowArgs>(args: SelectSubset<T, TurnoProgramadoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TurnoProgramadoClient<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TurnoProgramado that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TurnoProgramadoFindFirstArgs} args - Arguments to find a TurnoProgramado
+     * @example
+     * // Get one TurnoProgramado
+     * const turnoProgramado = await prisma.turnoProgramado.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TurnoProgramadoFindFirstArgs>(args?: SelectSubset<T, TurnoProgramadoFindFirstArgs<ExtArgs>>): Prisma__TurnoProgramadoClient<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TurnoProgramado that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TurnoProgramadoFindFirstOrThrowArgs} args - Arguments to find a TurnoProgramado
+     * @example
+     * // Get one TurnoProgramado
+     * const turnoProgramado = await prisma.turnoProgramado.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TurnoProgramadoFindFirstOrThrowArgs>(args?: SelectSubset<T, TurnoProgramadoFindFirstOrThrowArgs<ExtArgs>>): Prisma__TurnoProgramadoClient<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TurnoProgramados that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TurnoProgramadoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TurnoProgramados
+     * const turnoProgramados = await prisma.turnoProgramado.findMany()
+     * 
+     * // Get first 10 TurnoProgramados
+     * const turnoProgramados = await prisma.turnoProgramado.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const turnoProgramadoWithIdOnly = await prisma.turnoProgramado.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TurnoProgramadoFindManyArgs>(args?: SelectSubset<T, TurnoProgramadoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TurnoProgramado.
+     * @param {TurnoProgramadoCreateArgs} args - Arguments to create a TurnoProgramado.
+     * @example
+     * // Create one TurnoProgramado
+     * const TurnoProgramado = await prisma.turnoProgramado.create({
+     *   data: {
+     *     // ... data to create a TurnoProgramado
+     *   }
+     * })
+     * 
+     */
+    create<T extends TurnoProgramadoCreateArgs>(args: SelectSubset<T, TurnoProgramadoCreateArgs<ExtArgs>>): Prisma__TurnoProgramadoClient<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TurnoProgramados.
+     * @param {TurnoProgramadoCreateManyArgs} args - Arguments to create many TurnoProgramados.
+     * @example
+     * // Create many TurnoProgramados
+     * const turnoProgramado = await prisma.turnoProgramado.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TurnoProgramadoCreateManyArgs>(args?: SelectSubset<T, TurnoProgramadoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TurnoProgramado.
+     * @param {TurnoProgramadoDeleteArgs} args - Arguments to delete one TurnoProgramado.
+     * @example
+     * // Delete one TurnoProgramado
+     * const TurnoProgramado = await prisma.turnoProgramado.delete({
+     *   where: {
+     *     // ... filter to delete one TurnoProgramado
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TurnoProgramadoDeleteArgs>(args: SelectSubset<T, TurnoProgramadoDeleteArgs<ExtArgs>>): Prisma__TurnoProgramadoClient<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TurnoProgramado.
+     * @param {TurnoProgramadoUpdateArgs} args - Arguments to update one TurnoProgramado.
+     * @example
+     * // Update one TurnoProgramado
+     * const turnoProgramado = await prisma.turnoProgramado.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TurnoProgramadoUpdateArgs>(args: SelectSubset<T, TurnoProgramadoUpdateArgs<ExtArgs>>): Prisma__TurnoProgramadoClient<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TurnoProgramados.
+     * @param {TurnoProgramadoDeleteManyArgs} args - Arguments to filter TurnoProgramados to delete.
+     * @example
+     * // Delete a few TurnoProgramados
+     * const { count } = await prisma.turnoProgramado.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TurnoProgramadoDeleteManyArgs>(args?: SelectSubset<T, TurnoProgramadoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TurnoProgramados.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TurnoProgramadoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TurnoProgramados
+     * const turnoProgramado = await prisma.turnoProgramado.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TurnoProgramadoUpdateManyArgs>(args: SelectSubset<T, TurnoProgramadoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TurnoProgramado.
+     * @param {TurnoProgramadoUpsertArgs} args - Arguments to update or create a TurnoProgramado.
+     * @example
+     * // Update or create a TurnoProgramado
+     * const turnoProgramado = await prisma.turnoProgramado.upsert({
+     *   create: {
+     *     // ... data to create a TurnoProgramado
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TurnoProgramado we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TurnoProgramadoUpsertArgs>(args: SelectSubset<T, TurnoProgramadoUpsertArgs<ExtArgs>>): Prisma__TurnoProgramadoClient<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TurnoProgramados.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TurnoProgramadoCountArgs} args - Arguments to filter TurnoProgramados to count.
+     * @example
+     * // Count the number of TurnoProgramados
+     * const count = await prisma.turnoProgramado.count({
+     *   where: {
+     *     // ... the filter for the TurnoProgramados we want to count
+     *   }
+     * })
+    **/
+    count<T extends TurnoProgramadoCountArgs>(
+      args?: Subset<T, TurnoProgramadoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TurnoProgramadoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TurnoProgramado.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TurnoProgramadoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TurnoProgramadoAggregateArgs>(args: Subset<T, TurnoProgramadoAggregateArgs>): Prisma.PrismaPromise<GetTurnoProgramadoAggregateType<T>>
+
+    /**
+     * Group by TurnoProgramado.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TurnoProgramadoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TurnoProgramadoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TurnoProgramadoGroupByArgs['orderBy'] }
+        : { orderBy?: TurnoProgramadoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TurnoProgramadoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTurnoProgramadoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TurnoProgramado model
+   */
+  readonly fields: TurnoProgramadoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TurnoProgramado.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TurnoProgramadoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    supervisor<T extends SupervisorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SupervisorDefaultArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    coordinador<T extends CoordinadorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CoordinadorDefaultArgs<ExtArgs>>): Prisma__CoordinadorClient<$Result.GetResult<Prisma.$CoordinadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TurnoProgramado model
+   */
+  interface TurnoProgramadoFieldRefs {
+    readonly id: FieldRef<"TurnoProgramado", 'Int'>
+    readonly fecha: FieldRef<"TurnoProgramado", 'DateTime'>
+    readonly turno: FieldRef<"TurnoProgramado", 'Turno'>
+    readonly supervisorId: FieldRef<"TurnoProgramado", 'Int'>
+    readonly coordinadorId: FieldRef<"TurnoProgramado", 'Int'>
+    readonly createdAt: FieldRef<"TurnoProgramado", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TurnoProgramado findUnique
+   */
+  export type TurnoProgramadoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * Filter, which TurnoProgramado to fetch.
+     */
+    where: TurnoProgramadoWhereUniqueInput
+  }
+
+  /**
+   * TurnoProgramado findUniqueOrThrow
+   */
+  export type TurnoProgramadoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * Filter, which TurnoProgramado to fetch.
+     */
+    where: TurnoProgramadoWhereUniqueInput
+  }
+
+  /**
+   * TurnoProgramado findFirst
+   */
+  export type TurnoProgramadoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * Filter, which TurnoProgramado to fetch.
+     */
+    where?: TurnoProgramadoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TurnoProgramados to fetch.
+     */
+    orderBy?: TurnoProgramadoOrderByWithRelationInput | TurnoProgramadoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TurnoProgramados.
+     */
+    cursor?: TurnoProgramadoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TurnoProgramados from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TurnoProgramados.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TurnoProgramados.
+     */
+    distinct?: TurnoProgramadoScalarFieldEnum | TurnoProgramadoScalarFieldEnum[]
+  }
+
+  /**
+   * TurnoProgramado findFirstOrThrow
+   */
+  export type TurnoProgramadoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * Filter, which TurnoProgramado to fetch.
+     */
+    where?: TurnoProgramadoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TurnoProgramados to fetch.
+     */
+    orderBy?: TurnoProgramadoOrderByWithRelationInput | TurnoProgramadoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TurnoProgramados.
+     */
+    cursor?: TurnoProgramadoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TurnoProgramados from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TurnoProgramados.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TurnoProgramados.
+     */
+    distinct?: TurnoProgramadoScalarFieldEnum | TurnoProgramadoScalarFieldEnum[]
+  }
+
+  /**
+   * TurnoProgramado findMany
+   */
+  export type TurnoProgramadoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * Filter, which TurnoProgramados to fetch.
+     */
+    where?: TurnoProgramadoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TurnoProgramados to fetch.
+     */
+    orderBy?: TurnoProgramadoOrderByWithRelationInput | TurnoProgramadoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TurnoProgramados.
+     */
+    cursor?: TurnoProgramadoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TurnoProgramados from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TurnoProgramados.
+     */
+    skip?: number
+    distinct?: TurnoProgramadoScalarFieldEnum | TurnoProgramadoScalarFieldEnum[]
+  }
+
+  /**
+   * TurnoProgramado create
+   */
+  export type TurnoProgramadoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TurnoProgramado.
+     */
+    data: XOR<TurnoProgramadoCreateInput, TurnoProgramadoUncheckedCreateInput>
+  }
+
+  /**
+   * TurnoProgramado createMany
+   */
+  export type TurnoProgramadoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TurnoProgramados.
+     */
+    data: TurnoProgramadoCreateManyInput | TurnoProgramadoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TurnoProgramado update
+   */
+  export type TurnoProgramadoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TurnoProgramado.
+     */
+    data: XOR<TurnoProgramadoUpdateInput, TurnoProgramadoUncheckedUpdateInput>
+    /**
+     * Choose, which TurnoProgramado to update.
+     */
+    where: TurnoProgramadoWhereUniqueInput
+  }
+
+  /**
+   * TurnoProgramado updateMany
+   */
+  export type TurnoProgramadoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TurnoProgramados.
+     */
+    data: XOR<TurnoProgramadoUpdateManyMutationInput, TurnoProgramadoUncheckedUpdateManyInput>
+    /**
+     * Filter which TurnoProgramados to update
+     */
+    where?: TurnoProgramadoWhereInput
+    /**
+     * Limit how many TurnoProgramados to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TurnoProgramado upsert
+   */
+  export type TurnoProgramadoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TurnoProgramado to update in case it exists.
+     */
+    where: TurnoProgramadoWhereUniqueInput
+    /**
+     * In case the TurnoProgramado found by the `where` argument doesn't exist, create a new TurnoProgramado with this data.
+     */
+    create: XOR<TurnoProgramadoCreateInput, TurnoProgramadoUncheckedCreateInput>
+    /**
+     * In case the TurnoProgramado was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TurnoProgramadoUpdateInput, TurnoProgramadoUncheckedUpdateInput>
+  }
+
+  /**
+   * TurnoProgramado delete
+   */
+  export type TurnoProgramadoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+    /**
+     * Filter which TurnoProgramado to delete.
+     */
+    where: TurnoProgramadoWhereUniqueInput
+  }
+
+  /**
+   * TurnoProgramado deleteMany
+   */
+  export type TurnoProgramadoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TurnoProgramados to delete
+     */
+    where?: TurnoProgramadoWhereInput
+    /**
+     * Limit how many TurnoProgramados to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TurnoProgramado without action
+   */
+  export type TurnoProgramadoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TurnoProgramado
+     */
+    select?: TurnoProgramadoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TurnoProgramado
+     */
+    omit?: TurnoProgramadoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TurnoProgramadoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ReportenseCall
+   */
+
+  export type AggregateReportenseCall = {
+    _count: ReportenseCallCountAggregateOutputType | null
+    _avg: ReportenseCallAvgAggregateOutputType | null
+    _sum: ReportenseCallSumAggregateOutputType | null
+    _min: ReportenseCallMinAggregateOutputType | null
+    _max: ReportenseCallMaxAggregateOutputType | null
+  }
+
+  export type ReportenseCallAvgAggregateOutputType = {
+    id: number | null
+    coordinadorId: number | null
+  }
+
+  export type ReportenseCallSumAggregateOutputType = {
+    id: number | null
+    coordinadorId: number | null
+  }
+
+  export type ReportenseCallMinAggregateOutputType = {
+    id: number | null
+    coordinadorId: number | null
+    turno: $Enums.Turno | null
+    createdAt: Date | null
+  }
+
+  export type ReportenseCallMaxAggregateOutputType = {
+    id: number | null
+    coordinadorId: number | null
+    turno: $Enums.Turno | null
+    createdAt: Date | null
+  }
+
+  export type ReportenseCallCountAggregateOutputType = {
+    id: number
+    coordinadorId: number
+    turno: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ReportenseCallAvgAggregateInputType = {
+    id?: true
+    coordinadorId?: true
+  }
+
+  export type ReportenseCallSumAggregateInputType = {
+    id?: true
+    coordinadorId?: true
+  }
+
+  export type ReportenseCallMinAggregateInputType = {
+    id?: true
+    coordinadorId?: true
+    turno?: true
+    createdAt?: true
+  }
+
+  export type ReportenseCallMaxAggregateInputType = {
+    id?: true
+    coordinadorId?: true
+    turno?: true
+    createdAt?: true
+  }
+
+  export type ReportenseCallCountAggregateInputType = {
+    id?: true
+    coordinadorId?: true
+    turno?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ReportenseCallAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ReportenseCall to aggregate.
+     */
+    where?: ReportenseCallWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReportenseCalls to fetch.
+     */
+    orderBy?: ReportenseCallOrderByWithRelationInput | ReportenseCallOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ReportenseCallWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReportenseCalls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReportenseCalls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ReportenseCalls
+    **/
+    _count?: true | ReportenseCallCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ReportenseCallAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReportenseCallSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReportenseCallMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReportenseCallMaxAggregateInputType
+  }
+
+  export type GetReportenseCallAggregateType<T extends ReportenseCallAggregateArgs> = {
+        [P in keyof T & keyof AggregateReportenseCall]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReportenseCall[P]>
+      : GetScalarType<T[P], AggregateReportenseCall[P]>
+  }
+
+
+
+
+  export type ReportenseCallGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReportenseCallWhereInput
+    orderBy?: ReportenseCallOrderByWithAggregationInput | ReportenseCallOrderByWithAggregationInput[]
+    by: ReportenseCallScalarFieldEnum[] | ReportenseCallScalarFieldEnum
+    having?: ReportenseCallScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReportenseCallCountAggregateInputType | true
+    _avg?: ReportenseCallAvgAggregateInputType
+    _sum?: ReportenseCallSumAggregateInputType
+    _min?: ReportenseCallMinAggregateInputType
+    _max?: ReportenseCallMaxAggregateInputType
+  }
+
+  export type ReportenseCallGroupByOutputType = {
+    id: number
+    coordinadorId: number
+    turno: $Enums.Turno
+    createdAt: Date
+    _count: ReportenseCallCountAggregateOutputType | null
+    _avg: ReportenseCallAvgAggregateOutputType | null
+    _sum: ReportenseCallSumAggregateOutputType | null
+    _min: ReportenseCallMinAggregateOutputType | null
+    _max: ReportenseCallMaxAggregateOutputType | null
+  }
+
+  type GetReportenseCallGroupByPayload<T extends ReportenseCallGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReportenseCallGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReportenseCallGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReportenseCallGroupByOutputType[P]>
+            : GetScalarType<T[P], ReportenseCallGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ReportenseCallSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    coordinadorId?: boolean
+    turno?: boolean
+    createdAt?: boolean
+    presentes?: boolean | ReportenseCall$presentesArgs<ExtArgs>
+    coordinador?: boolean | CoordinadorDefaultArgs<ExtArgs>
+    _count?: boolean | ReportenseCallCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["reportenseCall"]>
+
+
+
+  export type ReportenseCallSelectScalar = {
+    id?: boolean
+    coordinadorId?: boolean
+    turno?: boolean
+    createdAt?: boolean
+  }
+
+  export type ReportenseCallOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "coordinadorId" | "turno" | "createdAt", ExtArgs["result"]["reportenseCall"]>
+  export type ReportenseCallInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    presentes?: boolean | ReportenseCall$presentesArgs<ExtArgs>
+    coordinador?: boolean | CoordinadorDefaultArgs<ExtArgs>
+    _count?: boolean | ReportenseCallCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ReportenseCallPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ReportenseCall"
+    objects: {
+      presentes: Prisma.$PresentePayload<ExtArgs>[]
+      coordinador: Prisma.$CoordinadorPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      coordinadorId: number
+      turno: $Enums.Turno
+      createdAt: Date
+    }, ExtArgs["result"]["reportenseCall"]>
+    composites: {}
+  }
+
+  type ReportenseCallGetPayload<S extends boolean | null | undefined | ReportenseCallDefaultArgs> = $Result.GetResult<Prisma.$ReportenseCallPayload, S>
+
+  type ReportenseCallCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReportenseCallFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReportenseCallCountAggregateInputType | true
+    }
+
+  export interface ReportenseCallDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ReportenseCall'], meta: { name: 'ReportenseCall' } }
+    /**
+     * Find zero or one ReportenseCall that matches the filter.
+     * @param {ReportenseCallFindUniqueArgs} args - Arguments to find a ReportenseCall
+     * @example
+     * // Get one ReportenseCall
+     * const reportenseCall = await prisma.reportenseCall.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ReportenseCallFindUniqueArgs>(args: SelectSubset<T, ReportenseCallFindUniqueArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ReportenseCall that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ReportenseCallFindUniqueOrThrowArgs} args - Arguments to find a ReportenseCall
+     * @example
+     * // Get one ReportenseCall
+     * const reportenseCall = await prisma.reportenseCall.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ReportenseCallFindUniqueOrThrowArgs>(args: SelectSubset<T, ReportenseCallFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ReportenseCall that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportenseCallFindFirstArgs} args - Arguments to find a ReportenseCall
+     * @example
+     * // Get one ReportenseCall
+     * const reportenseCall = await prisma.reportenseCall.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ReportenseCallFindFirstArgs>(args?: SelectSubset<T, ReportenseCallFindFirstArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ReportenseCall that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportenseCallFindFirstOrThrowArgs} args - Arguments to find a ReportenseCall
+     * @example
+     * // Get one ReportenseCall
+     * const reportenseCall = await prisma.reportenseCall.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ReportenseCallFindFirstOrThrowArgs>(args?: SelectSubset<T, ReportenseCallFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ReportenseCalls that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportenseCallFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ReportenseCalls
+     * const reportenseCalls = await prisma.reportenseCall.findMany()
+     * 
+     * // Get first 10 ReportenseCalls
+     * const reportenseCalls = await prisma.reportenseCall.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const reportenseCallWithIdOnly = await prisma.reportenseCall.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ReportenseCallFindManyArgs>(args?: SelectSubset<T, ReportenseCallFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ReportenseCall.
+     * @param {ReportenseCallCreateArgs} args - Arguments to create a ReportenseCall.
+     * @example
+     * // Create one ReportenseCall
+     * const ReportenseCall = await prisma.reportenseCall.create({
+     *   data: {
+     *     // ... data to create a ReportenseCall
+     *   }
+     * })
+     * 
+     */
+    create<T extends ReportenseCallCreateArgs>(args: SelectSubset<T, ReportenseCallCreateArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ReportenseCalls.
+     * @param {ReportenseCallCreateManyArgs} args - Arguments to create many ReportenseCalls.
+     * @example
+     * // Create many ReportenseCalls
+     * const reportenseCall = await prisma.reportenseCall.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ReportenseCallCreateManyArgs>(args?: SelectSubset<T, ReportenseCallCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ReportenseCall.
+     * @param {ReportenseCallDeleteArgs} args - Arguments to delete one ReportenseCall.
+     * @example
+     * // Delete one ReportenseCall
+     * const ReportenseCall = await prisma.reportenseCall.delete({
+     *   where: {
+     *     // ... filter to delete one ReportenseCall
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ReportenseCallDeleteArgs>(args: SelectSubset<T, ReportenseCallDeleteArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ReportenseCall.
+     * @param {ReportenseCallUpdateArgs} args - Arguments to update one ReportenseCall.
+     * @example
+     * // Update one ReportenseCall
+     * const reportenseCall = await prisma.reportenseCall.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ReportenseCallUpdateArgs>(args: SelectSubset<T, ReportenseCallUpdateArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ReportenseCalls.
+     * @param {ReportenseCallDeleteManyArgs} args - Arguments to filter ReportenseCalls to delete.
+     * @example
+     * // Delete a few ReportenseCalls
+     * const { count } = await prisma.reportenseCall.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ReportenseCallDeleteManyArgs>(args?: SelectSubset<T, ReportenseCallDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ReportenseCalls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportenseCallUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ReportenseCalls
+     * const reportenseCall = await prisma.reportenseCall.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ReportenseCallUpdateManyArgs>(args: SelectSubset<T, ReportenseCallUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ReportenseCall.
+     * @param {ReportenseCallUpsertArgs} args - Arguments to update or create a ReportenseCall.
+     * @example
+     * // Update or create a ReportenseCall
+     * const reportenseCall = await prisma.reportenseCall.upsert({
+     *   create: {
+     *     // ... data to create a ReportenseCall
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ReportenseCall we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ReportenseCallUpsertArgs>(args: SelectSubset<T, ReportenseCallUpsertArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ReportenseCalls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportenseCallCountArgs} args - Arguments to filter ReportenseCalls to count.
+     * @example
+     * // Count the number of ReportenseCalls
+     * const count = await prisma.reportenseCall.count({
+     *   where: {
+     *     // ... the filter for the ReportenseCalls we want to count
+     *   }
+     * })
+    **/
+    count<T extends ReportenseCallCountArgs>(
+      args?: Subset<T, ReportenseCallCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReportenseCallCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ReportenseCall.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportenseCallAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReportenseCallAggregateArgs>(args: Subset<T, ReportenseCallAggregateArgs>): Prisma.PrismaPromise<GetReportenseCallAggregateType<T>>
+
+    /**
+     * Group by ReportenseCall.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReportenseCallGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ReportenseCallGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ReportenseCallGroupByArgs['orderBy'] }
+        : { orderBy?: ReportenseCallGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ReportenseCallGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReportenseCallGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ReportenseCall model
+   */
+  readonly fields: ReportenseCallFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ReportenseCall.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ReportenseCallClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    presentes<T extends ReportenseCall$presentesArgs<ExtArgs> = {}>(args?: Subset<T, ReportenseCall$presentesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    coordinador<T extends CoordinadorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CoordinadorDefaultArgs<ExtArgs>>): Prisma__CoordinadorClient<$Result.GetResult<Prisma.$CoordinadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ReportenseCall model
+   */
+  interface ReportenseCallFieldRefs {
+    readonly id: FieldRef<"ReportenseCall", 'Int'>
+    readonly coordinadorId: FieldRef<"ReportenseCall", 'Int'>
+    readonly turno: FieldRef<"ReportenseCall", 'Turno'>
+    readonly createdAt: FieldRef<"ReportenseCall", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ReportenseCall findUnique
+   */
+  export type ReportenseCallFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * Filter, which ReportenseCall to fetch.
+     */
+    where: ReportenseCallWhereUniqueInput
+  }
+
+  /**
+   * ReportenseCall findUniqueOrThrow
+   */
+  export type ReportenseCallFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * Filter, which ReportenseCall to fetch.
+     */
+    where: ReportenseCallWhereUniqueInput
+  }
+
+  /**
+   * ReportenseCall findFirst
+   */
+  export type ReportenseCallFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * Filter, which ReportenseCall to fetch.
+     */
+    where?: ReportenseCallWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReportenseCalls to fetch.
+     */
+    orderBy?: ReportenseCallOrderByWithRelationInput | ReportenseCallOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ReportenseCalls.
+     */
+    cursor?: ReportenseCallWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReportenseCalls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReportenseCalls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ReportenseCalls.
+     */
+    distinct?: ReportenseCallScalarFieldEnum | ReportenseCallScalarFieldEnum[]
+  }
+
+  /**
+   * ReportenseCall findFirstOrThrow
+   */
+  export type ReportenseCallFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * Filter, which ReportenseCall to fetch.
+     */
+    where?: ReportenseCallWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReportenseCalls to fetch.
+     */
+    orderBy?: ReportenseCallOrderByWithRelationInput | ReportenseCallOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ReportenseCalls.
+     */
+    cursor?: ReportenseCallWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReportenseCalls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReportenseCalls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ReportenseCalls.
+     */
+    distinct?: ReportenseCallScalarFieldEnum | ReportenseCallScalarFieldEnum[]
+  }
+
+  /**
+   * ReportenseCall findMany
+   */
+  export type ReportenseCallFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * Filter, which ReportenseCalls to fetch.
+     */
+    where?: ReportenseCallWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ReportenseCalls to fetch.
+     */
+    orderBy?: ReportenseCallOrderByWithRelationInput | ReportenseCallOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ReportenseCalls.
+     */
+    cursor?: ReportenseCallWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ReportenseCalls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ReportenseCalls.
+     */
+    skip?: number
+    distinct?: ReportenseCallScalarFieldEnum | ReportenseCallScalarFieldEnum[]
+  }
+
+  /**
+   * ReportenseCall create
+   */
+  export type ReportenseCallCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ReportenseCall.
+     */
+    data: XOR<ReportenseCallCreateInput, ReportenseCallUncheckedCreateInput>
+  }
+
+  /**
+   * ReportenseCall createMany
+   */
+  export type ReportenseCallCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ReportenseCalls.
+     */
+    data: ReportenseCallCreateManyInput | ReportenseCallCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ReportenseCall update
+   */
+  export type ReportenseCallUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ReportenseCall.
+     */
+    data: XOR<ReportenseCallUpdateInput, ReportenseCallUncheckedUpdateInput>
+    /**
+     * Choose, which ReportenseCall to update.
+     */
+    where: ReportenseCallWhereUniqueInput
+  }
+
+  /**
+   * ReportenseCall updateMany
+   */
+  export type ReportenseCallUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ReportenseCalls.
+     */
+    data: XOR<ReportenseCallUpdateManyMutationInput, ReportenseCallUncheckedUpdateManyInput>
+    /**
+     * Filter which ReportenseCalls to update
+     */
+    where?: ReportenseCallWhereInput
+    /**
+     * Limit how many ReportenseCalls to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ReportenseCall upsert
+   */
+  export type ReportenseCallUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ReportenseCall to update in case it exists.
+     */
+    where: ReportenseCallWhereUniqueInput
+    /**
+     * In case the ReportenseCall found by the `where` argument doesn't exist, create a new ReportenseCall with this data.
+     */
+    create: XOR<ReportenseCallCreateInput, ReportenseCallUncheckedCreateInput>
+    /**
+     * In case the ReportenseCall was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReportenseCallUpdateInput, ReportenseCallUncheckedUpdateInput>
+  }
+
+  /**
+   * ReportenseCall delete
+   */
+  export type ReportenseCallDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    /**
+     * Filter which ReportenseCall to delete.
+     */
+    where: ReportenseCallWhereUniqueInput
+  }
+
+  /**
+   * ReportenseCall deleteMany
+   */
+  export type ReportenseCallDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ReportenseCalls to delete
+     */
+    where?: ReportenseCallWhereInput
+    /**
+     * Limit how many ReportenseCalls to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ReportenseCall.presentes
+   */
+  export type ReportenseCall$presentesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    where?: PresenteWhereInput
+    orderBy?: PresenteOrderByWithRelationInput | PresenteOrderByWithRelationInput[]
+    cursor?: PresenteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PresenteScalarFieldEnum | PresenteScalarFieldEnum[]
+  }
+
+  /**
+   * ReportenseCall without action
+   */
+  export type ReportenseCallDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Presente
+   */
+
+  export type AggregatePresente = {
+    _count: PresenteCountAggregateOutputType | null
+    _avg: PresenteAvgAggregateOutputType | null
+    _sum: PresenteSumAggregateOutputType | null
+    _min: PresenteMinAggregateOutputType | null
+    _max: PresenteMaxAggregateOutputType | null
+  }
+
+  export type PresenteAvgAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    callId: number | null
+    latitud: number | null
+    longitud: number | null
+  }
+
+  export type PresenteSumAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    callId: number | null
+    latitud: number | null
+    longitud: number | null
+  }
+
+  export type PresenteMinAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    callId: number | null
+    timestamp: Date | null
+    latitud: number | null
+    longitud: number | null
+  }
+
+  export type PresenteMaxAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    callId: number | null
+    timestamp: Date | null
+    latitud: number | null
+    longitud: number | null
+  }
+
+  export type PresenteCountAggregateOutputType = {
+    id: number
+    supervisorId: number
+    callId: number
+    timestamp: number
+    latitud: number
+    longitud: number
+    _all: number
+  }
+
+
+  export type PresenteAvgAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    callId?: true
+    latitud?: true
+    longitud?: true
+  }
+
+  export type PresenteSumAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    callId?: true
+    latitud?: true
+    longitud?: true
+  }
+
+  export type PresenteMinAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    callId?: true
+    timestamp?: true
+    latitud?: true
+    longitud?: true
+  }
+
+  export type PresenteMaxAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    callId?: true
+    timestamp?: true
+    latitud?: true
+    longitud?: true
+  }
+
+  export type PresenteCountAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    callId?: true
+    timestamp?: true
+    latitud?: true
+    longitud?: true
+    _all?: true
+  }
+
+  export type PresenteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Presente to aggregate.
+     */
+    where?: PresenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Presentes to fetch.
+     */
+    orderBy?: PresenteOrderByWithRelationInput | PresenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PresenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Presentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Presentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Presentes
+    **/
+    _count?: true | PresenteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PresenteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PresenteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PresenteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PresenteMaxAggregateInputType
+  }
+
+  export type GetPresenteAggregateType<T extends PresenteAggregateArgs> = {
+        [P in keyof T & keyof AggregatePresente]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePresente[P]>
+      : GetScalarType<T[P], AggregatePresente[P]>
+  }
+
+
+
+
+  export type PresenteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PresenteWhereInput
+    orderBy?: PresenteOrderByWithAggregationInput | PresenteOrderByWithAggregationInput[]
+    by: PresenteScalarFieldEnum[] | PresenteScalarFieldEnum
+    having?: PresenteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PresenteCountAggregateInputType | true
+    _avg?: PresenteAvgAggregateInputType
+    _sum?: PresenteSumAggregateInputType
+    _min?: PresenteMinAggregateInputType
+    _max?: PresenteMaxAggregateInputType
+  }
+
+  export type PresenteGroupByOutputType = {
+    id: number
+    supervisorId: number
+    callId: number | null
+    timestamp: Date
+    latitud: number
+    longitud: number
+    _count: PresenteCountAggregateOutputType | null
+    _avg: PresenteAvgAggregateOutputType | null
+    _sum: PresenteSumAggregateOutputType | null
+    _min: PresenteMinAggregateOutputType | null
+    _max: PresenteMaxAggregateOutputType | null
+  }
+
+  type GetPresenteGroupByPayload<T extends PresenteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PresenteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PresenteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PresenteGroupByOutputType[P]>
+            : GetScalarType<T[P], PresenteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PresenteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    supervisorId?: boolean
+    callId?: boolean
+    timestamp?: boolean
+    latitud?: boolean
+    longitud?: boolean
+    supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    call?: boolean | Presente$callArgs<ExtArgs>
+  }, ExtArgs["result"]["presente"]>
+
+
+
+  export type PresenteSelectScalar = {
+    id?: boolean
+    supervisorId?: boolean
+    callId?: boolean
+    timestamp?: boolean
+    latitud?: boolean
+    longitud?: boolean
+  }
+
+  export type PresenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "callId" | "timestamp" | "latitud" | "longitud", ExtArgs["result"]["presente"]>
+  export type PresenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    call?: boolean | Presente$callArgs<ExtArgs>
+  }
+
+  export type $PresentePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Presente"
+    objects: {
+      supervisor: Prisma.$SupervisorPayload<ExtArgs>
+      call: Prisma.$ReportenseCallPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      supervisorId: number
+      callId: number | null
+      timestamp: Date
+      latitud: number
+      longitud: number
+    }, ExtArgs["result"]["presente"]>
+    composites: {}
+  }
+
+  type PresenteGetPayload<S extends boolean | null | undefined | PresenteDefaultArgs> = $Result.GetResult<Prisma.$PresentePayload, S>
+
+  type PresenteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PresenteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PresenteCountAggregateInputType | true
+    }
+
+  export interface PresenteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Presente'], meta: { name: 'Presente' } }
+    /**
+     * Find zero or one Presente that matches the filter.
+     * @param {PresenteFindUniqueArgs} args - Arguments to find a Presente
+     * @example
+     * // Get one Presente
+     * const presente = await prisma.presente.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PresenteFindUniqueArgs>(args: SelectSubset<T, PresenteFindUniqueArgs<ExtArgs>>): Prisma__PresenteClient<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Presente that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PresenteFindUniqueOrThrowArgs} args - Arguments to find a Presente
+     * @example
+     * // Get one Presente
+     * const presente = await prisma.presente.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PresenteFindUniqueOrThrowArgs>(args: SelectSubset<T, PresenteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PresenteClient<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Presente that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PresenteFindFirstArgs} args - Arguments to find a Presente
+     * @example
+     * // Get one Presente
+     * const presente = await prisma.presente.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PresenteFindFirstArgs>(args?: SelectSubset<T, PresenteFindFirstArgs<ExtArgs>>): Prisma__PresenteClient<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Presente that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PresenteFindFirstOrThrowArgs} args - Arguments to find a Presente
+     * @example
+     * // Get one Presente
+     * const presente = await prisma.presente.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PresenteFindFirstOrThrowArgs>(args?: SelectSubset<T, PresenteFindFirstOrThrowArgs<ExtArgs>>): Prisma__PresenteClient<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Presentes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PresenteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Presentes
+     * const presentes = await prisma.presente.findMany()
+     * 
+     * // Get first 10 Presentes
+     * const presentes = await prisma.presente.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const presenteWithIdOnly = await prisma.presente.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PresenteFindManyArgs>(args?: SelectSubset<T, PresenteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Presente.
+     * @param {PresenteCreateArgs} args - Arguments to create a Presente.
+     * @example
+     * // Create one Presente
+     * const Presente = await prisma.presente.create({
+     *   data: {
+     *     // ... data to create a Presente
+     *   }
+     * })
+     * 
+     */
+    create<T extends PresenteCreateArgs>(args: SelectSubset<T, PresenteCreateArgs<ExtArgs>>): Prisma__PresenteClient<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Presentes.
+     * @param {PresenteCreateManyArgs} args - Arguments to create many Presentes.
+     * @example
+     * // Create many Presentes
+     * const presente = await prisma.presente.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PresenteCreateManyArgs>(args?: SelectSubset<T, PresenteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Presente.
+     * @param {PresenteDeleteArgs} args - Arguments to delete one Presente.
+     * @example
+     * // Delete one Presente
+     * const Presente = await prisma.presente.delete({
+     *   where: {
+     *     // ... filter to delete one Presente
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PresenteDeleteArgs>(args: SelectSubset<T, PresenteDeleteArgs<ExtArgs>>): Prisma__PresenteClient<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Presente.
+     * @param {PresenteUpdateArgs} args - Arguments to update one Presente.
+     * @example
+     * // Update one Presente
+     * const presente = await prisma.presente.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PresenteUpdateArgs>(args: SelectSubset<T, PresenteUpdateArgs<ExtArgs>>): Prisma__PresenteClient<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Presentes.
+     * @param {PresenteDeleteManyArgs} args - Arguments to filter Presentes to delete.
+     * @example
+     * // Delete a few Presentes
+     * const { count } = await prisma.presente.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PresenteDeleteManyArgs>(args?: SelectSubset<T, PresenteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Presentes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PresenteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Presentes
+     * const presente = await prisma.presente.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PresenteUpdateManyArgs>(args: SelectSubset<T, PresenteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Presente.
+     * @param {PresenteUpsertArgs} args - Arguments to update or create a Presente.
+     * @example
+     * // Update or create a Presente
+     * const presente = await prisma.presente.upsert({
+     *   create: {
+     *     // ... data to create a Presente
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Presente we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PresenteUpsertArgs>(args: SelectSubset<T, PresenteUpsertArgs<ExtArgs>>): Prisma__PresenteClient<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Presentes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PresenteCountArgs} args - Arguments to filter Presentes to count.
+     * @example
+     * // Count the number of Presentes
+     * const count = await prisma.presente.count({
+     *   where: {
+     *     // ... the filter for the Presentes we want to count
+     *   }
+     * })
+    **/
+    count<T extends PresenteCountArgs>(
+      args?: Subset<T, PresenteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PresenteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Presente.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PresenteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PresenteAggregateArgs>(args: Subset<T, PresenteAggregateArgs>): Prisma.PrismaPromise<GetPresenteAggregateType<T>>
+
+    /**
+     * Group by Presente.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PresenteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PresenteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PresenteGroupByArgs['orderBy'] }
+        : { orderBy?: PresenteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PresenteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPresenteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Presente model
+   */
+  readonly fields: PresenteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Presente.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PresenteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    supervisor<T extends SupervisorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SupervisorDefaultArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    call<T extends Presente$callArgs<ExtArgs> = {}>(args?: Subset<T, Presente$callArgs<ExtArgs>>): Prisma__ReportenseCallClient<$Result.GetResult<Prisma.$ReportenseCallPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Presente model
+   */
+  interface PresenteFieldRefs {
+    readonly id: FieldRef<"Presente", 'Int'>
+    readonly supervisorId: FieldRef<"Presente", 'Int'>
+    readonly callId: FieldRef<"Presente", 'Int'>
+    readonly timestamp: FieldRef<"Presente", 'DateTime'>
+    readonly latitud: FieldRef<"Presente", 'Float'>
+    readonly longitud: FieldRef<"Presente", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Presente findUnique
+   */
+  export type PresenteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Presente to fetch.
+     */
+    where: PresenteWhereUniqueInput
+  }
+
+  /**
+   * Presente findUniqueOrThrow
+   */
+  export type PresenteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Presente to fetch.
+     */
+    where: PresenteWhereUniqueInput
+  }
+
+  /**
+   * Presente findFirst
+   */
+  export type PresenteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Presente to fetch.
+     */
+    where?: PresenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Presentes to fetch.
+     */
+    orderBy?: PresenteOrderByWithRelationInput | PresenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Presentes.
+     */
+    cursor?: PresenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Presentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Presentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Presentes.
+     */
+    distinct?: PresenteScalarFieldEnum | PresenteScalarFieldEnum[]
+  }
+
+  /**
+   * Presente findFirstOrThrow
+   */
+  export type PresenteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Presente to fetch.
+     */
+    where?: PresenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Presentes to fetch.
+     */
+    orderBy?: PresenteOrderByWithRelationInput | PresenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Presentes.
+     */
+    cursor?: PresenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Presentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Presentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Presentes.
+     */
+    distinct?: PresenteScalarFieldEnum | PresenteScalarFieldEnum[]
+  }
+
+  /**
+   * Presente findMany
+   */
+  export type PresenteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * Filter, which Presentes to fetch.
+     */
+    where?: PresenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Presentes to fetch.
+     */
+    orderBy?: PresenteOrderByWithRelationInput | PresenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Presentes.
+     */
+    cursor?: PresenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Presentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Presentes.
+     */
+    skip?: number
+    distinct?: PresenteScalarFieldEnum | PresenteScalarFieldEnum[]
+  }
+
+  /**
+   * Presente create
+   */
+  export type PresenteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Presente.
+     */
+    data: XOR<PresenteCreateInput, PresenteUncheckedCreateInput>
+  }
+
+  /**
+   * Presente createMany
+   */
+  export type PresenteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Presentes.
+     */
+    data: PresenteCreateManyInput | PresenteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Presente update
+   */
+  export type PresenteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Presente.
+     */
+    data: XOR<PresenteUpdateInput, PresenteUncheckedUpdateInput>
+    /**
+     * Choose, which Presente to update.
+     */
+    where: PresenteWhereUniqueInput
+  }
+
+  /**
+   * Presente updateMany
+   */
+  export type PresenteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Presentes.
+     */
+    data: XOR<PresenteUpdateManyMutationInput, PresenteUncheckedUpdateManyInput>
+    /**
+     * Filter which Presentes to update
+     */
+    where?: PresenteWhereInput
+    /**
+     * Limit how many Presentes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Presente upsert
+   */
+  export type PresenteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Presente to update in case it exists.
+     */
+    where: PresenteWhereUniqueInput
+    /**
+     * In case the Presente found by the `where` argument doesn't exist, create a new Presente with this data.
+     */
+    create: XOR<PresenteCreateInput, PresenteUncheckedCreateInput>
+    /**
+     * In case the Presente was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PresenteUpdateInput, PresenteUncheckedUpdateInput>
+  }
+
+  /**
+   * Presente delete
+   */
+  export type PresenteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+    /**
+     * Filter which Presente to delete.
+     */
+    where: PresenteWhereUniqueInput
+  }
+
+  /**
+   * Presente deleteMany
+   */
+  export type PresenteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Presentes to delete
+     */
+    where?: PresenteWhereInput
+    /**
+     * Limit how many Presentes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Presente.call
+   */
+  export type Presente$callArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReportenseCall
+     */
+    select?: ReportenseCallSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ReportenseCall
+     */
+    omit?: ReportenseCallOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReportenseCallInclude<ExtArgs> | null
+    where?: ReportenseCallWhereInput
+  }
+
+  /**
+   * Presente without action
+   */
+  export type PresenteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Presente
+     */
+    select?: PresenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Presente
+     */
+    omit?: PresenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PresenteInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -15403,6 +18853,40 @@ export namespace Prisma {
   export type DeviceTokenScalarFieldEnum = (typeof DeviceTokenScalarFieldEnum)[keyof typeof DeviceTokenScalarFieldEnum]
 
 
+  export const TurnoProgramadoScalarFieldEnum: {
+    id: 'id',
+    fecha: 'fecha',
+    turno: 'turno',
+    supervisorId: 'supervisorId',
+    coordinadorId: 'coordinadorId',
+    createdAt: 'createdAt'
+  };
+
+  export type TurnoProgramadoScalarFieldEnum = (typeof TurnoProgramadoScalarFieldEnum)[keyof typeof TurnoProgramadoScalarFieldEnum]
+
+
+  export const ReportenseCallScalarFieldEnum: {
+    id: 'id',
+    coordinadorId: 'coordinadorId',
+    turno: 'turno',
+    createdAt: 'createdAt'
+  };
+
+  export type ReportenseCallScalarFieldEnum = (typeof ReportenseCallScalarFieldEnum)[keyof typeof ReportenseCallScalarFieldEnum]
+
+
+  export const PresenteScalarFieldEnum: {
+    id: 'id',
+    supervisorId: 'supervisorId',
+    callId: 'callId',
+    timestamp: 'timestamp',
+    latitud: 'latitud',
+    longitud: 'longitud'
+  };
+
+  export type PresenteScalarFieldEnum = (typeof PresenteScalarFieldEnum)[keyof typeof PresenteScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -15530,6 +19014,13 @@ export namespace Prisma {
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Turno'
+   */
+  export type EnumTurnoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Turno'>
     
   /**
    * Deep Input Types
@@ -15769,6 +19260,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorListRelationFilter
     reportes?: ReporteIncidenteListRelationFilter
     asignaciones?: IncidenteAsignadoListRelationFilter
+    TurnoProgramado?: TurnoProgramadoListRelationFilter
+    Presente?: PresenteListRelationFilter
   }
 
   export type SupervisorOrderByWithRelationInput = {
@@ -15778,6 +19271,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorOrderByRelationAggregateInput
     reportes?: ReporteIncidenteOrderByRelationAggregateInput
     asignaciones?: IncidenteAsignadoOrderByRelationAggregateInput
+    TurnoProgramado?: TurnoProgramadoOrderByRelationAggregateInput
+    Presente?: PresenteOrderByRelationAggregateInput
   }
 
   export type SupervisorWhereUniqueInput = Prisma.AtLeast<{
@@ -15790,6 +19285,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorListRelationFilter
     reportes?: ReporteIncidenteListRelationFilter
     asignaciones?: IncidenteAsignadoListRelationFilter
+    TurnoProgramado?: TurnoProgramadoListRelationFilter
+    Presente?: PresenteListRelationFilter
   }, "id" | "userRoleId">
 
   export type SupervisorOrderByWithAggregationInput = {
@@ -15874,12 +19371,16 @@ export namespace Prisma {
     id?: IntFilter<"Coordinador"> | number
     userRoleId?: IntFilter<"Coordinador"> | number
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
+    TurnoProgramado?: TurnoProgramadoListRelationFilter
+    ReportenseCall?: ReportenseCallListRelationFilter
   }
 
   export type CoordinadorOrderByWithRelationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
     user?: UserRoleOrderByWithRelationInput
+    TurnoProgramado?: TurnoProgramadoOrderByRelationAggregateInput
+    ReportenseCall?: ReportenseCallOrderByRelationAggregateInput
   }
 
   export type CoordinadorWhereUniqueInput = Prisma.AtLeast<{
@@ -15889,6 +19390,8 @@ export namespace Prisma {
     OR?: CoordinadorWhereInput[]
     NOT?: CoordinadorWhereInput | CoordinadorWhereInput[]
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
+    TurnoProgramado?: TurnoProgramadoListRelationFilter
+    ReportenseCall?: ReportenseCallListRelationFilter
   }, "id" | "userRoleId">
 
   export type CoordinadorOrderByWithAggregationInput = {
@@ -16367,6 +19870,192 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"DeviceToken"> | Date | string
   }
 
+  export type TurnoProgramadoWhereInput = {
+    AND?: TurnoProgramadoWhereInput | TurnoProgramadoWhereInput[]
+    OR?: TurnoProgramadoWhereInput[]
+    NOT?: TurnoProgramadoWhereInput | TurnoProgramadoWhereInput[]
+    id?: IntFilter<"TurnoProgramado"> | number
+    fecha?: DateTimeFilter<"TurnoProgramado"> | Date | string
+    turno?: EnumTurnoFilter<"TurnoProgramado"> | $Enums.Turno
+    supervisorId?: IntFilter<"TurnoProgramado"> | number
+    coordinadorId?: IntFilter<"TurnoProgramado"> | number
+    createdAt?: DateTimeFilter<"TurnoProgramado"> | Date | string
+    supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    coordinador?: XOR<CoordinadorScalarRelationFilter, CoordinadorWhereInput>
+  }
+
+  export type TurnoProgramadoOrderByWithRelationInput = {
+    id?: SortOrder
+    fecha?: SortOrder
+    turno?: SortOrder
+    supervisorId?: SortOrder
+    coordinadorId?: SortOrder
+    createdAt?: SortOrder
+    supervisor?: SupervisorOrderByWithRelationInput
+    coordinador?: CoordinadorOrderByWithRelationInput
+  }
+
+  export type TurnoProgramadoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    fecha_turno_supervisorId?: TurnoProgramadoFechaTurnoSupervisorIdCompoundUniqueInput
+    AND?: TurnoProgramadoWhereInput | TurnoProgramadoWhereInput[]
+    OR?: TurnoProgramadoWhereInput[]
+    NOT?: TurnoProgramadoWhereInput | TurnoProgramadoWhereInput[]
+    fecha?: DateTimeFilter<"TurnoProgramado"> | Date | string
+    turno?: EnumTurnoFilter<"TurnoProgramado"> | $Enums.Turno
+    supervisorId?: IntFilter<"TurnoProgramado"> | number
+    coordinadorId?: IntFilter<"TurnoProgramado"> | number
+    createdAt?: DateTimeFilter<"TurnoProgramado"> | Date | string
+    supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    coordinador?: XOR<CoordinadorScalarRelationFilter, CoordinadorWhereInput>
+  }, "id" | "fecha_turno_supervisorId">
+
+  export type TurnoProgramadoOrderByWithAggregationInput = {
+    id?: SortOrder
+    fecha?: SortOrder
+    turno?: SortOrder
+    supervisorId?: SortOrder
+    coordinadorId?: SortOrder
+    createdAt?: SortOrder
+    _count?: TurnoProgramadoCountOrderByAggregateInput
+    _avg?: TurnoProgramadoAvgOrderByAggregateInput
+    _max?: TurnoProgramadoMaxOrderByAggregateInput
+    _min?: TurnoProgramadoMinOrderByAggregateInput
+    _sum?: TurnoProgramadoSumOrderByAggregateInput
+  }
+
+  export type TurnoProgramadoScalarWhereWithAggregatesInput = {
+    AND?: TurnoProgramadoScalarWhereWithAggregatesInput | TurnoProgramadoScalarWhereWithAggregatesInput[]
+    OR?: TurnoProgramadoScalarWhereWithAggregatesInput[]
+    NOT?: TurnoProgramadoScalarWhereWithAggregatesInput | TurnoProgramadoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TurnoProgramado"> | number
+    fecha?: DateTimeWithAggregatesFilter<"TurnoProgramado"> | Date | string
+    turno?: EnumTurnoWithAggregatesFilter<"TurnoProgramado"> | $Enums.Turno
+    supervisorId?: IntWithAggregatesFilter<"TurnoProgramado"> | number
+    coordinadorId?: IntWithAggregatesFilter<"TurnoProgramado"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"TurnoProgramado"> | Date | string
+  }
+
+  export type ReportenseCallWhereInput = {
+    AND?: ReportenseCallWhereInput | ReportenseCallWhereInput[]
+    OR?: ReportenseCallWhereInput[]
+    NOT?: ReportenseCallWhereInput | ReportenseCallWhereInput[]
+    id?: IntFilter<"ReportenseCall"> | number
+    coordinadorId?: IntFilter<"ReportenseCall"> | number
+    turno?: EnumTurnoFilter<"ReportenseCall"> | $Enums.Turno
+    createdAt?: DateTimeFilter<"ReportenseCall"> | Date | string
+    presentes?: PresenteListRelationFilter
+    coordinador?: XOR<CoordinadorScalarRelationFilter, CoordinadorWhereInput>
+  }
+
+  export type ReportenseCallOrderByWithRelationInput = {
+    id?: SortOrder
+    coordinadorId?: SortOrder
+    turno?: SortOrder
+    createdAt?: SortOrder
+    presentes?: PresenteOrderByRelationAggregateInput
+    coordinador?: CoordinadorOrderByWithRelationInput
+  }
+
+  export type ReportenseCallWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ReportenseCallWhereInput | ReportenseCallWhereInput[]
+    OR?: ReportenseCallWhereInput[]
+    NOT?: ReportenseCallWhereInput | ReportenseCallWhereInput[]
+    coordinadorId?: IntFilter<"ReportenseCall"> | number
+    turno?: EnumTurnoFilter<"ReportenseCall"> | $Enums.Turno
+    createdAt?: DateTimeFilter<"ReportenseCall"> | Date | string
+    presentes?: PresenteListRelationFilter
+    coordinador?: XOR<CoordinadorScalarRelationFilter, CoordinadorWhereInput>
+  }, "id">
+
+  export type ReportenseCallOrderByWithAggregationInput = {
+    id?: SortOrder
+    coordinadorId?: SortOrder
+    turno?: SortOrder
+    createdAt?: SortOrder
+    _count?: ReportenseCallCountOrderByAggregateInput
+    _avg?: ReportenseCallAvgOrderByAggregateInput
+    _max?: ReportenseCallMaxOrderByAggregateInput
+    _min?: ReportenseCallMinOrderByAggregateInput
+    _sum?: ReportenseCallSumOrderByAggregateInput
+  }
+
+  export type ReportenseCallScalarWhereWithAggregatesInput = {
+    AND?: ReportenseCallScalarWhereWithAggregatesInput | ReportenseCallScalarWhereWithAggregatesInput[]
+    OR?: ReportenseCallScalarWhereWithAggregatesInput[]
+    NOT?: ReportenseCallScalarWhereWithAggregatesInput | ReportenseCallScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ReportenseCall"> | number
+    coordinadorId?: IntWithAggregatesFilter<"ReportenseCall"> | number
+    turno?: EnumTurnoWithAggregatesFilter<"ReportenseCall"> | $Enums.Turno
+    createdAt?: DateTimeWithAggregatesFilter<"ReportenseCall"> | Date | string
+  }
+
+  export type PresenteWhereInput = {
+    AND?: PresenteWhereInput | PresenteWhereInput[]
+    OR?: PresenteWhereInput[]
+    NOT?: PresenteWhereInput | PresenteWhereInput[]
+    id?: IntFilter<"Presente"> | number
+    supervisorId?: IntFilter<"Presente"> | number
+    callId?: IntNullableFilter<"Presente"> | number | null
+    timestamp?: DateTimeFilter<"Presente"> | Date | string
+    latitud?: FloatFilter<"Presente"> | number
+    longitud?: FloatFilter<"Presente"> | number
+    supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    call?: XOR<ReportenseCallNullableScalarRelationFilter, ReportenseCallWhereInput> | null
+  }
+
+  export type PresenteOrderByWithRelationInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    callId?: SortOrderInput | SortOrder
+    timestamp?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
+    supervisor?: SupervisorOrderByWithRelationInput
+    call?: ReportenseCallOrderByWithRelationInput
+  }
+
+  export type PresenteWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PresenteWhereInput | PresenteWhereInput[]
+    OR?: PresenteWhereInput[]
+    NOT?: PresenteWhereInput | PresenteWhereInput[]
+    supervisorId?: IntFilter<"Presente"> | number
+    callId?: IntNullableFilter<"Presente"> | number | null
+    timestamp?: DateTimeFilter<"Presente"> | Date | string
+    latitud?: FloatFilter<"Presente"> | number
+    longitud?: FloatFilter<"Presente"> | number
+    supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    call?: XOR<ReportenseCallNullableScalarRelationFilter, ReportenseCallWhereInput> | null
+  }, "id">
+
+  export type PresenteOrderByWithAggregationInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    callId?: SortOrderInput | SortOrder
+    timestamp?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
+    _count?: PresenteCountOrderByAggregateInput
+    _avg?: PresenteAvgOrderByAggregateInput
+    _max?: PresenteMaxOrderByAggregateInput
+    _min?: PresenteMinOrderByAggregateInput
+    _sum?: PresenteSumOrderByAggregateInput
+  }
+
+  export type PresenteScalarWhereWithAggregatesInput = {
+    AND?: PresenteScalarWhereWithAggregatesInput | PresenteScalarWhereWithAggregatesInput[]
+    OR?: PresenteScalarWhereWithAggregatesInput[]
+    NOT?: PresenteScalarWhereWithAggregatesInput | PresenteScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Presente"> | number
+    supervisorId?: IntWithAggregatesFilter<"Presente"> | number
+    callId?: IntNullableWithAggregatesFilter<"Presente"> | number | null
+    timestamp?: DateTimeWithAggregatesFilter<"Presente"> | Date | string
+    latitud?: FloatWithAggregatesFilter<"Presente"> | number
+    longitud?: FloatWithAggregatesFilter<"Presente"> | number
+  }
+
   export type UserRoleCreateInput = {
     idFirebase: string
     role: $Enums.Role
@@ -16600,6 +20289,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateInput = {
@@ -16608,6 +20299,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUpdateInput = {
@@ -16615,6 +20308,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateInput = {
@@ -16623,6 +20318,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorCreateManyInput = {
@@ -16693,20 +20390,28 @@ export namespace Prisma {
 
   export type CoordinadorCreateInput = {
     user: UserRoleCreateNestedOneWithoutCoordinadorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutCoordinadorInput
+    ReportenseCall?: ReportenseCallCreateNestedManyWithoutCoordinadorInput
   }
 
   export type CoordinadorUncheckedCreateInput = {
     id?: number
     userRoleId: number
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutCoordinadorInput
+    ReportenseCall?: ReportenseCallUncheckedCreateNestedManyWithoutCoordinadorInput
   }
 
   export type CoordinadorUpdateInput = {
     user?: UserRoleUpdateOneRequiredWithoutCoordinadorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutCoordinadorNestedInput
+    ReportenseCall?: ReportenseCallUpdateManyWithoutCoordinadorNestedInput
   }
 
   export type CoordinadorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutCoordinadorNestedInput
+    ReportenseCall?: ReportenseCallUncheckedUpdateManyWithoutCoordinadorNestedInput
   }
 
   export type CoordinadorCreateManyInput = {
@@ -17142,6 +20847,171 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TurnoProgramadoCreateInput = {
+    fecha: Date | string
+    turno: $Enums.Turno
+    createdAt?: Date | string
+    supervisor: SupervisorCreateNestedOneWithoutTurnoProgramadoInput
+    coordinador: CoordinadorCreateNestedOneWithoutTurnoProgramadoInput
+  }
+
+  export type TurnoProgramadoUncheckedCreateInput = {
+    id?: number
+    fecha: Date | string
+    turno: $Enums.Turno
+    supervisorId: number
+    coordinadorId: number
+    createdAt?: Date | string
+  }
+
+  export type TurnoProgramadoUpdateInput = {
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    supervisor?: SupervisorUpdateOneRequiredWithoutTurnoProgramadoNestedInput
+    coordinador?: CoordinadorUpdateOneRequiredWithoutTurnoProgramadoNestedInput
+  }
+
+  export type TurnoProgramadoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    coordinadorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TurnoProgramadoCreateManyInput = {
+    id?: number
+    fecha: Date | string
+    turno: $Enums.Turno
+    supervisorId: number
+    coordinadorId: number
+    createdAt?: Date | string
+  }
+
+  export type TurnoProgramadoUpdateManyMutationInput = {
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TurnoProgramadoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    coordinadorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportenseCallCreateInput = {
+    turno: $Enums.Turno
+    createdAt?: Date | string
+    presentes?: PresenteCreateNestedManyWithoutCallInput
+    coordinador: CoordinadorCreateNestedOneWithoutReportenseCallInput
+  }
+
+  export type ReportenseCallUncheckedCreateInput = {
+    id?: number
+    coordinadorId: number
+    turno: $Enums.Turno
+    createdAt?: Date | string
+    presentes?: PresenteUncheckedCreateNestedManyWithoutCallInput
+  }
+
+  export type ReportenseCallUpdateInput = {
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    presentes?: PresenteUpdateManyWithoutCallNestedInput
+    coordinador?: CoordinadorUpdateOneRequiredWithoutReportenseCallNestedInput
+  }
+
+  export type ReportenseCallUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    coordinadorId?: IntFieldUpdateOperationsInput | number
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    presentes?: PresenteUncheckedUpdateManyWithoutCallNestedInput
+  }
+
+  export type ReportenseCallCreateManyInput = {
+    id?: number
+    coordinadorId: number
+    turno: $Enums.Turno
+    createdAt?: Date | string
+  }
+
+  export type ReportenseCallUpdateManyMutationInput = {
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportenseCallUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    coordinadorId?: IntFieldUpdateOperationsInput | number
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PresenteCreateInput = {
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+    supervisor: SupervisorCreateNestedOneWithoutPresenteInput
+    call?: ReportenseCallCreateNestedOneWithoutPresentesInput
+  }
+
+  export type PresenteUncheckedCreateInput = {
+    id?: number
+    supervisorId: number
+    callId?: number | null
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+  }
+
+  export type PresenteUpdateInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    supervisor?: SupervisorUpdateOneRequiredWithoutPresenteNestedInput
+    call?: ReportenseCallUpdateOneWithoutPresentesNestedInput
+  }
+
+  export type PresenteUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    callId?: NullableIntFieldUpdateOperationsInput | number | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type PresenteCreateManyInput = {
+    id?: number
+    supervisorId: number
+    callId?: number | null
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+  }
+
+  export type PresenteUpdateManyMutationInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type PresenteUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    callId?: NullableIntFieldUpdateOperationsInput | number | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -17551,11 +21421,31 @@ export namespace Prisma {
     none?: ReporteIncidenteWhereInput
   }
 
+  export type TurnoProgramadoListRelationFilter = {
+    every?: TurnoProgramadoWhereInput
+    some?: TurnoProgramadoWhereInput
+    none?: TurnoProgramadoWhereInput
+  }
+
+  export type PresenteListRelationFilter = {
+    every?: PresenteWhereInput
+    some?: PresenteWhereInput
+    none?: PresenteWhereInput
+  }
+
   export type UbicacionSupervisorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type ReporteIncidenteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TurnoProgramadoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PresenteOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17652,6 +21542,16 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type ReportenseCallListRelationFilter = {
+    every?: ReportenseCallWhereInput
+    some?: ReportenseCallWhereInput
+    none?: ReportenseCallWhereInput
+  }
+
+  export type ReportenseCallOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type CoordinadorCountOrderByAggregateInput = {
@@ -18043,6 +21943,152 @@ export namespace Prisma {
   export type DeviceTokenSumOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+  }
+
+  export type EnumTurnoFilter<$PrismaModel = never> = {
+    equals?: $Enums.Turno | EnumTurnoFieldRefInput<$PrismaModel>
+    in?: $Enums.Turno[]
+    notIn?: $Enums.Turno[]
+    not?: NestedEnumTurnoFilter<$PrismaModel> | $Enums.Turno
+  }
+
+  export type CoordinadorScalarRelationFilter = {
+    is?: CoordinadorWhereInput
+    isNot?: CoordinadorWhereInput
+  }
+
+  export type TurnoProgramadoFechaTurnoSupervisorIdCompoundUniqueInput = {
+    fecha: Date | string
+    turno: $Enums.Turno
+    supervisorId: number
+  }
+
+  export type TurnoProgramadoCountOrderByAggregateInput = {
+    id?: SortOrder
+    fecha?: SortOrder
+    turno?: SortOrder
+    supervisorId?: SortOrder
+    coordinadorId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TurnoProgramadoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    coordinadorId?: SortOrder
+  }
+
+  export type TurnoProgramadoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    fecha?: SortOrder
+    turno?: SortOrder
+    supervisorId?: SortOrder
+    coordinadorId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TurnoProgramadoMinOrderByAggregateInput = {
+    id?: SortOrder
+    fecha?: SortOrder
+    turno?: SortOrder
+    supervisorId?: SortOrder
+    coordinadorId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TurnoProgramadoSumOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    coordinadorId?: SortOrder
+  }
+
+  export type EnumTurnoWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Turno | EnumTurnoFieldRefInput<$PrismaModel>
+    in?: $Enums.Turno[]
+    notIn?: $Enums.Turno[]
+    not?: NestedEnumTurnoWithAggregatesFilter<$PrismaModel> | $Enums.Turno
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTurnoFilter<$PrismaModel>
+    _max?: NestedEnumTurnoFilter<$PrismaModel>
+  }
+
+  export type ReportenseCallCountOrderByAggregateInput = {
+    id?: SortOrder
+    coordinadorId?: SortOrder
+    turno?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ReportenseCallAvgOrderByAggregateInput = {
+    id?: SortOrder
+    coordinadorId?: SortOrder
+  }
+
+  export type ReportenseCallMaxOrderByAggregateInput = {
+    id?: SortOrder
+    coordinadorId?: SortOrder
+    turno?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ReportenseCallMinOrderByAggregateInput = {
+    id?: SortOrder
+    coordinadorId?: SortOrder
+    turno?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ReportenseCallSumOrderByAggregateInput = {
+    id?: SortOrder
+    coordinadorId?: SortOrder
+  }
+
+  export type ReportenseCallNullableScalarRelationFilter = {
+    is?: ReportenseCallWhereInput | null
+    isNot?: ReportenseCallWhereInput | null
+  }
+
+  export type PresenteCountOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    callId?: SortOrder
+    timestamp?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
+  }
+
+  export type PresenteAvgOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    callId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
+  }
+
+  export type PresenteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    callId?: SortOrder
+    timestamp?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
+  }
+
+  export type PresenteMinOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    callId?: SortOrder
+    timestamp?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
+  }
+
+  export type PresenteSumOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    callId?: SortOrder
+    latitud?: SortOrder
+    longitud?: SortOrder
   }
 
   export type OperadorCreateNestedOneWithoutUserInput = {
@@ -18474,6 +22520,20 @@ export namespace Prisma {
     connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
   }
 
+  export type TurnoProgramadoCreateNestedManyWithoutSupervisorInput = {
+    create?: XOR<TurnoProgramadoCreateWithoutSupervisorInput, TurnoProgramadoUncheckedCreateWithoutSupervisorInput> | TurnoProgramadoCreateWithoutSupervisorInput[] | TurnoProgramadoUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: TurnoProgramadoCreateOrConnectWithoutSupervisorInput | TurnoProgramadoCreateOrConnectWithoutSupervisorInput[]
+    createMany?: TurnoProgramadoCreateManySupervisorInputEnvelope
+    connect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+  }
+
+  export type PresenteCreateNestedManyWithoutSupervisorInput = {
+    create?: XOR<PresenteCreateWithoutSupervisorInput, PresenteUncheckedCreateWithoutSupervisorInput> | PresenteCreateWithoutSupervisorInput[] | PresenteUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: PresenteCreateOrConnectWithoutSupervisorInput | PresenteCreateOrConnectWithoutSupervisorInput[]
+    createMany?: PresenteCreateManySupervisorInputEnvelope
+    connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+  }
+
   export type UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput = {
     create?: XOR<UbicacionSupervisorCreateWithoutSupervisorInput, UbicacionSupervisorUncheckedCreateWithoutSupervisorInput> | UbicacionSupervisorCreateWithoutSupervisorInput[] | UbicacionSupervisorUncheckedCreateWithoutSupervisorInput[]
     connectOrCreate?: UbicacionSupervisorCreateOrConnectWithoutSupervisorInput | UbicacionSupervisorCreateOrConnectWithoutSupervisorInput[]
@@ -18493,6 +22553,20 @@ export namespace Prisma {
     connectOrCreate?: IncidenteAsignadoCreateOrConnectWithoutSupervisorInput | IncidenteAsignadoCreateOrConnectWithoutSupervisorInput[]
     createMany?: IncidenteAsignadoCreateManySupervisorInputEnvelope
     connect?: IncidenteAsignadoWhereUniqueInput | IncidenteAsignadoWhereUniqueInput[]
+  }
+
+  export type TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput = {
+    create?: XOR<TurnoProgramadoCreateWithoutSupervisorInput, TurnoProgramadoUncheckedCreateWithoutSupervisorInput> | TurnoProgramadoCreateWithoutSupervisorInput[] | TurnoProgramadoUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: TurnoProgramadoCreateOrConnectWithoutSupervisorInput | TurnoProgramadoCreateOrConnectWithoutSupervisorInput[]
+    createMany?: TurnoProgramadoCreateManySupervisorInputEnvelope
+    connect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+  }
+
+  export type PresenteUncheckedCreateNestedManyWithoutSupervisorInput = {
+    create?: XOR<PresenteCreateWithoutSupervisorInput, PresenteUncheckedCreateWithoutSupervisorInput> | PresenteCreateWithoutSupervisorInput[] | PresenteUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: PresenteCreateOrConnectWithoutSupervisorInput | PresenteCreateOrConnectWithoutSupervisorInput[]
+    createMany?: PresenteCreateManySupervisorInputEnvelope
+    connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
   }
 
   export type UserRoleUpdateOneRequiredWithoutSupervisorNestedInput = {
@@ -18545,6 +22619,34 @@ export namespace Prisma {
     deleteMany?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
   }
 
+  export type TurnoProgramadoUpdateManyWithoutSupervisorNestedInput = {
+    create?: XOR<TurnoProgramadoCreateWithoutSupervisorInput, TurnoProgramadoUncheckedCreateWithoutSupervisorInput> | TurnoProgramadoCreateWithoutSupervisorInput[] | TurnoProgramadoUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: TurnoProgramadoCreateOrConnectWithoutSupervisorInput | TurnoProgramadoCreateOrConnectWithoutSupervisorInput[]
+    upsert?: TurnoProgramadoUpsertWithWhereUniqueWithoutSupervisorInput | TurnoProgramadoUpsertWithWhereUniqueWithoutSupervisorInput[]
+    createMany?: TurnoProgramadoCreateManySupervisorInputEnvelope
+    set?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    disconnect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    delete?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    connect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    update?: TurnoProgramadoUpdateWithWhereUniqueWithoutSupervisorInput | TurnoProgramadoUpdateWithWhereUniqueWithoutSupervisorInput[]
+    updateMany?: TurnoProgramadoUpdateManyWithWhereWithoutSupervisorInput | TurnoProgramadoUpdateManyWithWhereWithoutSupervisorInput[]
+    deleteMany?: TurnoProgramadoScalarWhereInput | TurnoProgramadoScalarWhereInput[]
+  }
+
+  export type PresenteUpdateManyWithoutSupervisorNestedInput = {
+    create?: XOR<PresenteCreateWithoutSupervisorInput, PresenteUncheckedCreateWithoutSupervisorInput> | PresenteCreateWithoutSupervisorInput[] | PresenteUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: PresenteCreateOrConnectWithoutSupervisorInput | PresenteCreateOrConnectWithoutSupervisorInput[]
+    upsert?: PresenteUpsertWithWhereUniqueWithoutSupervisorInput | PresenteUpsertWithWhereUniqueWithoutSupervisorInput[]
+    createMany?: PresenteCreateManySupervisorInputEnvelope
+    set?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    disconnect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    delete?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    update?: PresenteUpdateWithWhereUniqueWithoutSupervisorInput | PresenteUpdateWithWhereUniqueWithoutSupervisorInput[]
+    updateMany?: PresenteUpdateManyWithWhereWithoutSupervisorInput | PresenteUpdateManyWithWhereWithoutSupervisorInput[]
+    deleteMany?: PresenteScalarWhereInput | PresenteScalarWhereInput[]
+  }
+
   export type UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput = {
     create?: XOR<UbicacionSupervisorCreateWithoutSupervisorInput, UbicacionSupervisorUncheckedCreateWithoutSupervisorInput> | UbicacionSupervisorCreateWithoutSupervisorInput[] | UbicacionSupervisorUncheckedCreateWithoutSupervisorInput[]
     connectOrCreate?: UbicacionSupervisorCreateOrConnectWithoutSupervisorInput | UbicacionSupervisorCreateOrConnectWithoutSupervisorInput[]
@@ -18587,6 +22689,34 @@ export namespace Prisma {
     deleteMany?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
   }
 
+  export type TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput = {
+    create?: XOR<TurnoProgramadoCreateWithoutSupervisorInput, TurnoProgramadoUncheckedCreateWithoutSupervisorInput> | TurnoProgramadoCreateWithoutSupervisorInput[] | TurnoProgramadoUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: TurnoProgramadoCreateOrConnectWithoutSupervisorInput | TurnoProgramadoCreateOrConnectWithoutSupervisorInput[]
+    upsert?: TurnoProgramadoUpsertWithWhereUniqueWithoutSupervisorInput | TurnoProgramadoUpsertWithWhereUniqueWithoutSupervisorInput[]
+    createMany?: TurnoProgramadoCreateManySupervisorInputEnvelope
+    set?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    disconnect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    delete?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    connect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    update?: TurnoProgramadoUpdateWithWhereUniqueWithoutSupervisorInput | TurnoProgramadoUpdateWithWhereUniqueWithoutSupervisorInput[]
+    updateMany?: TurnoProgramadoUpdateManyWithWhereWithoutSupervisorInput | TurnoProgramadoUpdateManyWithWhereWithoutSupervisorInput[]
+    deleteMany?: TurnoProgramadoScalarWhereInput | TurnoProgramadoScalarWhereInput[]
+  }
+
+  export type PresenteUncheckedUpdateManyWithoutSupervisorNestedInput = {
+    create?: XOR<PresenteCreateWithoutSupervisorInput, PresenteUncheckedCreateWithoutSupervisorInput> | PresenteCreateWithoutSupervisorInput[] | PresenteUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: PresenteCreateOrConnectWithoutSupervisorInput | PresenteCreateOrConnectWithoutSupervisorInput[]
+    upsert?: PresenteUpsertWithWhereUniqueWithoutSupervisorInput | PresenteUpsertWithWhereUniqueWithoutSupervisorInput[]
+    createMany?: PresenteCreateManySupervisorInputEnvelope
+    set?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    disconnect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    delete?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    update?: PresenteUpdateWithWhereUniqueWithoutSupervisorInput | PresenteUpdateWithWhereUniqueWithoutSupervisorInput[]
+    updateMany?: PresenteUpdateManyWithWhereWithoutSupervisorInput | PresenteUpdateManyWithWhereWithoutSupervisorInput[]
+    deleteMany?: PresenteScalarWhereInput | PresenteScalarWhereInput[]
+  }
+
   export type SupervisorCreateNestedOneWithoutUbicacionesInput = {
     create?: XOR<SupervisorCreateWithoutUbicacionesInput, SupervisorUncheckedCreateWithoutUbicacionesInput>
     connectOrCreate?: SupervisorCreateOrConnectWithoutUbicacionesInput
@@ -18615,12 +22745,96 @@ export namespace Prisma {
     connect?: UserRoleWhereUniqueInput
   }
 
+  export type TurnoProgramadoCreateNestedManyWithoutCoordinadorInput = {
+    create?: XOR<TurnoProgramadoCreateWithoutCoordinadorInput, TurnoProgramadoUncheckedCreateWithoutCoordinadorInput> | TurnoProgramadoCreateWithoutCoordinadorInput[] | TurnoProgramadoUncheckedCreateWithoutCoordinadorInput[]
+    connectOrCreate?: TurnoProgramadoCreateOrConnectWithoutCoordinadorInput | TurnoProgramadoCreateOrConnectWithoutCoordinadorInput[]
+    createMany?: TurnoProgramadoCreateManyCoordinadorInputEnvelope
+    connect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+  }
+
+  export type ReportenseCallCreateNestedManyWithoutCoordinadorInput = {
+    create?: XOR<ReportenseCallCreateWithoutCoordinadorInput, ReportenseCallUncheckedCreateWithoutCoordinadorInput> | ReportenseCallCreateWithoutCoordinadorInput[] | ReportenseCallUncheckedCreateWithoutCoordinadorInput[]
+    connectOrCreate?: ReportenseCallCreateOrConnectWithoutCoordinadorInput | ReportenseCallCreateOrConnectWithoutCoordinadorInput[]
+    createMany?: ReportenseCallCreateManyCoordinadorInputEnvelope
+    connect?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+  }
+
+  export type TurnoProgramadoUncheckedCreateNestedManyWithoutCoordinadorInput = {
+    create?: XOR<TurnoProgramadoCreateWithoutCoordinadorInput, TurnoProgramadoUncheckedCreateWithoutCoordinadorInput> | TurnoProgramadoCreateWithoutCoordinadorInput[] | TurnoProgramadoUncheckedCreateWithoutCoordinadorInput[]
+    connectOrCreate?: TurnoProgramadoCreateOrConnectWithoutCoordinadorInput | TurnoProgramadoCreateOrConnectWithoutCoordinadorInput[]
+    createMany?: TurnoProgramadoCreateManyCoordinadorInputEnvelope
+    connect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+  }
+
+  export type ReportenseCallUncheckedCreateNestedManyWithoutCoordinadorInput = {
+    create?: XOR<ReportenseCallCreateWithoutCoordinadorInput, ReportenseCallUncheckedCreateWithoutCoordinadorInput> | ReportenseCallCreateWithoutCoordinadorInput[] | ReportenseCallUncheckedCreateWithoutCoordinadorInput[]
+    connectOrCreate?: ReportenseCallCreateOrConnectWithoutCoordinadorInput | ReportenseCallCreateOrConnectWithoutCoordinadorInput[]
+    createMany?: ReportenseCallCreateManyCoordinadorInputEnvelope
+    connect?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+  }
+
   export type UserRoleUpdateOneRequiredWithoutCoordinadorNestedInput = {
     create?: XOR<UserRoleCreateWithoutCoordinadorInput, UserRoleUncheckedCreateWithoutCoordinadorInput>
     connectOrCreate?: UserRoleCreateOrConnectWithoutCoordinadorInput
     upsert?: UserRoleUpsertWithoutCoordinadorInput
     connect?: UserRoleWhereUniqueInput
     update?: XOR<XOR<UserRoleUpdateToOneWithWhereWithoutCoordinadorInput, UserRoleUpdateWithoutCoordinadorInput>, UserRoleUncheckedUpdateWithoutCoordinadorInput>
+  }
+
+  export type TurnoProgramadoUpdateManyWithoutCoordinadorNestedInput = {
+    create?: XOR<TurnoProgramadoCreateWithoutCoordinadorInput, TurnoProgramadoUncheckedCreateWithoutCoordinadorInput> | TurnoProgramadoCreateWithoutCoordinadorInput[] | TurnoProgramadoUncheckedCreateWithoutCoordinadorInput[]
+    connectOrCreate?: TurnoProgramadoCreateOrConnectWithoutCoordinadorInput | TurnoProgramadoCreateOrConnectWithoutCoordinadorInput[]
+    upsert?: TurnoProgramadoUpsertWithWhereUniqueWithoutCoordinadorInput | TurnoProgramadoUpsertWithWhereUniqueWithoutCoordinadorInput[]
+    createMany?: TurnoProgramadoCreateManyCoordinadorInputEnvelope
+    set?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    disconnect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    delete?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    connect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    update?: TurnoProgramadoUpdateWithWhereUniqueWithoutCoordinadorInput | TurnoProgramadoUpdateWithWhereUniqueWithoutCoordinadorInput[]
+    updateMany?: TurnoProgramadoUpdateManyWithWhereWithoutCoordinadorInput | TurnoProgramadoUpdateManyWithWhereWithoutCoordinadorInput[]
+    deleteMany?: TurnoProgramadoScalarWhereInput | TurnoProgramadoScalarWhereInput[]
+  }
+
+  export type ReportenseCallUpdateManyWithoutCoordinadorNestedInput = {
+    create?: XOR<ReportenseCallCreateWithoutCoordinadorInput, ReportenseCallUncheckedCreateWithoutCoordinadorInput> | ReportenseCallCreateWithoutCoordinadorInput[] | ReportenseCallUncheckedCreateWithoutCoordinadorInput[]
+    connectOrCreate?: ReportenseCallCreateOrConnectWithoutCoordinadorInput | ReportenseCallCreateOrConnectWithoutCoordinadorInput[]
+    upsert?: ReportenseCallUpsertWithWhereUniqueWithoutCoordinadorInput | ReportenseCallUpsertWithWhereUniqueWithoutCoordinadorInput[]
+    createMany?: ReportenseCallCreateManyCoordinadorInputEnvelope
+    set?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+    disconnect?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+    delete?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+    connect?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+    update?: ReportenseCallUpdateWithWhereUniqueWithoutCoordinadorInput | ReportenseCallUpdateWithWhereUniqueWithoutCoordinadorInput[]
+    updateMany?: ReportenseCallUpdateManyWithWhereWithoutCoordinadorInput | ReportenseCallUpdateManyWithWhereWithoutCoordinadorInput[]
+    deleteMany?: ReportenseCallScalarWhereInput | ReportenseCallScalarWhereInput[]
+  }
+
+  export type TurnoProgramadoUncheckedUpdateManyWithoutCoordinadorNestedInput = {
+    create?: XOR<TurnoProgramadoCreateWithoutCoordinadorInput, TurnoProgramadoUncheckedCreateWithoutCoordinadorInput> | TurnoProgramadoCreateWithoutCoordinadorInput[] | TurnoProgramadoUncheckedCreateWithoutCoordinadorInput[]
+    connectOrCreate?: TurnoProgramadoCreateOrConnectWithoutCoordinadorInput | TurnoProgramadoCreateOrConnectWithoutCoordinadorInput[]
+    upsert?: TurnoProgramadoUpsertWithWhereUniqueWithoutCoordinadorInput | TurnoProgramadoUpsertWithWhereUniqueWithoutCoordinadorInput[]
+    createMany?: TurnoProgramadoCreateManyCoordinadorInputEnvelope
+    set?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    disconnect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    delete?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    connect?: TurnoProgramadoWhereUniqueInput | TurnoProgramadoWhereUniqueInput[]
+    update?: TurnoProgramadoUpdateWithWhereUniqueWithoutCoordinadorInput | TurnoProgramadoUpdateWithWhereUniqueWithoutCoordinadorInput[]
+    updateMany?: TurnoProgramadoUpdateManyWithWhereWithoutCoordinadorInput | TurnoProgramadoUpdateManyWithWhereWithoutCoordinadorInput[]
+    deleteMany?: TurnoProgramadoScalarWhereInput | TurnoProgramadoScalarWhereInput[]
+  }
+
+  export type ReportenseCallUncheckedUpdateManyWithoutCoordinadorNestedInput = {
+    create?: XOR<ReportenseCallCreateWithoutCoordinadorInput, ReportenseCallUncheckedCreateWithoutCoordinadorInput> | ReportenseCallCreateWithoutCoordinadorInput[] | ReportenseCallUncheckedCreateWithoutCoordinadorInput[]
+    connectOrCreate?: ReportenseCallCreateOrConnectWithoutCoordinadorInput | ReportenseCallCreateOrConnectWithoutCoordinadorInput[]
+    upsert?: ReportenseCallUpsertWithWhereUniqueWithoutCoordinadorInput | ReportenseCallUpsertWithWhereUniqueWithoutCoordinadorInput[]
+    createMany?: ReportenseCallCreateManyCoordinadorInputEnvelope
+    set?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+    disconnect?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+    delete?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+    connect?: ReportenseCallWhereUniqueInput | ReportenseCallWhereUniqueInput[]
+    update?: ReportenseCallUpdateWithWhereUniqueWithoutCoordinadorInput | ReportenseCallUpdateWithWhereUniqueWithoutCoordinadorInput[]
+    updateMany?: ReportenseCallUpdateManyWithWhereWithoutCoordinadorInput | ReportenseCallUpdateManyWithWhereWithoutCoordinadorInput[]
+    deleteMany?: ReportenseCallScalarWhereInput | ReportenseCallScalarWhereInput[]
   }
 
   export type SupervisorCreateNestedOneWithoutAsignacionesInput = {
@@ -18943,6 +23157,124 @@ export namespace Prisma {
     update?: XOR<XOR<UserRoleUpdateToOneWithWhereWithoutDeviceTokenInput, UserRoleUpdateWithoutDeviceTokenInput>, UserRoleUncheckedUpdateWithoutDeviceTokenInput>
   }
 
+  export type SupervisorCreateNestedOneWithoutTurnoProgramadoInput = {
+    create?: XOR<SupervisorCreateWithoutTurnoProgramadoInput, SupervisorUncheckedCreateWithoutTurnoProgramadoInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutTurnoProgramadoInput
+    connect?: SupervisorWhereUniqueInput
+  }
+
+  export type CoordinadorCreateNestedOneWithoutTurnoProgramadoInput = {
+    create?: XOR<CoordinadorCreateWithoutTurnoProgramadoInput, CoordinadorUncheckedCreateWithoutTurnoProgramadoInput>
+    connectOrCreate?: CoordinadorCreateOrConnectWithoutTurnoProgramadoInput
+    connect?: CoordinadorWhereUniqueInput
+  }
+
+  export type EnumTurnoFieldUpdateOperationsInput = {
+    set?: $Enums.Turno
+  }
+
+  export type SupervisorUpdateOneRequiredWithoutTurnoProgramadoNestedInput = {
+    create?: XOR<SupervisorCreateWithoutTurnoProgramadoInput, SupervisorUncheckedCreateWithoutTurnoProgramadoInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutTurnoProgramadoInput
+    upsert?: SupervisorUpsertWithoutTurnoProgramadoInput
+    connect?: SupervisorWhereUniqueInput
+    update?: XOR<XOR<SupervisorUpdateToOneWithWhereWithoutTurnoProgramadoInput, SupervisorUpdateWithoutTurnoProgramadoInput>, SupervisorUncheckedUpdateWithoutTurnoProgramadoInput>
+  }
+
+  export type CoordinadorUpdateOneRequiredWithoutTurnoProgramadoNestedInput = {
+    create?: XOR<CoordinadorCreateWithoutTurnoProgramadoInput, CoordinadorUncheckedCreateWithoutTurnoProgramadoInput>
+    connectOrCreate?: CoordinadorCreateOrConnectWithoutTurnoProgramadoInput
+    upsert?: CoordinadorUpsertWithoutTurnoProgramadoInput
+    connect?: CoordinadorWhereUniqueInput
+    update?: XOR<XOR<CoordinadorUpdateToOneWithWhereWithoutTurnoProgramadoInput, CoordinadorUpdateWithoutTurnoProgramadoInput>, CoordinadorUncheckedUpdateWithoutTurnoProgramadoInput>
+  }
+
+  export type PresenteCreateNestedManyWithoutCallInput = {
+    create?: XOR<PresenteCreateWithoutCallInput, PresenteUncheckedCreateWithoutCallInput> | PresenteCreateWithoutCallInput[] | PresenteUncheckedCreateWithoutCallInput[]
+    connectOrCreate?: PresenteCreateOrConnectWithoutCallInput | PresenteCreateOrConnectWithoutCallInput[]
+    createMany?: PresenteCreateManyCallInputEnvelope
+    connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+  }
+
+  export type CoordinadorCreateNestedOneWithoutReportenseCallInput = {
+    create?: XOR<CoordinadorCreateWithoutReportenseCallInput, CoordinadorUncheckedCreateWithoutReportenseCallInput>
+    connectOrCreate?: CoordinadorCreateOrConnectWithoutReportenseCallInput
+    connect?: CoordinadorWhereUniqueInput
+  }
+
+  export type PresenteUncheckedCreateNestedManyWithoutCallInput = {
+    create?: XOR<PresenteCreateWithoutCallInput, PresenteUncheckedCreateWithoutCallInput> | PresenteCreateWithoutCallInput[] | PresenteUncheckedCreateWithoutCallInput[]
+    connectOrCreate?: PresenteCreateOrConnectWithoutCallInput | PresenteCreateOrConnectWithoutCallInput[]
+    createMany?: PresenteCreateManyCallInputEnvelope
+    connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+  }
+
+  export type PresenteUpdateManyWithoutCallNestedInput = {
+    create?: XOR<PresenteCreateWithoutCallInput, PresenteUncheckedCreateWithoutCallInput> | PresenteCreateWithoutCallInput[] | PresenteUncheckedCreateWithoutCallInput[]
+    connectOrCreate?: PresenteCreateOrConnectWithoutCallInput | PresenteCreateOrConnectWithoutCallInput[]
+    upsert?: PresenteUpsertWithWhereUniqueWithoutCallInput | PresenteUpsertWithWhereUniqueWithoutCallInput[]
+    createMany?: PresenteCreateManyCallInputEnvelope
+    set?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    disconnect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    delete?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    update?: PresenteUpdateWithWhereUniqueWithoutCallInput | PresenteUpdateWithWhereUniqueWithoutCallInput[]
+    updateMany?: PresenteUpdateManyWithWhereWithoutCallInput | PresenteUpdateManyWithWhereWithoutCallInput[]
+    deleteMany?: PresenteScalarWhereInput | PresenteScalarWhereInput[]
+  }
+
+  export type CoordinadorUpdateOneRequiredWithoutReportenseCallNestedInput = {
+    create?: XOR<CoordinadorCreateWithoutReportenseCallInput, CoordinadorUncheckedCreateWithoutReportenseCallInput>
+    connectOrCreate?: CoordinadorCreateOrConnectWithoutReportenseCallInput
+    upsert?: CoordinadorUpsertWithoutReportenseCallInput
+    connect?: CoordinadorWhereUniqueInput
+    update?: XOR<XOR<CoordinadorUpdateToOneWithWhereWithoutReportenseCallInput, CoordinadorUpdateWithoutReportenseCallInput>, CoordinadorUncheckedUpdateWithoutReportenseCallInput>
+  }
+
+  export type PresenteUncheckedUpdateManyWithoutCallNestedInput = {
+    create?: XOR<PresenteCreateWithoutCallInput, PresenteUncheckedCreateWithoutCallInput> | PresenteCreateWithoutCallInput[] | PresenteUncheckedCreateWithoutCallInput[]
+    connectOrCreate?: PresenteCreateOrConnectWithoutCallInput | PresenteCreateOrConnectWithoutCallInput[]
+    upsert?: PresenteUpsertWithWhereUniqueWithoutCallInput | PresenteUpsertWithWhereUniqueWithoutCallInput[]
+    createMany?: PresenteCreateManyCallInputEnvelope
+    set?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    disconnect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    delete?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+    update?: PresenteUpdateWithWhereUniqueWithoutCallInput | PresenteUpdateWithWhereUniqueWithoutCallInput[]
+    updateMany?: PresenteUpdateManyWithWhereWithoutCallInput | PresenteUpdateManyWithWhereWithoutCallInput[]
+    deleteMany?: PresenteScalarWhereInput | PresenteScalarWhereInput[]
+  }
+
+  export type SupervisorCreateNestedOneWithoutPresenteInput = {
+    create?: XOR<SupervisorCreateWithoutPresenteInput, SupervisorUncheckedCreateWithoutPresenteInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutPresenteInput
+    connect?: SupervisorWhereUniqueInput
+  }
+
+  export type ReportenseCallCreateNestedOneWithoutPresentesInput = {
+    create?: XOR<ReportenseCallCreateWithoutPresentesInput, ReportenseCallUncheckedCreateWithoutPresentesInput>
+    connectOrCreate?: ReportenseCallCreateOrConnectWithoutPresentesInput
+    connect?: ReportenseCallWhereUniqueInput
+  }
+
+  export type SupervisorUpdateOneRequiredWithoutPresenteNestedInput = {
+    create?: XOR<SupervisorCreateWithoutPresenteInput, SupervisorUncheckedCreateWithoutPresenteInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutPresenteInput
+    upsert?: SupervisorUpsertWithoutPresenteInput
+    connect?: SupervisorWhereUniqueInput
+    update?: XOR<XOR<SupervisorUpdateToOneWithWhereWithoutPresenteInput, SupervisorUpdateWithoutPresenteInput>, SupervisorUncheckedUpdateWithoutPresenteInput>
+  }
+
+  export type ReportenseCallUpdateOneWithoutPresentesNestedInput = {
+    create?: XOR<ReportenseCallCreateWithoutPresentesInput, ReportenseCallUncheckedCreateWithoutPresentesInput>
+    connectOrCreate?: ReportenseCallCreateOrConnectWithoutPresentesInput
+    upsert?: ReportenseCallUpsertWithoutPresentesInput
+    disconnect?: ReportenseCallWhereInput | boolean
+    delete?: ReportenseCallWhereInput | boolean
+    connect?: ReportenseCallWhereUniqueInput
+    update?: XOR<XOR<ReportenseCallUpdateToOneWithWhereWithoutPresentesInput, ReportenseCallUpdateWithoutPresentesInput>, ReportenseCallUncheckedUpdateWithoutPresentesInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -19172,6 +23504,23 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumTurnoFilter<$PrismaModel = never> = {
+    equals?: $Enums.Turno | EnumTurnoFieldRefInput<$PrismaModel>
+    in?: $Enums.Turno[]
+    notIn?: $Enums.Turno[]
+    not?: NestedEnumTurnoFilter<$PrismaModel> | $Enums.Turno
+  }
+
+  export type NestedEnumTurnoWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Turno | EnumTurnoFieldRefInput<$PrismaModel>
+    in?: $Enums.Turno[]
+    notIn?: $Enums.Turno[]
+    not?: NestedEnumTurnoWithAggregatesFilter<$PrismaModel> | $Enums.Turno
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTurnoFilter<$PrismaModel>
+    _max?: NestedEnumTurnoFilter<$PrismaModel>
+  }
+
   export type OperadorCreateWithoutUserInput = {
     unidadAsignada?: string | null
     rutaAsignada?: string | null
@@ -19198,6 +23547,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutUserInput = {
@@ -19205,6 +23556,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutUserInput = {
@@ -19229,11 +23582,14 @@ export namespace Prisma {
   }
 
   export type CoordinadorCreateWithoutUserInput = {
-
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutCoordinadorInput
+    ReportenseCall?: ReportenseCallCreateNestedManyWithoutCoordinadorInput
   }
 
   export type CoordinadorUncheckedCreateWithoutUserInput = {
     id?: number
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutCoordinadorInput
+    ReportenseCall?: ReportenseCallUncheckedCreateNestedManyWithoutCoordinadorInput
   }
 
   export type CoordinadorCreateOrConnectWithoutUserInput = {
@@ -19305,6 +23661,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutUserInput = {
@@ -19312,6 +23670,8 @@ export namespace Prisma {
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type PatioUpsertWithoutUserInput = {
@@ -19348,11 +23708,14 @@ export namespace Prisma {
   }
 
   export type CoordinadorUpdateWithoutUserInput = {
-
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutCoordinadorNestedInput
+    ReportenseCall?: ReportenseCallUpdateManyWithoutCoordinadorNestedInput
   }
 
   export type CoordinadorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutCoordinadorNestedInput
+    ReportenseCall?: ReportenseCallUncheckedUpdateManyWithoutCoordinadorNestedInput
   }
 
   export type DeviceTokenUpsertWithWhereUniqueWithoutUserRoleInput = {
@@ -19859,6 +24222,56 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TurnoProgramadoCreateWithoutSupervisorInput = {
+    fecha: Date | string
+    turno: $Enums.Turno
+    createdAt?: Date | string
+    coordinador: CoordinadorCreateNestedOneWithoutTurnoProgramadoInput
+  }
+
+  export type TurnoProgramadoUncheckedCreateWithoutSupervisorInput = {
+    id?: number
+    fecha: Date | string
+    turno: $Enums.Turno
+    coordinadorId: number
+    createdAt?: Date | string
+  }
+
+  export type TurnoProgramadoCreateOrConnectWithoutSupervisorInput = {
+    where: TurnoProgramadoWhereUniqueInput
+    create: XOR<TurnoProgramadoCreateWithoutSupervisorInput, TurnoProgramadoUncheckedCreateWithoutSupervisorInput>
+  }
+
+  export type TurnoProgramadoCreateManySupervisorInputEnvelope = {
+    data: TurnoProgramadoCreateManySupervisorInput | TurnoProgramadoCreateManySupervisorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PresenteCreateWithoutSupervisorInput = {
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+    call?: ReportenseCallCreateNestedOneWithoutPresentesInput
+  }
+
+  export type PresenteUncheckedCreateWithoutSupervisorInput = {
+    id?: number
+    callId?: number | null
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+  }
+
+  export type PresenteCreateOrConnectWithoutSupervisorInput = {
+    where: PresenteWhereUniqueInput
+    create: XOR<PresenteCreateWithoutSupervisorInput, PresenteUncheckedCreateWithoutSupervisorInput>
+  }
+
+  export type PresenteCreateManySupervisorInputEnvelope = {
+    data: PresenteCreateManySupervisorInput | PresenteCreateManySupervisorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserRoleUpsertWithoutSupervisorInput = {
     update: XOR<UserRoleUpdateWithoutSupervisorInput, UserRoleUncheckedUpdateWithoutSupervisorInput>
     create: XOR<UserRoleCreateWithoutSupervisorInput, UserRoleUncheckedCreateWithoutSupervisorInput>
@@ -19975,10 +24388,68 @@ export namespace Prisma {
     data: XOR<IncidenteAsignadoUpdateManyMutationInput, IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorInput>
   }
 
+  export type TurnoProgramadoUpsertWithWhereUniqueWithoutSupervisorInput = {
+    where: TurnoProgramadoWhereUniqueInput
+    update: XOR<TurnoProgramadoUpdateWithoutSupervisorInput, TurnoProgramadoUncheckedUpdateWithoutSupervisorInput>
+    create: XOR<TurnoProgramadoCreateWithoutSupervisorInput, TurnoProgramadoUncheckedCreateWithoutSupervisorInput>
+  }
+
+  export type TurnoProgramadoUpdateWithWhereUniqueWithoutSupervisorInput = {
+    where: TurnoProgramadoWhereUniqueInput
+    data: XOR<TurnoProgramadoUpdateWithoutSupervisorInput, TurnoProgramadoUncheckedUpdateWithoutSupervisorInput>
+  }
+
+  export type TurnoProgramadoUpdateManyWithWhereWithoutSupervisorInput = {
+    where: TurnoProgramadoScalarWhereInput
+    data: XOR<TurnoProgramadoUpdateManyMutationInput, TurnoProgramadoUncheckedUpdateManyWithoutSupervisorInput>
+  }
+
+  export type TurnoProgramadoScalarWhereInput = {
+    AND?: TurnoProgramadoScalarWhereInput | TurnoProgramadoScalarWhereInput[]
+    OR?: TurnoProgramadoScalarWhereInput[]
+    NOT?: TurnoProgramadoScalarWhereInput | TurnoProgramadoScalarWhereInput[]
+    id?: IntFilter<"TurnoProgramado"> | number
+    fecha?: DateTimeFilter<"TurnoProgramado"> | Date | string
+    turno?: EnumTurnoFilter<"TurnoProgramado"> | $Enums.Turno
+    supervisorId?: IntFilter<"TurnoProgramado"> | number
+    coordinadorId?: IntFilter<"TurnoProgramado"> | number
+    createdAt?: DateTimeFilter<"TurnoProgramado"> | Date | string
+  }
+
+  export type PresenteUpsertWithWhereUniqueWithoutSupervisorInput = {
+    where: PresenteWhereUniqueInput
+    update: XOR<PresenteUpdateWithoutSupervisorInput, PresenteUncheckedUpdateWithoutSupervisorInput>
+    create: XOR<PresenteCreateWithoutSupervisorInput, PresenteUncheckedCreateWithoutSupervisorInput>
+  }
+
+  export type PresenteUpdateWithWhereUniqueWithoutSupervisorInput = {
+    where: PresenteWhereUniqueInput
+    data: XOR<PresenteUpdateWithoutSupervisorInput, PresenteUncheckedUpdateWithoutSupervisorInput>
+  }
+
+  export type PresenteUpdateManyWithWhereWithoutSupervisorInput = {
+    where: PresenteScalarWhereInput
+    data: XOR<PresenteUpdateManyMutationInput, PresenteUncheckedUpdateManyWithoutSupervisorInput>
+  }
+
+  export type PresenteScalarWhereInput = {
+    AND?: PresenteScalarWhereInput | PresenteScalarWhereInput[]
+    OR?: PresenteScalarWhereInput[]
+    NOT?: PresenteScalarWhereInput | PresenteScalarWhereInput[]
+    id?: IntFilter<"Presente"> | number
+    supervisorId?: IntFilter<"Presente"> | number
+    callId?: IntNullableFilter<"Presente"> | number | null
+    timestamp?: DateTimeFilter<"Presente"> | Date | string
+    latitud?: FloatFilter<"Presente"> | number
+    longitud?: FloatFilter<"Presente"> | number
+  }
+
   export type SupervisorCreateWithoutUbicacionesInput = {
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutUbicacionesInput = {
@@ -19986,6 +24457,8 @@ export namespace Prisma {
     userRoleId: number
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutUbicacionesInput = {
@@ -20008,6 +24481,8 @@ export namespace Prisma {
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutUbicacionesInput = {
@@ -20015,6 +24490,8 @@ export namespace Prisma {
     userRoleId?: IntFieldUpdateOperationsInput | number
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type UserRoleCreateWithoutCoordinadorInput = {
@@ -20051,6 +24528,54 @@ export namespace Prisma {
   export type UserRoleCreateOrConnectWithoutCoordinadorInput = {
     where: UserRoleWhereUniqueInput
     create: XOR<UserRoleCreateWithoutCoordinadorInput, UserRoleUncheckedCreateWithoutCoordinadorInput>
+  }
+
+  export type TurnoProgramadoCreateWithoutCoordinadorInput = {
+    fecha: Date | string
+    turno: $Enums.Turno
+    createdAt?: Date | string
+    supervisor: SupervisorCreateNestedOneWithoutTurnoProgramadoInput
+  }
+
+  export type TurnoProgramadoUncheckedCreateWithoutCoordinadorInput = {
+    id?: number
+    fecha: Date | string
+    turno: $Enums.Turno
+    supervisorId: number
+    createdAt?: Date | string
+  }
+
+  export type TurnoProgramadoCreateOrConnectWithoutCoordinadorInput = {
+    where: TurnoProgramadoWhereUniqueInput
+    create: XOR<TurnoProgramadoCreateWithoutCoordinadorInput, TurnoProgramadoUncheckedCreateWithoutCoordinadorInput>
+  }
+
+  export type TurnoProgramadoCreateManyCoordinadorInputEnvelope = {
+    data: TurnoProgramadoCreateManyCoordinadorInput | TurnoProgramadoCreateManyCoordinadorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReportenseCallCreateWithoutCoordinadorInput = {
+    turno: $Enums.Turno
+    createdAt?: Date | string
+    presentes?: PresenteCreateNestedManyWithoutCallInput
+  }
+
+  export type ReportenseCallUncheckedCreateWithoutCoordinadorInput = {
+    id?: number
+    turno: $Enums.Turno
+    createdAt?: Date | string
+    presentes?: PresenteUncheckedCreateNestedManyWithoutCallInput
+  }
+
+  export type ReportenseCallCreateOrConnectWithoutCoordinadorInput = {
+    where: ReportenseCallWhereUniqueInput
+    create: XOR<ReportenseCallCreateWithoutCoordinadorInput, ReportenseCallUncheckedCreateWithoutCoordinadorInput>
+  }
+
+  export type ReportenseCallCreateManyCoordinadorInputEnvelope = {
+    data: ReportenseCallCreateManyCoordinadorInput | ReportenseCallCreateManyCoordinadorInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserRoleUpsertWithoutCoordinadorInput = {
@@ -20095,10 +24620,54 @@ export namespace Prisma {
     DeviceToken?: DeviceTokenUncheckedUpdateManyWithoutUserRoleNestedInput
   }
 
+  export type TurnoProgramadoUpsertWithWhereUniqueWithoutCoordinadorInput = {
+    where: TurnoProgramadoWhereUniqueInput
+    update: XOR<TurnoProgramadoUpdateWithoutCoordinadorInput, TurnoProgramadoUncheckedUpdateWithoutCoordinadorInput>
+    create: XOR<TurnoProgramadoCreateWithoutCoordinadorInput, TurnoProgramadoUncheckedCreateWithoutCoordinadorInput>
+  }
+
+  export type TurnoProgramadoUpdateWithWhereUniqueWithoutCoordinadorInput = {
+    where: TurnoProgramadoWhereUniqueInput
+    data: XOR<TurnoProgramadoUpdateWithoutCoordinadorInput, TurnoProgramadoUncheckedUpdateWithoutCoordinadorInput>
+  }
+
+  export type TurnoProgramadoUpdateManyWithWhereWithoutCoordinadorInput = {
+    where: TurnoProgramadoScalarWhereInput
+    data: XOR<TurnoProgramadoUpdateManyMutationInput, TurnoProgramadoUncheckedUpdateManyWithoutCoordinadorInput>
+  }
+
+  export type ReportenseCallUpsertWithWhereUniqueWithoutCoordinadorInput = {
+    where: ReportenseCallWhereUniqueInput
+    update: XOR<ReportenseCallUpdateWithoutCoordinadorInput, ReportenseCallUncheckedUpdateWithoutCoordinadorInput>
+    create: XOR<ReportenseCallCreateWithoutCoordinadorInput, ReportenseCallUncheckedCreateWithoutCoordinadorInput>
+  }
+
+  export type ReportenseCallUpdateWithWhereUniqueWithoutCoordinadorInput = {
+    where: ReportenseCallWhereUniqueInput
+    data: XOR<ReportenseCallUpdateWithoutCoordinadorInput, ReportenseCallUncheckedUpdateWithoutCoordinadorInput>
+  }
+
+  export type ReportenseCallUpdateManyWithWhereWithoutCoordinadorInput = {
+    where: ReportenseCallScalarWhereInput
+    data: XOR<ReportenseCallUpdateManyMutationInput, ReportenseCallUncheckedUpdateManyWithoutCoordinadorInput>
+  }
+
+  export type ReportenseCallScalarWhereInput = {
+    AND?: ReportenseCallScalarWhereInput | ReportenseCallScalarWhereInput[]
+    OR?: ReportenseCallScalarWhereInput[]
+    NOT?: ReportenseCallScalarWhereInput | ReportenseCallScalarWhereInput[]
+    id?: IntFilter<"ReportenseCall"> | number
+    coordinadorId?: IntFilter<"ReportenseCall"> | number
+    turno?: EnumTurnoFilter<"ReportenseCall"> | $Enums.Turno
+    createdAt?: DateTimeFilter<"ReportenseCall"> | Date | string
+  }
+
   export type SupervisorCreateWithoutAsignacionesInput = {
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutAsignacionesInput = {
@@ -20106,6 +24675,8 @@ export namespace Prisma {
     userRoleId: number
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutAsignacionesInput = {
@@ -20180,6 +24751,8 @@ export namespace Prisma {
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutAsignacionesInput = {
@@ -20187,6 +24760,8 @@ export namespace Prisma {
     userRoleId?: IntFieldUpdateOperationsInput | number
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type BotonPanicoUpsertWithoutIncidenteAsignadoInput = {
@@ -20257,6 +24832,8 @@ export namespace Prisma {
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutReportesInput = {
@@ -20264,6 +24841,8 @@ export namespace Prisma {
     userRoleId: number
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutReportesInput = {
@@ -20329,6 +24908,8 @@ export namespace Prisma {
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutReportesInput = {
@@ -20336,6 +24917,8 @@ export namespace Prisma {
     userRoleId?: IntFieldUpdateOperationsInput | number
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type IncidenteAsignadoUpsertWithoutReporteInput = {
@@ -20876,6 +25459,265 @@ export namespace Prisma {
     coordinador?: CoordinadorUncheckedUpdateOneWithoutUserNestedInput
   }
 
+  export type SupervisorCreateWithoutTurnoProgramadoInput = {
+    user: UserRoleCreateNestedOneWithoutSupervisorInput
+    ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorUncheckedCreateWithoutTurnoProgramadoInput = {
+    id?: number
+    userRoleId: number
+    ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorCreateOrConnectWithoutTurnoProgramadoInput = {
+    where: SupervisorWhereUniqueInput
+    create: XOR<SupervisorCreateWithoutTurnoProgramadoInput, SupervisorUncheckedCreateWithoutTurnoProgramadoInput>
+  }
+
+  export type CoordinadorCreateWithoutTurnoProgramadoInput = {
+    user: UserRoleCreateNestedOneWithoutCoordinadorInput
+    ReportenseCall?: ReportenseCallCreateNestedManyWithoutCoordinadorInput
+  }
+
+  export type CoordinadorUncheckedCreateWithoutTurnoProgramadoInput = {
+    id?: number
+    userRoleId: number
+    ReportenseCall?: ReportenseCallUncheckedCreateNestedManyWithoutCoordinadorInput
+  }
+
+  export type CoordinadorCreateOrConnectWithoutTurnoProgramadoInput = {
+    where: CoordinadorWhereUniqueInput
+    create: XOR<CoordinadorCreateWithoutTurnoProgramadoInput, CoordinadorUncheckedCreateWithoutTurnoProgramadoInput>
+  }
+
+  export type SupervisorUpsertWithoutTurnoProgramadoInput = {
+    update: XOR<SupervisorUpdateWithoutTurnoProgramadoInput, SupervisorUncheckedUpdateWithoutTurnoProgramadoInput>
+    create: XOR<SupervisorCreateWithoutTurnoProgramadoInput, SupervisorUncheckedCreateWithoutTurnoProgramadoInput>
+    where?: SupervisorWhereInput
+  }
+
+  export type SupervisorUpdateToOneWithWhereWithoutTurnoProgramadoInput = {
+    where?: SupervisorWhereInput
+    data: XOR<SupervisorUpdateWithoutTurnoProgramadoInput, SupervisorUncheckedUpdateWithoutTurnoProgramadoInput>
+  }
+
+  export type SupervisorUpdateWithoutTurnoProgramadoInput = {
+    user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
+    ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type SupervisorUncheckedUpdateWithoutTurnoProgramadoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type CoordinadorUpsertWithoutTurnoProgramadoInput = {
+    update: XOR<CoordinadorUpdateWithoutTurnoProgramadoInput, CoordinadorUncheckedUpdateWithoutTurnoProgramadoInput>
+    create: XOR<CoordinadorCreateWithoutTurnoProgramadoInput, CoordinadorUncheckedCreateWithoutTurnoProgramadoInput>
+    where?: CoordinadorWhereInput
+  }
+
+  export type CoordinadorUpdateToOneWithWhereWithoutTurnoProgramadoInput = {
+    where?: CoordinadorWhereInput
+    data: XOR<CoordinadorUpdateWithoutTurnoProgramadoInput, CoordinadorUncheckedUpdateWithoutTurnoProgramadoInput>
+  }
+
+  export type CoordinadorUpdateWithoutTurnoProgramadoInput = {
+    user?: UserRoleUpdateOneRequiredWithoutCoordinadorNestedInput
+    ReportenseCall?: ReportenseCallUpdateManyWithoutCoordinadorNestedInput
+  }
+
+  export type CoordinadorUncheckedUpdateWithoutTurnoProgramadoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    ReportenseCall?: ReportenseCallUncheckedUpdateManyWithoutCoordinadorNestedInput
+  }
+
+  export type PresenteCreateWithoutCallInput = {
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+    supervisor: SupervisorCreateNestedOneWithoutPresenteInput
+  }
+
+  export type PresenteUncheckedCreateWithoutCallInput = {
+    id?: number
+    supervisorId: number
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+  }
+
+  export type PresenteCreateOrConnectWithoutCallInput = {
+    where: PresenteWhereUniqueInput
+    create: XOR<PresenteCreateWithoutCallInput, PresenteUncheckedCreateWithoutCallInput>
+  }
+
+  export type PresenteCreateManyCallInputEnvelope = {
+    data: PresenteCreateManyCallInput | PresenteCreateManyCallInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CoordinadorCreateWithoutReportenseCallInput = {
+    user: UserRoleCreateNestedOneWithoutCoordinadorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutCoordinadorInput
+  }
+
+  export type CoordinadorUncheckedCreateWithoutReportenseCallInput = {
+    id?: number
+    userRoleId: number
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutCoordinadorInput
+  }
+
+  export type CoordinadorCreateOrConnectWithoutReportenseCallInput = {
+    where: CoordinadorWhereUniqueInput
+    create: XOR<CoordinadorCreateWithoutReportenseCallInput, CoordinadorUncheckedCreateWithoutReportenseCallInput>
+  }
+
+  export type PresenteUpsertWithWhereUniqueWithoutCallInput = {
+    where: PresenteWhereUniqueInput
+    update: XOR<PresenteUpdateWithoutCallInput, PresenteUncheckedUpdateWithoutCallInput>
+    create: XOR<PresenteCreateWithoutCallInput, PresenteUncheckedCreateWithoutCallInput>
+  }
+
+  export type PresenteUpdateWithWhereUniqueWithoutCallInput = {
+    where: PresenteWhereUniqueInput
+    data: XOR<PresenteUpdateWithoutCallInput, PresenteUncheckedUpdateWithoutCallInput>
+  }
+
+  export type PresenteUpdateManyWithWhereWithoutCallInput = {
+    where: PresenteScalarWhereInput
+    data: XOR<PresenteUpdateManyMutationInput, PresenteUncheckedUpdateManyWithoutCallInput>
+  }
+
+  export type CoordinadorUpsertWithoutReportenseCallInput = {
+    update: XOR<CoordinadorUpdateWithoutReportenseCallInput, CoordinadorUncheckedUpdateWithoutReportenseCallInput>
+    create: XOR<CoordinadorCreateWithoutReportenseCallInput, CoordinadorUncheckedCreateWithoutReportenseCallInput>
+    where?: CoordinadorWhereInput
+  }
+
+  export type CoordinadorUpdateToOneWithWhereWithoutReportenseCallInput = {
+    where?: CoordinadorWhereInput
+    data: XOR<CoordinadorUpdateWithoutReportenseCallInput, CoordinadorUncheckedUpdateWithoutReportenseCallInput>
+  }
+
+  export type CoordinadorUpdateWithoutReportenseCallInput = {
+    user?: UserRoleUpdateOneRequiredWithoutCoordinadorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutCoordinadorNestedInput
+  }
+
+  export type CoordinadorUncheckedUpdateWithoutReportenseCallInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutCoordinadorNestedInput
+  }
+
+  export type SupervisorCreateWithoutPresenteInput = {
+    user: UserRoleCreateNestedOneWithoutSupervisorInput
+    ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorUncheckedCreateWithoutPresenteInput = {
+    id?: number
+    userRoleId: number
+    ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorCreateOrConnectWithoutPresenteInput = {
+    where: SupervisorWhereUniqueInput
+    create: XOR<SupervisorCreateWithoutPresenteInput, SupervisorUncheckedCreateWithoutPresenteInput>
+  }
+
+  export type ReportenseCallCreateWithoutPresentesInput = {
+    turno: $Enums.Turno
+    createdAt?: Date | string
+    coordinador: CoordinadorCreateNestedOneWithoutReportenseCallInput
+  }
+
+  export type ReportenseCallUncheckedCreateWithoutPresentesInput = {
+    id?: number
+    coordinadorId: number
+    turno: $Enums.Turno
+    createdAt?: Date | string
+  }
+
+  export type ReportenseCallCreateOrConnectWithoutPresentesInput = {
+    where: ReportenseCallWhereUniqueInput
+    create: XOR<ReportenseCallCreateWithoutPresentesInput, ReportenseCallUncheckedCreateWithoutPresentesInput>
+  }
+
+  export type SupervisorUpsertWithoutPresenteInput = {
+    update: XOR<SupervisorUpdateWithoutPresenteInput, SupervisorUncheckedUpdateWithoutPresenteInput>
+    create: XOR<SupervisorCreateWithoutPresenteInput, SupervisorUncheckedCreateWithoutPresenteInput>
+    where?: SupervisorWhereInput
+  }
+
+  export type SupervisorUpdateToOneWithWhereWithoutPresenteInput = {
+    where?: SupervisorWhereInput
+    data: XOR<SupervisorUpdateWithoutPresenteInput, SupervisorUncheckedUpdateWithoutPresenteInput>
+  }
+
+  export type SupervisorUpdateWithoutPresenteInput = {
+    user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
+    ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type SupervisorUncheckedUpdateWithoutPresenteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type ReportenseCallUpsertWithoutPresentesInput = {
+    update: XOR<ReportenseCallUpdateWithoutPresentesInput, ReportenseCallUncheckedUpdateWithoutPresentesInput>
+    create: XOR<ReportenseCallCreateWithoutPresentesInput, ReportenseCallUncheckedCreateWithoutPresentesInput>
+    where?: ReportenseCallWhereInput
+  }
+
+  export type ReportenseCallUpdateToOneWithWhereWithoutPresentesInput = {
+    where?: ReportenseCallWhereInput
+    data: XOR<ReportenseCallUpdateWithoutPresentesInput, ReportenseCallUncheckedUpdateWithoutPresentesInput>
+  }
+
+  export type ReportenseCallUpdateWithoutPresentesInput = {
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coordinador?: CoordinadorUpdateOneRequiredWithoutReportenseCallNestedInput
+  }
+
+  export type ReportenseCallUncheckedUpdateWithoutPresentesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    coordinadorId?: IntFieldUpdateOperationsInput | number
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type DeviceTokenCreateManyUserRoleInput = {
     id?: number
     token: string
@@ -21073,6 +25915,22 @@ export namespace Prisma {
     longitud: number
   }
 
+  export type TurnoProgramadoCreateManySupervisorInput = {
+    id?: number
+    fecha: Date | string
+    turno: $Enums.Turno
+    coordinadorId: number
+    createdAt?: Date | string
+  }
+
+  export type PresenteCreateManySupervisorInput = {
+    id?: number
+    callId?: number | null
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+  }
+
   export type UbicacionSupervisorUpdateWithoutSupervisorInput = {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
@@ -21150,6 +26008,108 @@ export namespace Prisma {
     panicId?: IntFieldUpdateOperationsInput | number
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type TurnoProgramadoUpdateWithoutSupervisorInput = {
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    coordinador?: CoordinadorUpdateOneRequiredWithoutTurnoProgramadoNestedInput
+  }
+
+  export type TurnoProgramadoUncheckedUpdateWithoutSupervisorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    coordinadorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TurnoProgramadoUncheckedUpdateManyWithoutSupervisorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    coordinadorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PresenteUpdateWithoutSupervisorInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    call?: ReportenseCallUpdateOneWithoutPresentesNestedInput
+  }
+
+  export type PresenteUncheckedUpdateWithoutSupervisorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    callId?: NullableIntFieldUpdateOperationsInput | number | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type PresenteUncheckedUpdateManyWithoutSupervisorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    callId?: NullableIntFieldUpdateOperationsInput | number | null
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type TurnoProgramadoCreateManyCoordinadorInput = {
+    id?: number
+    fecha: Date | string
+    turno: $Enums.Turno
+    supervisorId: number
+    createdAt?: Date | string
+  }
+
+  export type ReportenseCallCreateManyCoordinadorInput = {
+    id?: number
+    turno: $Enums.Turno
+    createdAt?: Date | string
+  }
+
+  export type TurnoProgramadoUpdateWithoutCoordinadorInput = {
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    supervisor?: SupervisorUpdateOneRequiredWithoutTurnoProgramadoNestedInput
+  }
+
+  export type TurnoProgramadoUncheckedUpdateWithoutCoordinadorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TurnoProgramadoUncheckedUpdateManyWithoutCoordinadorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReportenseCallUpdateWithoutCoordinadorInput = {
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    presentes?: PresenteUpdateManyWithoutCallNestedInput
+  }
+
+  export type ReportenseCallUncheckedUpdateWithoutCoordinadorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    presentes?: PresenteUncheckedUpdateManyWithoutCallNestedInput
+  }
+
+  export type ReportenseCallUncheckedUpdateManyWithoutCoordinadorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FotoIncidenteCreateManyReporteInput = {
@@ -21251,6 +26211,37 @@ export namespace Prisma {
     unidad?: StringFieldUpdateOperationsInput | string
     ruta?: StringFieldUpdateOperationsInput | string
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PresenteCreateManyCallInput = {
+    id?: number
+    supervisorId: number
+    timestamp?: Date | string
+    latitud: number
+    longitud: number
+  }
+
+  export type PresenteUpdateWithoutCallInput = {
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+    supervisor?: SupervisorUpdateOneRequiredWithoutPresenteNestedInput
+  }
+
+  export type PresenteUncheckedUpdateWithoutCallInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type PresenteUncheckedUpdateManyWithoutCallInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    latitud?: FloatFieldUpdateOperationsInput | number
+    longitud?: FloatFieldUpdateOperationsInput | number
   }
 
 
