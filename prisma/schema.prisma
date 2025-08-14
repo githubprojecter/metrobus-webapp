@@ -21,15 +21,11 @@ enum Role {
 }
 
 // ---------------------- MODELO GENERAL DE USUARIOS ----------------------
-
-//Entidad que rersguarda la información de los usuarios dados de alta en el sistema y la relación con 
-// La base de datos Firebase para la autenticación de usuarios
 model UserRole {
-  id         Int    @id @default(autoincrement()) // ID único
-  idFirebase String @unique // ID relacionado con Firebase
-  role       Role // Rol del usuario declarados en enum
+  id         Int    @id @default(autoincrement())
+  idFirebase String @unique
+  role       Role
 
-  // Información personal de los trabajadores del metrobus
   nombre          String?
   apellidoPaterno String?
   apellidoMaterno String?
@@ -37,77 +33,60 @@ model UserRole {
   telefono        String?
   correo          String?
 
-  // Relaciones uno a uno con los distintos roles
-  // Se construyo una taba por cada uno de los roles existentes, con excepción de Dirección
-  // Esto se realizo asi para mantener 
-  // 1. Relaciones especializadas por rol
-  // 2. Separación clara de responsabilidades
-  // 3. Evitar sobrecargar el modelo UserRole
-
-  // Cada tipo de usuario tiene relaciones únicas con otras tablas:
-  // Operador → BotonPanico, RegistroSalidaUnidad, AsignacionUnidad
-  // Supervisor → ReporteIncidente, UbicacionSupervisor, IncidenteAsignado
-  // Patio → RegistroSalidaUnidad, AsignacionUnidad
-  // Coordinador → tal vez tenga privilegios globales pero no relaciones directas aún
-  // Esto evita meter condicionales y campos nulos en un solo modelo
   operador    Operador?
   supervisor  Supervisor?
   patio       Patio?
   coordinador Coordinador?
 
-  // Tokens para notificaciones push
   DeviceToken DeviceToken[]
 }
 
 // ---------------------- MODELO DE OPERADOR ----------------------
 model Operador {
   id             Int     @id @default(autoincrement())
-  userRoleId     Int     @unique // FK a UserRole
-  unidadAsignada String? // Unidad asignada
-  rutaAsignada   String? // Ruta asignada
+  userRoleId     Int     @unique
+  unidadAsignada String?
+  rutaAsignada   String?
 
   user                 UserRole               @relation(fields: [userRoleId], references: [id])
-  botonesPanico        BotonPanico[] // Relación a eventos de pánico
-  RegistroSalidaUnidad RegistroSalidaUnidad[] // Registro de salidas
-  AsignacionUnidad     AsignacionUnidad[] // Asignaciones desde patio
+  botonesPanico        BotonPanico[]
+  RegistroSalidaUnidad RegistroSalidaUnidad[]
+  AsignacionUnidad     AsignacionUnidad[]
 }
 
 // ---------------------- BOTÓN DE PÁNICO ----------------------
 model BotonPanico {
   id         Int      @id @default(autoincrement())
-  operadorId Int // FK a Operador
-  timestamp  DateTime @default(now()) // Fecha de activación
-  motivo     String? // Motivo
-  atendido   Boolean  @default(false) // Estado de atención
-  latitud    Float? // Ubicación
+  operadorId Int
+  timestamp  DateTime @default(now())
+  motivo     String?
+  atendido   Boolean  @default(false)
+  latitud    Float?
   longitud   Float?
 
   operador          Operador            @relation(fields: [operadorId], references: [id])
-  IncidenteAsignado IncidenteAsignado[] // Incidentes derivados de este botón
+  IncidenteAsignado IncidenteAsignado[]
 }
 
 // ---------------------- MODELO DE SUPERVISOR ----------------------
-// Entidad que resguarda los identificadores de los supervisores
-// y las relaciones con las tablas que resguardan la información a la que tienen acceso
 model Supervisor {
   id         Int @id @default(autoincrement())
-  userRoleId Int @unique // FK a UserRole
-  codigo    String?
+  userRoleId Int @unique
+  codigo     String?
 
   user            UserRole              @relation(fields: [userRoleId], references: [id])
-  ubicaciones     UbicacionSupervisor[] // Posiciones geográficas
-  reportes        ReporteIncidente[] // Reportes realizados
-  asignaciones    IncidenteAsignado[] // Incidentes asignados
+  ubicaciones     UbicacionSupervisor[]
+  reportes        ReporteIncidente[]
+  asignaciones    IncidenteAsignado[]
   TurnoProgramado TurnoProgramado[]
   Presente        Presente[]
 }
 
 // ---------------------- RASTREO DE UBICACIÓN DE SUPERVISOR ----------------------
-//Entidad que resguarda la información de la última ubicación conocida de los supervisores
 model UbicacionSupervisor {
   id           Int      @id @default(autoincrement())
-  supervisorId Int // FK a Supervisor
-  timestamp    DateTime @default(now()) // Fecha de la posición
+  supervisorId Int
+  timestamp    DateTime @default(now())
   latitud      Float
   longitud     Float
 
@@ -127,24 +106,24 @@ model Coordinador {
 // ---------------------- RELACIÓN: INCIDENTE ASIGNADO ----------------------
 model IncidenteAsignado {
   id              Int      @id @default(autoincrement())
-  supervisorId    Int // FK a Supervisor
-  fechaAsignacion DateTime @default(now()) // Fecha en que se asigna
-  panicId         Int // FK al botón de pánico original
-  latitud         Float // Ubicación del incidente
+  supervisorId    Int
+  fechaAsignacion DateTime @default(now())
+  panicId         Int
+  latitud         Float
   longitud        Float
 
   supervisor Supervisor        @relation(fields: [supervisorId], references: [id])
   panic      BotonPanico       @relation(fields: [panicId], references: [id])
-  reporte    ReporteIncidente? // El reporte que llena el supervisor
+  reporte    ReporteIncidente?
 }
 
 // ---------------------- REPORTE DE INCIDENTE ----------------------
 model ReporteIncidente {
   id                  Int      @id @default(autoincrement())
-  supervisorId        Int // FK a Supervisor
-  incidenteAsignadoId Int      @unique // FK a IncidenteAsignado
+  supervisorId        Int
+  incidenteAsignadoId Int      @unique
   fecha               DateTime @default(now())
-  estado              String? // En progreso o Finalizado
+  estado              String?
   descripcion         String
   ambulancia          Boolean  @default(false)
   policia             Boolean  @default(false)
@@ -158,8 +137,8 @@ model ReporteIncidente {
 // ---------------------- FOTOS RELACIONADAS A INCIDENTE ----------------------
 model FotoIncidente {
   id        Int      @id @default(autoincrement())
-  reporteId Int // FK a ReporteIncidente
-  url       String // URL de la imagen
+  reporteId Int
+  url       String
   createdAt DateTime @default(now())
 
   reporte ReporteIncidente @relation(fields: [reporteId], references: [id])
@@ -171,16 +150,16 @@ model Patio {
   userRoleId Int @unique
 
   user            UserRole               @relation(fields: [userRoleId], references: [id])
-  registrosSalida RegistroSalidaUnidad[] // Registros de salida de unidades
-  asignaciones    AsignacionUnidad[] // Asignaciones de unidad a operador
+  registrosSalida RegistroSalidaUnidad[]
+  asignaciones    AsignacionUnidad[]
 }
 
 // ---------------------- REGISTRO DE SALIDA DE UNIDADES ----------------------
 model RegistroSalidaUnidad {
   id          Int      @id @default(autoincrement())
-  patioId     Int // FK a Patio
-  unidad      String // ID de unidad
-  operadorId  Int // FK a Operador
+  patioId     Int
+  unidad      String
+  operadorId  Int
   fechaSalida DateTime
   horaInicio  String
   vueltas     Int
@@ -195,10 +174,10 @@ model RegistroSalidaUnidad {
 // ---------------------- ASIGNACIÓN DE UNIDAD A OPERADOR ----------------------
 model AsignacionUnidad {
   id         Int      @id @default(autoincrement())
-  patioId    Int // FK a Patio
-  operadorId Int // FK a Operador
-  unidad     String // Unidad asignada
-  ruta       String // Ruta asignada
+  patioId    Int
+  operadorId Int
+  unidad     String
+  ruta       String
   fecha      DateTime @default(now())
 
   patio    Patio    @relation(fields: [patioId], references: [id])
@@ -220,13 +199,13 @@ enum Turno {
   T1  // 06:00–14:00
   T2  // 08:00–16:00
   T3  // 10:00–18:00
-  T4  // 18:00–02:00 (cruza medianoche)
+  T4  // 18:00–02:00
   T5  // 14:00–22:00
 }
 
 model TurnoProgramado {
   id            Int      @id @default(autoincrement())
-  fecha         DateTime // usar fecha a medianoche (UTC) para el día del turno
+  fecha         DateTime
   turno         Turno
   supervisorId  Int
   coordinadorId Int
@@ -238,7 +217,7 @@ model TurnoProgramado {
   @@unique([fecha, turno, supervisorId])
 }
 
-// Registro de "llamado" (Reportense)
+// ---------------------- LLAMADO "REPORTENSE" ----------------------
 model ReportenseCall {
   id            Int        @id @default(autoincrement())
   coordinadorId Int
@@ -261,19 +240,45 @@ model Presente {
   call       ReportenseCall? @relation(fields: [callId], references: [id])
 }
 
-//
-// ------------------------------------
-// DOCUMENTACIÓN GENERAL DE LA BASE DE DATOS
-// ------------------------------------
-//
-// Esta base de datos pertenece al sistema de gestión de incidentes y operación de unidades de transporte público Metrobús CDMX.
-// Es un sistema modular que centraliza la gestión de:
-// - Usuarios autenticados vía Firebase con distintos roles (Operador, Supervisor, Coordinador, Patio, Dirección).
-// - Registro y atención de botones de pánico activados por operadores.
-// - Asignación de incidentes a supervisores por parte de coordinadores.
-// - Captura de reportes por parte de supervisores (incluyendo evidencias fotográficas).
-// - Monitoreo de ubicación de supervisores en tiempo real.
-// - Control de salidas y asignaciones de unidades por personal de patio.
-// - Envío de notificaciones push mediante `DeviceToken`.
-// 
-// Todo esto permite tener reportes en línea 7x24 para mejorar la atención a incidentes, coordinación y control de unidades y personal en el sistema de transporte.
+/*
+----------------------------------------------------------
+DOCUMENTACIÓN GENERAL DE LA BASE DE DATOS
+----------------------------------------------------------
+Esta base de datos modela el ecosistema de operación del Metrobus CDMX
+en relación con la gestión de incidentes, control de unidades y 
+coordinación del personal en campo.
+
+FUNCIONES PRINCIPALES:
+1. Registro y administración de usuarios autenticados con Firebase,
+   clasificados por rol: Coordinador, Operador, Supervisor, Patio, Dirección.
+2. Gestión de eventos críticos como activación de botón de pánico por operadores.
+3. Asignación de incidentes a supervisores y seguimiento de su resolución.
+4. Registro de reportes con evidencia fotográfica.
+5. Rastreo de ubicación de supervisores y control de asistencia.
+6. Administración de turnos y convocatorias (Reportense).
+7. Control logístico en patios: salidas de unidades, asignación de operadores y rutas.
+8. Soporte para notificaciones push en tiempo real.
+
+----------------------------------------------------------
+COMENTARIO DEL LLM SOBRE EL CONTEXTO:
+----------------------------------------------------------
+Como modelo, esta BD está diseñada para integrarse con un backend
+en Next.js que interactúa en tiempo real con una app móvil en Expo.
+Cada entidad está orientada a un caso de uso específico del sistema
+Metrobus:
+- **UserRole** centraliza la identidad y separa responsabilidades
+  en submodelos por rol para mantener integridad y claridad.
+- Los módulos de **BotonPanico**, **IncidenteAsignado** y 
+  **ReporteIncidente** constituyen el flujo completo de gestión 
+  de incidentes.
+- La geolocalización y reportes de presencia se manejan en 
+  **UbicacionSupervisor** y **Presente**, optimizados para 
+  operaciones en tiempo real sin saturar el historial.
+- El control de patios se gestiona mediante **RegistroSalidaUnidad** 
+  y **AsignacionUnidad** para mantener trazabilidad logística.
+- **DeviceToken** habilita las notificaciones push, 
+  asegurando comunicación inmediata entre roles.
+En resumen, esta BD soporta un sistema 24/7 de monitoreo,
+asignación y coordinación entre diferentes roles para
+maximizar la eficiencia y seguridad en el transporte público.
+*/
