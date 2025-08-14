@@ -5,10 +5,34 @@ import { requireRole } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
 import ExcelJS from 'exceljs';
 
-function parseISO(s?: string): Date | null {
-  if (!s) return null;
-  const d = new Date(s);
-  return isNaN(d.getTime()) ? null : d;
+const MX_OFFSET = '-06:00'; // Ciudad de México (sin DST desde 2022)
+const isYMD = (s: string) => /^\d{4}-\d{2}-\d{2}$/.test(s);
+
+// Convierte 'YYYY-MM-DD' interpretado en CDMX → Date UTC (inicio y fin del día)
+function ymdStartCDMXToUTC(ymd: string): Date {
+  return new Date(`${ymd}T00:00:00.000${MX_OFFSET}`);
+}
+function ymdEndCDMXToUTC(ymd: string): Date {
+  return new Date(`${ymd}T23:59:59.999${MX_OFFSET}`);
+}
+
+// Acepta ?from y ?to como ISO o como 'YYYY-MM-DD' (interpretado en CDMX)
+function normalizeFromTo(query: any): { from: Date; to: Date; ymdFrom: string; ymdTo: string } {
+  const fromRaw = String(query.from || '').trim();
+  const toRaw = String(query.to || '').trim();
+
+  if (isYMD(fromRaw) && isYMD(toRaw)) {
+    const from = ymdStartCDMXToUTC(fromRaw);
+    const to = ymdEndCDMXToUTC(toRaw);
+    return { from, to, ymdFrom: fromRaw, ymdTo: toRaw };
+  }
+
+  const from = new Date(fromRaw);
+  const to = new Date(toRaw);
+  if (isNaN(from.getTime()) || isNaN(to.getTime())) {
+    throw new Error('Parámetros "from" y "to" inválidos');
+  }
+  return { from, to, ymdFrom: from.toISOString().slice(0,10), ymdTo: to.toISOString().slice(0,10) };
 }
 
 function formatFechaMX(d: Date) {
@@ -22,11 +46,11 @@ function formatFechaMX(d: Date) {
     timeZone: tz, hour: 'numeric', minute: '2-digit', hour12: true
   });
 
-  const day = fmtDay.format(d); // "11"
-  const month = fmtMonth.format(d); // "agosto"
-  const year = fmtYear.format(d); // "2025"
+  const day = fmtDay.format(d);
+  const month = fmtMonth.format(d);
+  const year = fmtYear.format(d);
 
-  // "8:17 p. m." → normalizamos a "8:17 pm"
+  // "8:17 p. m." → "8:17 pm"
   const hmRaw = fmtHour.format(d).toLowerCase();
   const hm = hmRaw
     .replace(/\s*p\.\s?m\.\s*/g, ' pm')
@@ -48,11 +72,10 @@ export default requireRole(['Coordinador'])(async (
       return;
     }
 
-    const from = parseISO(String(req.query.from || ''));
-    const to = parseISO(String(req.query.to || ''));
+    const { from, to, ymdFrom, ymdTo } = normalizeFromTo(req.query);
 
     if (!from || !to) {
-      res.status(400).json({ error: 'Parámetros "from" y "to" (ISO) son requeridos' });
+      res.status(400).json({ error: 'Parámetros "from" y "to" (ISO o YYYY-MM-DD) son requeridos' });
       return;
     }
     if (from > to) {
@@ -102,28 +125,23 @@ export default requireRole(['Coordinador'])(async (
 
     // Encabezado
     ws.columns = [
-      { header: 'Nombre del supervisor', key: 'nombre', width: 40 },
-      { header: 'Fecha con hora (CDMX)', key: 'fechaLocal', width: 34 },
-      { header: 'Latitud', key: 'lat', width: 14 },
-      { header: 'Longitud', key: 'lng', width: 14 },
-      { header: 'Liga de maps', key: 'maps', width: 42 },
+      { header: 'Supervisor', key: 'nombre', width: 28 },
+      { header: 'Fecha (CDMX)', key: 'fechaLocal', width: 28 },
+      { header: 'Latitud', key: 'lat', width: 12 },
+      { header: 'Longitud', key: 'lng', width: 12 },
+      { header: 'Liga de maps', key: 'maps', width: 40 },
     ];
 
-    // Filas
     ws.addRows(data);
 
-    // Dar formato de tabla (para filtros/estilo)
+    // Formato de tabla
     ws.addTable({
-      name: 'TablaPresente',
+      name: 'UbicacionesTbl',
       ref: 'A1',
       headerRow: true,
-      style: {
-        theme: 'TableStyleMedium2',
-        showRowStripes: true,
-      },
       columns: [
-        { name: 'Nombre del supervisor', filterButton: true },
-        { name: 'Fecha con hora (CDMX)', filterButton: true },
+        { name: 'Supervisor', filterButton: true },
+        { name: 'Fecha (CDMX)', filterButton: true },
         { name: 'Latitud', filterButton: true },
         { name: 'Longitud', filterButton: true },
         { name: 'Liga de maps', filterButton: false },
@@ -134,7 +152,7 @@ export default requireRole(['Coordinador'])(async (
     // Auto estilo del header
     ws.getRow(1).font = { bold: true };
 
-    const fileName = `ubicaciones_${from.toISOString().slice(0,10)}_${to.toISOString().slice(0,10)}.xlsx`;
+    const fileName = `ubicaciones_${ymdFrom}_${ymdTo}.xlsx`;
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
 

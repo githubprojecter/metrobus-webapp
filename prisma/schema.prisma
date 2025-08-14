@@ -92,6 +92,7 @@ model BotonPanico {
 model Supervisor {
   id         Int @id @default(autoincrement())
   userRoleId Int @unique // FK a UserRole
+  codigo    String?
 
   user            UserRole              @relation(fields: [userRoleId], references: [id])
   ubicaciones     UbicacionSupervisor[] // Posiciones geográficas

@@ -5666,16 +5666,19 @@ export namespace Prisma {
   export type SupervisorMinAggregateOutputType = {
     id: number | null
     userRoleId: number | null
+    codigo: string | null
   }
 
   export type SupervisorMaxAggregateOutputType = {
     id: number | null
     userRoleId: number | null
+    codigo: string | null
   }
 
   export type SupervisorCountAggregateOutputType = {
     id: number
     userRoleId: number
+    codigo: number
     _all: number
   }
 
@@ -5693,16 +5696,19 @@ export namespace Prisma {
   export type SupervisorMinAggregateInputType = {
     id?: true
     userRoleId?: true
+    codigo?: true
   }
 
   export type SupervisorMaxAggregateInputType = {
     id?: true
     userRoleId?: true
+    codigo?: true
   }
 
   export type SupervisorCountAggregateInputType = {
     id?: true
     userRoleId?: true
+    codigo?: true
     _all?: true
   }
 
@@ -5795,6 +5801,7 @@ export namespace Prisma {
   export type SupervisorGroupByOutputType = {
     id: number
     userRoleId: number
+    codigo: string | null
     _count: SupervisorCountAggregateOutputType | null
     _avg: SupervisorAvgAggregateOutputType | null
     _sum: SupervisorSumAggregateOutputType | null
@@ -5819,6 +5826,7 @@ export namespace Prisma {
   export type SupervisorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userRoleId?: boolean
+    codigo?: boolean
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
     ubicaciones?: boolean | Supervisor$ubicacionesArgs<ExtArgs>
     reportes?: boolean | Supervisor$reportesArgs<ExtArgs>
@@ -5833,9 +5841,10 @@ export namespace Prisma {
   export type SupervisorSelectScalar = {
     id?: boolean
     userRoleId?: boolean
+    codigo?: boolean
   }
 
-  export type SupervisorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId", ExtArgs["result"]["supervisor"]>
+  export type SupervisorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userRoleId" | "codigo", ExtArgs["result"]["supervisor"]>
   export type SupervisorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserRoleDefaultArgs<ExtArgs>
     ubicaciones?: boolean | Supervisor$ubicacionesArgs<ExtArgs>
@@ -5859,6 +5868,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userRoleId: number
+      codigo: string | null
     }, ExtArgs["result"]["supervisor"]>
     composites: {}
   }
@@ -6236,6 +6246,7 @@ export namespace Prisma {
   interface SupervisorFieldRefs {
     readonly id: FieldRef<"Supervisor", 'Int'>
     readonly userRoleId: FieldRef<"Supervisor", 'Int'>
+    readonly codigo: FieldRef<"Supervisor", 'String'>
   }
     
 
@@ -18721,7 +18732,8 @@ export namespace Prisma {
 
   export const SupervisorScalarFieldEnum: {
     id: 'id',
-    userRoleId: 'userRoleId'
+    userRoleId: 'userRoleId',
+    codigo: 'codigo'
   };
 
   export type SupervisorScalarFieldEnum = (typeof SupervisorScalarFieldEnum)[keyof typeof SupervisorScalarFieldEnum]
@@ -18905,6 +18917,13 @@ export namespace Prisma {
   };
 
   export type BotonPanicoOrderByRelevanceFieldEnum = (typeof BotonPanicoOrderByRelevanceFieldEnum)[keyof typeof BotonPanicoOrderByRelevanceFieldEnum]
+
+
+  export const SupervisorOrderByRelevanceFieldEnum: {
+    codigo: 'codigo'
+  };
+
+  export type SupervisorOrderByRelevanceFieldEnum = (typeof SupervisorOrderByRelevanceFieldEnum)[keyof typeof SupervisorOrderByRelevanceFieldEnum]
 
 
   export const ReporteIncidenteOrderByRelevanceFieldEnum: {
@@ -19232,6 +19251,7 @@ export namespace Prisma {
     NOT?: SupervisorWhereInput | SupervisorWhereInput[]
     id?: IntFilter<"Supervisor"> | number
     userRoleId?: IntFilter<"Supervisor"> | number
+    codigo?: StringNullableFilter<"Supervisor"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
     ubicaciones?: UbicacionSupervisorListRelationFilter
     reportes?: ReporteIncidenteListRelationFilter
@@ -19243,12 +19263,14 @@ export namespace Prisma {
   export type SupervisorOrderByWithRelationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    codigo?: SortOrderInput | SortOrder
     user?: UserRoleOrderByWithRelationInput
     ubicaciones?: UbicacionSupervisorOrderByRelationAggregateInput
     reportes?: ReporteIncidenteOrderByRelationAggregateInput
     asignaciones?: IncidenteAsignadoOrderByRelationAggregateInput
     TurnoProgramado?: TurnoProgramadoOrderByRelationAggregateInput
     Presente?: PresenteOrderByRelationAggregateInput
+    _relevance?: SupervisorOrderByRelevanceInput
   }
 
   export type SupervisorWhereUniqueInput = Prisma.AtLeast<{
@@ -19257,6 +19279,7 @@ export namespace Prisma {
     AND?: SupervisorWhereInput | SupervisorWhereInput[]
     OR?: SupervisorWhereInput[]
     NOT?: SupervisorWhereInput | SupervisorWhereInput[]
+    codigo?: StringNullableFilter<"Supervisor"> | string | null
     user?: XOR<UserRoleScalarRelationFilter, UserRoleWhereInput>
     ubicaciones?: UbicacionSupervisorListRelationFilter
     reportes?: ReporteIncidenteListRelationFilter
@@ -19268,6 +19291,7 @@ export namespace Prisma {
   export type SupervisorOrderByWithAggregationInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    codigo?: SortOrderInput | SortOrder
     _count?: SupervisorCountOrderByAggregateInput
     _avg?: SupervisorAvgOrderByAggregateInput
     _max?: SupervisorMaxOrderByAggregateInput
@@ -19281,6 +19305,7 @@ export namespace Prisma {
     NOT?: SupervisorScalarWhereWithAggregatesInput | SupervisorScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Supervisor"> | number
     userRoleId?: IntWithAggregatesFilter<"Supervisor"> | number
+    codigo?: StringNullableWithAggregatesFilter<"Supervisor"> | string | null
   }
 
   export type UbicacionSupervisorWhereInput = {
@@ -20261,6 +20286,7 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateInput = {
+    codigo?: string | null
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
@@ -20272,6 +20298,7 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateInput = {
     id?: number
     userRoleId: number
+    codigo?: string | null
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
@@ -20280,6 +20307,7 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
@@ -20291,6 +20319,7 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -20301,15 +20330,17 @@ export namespace Prisma {
   export type SupervisorCreateManyInput = {
     id?: number
     userRoleId: number
+    codigo?: string | null
   }
 
   export type SupervisorUpdateManyMutationInput = {
-
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SupervisorUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UbicacionSupervisorCreateInput = {
@@ -21425,9 +21456,16 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type SupervisorOrderByRelevanceInput = {
+    fields: SupervisorOrderByRelevanceFieldEnum | SupervisorOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type SupervisorCountOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    codigo?: SortOrder
   }
 
   export type SupervisorAvgOrderByAggregateInput = {
@@ -21438,11 +21476,13 @@ export namespace Prisma {
   export type SupervisorMaxOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    codigo?: SortOrder
   }
 
   export type SupervisorMinOrderByAggregateInput = {
     id?: SortOrder
     userRoleId?: SortOrder
+    codigo?: SortOrder
   }
 
   export type SupervisorSumOrderByAggregateInput = {
@@ -23520,6 +23560,7 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutUserInput = {
+    codigo?: string | null
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
@@ -23529,6 +23570,7 @@ export namespace Prisma {
 
   export type SupervisorUncheckedCreateWithoutUserInput = {
     id?: number
+    codigo?: string | null
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
@@ -23634,6 +23676,7 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutUserInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
@@ -23643,6 +23686,7 @@ export namespace Prisma {
 
   export type SupervisorUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -24421,6 +24465,7 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutUbicacionesInput = {
+    codigo?: string | null
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
@@ -24431,6 +24476,7 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateWithoutUbicacionesInput = {
     id?: number
     userRoleId: number
+    codigo?: string | null
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
@@ -24454,6 +24500,7 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutUbicacionesInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
@@ -24464,6 +24511,7 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateWithoutUbicacionesInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -24639,6 +24687,7 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutAsignacionesInput = {
+    codigo?: string | null
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
@@ -24649,6 +24698,7 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateWithoutAsignacionesInput = {
     id?: number
     userRoleId: number
+    codigo?: string | null
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
@@ -24724,6 +24774,7 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutAsignacionesInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
@@ -24734,6 +24785,7 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateWithoutAsignacionesInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -24805,6 +24857,7 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutReportesInput = {
+    codigo?: string | null
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
@@ -24815,6 +24868,7 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateWithoutReportesInput = {
     id?: number
     userRoleId: number
+    codigo?: string | null
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
@@ -24881,6 +24935,7 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutReportesInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
@@ -24891,6 +24946,7 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateWithoutReportesInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -25436,6 +25492,7 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutTurnoProgramadoInput = {
+    codigo?: string | null
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
@@ -25446,6 +25503,7 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateWithoutTurnoProgramadoInput = {
     id?: number
     userRoleId: number
+    codigo?: string | null
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
@@ -25485,6 +25543,7 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutTurnoProgramadoInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
@@ -25495,6 +25554,7 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateWithoutTurnoProgramadoInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
@@ -25603,6 +25663,7 @@ export namespace Prisma {
   }
 
   export type SupervisorCreateWithoutPresenteInput = {
+    codigo?: string | null
     user: UserRoleCreateNestedOneWithoutSupervisorInput
     ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
@@ -25613,6 +25674,7 @@ export namespace Prisma {
   export type SupervisorUncheckedCreateWithoutPresenteInput = {
     id?: number
     userRoleId: number
+    codigo?: string | null
     ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
@@ -25654,6 +25716,7 @@ export namespace Prisma {
   }
 
   export type SupervisorUpdateWithoutPresenteInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
     ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
@@ -25664,6 +25727,7 @@ export namespace Prisma {
   export type SupervisorUncheckedUpdateWithoutPresenteInput = {
     id?: IntFieldUpdateOperationsInput | number
     userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
     ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput

@@ -13,3 +13,7 @@ export function initSocket(server: HTTPServer) {
   }
   return serverSocket;
 }
+
+export function getIO(): IOServer | null {
+  return serverSocket; // devuelve null si aún no se ha llamado initSocket(...)
+}

@@ -90,8 +90,9 @@ model BotonPanico {
 // Entidad que resguarda los identificadores de los supervisores
 // y las relaciones con las tablas que resguardan la información a la que tienen acceso
 model Supervisor {
-  id         Int @id @default(autoincrement())
-  userRoleId Int @unique // FK a UserRole
+  id         Int     @id @default(autoincrement())
+  userRoleId Int     @unique // FK a UserRole
+  codigo     String?
 
   user            UserRole              @relation(fields: [userRoleId], references: [id])
   ubicaciones     UbicacionSupervisor[] // Posiciones geográficas

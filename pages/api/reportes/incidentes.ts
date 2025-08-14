@@ -3,6 +3,7 @@ import type { NextApiResponse } from 'next';
 import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import { requireRole } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
+import { ymdLocal, ymdToLocalMidnight, addDaysLocal, MX_TZ } from '@/lib/turnos';
 
 type IncDTO = { status: string; count: number };
 
@@ -21,17 +22,23 @@ export default requireRole(['Coordinador'])(async (
   const now = new Date();
   let start: Date;
   switch (period) {
-    case 'day':
-      start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    case 'day': {
+      const ymd = ymdLocal(now, MX_TZ);
+      start = ymdToLocalMidnight(ymd);
       break;
-    case 'week':
-      start = new Date(now);
-      start.setDate(now.getDate() - 7);
+    }
+    case 'week': {
+      const ymd = addDaysLocal(ymdLocal(now, MX_TZ), -7);
+      start = ymdToLocalMidnight(ymd);
       break;
-    case 'month':
-      start = new Date(now);
-      start.setMonth(now.getMonth() - 1);
+    }
+    case 'month': {
+      const base = new Date(`${ymdLocal(now, MX_TZ)}T00:00:00.000Z`);
+      base.setUTCMonth(base.getUTCMonth() - 1);
+      const ymd = ymdLocal(base, MX_TZ);
+      start = ymdToLocalMidnight(ymd);
       break;
+    }
     default:
       start = new Date(0);
   }
