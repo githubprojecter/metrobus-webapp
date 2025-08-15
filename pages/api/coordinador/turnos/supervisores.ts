@@ -18,7 +18,8 @@ export default requireRole(['Coordinador'])(async (req: NextApiRequestWithUser, 
           nombre: true,
           apellidoPaterno: true,
           apellidoMaterno: true,
-          telefono: true
+          telefono: true,
+          codigo: true,
         }
       },
     },
