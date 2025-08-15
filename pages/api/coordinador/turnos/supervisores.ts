@@ -28,8 +28,8 @@ export default requireRole(['Coordinador'])(async (req: NextApiRequestWithUser, 
   // console.log(sup)
   const items = sup.map(s => ({
     id: s.id,
-    idFirebase: s.user.idFirebase,
     nombre: [s.user?.nombre, s.user?.apellidoPaterno, s.user?.apellidoMaterno].filter(Boolean).join(' ') || `Supervisor #${s.id}`,
+    idFirebase: s.user.idFirebase,
     telefono: s.user?.telefono ?? null
   }));
   
