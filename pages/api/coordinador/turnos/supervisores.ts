@@ -12,6 +12,7 @@ export default requireRole(['Coordinador'])(async (req: NextApiRequestWithUser, 
   const sup = await prisma.supervisor.findMany({
     select:{
       id:true,
+      codigo:true,
       user: {
         select: {
           idFirebase: true,
@@ -19,7 +20,6 @@ export default requireRole(['Coordinador'])(async (req: NextApiRequestWithUser, 
           apellidoPaterno: true,
           apellidoMaterno: true,
           telefono: true,
-          codigo: true,
         }
       },
     },
