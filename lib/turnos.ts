@@ -3,7 +3,7 @@ export type Turno5 = 'T1' | 'T2' | 'T3' | 'T4' | 'T5';
 export const MX_TZ = 'America/Mexico_City';
 
 export const DEF: Record<Turno5, { start: string; end: string; crossesMidnight?: boolean }> = {
-  T1: { start: '06:00', end: '14:00' },
+  T1: { start: '02:00', end: '14:00' },
   T2: { start: '08:00', end: '16:00' },
   T3: { start: '10:00', end: '18:00' },
   T4: { start: '18:00', end: '02:00', crossesMidnight: true },
@@ -117,7 +117,7 @@ export function parseTurnoCompat(input: unknown): Turno5 {
     .replace(/：/g, ':');      // dos puntos fullwidth
 
   const RANGE_TO_T: Record<string, Turno5> = {
-    '06:00-14:00': 'T1',
+    '02:00-14:00': 'T1',
     '08:00-16:00': 'T2',
     '10:00-18:00': 'T3',
     '18:00-02:00': 'T4',  // cruza medianoche
@@ -138,7 +138,7 @@ export function parseTurnoCompat(input: unknown): Turno5 {
 // Helper: obtiene etiqueta humana para mostrar en UI, sin tocar tu estado interno
 export function turnoLabel(t: Turno5): string {
   switch (t) {
-    case 'T1': return '06:00–14:00';
+    case 'T1': return '02:00–14:00';
     case 'T2': return '08:00–16:00';
     case 'T3': return '10:00–18:00';
     case 'T4': return '18:00–02:00';
