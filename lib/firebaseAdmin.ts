@@ -13,4 +13,3 @@ if (!admin.apps.length) {
 export const adminAuth = admin.auth();
 export const fcm = admin.messaging();
 
-lib/firebaseAdmin.ts

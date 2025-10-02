@@ -1,5 +1,5 @@
 // pages/api/coordinador/supervisores/estado-actual.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiResponse } from 'next';
 import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import { requireRole } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';

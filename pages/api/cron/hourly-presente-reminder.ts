@@ -66,7 +66,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const isPresentThisHour = !!last && DateTime.fromJSDate(last.timestamp, { zone: 'utc' }) >= hourStartUTC;
       if (!isPresentThisHour) {
-        const nombre = [s.user?.nombre, s.user?.apellidoPaterno].filter(Boolean).join(' ') || 'Supervisor';
+        // const nombre = [s.user?.nombre, s.user?.apellidoPaterno].filter(Boolean).join(' ') || 'Supervisor';
         // ⚠️ Ajusta de dónde tomas el/los tokens:
         const tokens: string[] = (s as any).fcmTokens ?? (s as any).deviceTokens?.map((d: any) => d.token) ?? [];
         for (const t of tokens) {
