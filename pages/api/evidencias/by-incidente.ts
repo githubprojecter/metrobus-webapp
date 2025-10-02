@@ -16,7 +16,8 @@ export default requireRole(['Supervisor'])(async (
       .json({ error: `Método ${req.method} no permitido` });
   }
 
-  const reporteId = Number(req.query.id);
+  const reporteId = Number(req.query.reporteId);
+  console.log(reporteId)
   if (!reporteId) {
     return res
       .status(400)

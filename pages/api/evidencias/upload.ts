@@ -34,8 +34,7 @@ export default requireRole(['Supervisor'])(async (
       console.error('Error al procesar imágenes:', err);
       return res.status(500).json({ message: 'Error al procesar imágenes' });
     }
-
-    const reporteID = Number(fields.reporteID);
+    const reporteID = Number(fields.reporteId);
     if (!reporteID) {
       return res.status(400).json({ message: 'Falta idIncidente' });
     }
@@ -82,7 +81,7 @@ export default requireRole(['Supervisor'])(async (
         // }
       }
 
-      return res.status(200).json({ urls });
+      return res.status(200).json({ok:true, urls });
     } catch (error) {
       console.error('Error al subir imágenes:', error);
       return res.status(500).json({ message: 'Error al subir imágenes' });

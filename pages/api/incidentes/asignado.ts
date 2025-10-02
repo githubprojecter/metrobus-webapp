@@ -8,6 +8,16 @@ export default requireRole(['Supervisor'])(async (
   req: NextApiRequestWithUser,
   res: NextApiResponse
 ): Promise<void> => {
+
+  // const authHeader = req.headers.authorization || ''
+  // const masked = authHeader ? (authHeader.slice(0, 16) + '…') : '(sin Authorization)'
+  // console.log('[asignado] Authorization header:', masked)
+  // console.log('[asignado] user ctx ->', {
+  //   uid: req.uid,
+  //   role: req.role,
+  //   userRoleId: req.userRoleId,
+  // })
+
   // 0) Obtener el registro de Supervisor vinculado a este userRoleId
   const sup = await prisma.supervisor.findUnique({
     where: { userRoleId: req.userRoleId }
@@ -22,7 +32,7 @@ export default requireRole(['Supervisor'])(async (
   const asign = await prisma.incidenteAsignado.findFirst({
     where: {
       supervisorId: sup.id,
-      panic: { atendido: false },            // ← filtramos aquí
+      panic: { atendido: false },
     },
     orderBy: { fechaAsignacion: 'desc' },
     include: {
@@ -30,9 +40,7 @@ export default requireRole(['Supervisor'])(async (
       panic: {
         include: {
           operador: {
-            include: {
-              user: true,
-            },
+            include: { user: true },
           },
         },
       },
@@ -40,21 +48,28 @@ export default requireRole(['Supervisor'])(async (
   })
 
   if (!asign) {
-    // No hay asignaciones pendientes → 404 para que el front muestre "No tienes incidentes asignados"
-    res.status(404).json({ error: 'Sin asignaciones' })
+    res.status(404).json({ ok:false, incidente: null, error: 'Aun no te han asignado algo' })
     return
   }
+  // console.log(asign)
 
-  // 2) Armamos el DTO con los datos que espera el front
+  // 2) Armamos el DTO LEGACY actual…
   const { panic } = asign
-  res.status(200).json({
-    id: asign.id,
-    lat: asign.latitud,
-    lng: asign.longitud,
-    motivo: panic.motivo,
+  const incidente = {
+    idIncidente: asign.id,
+    asignadoId: asign.supervisorId,
+    titulo: 'Nueva incidencia',
+    descripcion: 'Se te ha asignado asistir al siguiente operador',
+    operadorNombre: `${panic.operador.user.nombre} ${panic.operador.user.apellidoPaterno} ${panic.operador.user.apellidoMaterno}`,
+    latitud: asign.latitud,
+    longitud: asign.longitud,
+    reporteId: asign.reporte,
     timestamp: panic.timestamp.toISOString(),
     operador: `${panic.operador.user.nombre} ${panic.operador.user.apellidoPaterno} ${panic.operador.user.apellidoMaterno}`,
     unidad: panic.operador.unidadAsignada,
     status: asign.reporte ? 'En reporte' : 'Asignado',
-  })
+
+  }
+  // Respuesta normal (no se altera el comportamiento existente)
+  res.status(200).json({ok:true, incidente})
 })

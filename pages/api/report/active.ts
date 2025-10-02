@@ -23,6 +23,7 @@ export default requireRole(['Supervisor'])(
         .status(403)
         .json({ error: 'Supervisor no registrado para este usuario' });
     }
+    // console.log(supervisorRecord)
 
     try {
       // 2) Buscamos el reporte “En progreso” para ese supervisor.id
@@ -60,13 +61,13 @@ export default requireRole(['Supervisor'])(
           },
         },
       });
-
+      console.log(report)
       if (!report) {
         return res.status(404).json({ error: 'No hay reporte activo' });
       }
 
       // 3) Devolvemos el reporte completo
-      return res.status(200).json(report);
+      return res.status(200).json({ok: true, incidente: report});
     } catch (error: any) {
       console.error('[API /report/active]', error);
       return res

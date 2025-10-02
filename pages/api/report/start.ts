@@ -22,6 +22,9 @@ export default requireRole(['Supervisor'])(
     const { incidenteAsignadoId } = req.body as {
       incidenteAsignadoId?: number;
     };
+
+    console.log("Este es el # de incidente asignado")
+    console.log(incidenteAsignadoId)
     if (!incidenteAsignadoId) {
       return res
         .status(400)
