@@ -125,9 +125,6 @@ model ReporteIncidente {
   fecha               DateTime @default(now())
   estado              String?
   descripcion         String
-  ambulancia          Boolean  @default(false)
-  policia             Boolean  @default(false)
-  heridos             Boolean
 
   supervisor        Supervisor        @relation(fields: [supervisorId], references: [id])
   incidenteAsignado IncidenteAsignado @relation(fields: [incidenteAsignadoId], references: [id])

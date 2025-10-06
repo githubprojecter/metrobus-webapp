@@ -19,18 +19,11 @@ export default requireRole(['Supervisor'])(async (
   // 2) Leemos el reporteId y los demás campos del body
   const {
     reportId,
-    comentarios,
-    ambulancia,
-    policia,
-    heridos,
+    comentarios,  
   } = req.body as {
     reportId: number;
     comentarios: string;
-    ambulancia: boolean;
-    policia: boolean;
-    heridos: boolean;
-  };
-
+  }
   if (!reportId) {
     res.status(400).json({ error: 'Falta el campo reportId' });
     return;
@@ -57,9 +50,6 @@ export default requireRole(['Supervisor'])(async (
       where: { id: reportId },
       data: {
         descripcion: comentarios,
-        ambulancia,
-        policia,
-        heridos,
         estado: 'Finalizado'
       }
     });

@@ -1,61 +1,124 @@
 // pages/api/reportes/incidentes.ts
-import type { NextApiResponse } from 'next';
-import type { NextApiRequestWithUser } from '@/lib/requireRole';
-import { requireRole } from '@/lib/requireRole';
-import prisma from '@/lib/prisma';
-import { ymdLocal, ymdToLocalMidnight, addDaysLocal, MX_TZ } from '@/lib/turnos';
+import type { NextApiResponse } from "next";
+import type { NextApiRequestWithUser } from "@/lib/requireRole";
+import { requireRole } from "@/lib/requireRole";
+import prisma from "@/lib/prisma";
 
-type IncDTO = { status: string; count: number };
+const MX_TZ = "America/Mexico_City";
 
-export default requireRole(['Coordinador'])(async (
+type ReportItemDTO = {
+  reporteId: number;
+  supervisorNombre: string | null;
+  asignadoAt: string | null;
+  reporteInicioAt: string | null;
+  operadorNombre: string | null;
+  panicoAt: string | null;
+  fotos: string[];
+  comentarios: string | null;
+  estado: string | null;
+};
+
+export default requireRole(["Coordinador"])(async (
   req: NextApiRequestWithUser,
-  res: NextApiResponse<IncDTO[]>
-): Promise<void> => {
-  console.log('[INCIDENTES] petición de userRoleId:', req.userRoleId, 'query:', req.query);
-
-  if (req.method !== 'GET') {
-    res.setHeader('Allow','GET');
-    res.status(405).end();
-    return;
+  res: NextApiResponse<ReportItemDTO[]>
+) => {
+  if (req.method !== "GET") {
+    return res.status(405).json([]);
   }
-  const period = req.query.period as string;
+
+  const { mode, from, to } = req.query as {
+    mode?: string;
+    from?: string;
+    to?: string;
+  };
+
+  // === Rango temporal (CDMX) ===
   const now = new Date();
-  let start: Date;
-  switch (period) {
-    case 'day': {
-      const ymd = ymdLocal(now, MX_TZ);
-      start = ymdToLocalMidnight(ymd);
-      break;
-    }
-    case 'week': {
-      const ymd = addDaysLocal(ymdLocal(now, MX_TZ), -7);
-      start = ymdToLocalMidnight(ymd);
-      break;
-    }
-    case 'month': {
-      const base = new Date(`${ymdLocal(now, MX_TZ)}T00:00:00.000Z`);
-      base.setUTCMonth(base.getUTCMonth() - 1);
-      const ymd = ymdLocal(base, MX_TZ);
-      start = ymdToLocalMidnight(ymd);
-      break;
-    }
-    default:
-      start = new Date(0);
+  let fromDate: Date;
+  let toDate: Date;
+
+  if (mode === "day") {
+    const y = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, year: "numeric" }).format(now);
+    const m = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, month: "2-digit" }).format(now);
+    const d = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, day: "2-digit" }).format(now);
+    fromDate = new Date(`${y}-${m}-${d}T00:00:00`);
+    toDate = new Date();
+  } else if (mode === "range" && from && to) {
+    fromDate = new Date(from);
+    toDate = new Date(to);
+  } else {
+    // semana por defecto
+    toDate = new Date();
+    fromDate = new Date(toDate);
+    fromDate.setDate(fromDate.getDate() - 7);
+    fromDate.setHours(0, 0, 0, 0);
   }
 
-  const group = await prisma.botonPanico.groupBy({
-    by: ['atendido'],
-    where: { timestamp: { gte: start } },
-    _count: { _all: true },
+  // === Consulta principal (corrigiendo includes y nombres) ===
+  const rows = await prisma.reporteIncidente.findMany({
+    where: { fecha: { gte: fromDate, lte: toDate } },
+    orderBy: { fecha: "desc" },
+    include: {
+      // Necesitamos el UserRole del supervisor para tomar el nombre
+      supervisor: { include: { user: true } },
+      incidenteAsignado: {
+        include: {
+          // En tu schema la relación se llama "panic"
+          panic: {
+            // Para el nombre del operador: panic -> operador -> user
+            include: { operador: { include: { user: true } } },
+          },
+        },
+      },
+      fotos: true,
+    },
   });
 
-  const mapStatus = (atendido: boolean) =>
-    atendido ? 'Finalizado' : 'Alertado';
+  const fullName = (u?: {
+    nombre?: string | null;
+    apellidoPaterno?: string | null;
+    apellidoMaterno?: string | null;
+  } | null) =>
+    u
+      ? [u.nombre, u.apellidoPaterno, u.apellidoMaterno]
+          .filter(Boolean)
+          .join(" ")
+          .trim() || null
+      : null;
 
-  const result: IncDTO[] = group.map(g => ({
-    status: mapStatus(g.atendido),
-    count: g._count._all,
-  }));
+  const data: ReportItemDTO[] = rows.map((r) => {
+    const supervisorNombre = fullName(r.supervisor?.user ?? null);
 
-  res.status(200).json(result);
+    // Asignación: en tu schema es fechaAsignacion (no createdAt)
+    const asignadoAt =
+      r.incidenteAsignado?.fechaAsignacion
+        ? new Date(r.incidenteAsignado.fechaAsignacion).toISOString()
+        : null;
+
+    // Inicio del reporte = fecha del reporte
+    const reporteInicioAt = r.fecha ? new Date(r.fecha).toISOString() : null;
+
+    // Botón de pánico: timestamp (no createdAt)
+    const panicoAt =
+      r.incidenteAsignado?.panic?.timestamp
+        ? new Date(r.incidenteAsignado.panic.timestamp).toISOString()
+        : null;
+
+    // Operador (si existe): panic -> operador -> user
+    const operadorNombre = fullName(r.incidenteAsignado?.panic?.operador?.user ?? null);
+
+    return {
+      reporteId: r.id,
+      supervisorNombre,
+      asignadoAt,
+      reporteInicioAt,
+      operadorNombre: operadorNombre ?? null,
+      panicoAt,
+      fotos: (r.fotos ?? []).map((f) => f.url),
+      comentarios: r.descripcion ?? null,
+      estado: r.estado ?? null,
+    };
+  });
+
+  return res.status(200).json(data);
 });

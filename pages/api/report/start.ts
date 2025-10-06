@@ -49,13 +49,10 @@ export default requireRole(['Supervisor'])(
           incidenteAsignadoId,
           estado: 'En progreso',
           descripcion: '',
-          ambulancia: false,
-          policia: false,
-          heridos: false,
         },
       });
 
-      return res.status(201).json({ success: true, reporte });
+      return res.status(201).json({ ok: true, reporte });
     } catch (error: any) {
       console.error('[START REPORT]', error);
       return res
