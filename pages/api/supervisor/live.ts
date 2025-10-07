@@ -25,7 +25,7 @@ export default requireRole(['Supervisor'])(
         timestamp: body.timestamp ?? Date.now(),
       }
       
-      console.log(payload)
+      // console.log(payload)
 
       await pusher.trigger("supervisor-location", "update", payload)
       return res.status(200).json({ ok: true });

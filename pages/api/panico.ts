@@ -2,15 +2,16 @@
 import type { NextApiResponse } from 'next';
 import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
+import { getPusher } from "@/lib/pusher";
 import { requireRole } from '@/lib/requireRole';
 import { notifyRoleFCM } from '@/lib/notifications';
-import axios from 'axios';
 
 export default requireRole(['Operador', 'Coordinador'])(async (
   req: NextApiRequestWithUser,
   res: NextApiResponse
 ): Promise<void> => {
   const { method, role, uid } = req;
+  // console.log(req.uid)
 
   // =========================================================
   // 1) POST: Operador dispara pánico  (SE CONSERVA)
@@ -19,21 +20,25 @@ export default requireRole(['Operador', 'Coordinador'])(async (
     if (role !== 'Operador') {
       return res.status(403).json({ error: 'Access denied' });
     }
-
     const { motivo, latitud, longitud } = req.body as {
       motivo?: string;
       latitud: number;
       longitud: number;
     };
 
-    // Buscar usuario y operador
+    // // Buscar usuario y operador
     const userRec = await prisma.userRole.findUnique({
       where: { idFirebase: uid },
-      include: { operador: true },
+      select: { 
+        nombre:true,
+        apellidoPaterno: true,
+        operador: true },
     });
     if (!userRec?.operador) {
       return res.status(404).json({ error: 'Operador no encontrado' });
     }
+
+    console.log(userRec)
 
     // Crear pánico en BD
     const panic = await prisma.botonPanico.create({
@@ -45,36 +50,29 @@ export default requireRole(['Operador', 'Coordinador'])(async (
       },
     });
 
-    // Emitir al servidor de sockets (SE CONSERVA)
-    try {
-      await axios.post(
-        `${process.env.SOCKET_SERVER_URL}/emit-panic`,
-        {
-          id: panic.id,
-          latitud: panic.latitud,
-          longitud: panic.longitud,
-          motivo: panic.motivo,
-          atendido: panic.atendido,
-          operador: {
-            id: userRec.operador.id,
-            nombre: userRec.nombre ?? '',
-            apellidoPaterno: userRec.apellidoPaterno ?? '',
-            unidadAsignada: userRec.operador.unidadAsignada ?? '',
-            rutaAsignada: userRec.operador.rutaAsignada ?? '',
-          },
-        }
-      );
-    } catch (sockErr) {
-      console.error('[emit-panic] Error al notificar Socket.IO:', sockErr);
-      // no interrumpe el flujo principal
-    }
+    // console.log(panic)
+      const payload = {
+        id: panic.id,
+        nombre:  `${userRec.nombre} ${userRec.apellidoPaterno}`,
+        latitud: latitud,
+        longitud: longitud,
+        // timestamp: body.timestamp ?? Date.now(),
+      }
+
+    const pusher = getPusher() // ← reutilizas tu helper
+    await pusher.trigger('public-panic', 'panic:raised', payload)
 
     // Notificar FCM al coordinador (SE CONSERVA)
     await notifyRoleFCM(
       'Coordinador',
       '¡Alerta de pánico!',
       `Operador ${userRec.operador.id} solicita ayuda.`,
-      { panicId: panic.id.toString() }
+      {
+        panicId: String(panic.id),
+        lat: String(latitud),
+        lng: String(longitud),
+        operadorNombre: `${userRec.nombre} ${userRec.apellidoPaterno}`,
+      }
     );
 
     return res.status(201).json(panic);
