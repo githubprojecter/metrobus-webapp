@@ -15,7 +15,15 @@ export default requireRole(['Operador','Supervisor','Coordinador','Patio'])(asyn
   } 
 
   const { uid } = req;
-  const { token, platform } = req.body as { token?: string; platform?: string };
+  // console.log(req.body)
+
+  let body: any = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { /* deja body como estaba */ }
+  }
+
+  const { token } = (body ?? {}) as { token?: string; };
+  // const { token } = req.body as { token?: string;};
   if (!token) return res.status(400).json({ error: 'Falta token' });
 
   // Busca UserRole por idFirebase

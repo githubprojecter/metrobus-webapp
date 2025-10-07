@@ -4,7 +4,7 @@ import type { NextApiRequestWithUser } from '@/lib/requireRole';
 import prisma from '@/lib/prisma';
 import { getPusher } from "@/lib/pusher";
 import { requireRole } from '@/lib/requireRole';
-import { notifyRoleFCM } from '@/lib/notifications';
+import { notifyRoleFCM, notifyUserFCM } from '@/lib/notifications';
 
 export default requireRole(['Operador', 'Coordinador'])(async (
   req: NextApiRequestWithUser,
@@ -194,6 +194,7 @@ export default requireRole(['Operador', 'Coordinador'])(async (
       });
 
       if (current) {
+
         return tx.incidenteAsignado.update({
           where: { id: current.id },
           data: {
@@ -215,6 +216,32 @@ export default requireRole(['Operador', 'Coordinador'])(async (
         },
       });
     });
+
+     // Obtenemos el userRoleId del supervisor asignado
+  const supervisor = await prisma.supervisor.findUnique({
+    where: { id: updated.supervisorId },
+    select: {
+      userRoleId: true,
+      user: { select: { nombre: true, apellidoPaterno: true } },
+    },
+  });
+
+  if (supervisor?.userRoleId) {
+    const nombreSup = [supervisor.user?.nombre, supervisor.user?.apellidoPaterno]
+      .filter(Boolean)
+      .join(' ');
+
+    await notifyUserFCM(
+      supervisor.userRoleId,
+      'Nueva incidencia asignada',
+      `Folio ${updated.panicId}${nombreSup ? ` · Supervisor: ${nombreSup}` : ''}`,
+      {
+        type: 'INCIDENT_ASSIGNED',
+        panicId: String(updated.panicId),
+        asignacionId: String(updated.id),
+      }
+    );
+  }
 
     return res.status(200).json({ ok: true, asignacion: updated });
   }

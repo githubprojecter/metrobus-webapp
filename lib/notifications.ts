@@ -1,55 +1,3 @@
-// // lib/notifications.ts
-// import type { Role } from '@/lib/generated/prisma';
-// import prisma from './prisma';
-// import { fcm } from './firebaseAdmin';
-
-// const MAX_PER_BATCH = 500;
-
-// type DataBag = Record<string, string>;
-
-// export async function notifyRoleFCM(
-//   role: Role,
-//   title: string,
-//   body: string,
-//    data: DataBag = {}
-// ): Promise<void> {
-//   // 1) Recupera los tokens de los dispositivos para ese role
-//   const rows = await prisma.deviceToken.findMany({
-//     where: { userRole: { role } },
-//     select: { token: true },
-//   });
-//   const tokens = rows.map((r) => r.token);
-//   if (tokens.length === 0) return;
-
-//   //2) Enviar en lotes (multicast) y limpiar inválidos
-//   const chunks: string[][] = [];
-//   for (let i = 0; i < tokens.length; i += MAX_PER_BATCH) {
-//     chunks.push(tokens.slice(i, i + MAX_PER_BATCH));
-//   }
-
-//   // 2) Envía uno a uno con fcm.send()
-//   let successCount = 0;
-//   let failureCount = 0;
-
-//   for (const token of tokens) {
-//     try {
-//       await fcm.send({
-//         token,
-//         notification: { title, body },
-//         data,
-//         android: { priority: 'high' },
-//         apns: { headers: { 'apns-priority': '10' } },
-//       });
-//       successCount++;
-//     } catch (err) {
-//       console.error('Error enviando FCM a', token, err);
-//       failureCount++;
-//     }
-//   }
-
-//   console.log(`Notificaciones enviadas: ${successCount}, fallidas: ${failureCount}`);
-// }
-
 // lib/notifications.ts
 import type { Role } from '@/lib/generated/prisma';
 import prisma from './prisma';
@@ -104,4 +52,58 @@ export async function notifyRoleFCM(
   }
 
   console.log(`Notificaciones enviadas: ${successCount}, fallidas: ${failureCount}`);
+}
+
+/**
+ * Envía una notificación FCM a todos los dispositivos de un userRoleId.
+ * No rompe si no hay tokens; loguea éxitos y fallos.
+ */
+export async function notifyUserFCM(
+  userRoleId: number,
+  title: string,
+  body: string,
+  data: Record<string, string> = {}
+): Promise<void> {
+  // Recupera tokens del usuario
+  const rows = await prisma.deviceToken.findMany({
+    where: { userRoleId },
+    select: { token: true },
+  });
+
+  const tokens = rows.map(r => r.token);
+  if (tokens.length === 0) {
+    console.log(`[notifyUserFCM] sin tokens para userRoleId=${userRoleId}`);
+    return;
+  }
+
+  let successCount = 0;
+  let failureCount = 0;
+
+  for (const token of tokens) {
+    try {
+      await fcm.send({
+        token,
+        notification: { title, body },
+        data, // debe ser string:string
+        android: {
+          priority: 'high',
+          notification: {
+            channelId: 'default',
+            sound: 'default',
+          },
+        },
+        apns: {
+          headers: { 'apns-priority': '10' },
+          payload: { aps: { sound: 'default' } },
+        },
+      });
+      successCount++;
+    } catch (err: any) {
+      console.error('Error enviando FCM a', token, err?.code || err?.message || err);
+      failureCount++;
+      // Opcional: si quieres depurar tokens inválidos, aquí podrías eliminarlos.
+    }
+  }
+
+  console.log(`[notifyUserFCM] Enviadas: ${successCount}, Fallidas: ${failureCount}, userRoleId=${userRoleId}`);
 }
