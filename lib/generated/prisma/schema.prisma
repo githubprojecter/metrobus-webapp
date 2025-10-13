@@ -74,12 +74,14 @@ model Supervisor {
   userRoleId Int     @unique
   codigo     String?
 
-  user            UserRole              @relation(fields: [userRoleId], references: [id])
-  ubicaciones     UbicacionSupervisor[]
-  reportes        ReporteIncidente[]
-  asignaciones    IncidenteAsignado[]
-  TurnoProgramado TurnoProgramado[]
-  Presente        Presente[]
+  user                 UserRole              @relation(fields: [userRoleId], references: [id])
+  ubicaciones          UbicacionSupervisor[]
+  reportes             ReporteIncidente[]
+  asignaciones         IncidenteAsignado[]
+  TurnoProgramado      TurnoProgramado[]
+  Presente             Presente[]
+  Comentarios          Comentario[]
+  ComentariosIncidente ComentarioIncidente[]
 }
 
 // ---------------------- RASTREO DE UBICACIÓN DE SUPERVISOR ----------------------
@@ -107,6 +109,7 @@ model Coordinador {
 model IncidenteAsignado {
   id              Int      @id @default(autoincrement())
   supervisorId    Int
+  estado          String   @default("En proceso") // En proceso | Finalizado | Cancelado
   fechaAsignacion DateTime @default(now())
   panicId         Int
   latitud         Float
@@ -123,12 +126,12 @@ model ReporteIncidente {
   supervisorId        Int
   incidenteAsignadoId Int      @unique
   fecha               DateTime @default(now())
-  estado              String?
-  descripcion         String
+  estado              String?  @default("Trabajando")
 
-  supervisor        Supervisor        @relation(fields: [supervisorId], references: [id])
-  incidenteAsignado IncidenteAsignado @relation(fields: [incidenteAsignadoId], references: [id])
+  supervisor        Supervisor            @relation(fields: [supervisorId], references: [id])
+  incidenteAsignado IncidenteAsignado     @relation(fields: [incidenteAsignadoId], references: [id])
   fotos             FotoIncidente[]
+  comentarios       ComentarioIncidente[]
 }
 
 // ---------------------- FOTOS RELACIONADAS A INCIDENTE ----------------------
@@ -235,6 +238,58 @@ model Presente {
 
   supervisor Supervisor      @relation(fields: [supervisorId], references: [id])
   call       ReportenseCall? @relation(fields: [callId], references: [id])
+}
+
+model Comentario {
+  id           Int      @id @default(autoincrement())
+  supervisorId Int
+  texto        String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  ubicacionLat Float?
+  ubicacionLng Float?
+
+  supervisor Supervisor @relation(fields: [supervisorId], references: [id])
+
+  fotos ComentarioFoto[]
+}
+
+model ComentarioFoto {
+  id           Int      @id @default(autoincrement())
+  comentarioId Int
+  url          String
+  createdAt    DateTime @default(now())
+
+  comentario Comentario @relation(fields: [comentarioId], references: [id], onDelete: Cascade)
+}
+
+/// Comentarios ligados a un ReporteIncidente concreto
+model ComentarioIncidente {
+  id           Int      @id @default(autoincrement())
+  reporteId    Int // 🔗 clave foránea a ReporteIncidente
+  supervisorId Int
+  texto        String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // relaciones
+  reporte    ReporteIncidente          @relation(fields: [reporteId], references: [id])
+  supervisor Supervisor                @relation(fields: [supervisorId], references: [id])
+  fotos      ComentarioIncidenteFoto[]
+
+  @@index([reporteId])
+  @@index([supervisorId])
+}
+
+model ComentarioIncidenteFoto {
+  id                    Int      @id @default(autoincrement())
+  comentarioIncidenteId Int
+  url                   String
+  createdAt             DateTime @default(now())
+
+  comentarioIncidente ComentarioIncidente @relation(fields: [comentarioIncidenteId], references: [id], onDelete: Cascade)
+
+  @@index([comentarioIncidenteId])
 }
 
 /**

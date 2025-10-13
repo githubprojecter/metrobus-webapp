@@ -63,7 +63,7 @@ export default requireRole(['Supervisor'])(async (
     operadorNombre: `${panic.operador.user.nombre} ${panic.operador.user.apellidoPaterno} ${panic.operador.user.apellidoMaterno}`,
     latitud: asign.latitud,
     longitud: asign.longitud,
-    reporteId: asign.reporte,
+    reporteId: asign.reporte ? asign.reporte.id : null,
     timestamp: panic.timestamp.toISOString(),
     operador: `${panic.operador.user.nombre} ${panic.operador.user.apellidoPaterno} ${panic.operador.user.apellidoMaterno}`,
     unidad: panic.operador.unidadAsignada,

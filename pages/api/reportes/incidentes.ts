@@ -32,42 +32,50 @@ export default requireRole(["Coordinador"])(async (
     to?: string;
   };
 
+  console.log(mode)
+
   // === Rango temporal (CDMX) ===
   const now = new Date();
   let fromDate: Date;
   let toDate: Date;
 
-  if (mode === "day") {
-    const y = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, year: "numeric" }).format(now);
-    const m = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, month: "2-digit" }).format(now);
-    const d = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, day: "2-digit" }).format(now);
-    fromDate = new Date(`${y}-${m}-${d}T00:00:00`);
-    toDate = new Date();
-  } else if (mode === "range" && from && to) {
-    fromDate = new Date(from);
-    toDate = new Date(to);
+  const isAllFinalizados = mode === "all-finalizados";
+
+  if(!isAllFinalizados){
+    if (mode === "day") {
+      const y = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, year: "numeric" }).format(now);
+      const m = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, month: "2-digit" }).format(now);
+      const d = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, day: "2-digit" }).format(now);
+      fromDate = new Date(`${y}-${m}-${d}T00:00:00`);
+      toDate = new Date();
+    } else if (mode === "range" && from && to) {
+      fromDate = new Date(from);
+      toDate = new Date(to);
+    } else {
+      // semana por defecto
+      toDate = new Date();
+      fromDate = new Date(toDate);
+      fromDate.setDate(fromDate.getDate() - 7);
+      fromDate.setHours(0, 0, 0, 0);
+    }
+  }
+    // === Armamos where dinámico según el modo ===
+  const where: any = {};
+  if (isAllFinalizados) {
+    where.estado = "Finalizado";
   } else {
-    // semana por defecto
-    toDate = new Date();
-    fromDate = new Date(toDate);
-    fromDate.setDate(fromDate.getDate() - 7);
-    fromDate.setHours(0, 0, 0, 0);
+    where.fecha = { gte: fromDate, lte: toDate }; // ← lo que ya tenías
   }
 
   // === Consulta principal (corrigiendo includes y nombres) ===
   const rows = await prisma.reporteIncidente.findMany({
-    where: { fecha: { gte: fromDate, lte: toDate } },
+    where,
     orderBy: { fecha: "desc" },
     include: {
-      // Necesitamos el UserRole del supervisor para tomar el nombre
       supervisor: { include: { user: true } },
       incidenteAsignado: {
         include: {
-          // En tu schema la relación se llama "panic"
-          panic: {
-            // Para el nombre del operador: panic -> operador -> user
-            include: { operador: { include: { user: true } } },
-          },
+          panic: { include: { operador: { include: { user: true } } } },
         },
       },
       fotos: true,

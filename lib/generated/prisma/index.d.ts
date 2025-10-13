@@ -93,6 +93,26 @@ export type ReportenseCall = $Result.DefaultSelection<Prisma.$ReportenseCallPayl
  * 
  */
 export type Presente = $Result.DefaultSelection<Prisma.$PresentePayload>
+/**
+ * Model Comentario
+ * 
+ */
+export type Comentario = $Result.DefaultSelection<Prisma.$ComentarioPayload>
+/**
+ * Model ComentarioFoto
+ * 
+ */
+export type ComentarioFoto = $Result.DefaultSelection<Prisma.$ComentarioFotoPayload>
+/**
+ * Model ComentarioIncidente
+ * Comentarios ligados a un ReporteIncidente concreto
+ */
+export type ComentarioIncidente = $Result.DefaultSelection<Prisma.$ComentarioIncidentePayload>
+/**
+ * Model ComentarioIncidenteFoto
+ * 
+ */
+export type ComentarioIncidenteFoto = $Result.DefaultSelection<Prisma.$ComentarioIncidenteFotoPayload>
 
 /**
  * Enums
@@ -406,6 +426,46 @@ export class PrismaClient<
     * ```
     */
   get presente(): Prisma.PresenteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.comentario`: Exposes CRUD operations for the **Comentario** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Comentarios
+    * const comentarios = await prisma.comentario.findMany()
+    * ```
+    */
+  get comentario(): Prisma.ComentarioDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.comentarioFoto`: Exposes CRUD operations for the **ComentarioFoto** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ComentarioFotos
+    * const comentarioFotos = await prisma.comentarioFoto.findMany()
+    * ```
+    */
+  get comentarioFoto(): Prisma.ComentarioFotoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.comentarioIncidente`: Exposes CRUD operations for the **ComentarioIncidente** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ComentarioIncidentes
+    * const comentarioIncidentes = await prisma.comentarioIncidente.findMany()
+    * ```
+    */
+  get comentarioIncidente(): Prisma.ComentarioIncidenteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.comentarioIncidenteFoto`: Exposes CRUD operations for the **ComentarioIncidenteFoto** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ComentarioIncidenteFotos
+    * const comentarioIncidenteFotos = await prisma.comentarioIncidenteFoto.findMany()
+    * ```
+    */
+  get comentarioIncidenteFoto(): Prisma.ComentarioIncidenteFotoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -861,7 +921,11 @@ export namespace Prisma {
     DeviceToken: 'DeviceToken',
     TurnoProgramado: 'TurnoProgramado',
     ReportenseCall: 'ReportenseCall',
-    Presente: 'Presente'
+    Presente: 'Presente',
+    Comentario: 'Comentario',
+    ComentarioFoto: 'ComentarioFoto',
+    ComentarioIncidente: 'ComentarioIncidente',
+    ComentarioIncidenteFoto: 'ComentarioIncidenteFoto'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -880,7 +944,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "userRole" | "operador" | "botonPanico" | "supervisor" | "ubicacionSupervisor" | "coordinador" | "incidenteAsignado" | "reporteIncidente" | "fotoIncidente" | "patio" | "registroSalidaUnidad" | "asignacionUnidad" | "deviceToken" | "turnoProgramado" | "reportenseCall" | "presente"
+      modelProps: "userRole" | "operador" | "botonPanico" | "supervisor" | "ubicacionSupervisor" | "coordinador" | "incidenteAsignado" | "reporteIncidente" | "fotoIncidente" | "patio" | "registroSalidaUnidad" | "asignacionUnidad" | "deviceToken" | "turnoProgramado" | "reportenseCall" | "presente" | "comentario" | "comentarioFoto" | "comentarioIncidente" | "comentarioIncidenteFoto"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1940,6 +2004,270 @@ export namespace Prisma {
           }
         }
       }
+      Comentario: {
+        payload: Prisma.$ComentarioPayload<ExtArgs>
+        fields: Prisma.ComentarioFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ComentarioFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ComentarioFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload>
+          }
+          findFirst: {
+            args: Prisma.ComentarioFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ComentarioFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload>
+          }
+          findMany: {
+            args: Prisma.ComentarioFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload>[]
+          }
+          create: {
+            args: Prisma.ComentarioCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload>
+          }
+          createMany: {
+            args: Prisma.ComentarioCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ComentarioDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload>
+          }
+          update: {
+            args: Prisma.ComentarioUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload>
+          }
+          deleteMany: {
+            args: Prisma.ComentarioDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ComentarioUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ComentarioUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioPayload>
+          }
+          aggregate: {
+            args: Prisma.ComentarioAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComentario>
+          }
+          groupBy: {
+            args: Prisma.ComentarioGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComentarioGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ComentarioCountArgs<ExtArgs>
+            result: $Utils.Optional<ComentarioCountAggregateOutputType> | number
+          }
+        }
+      }
+      ComentarioFoto: {
+        payload: Prisma.$ComentarioFotoPayload<ExtArgs>
+        fields: Prisma.ComentarioFotoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ComentarioFotoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ComentarioFotoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload>
+          }
+          findFirst: {
+            args: Prisma.ComentarioFotoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ComentarioFotoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload>
+          }
+          findMany: {
+            args: Prisma.ComentarioFotoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload>[]
+          }
+          create: {
+            args: Prisma.ComentarioFotoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload>
+          }
+          createMany: {
+            args: Prisma.ComentarioFotoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ComentarioFotoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload>
+          }
+          update: {
+            args: Prisma.ComentarioFotoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload>
+          }
+          deleteMany: {
+            args: Prisma.ComentarioFotoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ComentarioFotoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ComentarioFotoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioFotoPayload>
+          }
+          aggregate: {
+            args: Prisma.ComentarioFotoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComentarioFoto>
+          }
+          groupBy: {
+            args: Prisma.ComentarioFotoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComentarioFotoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ComentarioFotoCountArgs<ExtArgs>
+            result: $Utils.Optional<ComentarioFotoCountAggregateOutputType> | number
+          }
+        }
+      }
+      ComentarioIncidente: {
+        payload: Prisma.$ComentarioIncidentePayload<ExtArgs>
+        fields: Prisma.ComentarioIncidenteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ComentarioIncidenteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ComentarioIncidenteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload>
+          }
+          findFirst: {
+            args: Prisma.ComentarioIncidenteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ComentarioIncidenteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload>
+          }
+          findMany: {
+            args: Prisma.ComentarioIncidenteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload>[]
+          }
+          create: {
+            args: Prisma.ComentarioIncidenteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload>
+          }
+          createMany: {
+            args: Prisma.ComentarioIncidenteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ComentarioIncidenteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload>
+          }
+          update: {
+            args: Prisma.ComentarioIncidenteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload>
+          }
+          deleteMany: {
+            args: Prisma.ComentarioIncidenteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ComentarioIncidenteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ComentarioIncidenteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidentePayload>
+          }
+          aggregate: {
+            args: Prisma.ComentarioIncidenteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComentarioIncidente>
+          }
+          groupBy: {
+            args: Prisma.ComentarioIncidenteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComentarioIncidenteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ComentarioIncidenteCountArgs<ExtArgs>
+            result: $Utils.Optional<ComentarioIncidenteCountAggregateOutputType> | number
+          }
+        }
+      }
+      ComentarioIncidenteFoto: {
+        payload: Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>
+        fields: Prisma.ComentarioIncidenteFotoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ComentarioIncidenteFotoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ComentarioIncidenteFotoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload>
+          }
+          findFirst: {
+            args: Prisma.ComentarioIncidenteFotoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ComentarioIncidenteFotoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload>
+          }
+          findMany: {
+            args: Prisma.ComentarioIncidenteFotoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload>[]
+          }
+          create: {
+            args: Prisma.ComentarioIncidenteFotoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload>
+          }
+          createMany: {
+            args: Prisma.ComentarioIncidenteFotoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ComentarioIncidenteFotoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload>
+          }
+          update: {
+            args: Prisma.ComentarioIncidenteFotoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload>
+          }
+          deleteMany: {
+            args: Prisma.ComentarioIncidenteFotoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ComentarioIncidenteFotoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ComentarioIncidenteFotoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComentarioIncidenteFotoPayload>
+          }
+          aggregate: {
+            args: Prisma.ComentarioIncidenteFotoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComentarioIncidenteFoto>
+          }
+          groupBy: {
+            args: Prisma.ComentarioIncidenteFotoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComentarioIncidenteFotoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ComentarioIncidenteFotoCountArgs<ExtArgs>
+            result: $Utils.Optional<ComentarioIncidenteFotoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2048,6 +2376,10 @@ export namespace Prisma {
     turnoProgramado?: TurnoProgramadoOmit
     reportenseCall?: ReportenseCallOmit
     presente?: PresenteOmit
+    comentario?: ComentarioOmit
+    comentarioFoto?: ComentarioFotoOmit
+    comentarioIncidente?: ComentarioIncidenteOmit
+    comentarioIncidenteFoto?: ComentarioIncidenteFotoOmit
   }
 
   /* Types for Logging */
@@ -2244,6 +2576,8 @@ export namespace Prisma {
     asignaciones: number
     TurnoProgramado: number
     Presente: number
+    Comentarios: number
+    ComentariosIncidente: number
   }
 
   export type SupervisorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2252,6 +2586,8 @@ export namespace Prisma {
     asignaciones?: boolean | SupervisorCountOutputTypeCountAsignacionesArgs
     TurnoProgramado?: boolean | SupervisorCountOutputTypeCountTurnoProgramadoArgs
     Presente?: boolean | SupervisorCountOutputTypeCountPresenteArgs
+    Comentarios?: boolean | SupervisorCountOutputTypeCountComentariosArgs
+    ComentariosIncidente?: boolean | SupervisorCountOutputTypeCountComentariosIncidenteArgs
   }
 
   // Custom InputTypes
@@ -2298,6 +2634,20 @@ export namespace Prisma {
    */
   export type SupervisorCountOutputTypeCountPresenteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PresenteWhereInput
+  }
+
+  /**
+   * SupervisorCountOutputType without action
+   */
+  export type SupervisorCountOutputTypeCountComentariosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioWhereInput
+  }
+
+  /**
+   * SupervisorCountOutputType without action
+   */
+  export type SupervisorCountOutputTypeCountComentariosIncidenteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioIncidenteWhereInput
   }
 
 
@@ -2347,10 +2697,12 @@ export namespace Prisma {
 
   export type ReporteIncidenteCountOutputType = {
     fotos: number
+    comentarios: number
   }
 
   export type ReporteIncidenteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     fotos?: boolean | ReporteIncidenteCountOutputTypeCountFotosArgs
+    comentarios?: boolean | ReporteIncidenteCountOutputTypeCountComentariosArgs
   }
 
   // Custom InputTypes
@@ -2369,6 +2721,13 @@ export namespace Prisma {
    */
   export type ReporteIncidenteCountOutputTypeCountFotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: FotoIncidenteWhereInput
+  }
+
+  /**
+   * ReporteIncidenteCountOutputType without action
+   */
+  export type ReporteIncidenteCountOutputTypeCountComentariosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioIncidenteWhereInput
   }
 
 
@@ -2440,6 +2799,68 @@ export namespace Prisma {
    */
   export type ReportenseCallCountOutputTypeCountPresentesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PresenteWhereInput
+  }
+
+
+  /**
+   * Count Type ComentarioCountOutputType
+   */
+
+  export type ComentarioCountOutputType = {
+    fotos: number
+  }
+
+  export type ComentarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    fotos?: boolean | ComentarioCountOutputTypeCountFotosArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ComentarioCountOutputType without action
+   */
+  export type ComentarioCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioCountOutputType
+     */
+    select?: ComentarioCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ComentarioCountOutputType without action
+   */
+  export type ComentarioCountOutputTypeCountFotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioFotoWhereInput
+  }
+
+
+  /**
+   * Count Type ComentarioIncidenteCountOutputType
+   */
+
+  export type ComentarioIncidenteCountOutputType = {
+    fotos: number
+  }
+
+  export type ComentarioIncidenteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    fotos?: boolean | ComentarioIncidenteCountOutputTypeCountFotosArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ComentarioIncidenteCountOutputType without action
+   */
+  export type ComentarioIncidenteCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteCountOutputType
+     */
+    select?: ComentarioIncidenteCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ComentarioIncidenteCountOutputType without action
+   */
+  export type ComentarioIncidenteCountOutputTypeCountFotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioIncidenteFotoWhereInput
   }
 
 
@@ -5833,6 +6254,8 @@ export namespace Prisma {
     asignaciones?: boolean | Supervisor$asignacionesArgs<ExtArgs>
     TurnoProgramado?: boolean | Supervisor$TurnoProgramadoArgs<ExtArgs>
     Presente?: boolean | Supervisor$PresenteArgs<ExtArgs>
+    Comentarios?: boolean | Supervisor$ComentariosArgs<ExtArgs>
+    ComentariosIncidente?: boolean | Supervisor$ComentariosIncidenteArgs<ExtArgs>
     _count?: boolean | SupervisorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["supervisor"]>
 
@@ -5852,6 +6275,8 @@ export namespace Prisma {
     asignaciones?: boolean | Supervisor$asignacionesArgs<ExtArgs>
     TurnoProgramado?: boolean | Supervisor$TurnoProgramadoArgs<ExtArgs>
     Presente?: boolean | Supervisor$PresenteArgs<ExtArgs>
+    Comentarios?: boolean | Supervisor$ComentariosArgs<ExtArgs>
+    ComentariosIncidente?: boolean | Supervisor$ComentariosIncidenteArgs<ExtArgs>
     _count?: boolean | SupervisorCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5864,6 +6289,8 @@ export namespace Prisma {
       asignaciones: Prisma.$IncidenteAsignadoPayload<ExtArgs>[]
       TurnoProgramado: Prisma.$TurnoProgramadoPayload<ExtArgs>[]
       Presente: Prisma.$PresentePayload<ExtArgs>[]
+      Comentarios: Prisma.$ComentarioPayload<ExtArgs>[]
+      ComentariosIncidente: Prisma.$ComentarioIncidentePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6215,6 +6642,8 @@ export namespace Prisma {
     asignaciones<T extends Supervisor$asignacionesArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$asignacionesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IncidenteAsignadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     TurnoProgramado<T extends Supervisor$TurnoProgramadoArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$TurnoProgramadoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TurnoProgramadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Presente<T extends Supervisor$PresenteArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$PresenteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PresentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Comentarios<T extends Supervisor$ComentariosArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$ComentariosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    ComentariosIncidente<T extends Supervisor$ComentariosIncidenteArgs<ExtArgs> = {}>(args?: Subset<T, Supervisor$ComentariosIncidenteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6707,6 +7136,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PresenteScalarFieldEnum | PresenteScalarFieldEnum[]
+  }
+
+  /**
+   * Supervisor.Comentarios
+   */
+  export type Supervisor$ComentariosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    where?: ComentarioWhereInput
+    orderBy?: ComentarioOrderByWithRelationInput | ComentarioOrderByWithRelationInput[]
+    cursor?: ComentarioWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ComentarioScalarFieldEnum | ComentarioScalarFieldEnum[]
+  }
+
+  /**
+   * Supervisor.ComentariosIncidente
+   */
+  export type Supervisor$ComentariosIncidenteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    where?: ComentarioIncidenteWhereInput
+    orderBy?: ComentarioIncidenteOrderByWithRelationInput | ComentarioIncidenteOrderByWithRelationInput[]
+    cursor?: ComentarioIncidenteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ComentarioIncidenteScalarFieldEnum | ComentarioIncidenteScalarFieldEnum[]
   }
 
   /**
@@ -8726,6 +9203,7 @@ export namespace Prisma {
   export type IncidenteAsignadoMinAggregateOutputType = {
     id: number | null
     supervisorId: number | null
+    estado: string | null
     fechaAsignacion: Date | null
     panicId: number | null
     latitud: number | null
@@ -8735,6 +9213,7 @@ export namespace Prisma {
   export type IncidenteAsignadoMaxAggregateOutputType = {
     id: number | null
     supervisorId: number | null
+    estado: string | null
     fechaAsignacion: Date | null
     panicId: number | null
     latitud: number | null
@@ -8744,6 +9223,7 @@ export namespace Prisma {
   export type IncidenteAsignadoCountAggregateOutputType = {
     id: number
     supervisorId: number
+    estado: number
     fechaAsignacion: number
     panicId: number
     latitud: number
@@ -8771,6 +9251,7 @@ export namespace Prisma {
   export type IncidenteAsignadoMinAggregateInputType = {
     id?: true
     supervisorId?: true
+    estado?: true
     fechaAsignacion?: true
     panicId?: true
     latitud?: true
@@ -8780,6 +9261,7 @@ export namespace Prisma {
   export type IncidenteAsignadoMaxAggregateInputType = {
     id?: true
     supervisorId?: true
+    estado?: true
     fechaAsignacion?: true
     panicId?: true
     latitud?: true
@@ -8789,6 +9271,7 @@ export namespace Prisma {
   export type IncidenteAsignadoCountAggregateInputType = {
     id?: true
     supervisorId?: true
+    estado?: true
     fechaAsignacion?: true
     panicId?: true
     latitud?: true
@@ -8885,6 +9368,7 @@ export namespace Prisma {
   export type IncidenteAsignadoGroupByOutputType = {
     id: number
     supervisorId: number
+    estado: string
     fechaAsignacion: Date
     panicId: number
     latitud: number
@@ -8913,6 +9397,7 @@ export namespace Prisma {
   export type IncidenteAsignadoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     supervisorId?: boolean
+    estado?: boolean
     fechaAsignacion?: boolean
     panicId?: boolean
     latitud?: boolean
@@ -8927,13 +9412,14 @@ export namespace Prisma {
   export type IncidenteAsignadoSelectScalar = {
     id?: boolean
     supervisorId?: boolean
+    estado?: boolean
     fechaAsignacion?: boolean
     panicId?: boolean
     latitud?: boolean
     longitud?: boolean
   }
 
-  export type IncidenteAsignadoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "fechaAsignacion" | "panicId" | "latitud" | "longitud", ExtArgs["result"]["incidenteAsignado"]>
+  export type IncidenteAsignadoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "estado" | "fechaAsignacion" | "panicId" | "latitud" | "longitud", ExtArgs["result"]["incidenteAsignado"]>
   export type IncidenteAsignadoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
     panic?: boolean | BotonPanicoDefaultArgs<ExtArgs>
@@ -8950,6 +9436,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       supervisorId: number
+      estado: string
       fechaAsignacion: Date
       panicId: number
       latitud: number
@@ -9328,6 +9815,7 @@ export namespace Prisma {
   interface IncidenteAsignadoFieldRefs {
     readonly id: FieldRef<"IncidenteAsignado", 'Int'>
     readonly supervisorId: FieldRef<"IncidenteAsignado", 'Int'>
+    readonly estado: FieldRef<"IncidenteAsignado", 'String'>
     readonly fechaAsignacion: FieldRef<"IncidenteAsignado", 'DateTime'>
     readonly panicId: FieldRef<"IncidenteAsignado", 'Int'>
     readonly latitud: FieldRef<"IncidenteAsignado", 'Float'>
@@ -9742,7 +10230,6 @@ export namespace Prisma {
     incidenteAsignadoId: number | null
     fecha: Date | null
     estado: string | null
-    descripcion: string | null
   }
 
   export type ReporteIncidenteMaxAggregateOutputType = {
@@ -9751,7 +10238,6 @@ export namespace Prisma {
     incidenteAsignadoId: number | null
     fecha: Date | null
     estado: string | null
-    descripcion: string | null
   }
 
   export type ReporteIncidenteCountAggregateOutputType = {
@@ -9760,7 +10246,6 @@ export namespace Prisma {
     incidenteAsignadoId: number
     fecha: number
     estado: number
-    descripcion: number
     _all: number
   }
 
@@ -9783,7 +10268,6 @@ export namespace Prisma {
     incidenteAsignadoId?: true
     fecha?: true
     estado?: true
-    descripcion?: true
   }
 
   export type ReporteIncidenteMaxAggregateInputType = {
@@ -9792,7 +10276,6 @@ export namespace Prisma {
     incidenteAsignadoId?: true
     fecha?: true
     estado?: true
-    descripcion?: true
   }
 
   export type ReporteIncidenteCountAggregateInputType = {
@@ -9801,7 +10284,6 @@ export namespace Prisma {
     incidenteAsignadoId?: true
     fecha?: true
     estado?: true
-    descripcion?: true
     _all?: true
   }
 
@@ -9897,7 +10379,6 @@ export namespace Prisma {
     incidenteAsignadoId: number
     fecha: Date
     estado: string | null
-    descripcion: string
     _count: ReporteIncidenteCountAggregateOutputType | null
     _avg: ReporteIncidenteAvgAggregateOutputType | null
     _sum: ReporteIncidenteSumAggregateOutputType | null
@@ -9925,10 +10406,10 @@ export namespace Prisma {
     incidenteAsignadoId?: boolean
     fecha?: boolean
     estado?: boolean
-    descripcion?: boolean
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
     incidenteAsignado?: boolean | IncidenteAsignadoDefaultArgs<ExtArgs>
     fotos?: boolean | ReporteIncidente$fotosArgs<ExtArgs>
+    comentarios?: boolean | ReporteIncidente$comentariosArgs<ExtArgs>
     _count?: boolean | ReporteIncidenteCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reporteIncidente"]>
 
@@ -9940,14 +10421,14 @@ export namespace Prisma {
     incidenteAsignadoId?: boolean
     fecha?: boolean
     estado?: boolean
-    descripcion?: boolean
   }
 
-  export type ReporteIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "incidenteAsignadoId" | "fecha" | "estado" | "descripcion", ExtArgs["result"]["reporteIncidente"]>
+  export type ReporteIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "incidenteAsignadoId" | "fecha" | "estado", ExtArgs["result"]["reporteIncidente"]>
   export type ReporteIncidenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
     incidenteAsignado?: boolean | IncidenteAsignadoDefaultArgs<ExtArgs>
     fotos?: boolean | ReporteIncidente$fotosArgs<ExtArgs>
+    comentarios?: boolean | ReporteIncidente$comentariosArgs<ExtArgs>
     _count?: boolean | ReporteIncidenteCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -9957,6 +10438,7 @@ export namespace Prisma {
       supervisor: Prisma.$SupervisorPayload<ExtArgs>
       incidenteAsignado: Prisma.$IncidenteAsignadoPayload<ExtArgs>
       fotos: Prisma.$FotoIncidentePayload<ExtArgs>[]
+      comentarios: Prisma.$ComentarioIncidentePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -9964,7 +10446,6 @@ export namespace Prisma {
       incidenteAsignadoId: number
       fecha: Date
       estado: string | null
-      descripcion: string
     }, ExtArgs["result"]["reporteIncidente"]>
     composites: {}
   }
@@ -10308,6 +10789,7 @@ export namespace Prisma {
     supervisor<T extends SupervisorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SupervisorDefaultArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     incidenteAsignado<T extends IncidenteAsignadoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, IncidenteAsignadoDefaultArgs<ExtArgs>>): Prisma__IncidenteAsignadoClient<$Result.GetResult<Prisma.$IncidenteAsignadoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     fotos<T extends ReporteIncidente$fotosArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidente$fotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FotoIncidentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comentarios<T extends ReporteIncidente$comentariosArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidente$comentariosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10342,7 +10824,6 @@ export namespace Prisma {
     readonly incidenteAsignadoId: FieldRef<"ReporteIncidente", 'Int'>
     readonly fecha: FieldRef<"ReporteIncidente", 'DateTime'>
     readonly estado: FieldRef<"ReporteIncidente", 'String'>
-    readonly descripcion: FieldRef<"ReporteIncidente", 'String'>
   }
     
 
@@ -10707,6 +11188,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: FotoIncidenteScalarFieldEnum | FotoIncidenteScalarFieldEnum[]
+  }
+
+  /**
+   * ReporteIncidente.comentarios
+   */
+  export type ReporteIncidente$comentariosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    where?: ComentarioIncidenteWhereInput
+    orderBy?: ComentarioIncidenteOrderByWithRelationInput | ComentarioIncidenteOrderByWithRelationInput[]
+    cursor?: ComentarioIncidenteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ComentarioIncidenteScalarFieldEnum | ComentarioIncidenteScalarFieldEnum[]
   }
 
   /**
@@ -18646,6 +19151,3961 @@ export namespace Prisma {
 
 
   /**
+   * Model Comentario
+   */
+
+  export type AggregateComentario = {
+    _count: ComentarioCountAggregateOutputType | null
+    _avg: ComentarioAvgAggregateOutputType | null
+    _sum: ComentarioSumAggregateOutputType | null
+    _min: ComentarioMinAggregateOutputType | null
+    _max: ComentarioMaxAggregateOutputType | null
+  }
+
+  export type ComentarioAvgAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    ubicacionLat: number | null
+    ubicacionLng: number | null
+  }
+
+  export type ComentarioSumAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    ubicacionLat: number | null
+    ubicacionLng: number | null
+  }
+
+  export type ComentarioMinAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    texto: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    ubicacionLat: number | null
+    ubicacionLng: number | null
+  }
+
+  export type ComentarioMaxAggregateOutputType = {
+    id: number | null
+    supervisorId: number | null
+    texto: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    ubicacionLat: number | null
+    ubicacionLng: number | null
+  }
+
+  export type ComentarioCountAggregateOutputType = {
+    id: number
+    supervisorId: number
+    texto: number
+    createdAt: number
+    updatedAt: number
+    ubicacionLat: number
+    ubicacionLng: number
+    _all: number
+  }
+
+
+  export type ComentarioAvgAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    ubicacionLat?: true
+    ubicacionLng?: true
+  }
+
+  export type ComentarioSumAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    ubicacionLat?: true
+    ubicacionLng?: true
+  }
+
+  export type ComentarioMinAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    texto?: true
+    createdAt?: true
+    updatedAt?: true
+    ubicacionLat?: true
+    ubicacionLng?: true
+  }
+
+  export type ComentarioMaxAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    texto?: true
+    createdAt?: true
+    updatedAt?: true
+    ubicacionLat?: true
+    ubicacionLng?: true
+  }
+
+  export type ComentarioCountAggregateInputType = {
+    id?: true
+    supervisorId?: true
+    texto?: true
+    createdAt?: true
+    updatedAt?: true
+    ubicacionLat?: true
+    ubicacionLng?: true
+    _all?: true
+  }
+
+  export type ComentarioAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comentario to aggregate.
+     */
+    where?: ComentarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comentarios to fetch.
+     */
+    orderBy?: ComentarioOrderByWithRelationInput | ComentarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ComentarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comentarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comentarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Comentarios
+    **/
+    _count?: true | ComentarioCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ComentarioAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ComentarioSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComentarioMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComentarioMaxAggregateInputType
+  }
+
+  export type GetComentarioAggregateType<T extends ComentarioAggregateArgs> = {
+        [P in keyof T & keyof AggregateComentario]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComentario[P]>
+      : GetScalarType<T[P], AggregateComentario[P]>
+  }
+
+
+
+
+  export type ComentarioGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioWhereInput
+    orderBy?: ComentarioOrderByWithAggregationInput | ComentarioOrderByWithAggregationInput[]
+    by: ComentarioScalarFieldEnum[] | ComentarioScalarFieldEnum
+    having?: ComentarioScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComentarioCountAggregateInputType | true
+    _avg?: ComentarioAvgAggregateInputType
+    _sum?: ComentarioSumAggregateInputType
+    _min?: ComentarioMinAggregateInputType
+    _max?: ComentarioMaxAggregateInputType
+  }
+
+  export type ComentarioGroupByOutputType = {
+    id: number
+    supervisorId: number
+    texto: string
+    createdAt: Date
+    updatedAt: Date
+    ubicacionLat: number | null
+    ubicacionLng: number | null
+    _count: ComentarioCountAggregateOutputType | null
+    _avg: ComentarioAvgAggregateOutputType | null
+    _sum: ComentarioSumAggregateOutputType | null
+    _min: ComentarioMinAggregateOutputType | null
+    _max: ComentarioMaxAggregateOutputType | null
+  }
+
+  type GetComentarioGroupByPayload<T extends ComentarioGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComentarioGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComentarioGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComentarioGroupByOutputType[P]>
+            : GetScalarType<T[P], ComentarioGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ComentarioSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    supervisorId?: boolean
+    texto?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    ubicacionLat?: boolean
+    ubicacionLng?: boolean
+    supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    fotos?: boolean | Comentario$fotosArgs<ExtArgs>
+    _count?: boolean | ComentarioCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comentario"]>
+
+
+
+  export type ComentarioSelectScalar = {
+    id?: boolean
+    supervisorId?: boolean
+    texto?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    ubicacionLat?: boolean
+    ubicacionLng?: boolean
+  }
+
+  export type ComentarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "supervisorId" | "texto" | "createdAt" | "updatedAt" | "ubicacionLat" | "ubicacionLng", ExtArgs["result"]["comentario"]>
+  export type ComentarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    fotos?: boolean | Comentario$fotosArgs<ExtArgs>
+    _count?: boolean | ComentarioCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ComentarioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Comentario"
+    objects: {
+      supervisor: Prisma.$SupervisorPayload<ExtArgs>
+      fotos: Prisma.$ComentarioFotoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      supervisorId: number
+      texto: string
+      createdAt: Date
+      updatedAt: Date
+      ubicacionLat: number | null
+      ubicacionLng: number | null
+    }, ExtArgs["result"]["comentario"]>
+    composites: {}
+  }
+
+  type ComentarioGetPayload<S extends boolean | null | undefined | ComentarioDefaultArgs> = $Result.GetResult<Prisma.$ComentarioPayload, S>
+
+  type ComentarioCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ComentarioFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComentarioCountAggregateInputType | true
+    }
+
+  export interface ComentarioDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Comentario'], meta: { name: 'Comentario' } }
+    /**
+     * Find zero or one Comentario that matches the filter.
+     * @param {ComentarioFindUniqueArgs} args - Arguments to find a Comentario
+     * @example
+     * // Get one Comentario
+     * const comentario = await prisma.comentario.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ComentarioFindUniqueArgs>(args: SelectSubset<T, ComentarioFindUniqueArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Comentario that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ComentarioFindUniqueOrThrowArgs} args - Arguments to find a Comentario
+     * @example
+     * // Get one Comentario
+     * const comentario = await prisma.comentario.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ComentarioFindUniqueOrThrowArgs>(args: SelectSubset<T, ComentarioFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comentario that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFindFirstArgs} args - Arguments to find a Comentario
+     * @example
+     * // Get one Comentario
+     * const comentario = await prisma.comentario.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ComentarioFindFirstArgs>(args?: SelectSubset<T, ComentarioFindFirstArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comentario that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFindFirstOrThrowArgs} args - Arguments to find a Comentario
+     * @example
+     * // Get one Comentario
+     * const comentario = await prisma.comentario.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ComentarioFindFirstOrThrowArgs>(args?: SelectSubset<T, ComentarioFindFirstOrThrowArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Comentarios that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Comentarios
+     * const comentarios = await prisma.comentario.findMany()
+     * 
+     * // Get first 10 Comentarios
+     * const comentarios = await prisma.comentario.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const comentarioWithIdOnly = await prisma.comentario.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ComentarioFindManyArgs>(args?: SelectSubset<T, ComentarioFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Comentario.
+     * @param {ComentarioCreateArgs} args - Arguments to create a Comentario.
+     * @example
+     * // Create one Comentario
+     * const Comentario = await prisma.comentario.create({
+     *   data: {
+     *     // ... data to create a Comentario
+     *   }
+     * })
+     * 
+     */
+    create<T extends ComentarioCreateArgs>(args: SelectSubset<T, ComentarioCreateArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Comentarios.
+     * @param {ComentarioCreateManyArgs} args - Arguments to create many Comentarios.
+     * @example
+     * // Create many Comentarios
+     * const comentario = await prisma.comentario.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ComentarioCreateManyArgs>(args?: SelectSubset<T, ComentarioCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Comentario.
+     * @param {ComentarioDeleteArgs} args - Arguments to delete one Comentario.
+     * @example
+     * // Delete one Comentario
+     * const Comentario = await prisma.comentario.delete({
+     *   where: {
+     *     // ... filter to delete one Comentario
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ComentarioDeleteArgs>(args: SelectSubset<T, ComentarioDeleteArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Comentario.
+     * @param {ComentarioUpdateArgs} args - Arguments to update one Comentario.
+     * @example
+     * // Update one Comentario
+     * const comentario = await prisma.comentario.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ComentarioUpdateArgs>(args: SelectSubset<T, ComentarioUpdateArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Comentarios.
+     * @param {ComentarioDeleteManyArgs} args - Arguments to filter Comentarios to delete.
+     * @example
+     * // Delete a few Comentarios
+     * const { count } = await prisma.comentario.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ComentarioDeleteManyArgs>(args?: SelectSubset<T, ComentarioDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comentarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Comentarios
+     * const comentario = await prisma.comentario.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ComentarioUpdateManyArgs>(args: SelectSubset<T, ComentarioUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Comentario.
+     * @param {ComentarioUpsertArgs} args - Arguments to update or create a Comentario.
+     * @example
+     * // Update or create a Comentario
+     * const comentario = await prisma.comentario.upsert({
+     *   create: {
+     *     // ... data to create a Comentario
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Comentario we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ComentarioUpsertArgs>(args: SelectSubset<T, ComentarioUpsertArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Comentarios.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioCountArgs} args - Arguments to filter Comentarios to count.
+     * @example
+     * // Count the number of Comentarios
+     * const count = await prisma.comentario.count({
+     *   where: {
+     *     // ... the filter for the Comentarios we want to count
+     *   }
+     * })
+    **/
+    count<T extends ComentarioCountArgs>(
+      args?: Subset<T, ComentarioCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComentarioCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Comentario.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComentarioAggregateArgs>(args: Subset<T, ComentarioAggregateArgs>): Prisma.PrismaPromise<GetComentarioAggregateType<T>>
+
+    /**
+     * Group by Comentario.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ComentarioGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ComentarioGroupByArgs['orderBy'] }
+        : { orderBy?: ComentarioGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ComentarioGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComentarioGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Comentario model
+   */
+  readonly fields: ComentarioFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Comentario.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ComentarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    supervisor<T extends SupervisorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SupervisorDefaultArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    fotos<T extends Comentario$fotosArgs<ExtArgs> = {}>(args?: Subset<T, Comentario$fotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Comentario model
+   */
+  interface ComentarioFieldRefs {
+    readonly id: FieldRef<"Comentario", 'Int'>
+    readonly supervisorId: FieldRef<"Comentario", 'Int'>
+    readonly texto: FieldRef<"Comentario", 'String'>
+    readonly createdAt: FieldRef<"Comentario", 'DateTime'>
+    readonly updatedAt: FieldRef<"Comentario", 'DateTime'>
+    readonly ubicacionLat: FieldRef<"Comentario", 'Float'>
+    readonly ubicacionLng: FieldRef<"Comentario", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Comentario findUnique
+   */
+  export type ComentarioFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Comentario to fetch.
+     */
+    where: ComentarioWhereUniqueInput
+  }
+
+  /**
+   * Comentario findUniqueOrThrow
+   */
+  export type ComentarioFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Comentario to fetch.
+     */
+    where: ComentarioWhereUniqueInput
+  }
+
+  /**
+   * Comentario findFirst
+   */
+  export type ComentarioFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Comentario to fetch.
+     */
+    where?: ComentarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comentarios to fetch.
+     */
+    orderBy?: ComentarioOrderByWithRelationInput | ComentarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comentarios.
+     */
+    cursor?: ComentarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comentarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comentarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comentarios.
+     */
+    distinct?: ComentarioScalarFieldEnum | ComentarioScalarFieldEnum[]
+  }
+
+  /**
+   * Comentario findFirstOrThrow
+   */
+  export type ComentarioFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Comentario to fetch.
+     */
+    where?: ComentarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comentarios to fetch.
+     */
+    orderBy?: ComentarioOrderByWithRelationInput | ComentarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comentarios.
+     */
+    cursor?: ComentarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comentarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comentarios.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comentarios.
+     */
+    distinct?: ComentarioScalarFieldEnum | ComentarioScalarFieldEnum[]
+  }
+
+  /**
+   * Comentario findMany
+   */
+  export type ComentarioFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * Filter, which Comentarios to fetch.
+     */
+    where?: ComentarioWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comentarios to fetch.
+     */
+    orderBy?: ComentarioOrderByWithRelationInput | ComentarioOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Comentarios.
+     */
+    cursor?: ComentarioWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comentarios from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comentarios.
+     */
+    skip?: number
+    distinct?: ComentarioScalarFieldEnum | ComentarioScalarFieldEnum[]
+  }
+
+  /**
+   * Comentario create
+   */
+  export type ComentarioCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Comentario.
+     */
+    data: XOR<ComentarioCreateInput, ComentarioUncheckedCreateInput>
+  }
+
+  /**
+   * Comentario createMany
+   */
+  export type ComentarioCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Comentarios.
+     */
+    data: ComentarioCreateManyInput | ComentarioCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Comentario update
+   */
+  export type ComentarioUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Comentario.
+     */
+    data: XOR<ComentarioUpdateInput, ComentarioUncheckedUpdateInput>
+    /**
+     * Choose, which Comentario to update.
+     */
+    where: ComentarioWhereUniqueInput
+  }
+
+  /**
+   * Comentario updateMany
+   */
+  export type ComentarioUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Comentarios.
+     */
+    data: XOR<ComentarioUpdateManyMutationInput, ComentarioUncheckedUpdateManyInput>
+    /**
+     * Filter which Comentarios to update
+     */
+    where?: ComentarioWhereInput
+    /**
+     * Limit how many Comentarios to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comentario upsert
+   */
+  export type ComentarioUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Comentario to update in case it exists.
+     */
+    where: ComentarioWhereUniqueInput
+    /**
+     * In case the Comentario found by the `where` argument doesn't exist, create a new Comentario with this data.
+     */
+    create: XOR<ComentarioCreateInput, ComentarioUncheckedCreateInput>
+    /**
+     * In case the Comentario was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ComentarioUpdateInput, ComentarioUncheckedUpdateInput>
+  }
+
+  /**
+   * Comentario delete
+   */
+  export type ComentarioDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+    /**
+     * Filter which Comentario to delete.
+     */
+    where: ComentarioWhereUniqueInput
+  }
+
+  /**
+   * Comentario deleteMany
+   */
+  export type ComentarioDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comentarios to delete
+     */
+    where?: ComentarioWhereInput
+    /**
+     * Limit how many Comentarios to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comentario.fotos
+   */
+  export type Comentario$fotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    where?: ComentarioFotoWhereInput
+    orderBy?: ComentarioFotoOrderByWithRelationInput | ComentarioFotoOrderByWithRelationInput[]
+    cursor?: ComentarioFotoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ComentarioFotoScalarFieldEnum | ComentarioFotoScalarFieldEnum[]
+  }
+
+  /**
+   * Comentario without action
+   */
+  export type ComentarioDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comentario
+     */
+    select?: ComentarioSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comentario
+     */
+    omit?: ComentarioOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ComentarioFoto
+   */
+
+  export type AggregateComentarioFoto = {
+    _count: ComentarioFotoCountAggregateOutputType | null
+    _avg: ComentarioFotoAvgAggregateOutputType | null
+    _sum: ComentarioFotoSumAggregateOutputType | null
+    _min: ComentarioFotoMinAggregateOutputType | null
+    _max: ComentarioFotoMaxAggregateOutputType | null
+  }
+
+  export type ComentarioFotoAvgAggregateOutputType = {
+    id: number | null
+    comentarioId: number | null
+  }
+
+  export type ComentarioFotoSumAggregateOutputType = {
+    id: number | null
+    comentarioId: number | null
+  }
+
+  export type ComentarioFotoMinAggregateOutputType = {
+    id: number | null
+    comentarioId: number | null
+    url: string | null
+    createdAt: Date | null
+  }
+
+  export type ComentarioFotoMaxAggregateOutputType = {
+    id: number | null
+    comentarioId: number | null
+    url: string | null
+    createdAt: Date | null
+  }
+
+  export type ComentarioFotoCountAggregateOutputType = {
+    id: number
+    comentarioId: number
+    url: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ComentarioFotoAvgAggregateInputType = {
+    id?: true
+    comentarioId?: true
+  }
+
+  export type ComentarioFotoSumAggregateInputType = {
+    id?: true
+    comentarioId?: true
+  }
+
+  export type ComentarioFotoMinAggregateInputType = {
+    id?: true
+    comentarioId?: true
+    url?: true
+    createdAt?: true
+  }
+
+  export type ComentarioFotoMaxAggregateInputType = {
+    id?: true
+    comentarioId?: true
+    url?: true
+    createdAt?: true
+  }
+
+  export type ComentarioFotoCountAggregateInputType = {
+    id?: true
+    comentarioId?: true
+    url?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ComentarioFotoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ComentarioFoto to aggregate.
+     */
+    where?: ComentarioFotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioFotos to fetch.
+     */
+    orderBy?: ComentarioFotoOrderByWithRelationInput | ComentarioFotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ComentarioFotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioFotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioFotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ComentarioFotos
+    **/
+    _count?: true | ComentarioFotoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ComentarioFotoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ComentarioFotoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComentarioFotoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComentarioFotoMaxAggregateInputType
+  }
+
+  export type GetComentarioFotoAggregateType<T extends ComentarioFotoAggregateArgs> = {
+        [P in keyof T & keyof AggregateComentarioFoto]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComentarioFoto[P]>
+      : GetScalarType<T[P], AggregateComentarioFoto[P]>
+  }
+
+
+
+
+  export type ComentarioFotoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioFotoWhereInput
+    orderBy?: ComentarioFotoOrderByWithAggregationInput | ComentarioFotoOrderByWithAggregationInput[]
+    by: ComentarioFotoScalarFieldEnum[] | ComentarioFotoScalarFieldEnum
+    having?: ComentarioFotoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComentarioFotoCountAggregateInputType | true
+    _avg?: ComentarioFotoAvgAggregateInputType
+    _sum?: ComentarioFotoSumAggregateInputType
+    _min?: ComentarioFotoMinAggregateInputType
+    _max?: ComentarioFotoMaxAggregateInputType
+  }
+
+  export type ComentarioFotoGroupByOutputType = {
+    id: number
+    comentarioId: number
+    url: string
+    createdAt: Date
+    _count: ComentarioFotoCountAggregateOutputType | null
+    _avg: ComentarioFotoAvgAggregateOutputType | null
+    _sum: ComentarioFotoSumAggregateOutputType | null
+    _min: ComentarioFotoMinAggregateOutputType | null
+    _max: ComentarioFotoMaxAggregateOutputType | null
+  }
+
+  type GetComentarioFotoGroupByPayload<T extends ComentarioFotoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComentarioFotoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComentarioFotoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComentarioFotoGroupByOutputType[P]>
+            : GetScalarType<T[P], ComentarioFotoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ComentarioFotoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    comentarioId?: boolean
+    url?: boolean
+    createdAt?: boolean
+    comentario?: boolean | ComentarioDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comentarioFoto"]>
+
+
+
+  export type ComentarioFotoSelectScalar = {
+    id?: boolean
+    comentarioId?: boolean
+    url?: boolean
+    createdAt?: boolean
+  }
+
+  export type ComentarioFotoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "comentarioId" | "url" | "createdAt", ExtArgs["result"]["comentarioFoto"]>
+  export type ComentarioFotoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comentario?: boolean | ComentarioDefaultArgs<ExtArgs>
+  }
+
+  export type $ComentarioFotoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ComentarioFoto"
+    objects: {
+      comentario: Prisma.$ComentarioPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      comentarioId: number
+      url: string
+      createdAt: Date
+    }, ExtArgs["result"]["comentarioFoto"]>
+    composites: {}
+  }
+
+  type ComentarioFotoGetPayload<S extends boolean | null | undefined | ComentarioFotoDefaultArgs> = $Result.GetResult<Prisma.$ComentarioFotoPayload, S>
+
+  type ComentarioFotoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ComentarioFotoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComentarioFotoCountAggregateInputType | true
+    }
+
+  export interface ComentarioFotoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ComentarioFoto'], meta: { name: 'ComentarioFoto' } }
+    /**
+     * Find zero or one ComentarioFoto that matches the filter.
+     * @param {ComentarioFotoFindUniqueArgs} args - Arguments to find a ComentarioFoto
+     * @example
+     * // Get one ComentarioFoto
+     * const comentarioFoto = await prisma.comentarioFoto.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ComentarioFotoFindUniqueArgs>(args: SelectSubset<T, ComentarioFotoFindUniqueArgs<ExtArgs>>): Prisma__ComentarioFotoClient<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ComentarioFoto that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ComentarioFotoFindUniqueOrThrowArgs} args - Arguments to find a ComentarioFoto
+     * @example
+     * // Get one ComentarioFoto
+     * const comentarioFoto = await prisma.comentarioFoto.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ComentarioFotoFindUniqueOrThrowArgs>(args: SelectSubset<T, ComentarioFotoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ComentarioFotoClient<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ComentarioFoto that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFotoFindFirstArgs} args - Arguments to find a ComentarioFoto
+     * @example
+     * // Get one ComentarioFoto
+     * const comentarioFoto = await prisma.comentarioFoto.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ComentarioFotoFindFirstArgs>(args?: SelectSubset<T, ComentarioFotoFindFirstArgs<ExtArgs>>): Prisma__ComentarioFotoClient<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ComentarioFoto that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFotoFindFirstOrThrowArgs} args - Arguments to find a ComentarioFoto
+     * @example
+     * // Get one ComentarioFoto
+     * const comentarioFoto = await prisma.comentarioFoto.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ComentarioFotoFindFirstOrThrowArgs>(args?: SelectSubset<T, ComentarioFotoFindFirstOrThrowArgs<ExtArgs>>): Prisma__ComentarioFotoClient<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ComentarioFotos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFotoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ComentarioFotos
+     * const comentarioFotos = await prisma.comentarioFoto.findMany()
+     * 
+     * // Get first 10 ComentarioFotos
+     * const comentarioFotos = await prisma.comentarioFoto.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const comentarioFotoWithIdOnly = await prisma.comentarioFoto.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ComentarioFotoFindManyArgs>(args?: SelectSubset<T, ComentarioFotoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ComentarioFoto.
+     * @param {ComentarioFotoCreateArgs} args - Arguments to create a ComentarioFoto.
+     * @example
+     * // Create one ComentarioFoto
+     * const ComentarioFoto = await prisma.comentarioFoto.create({
+     *   data: {
+     *     // ... data to create a ComentarioFoto
+     *   }
+     * })
+     * 
+     */
+    create<T extends ComentarioFotoCreateArgs>(args: SelectSubset<T, ComentarioFotoCreateArgs<ExtArgs>>): Prisma__ComentarioFotoClient<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ComentarioFotos.
+     * @param {ComentarioFotoCreateManyArgs} args - Arguments to create many ComentarioFotos.
+     * @example
+     * // Create many ComentarioFotos
+     * const comentarioFoto = await prisma.comentarioFoto.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ComentarioFotoCreateManyArgs>(args?: SelectSubset<T, ComentarioFotoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ComentarioFoto.
+     * @param {ComentarioFotoDeleteArgs} args - Arguments to delete one ComentarioFoto.
+     * @example
+     * // Delete one ComentarioFoto
+     * const ComentarioFoto = await prisma.comentarioFoto.delete({
+     *   where: {
+     *     // ... filter to delete one ComentarioFoto
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ComentarioFotoDeleteArgs>(args: SelectSubset<T, ComentarioFotoDeleteArgs<ExtArgs>>): Prisma__ComentarioFotoClient<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ComentarioFoto.
+     * @param {ComentarioFotoUpdateArgs} args - Arguments to update one ComentarioFoto.
+     * @example
+     * // Update one ComentarioFoto
+     * const comentarioFoto = await prisma.comentarioFoto.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ComentarioFotoUpdateArgs>(args: SelectSubset<T, ComentarioFotoUpdateArgs<ExtArgs>>): Prisma__ComentarioFotoClient<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ComentarioFotos.
+     * @param {ComentarioFotoDeleteManyArgs} args - Arguments to filter ComentarioFotos to delete.
+     * @example
+     * // Delete a few ComentarioFotos
+     * const { count } = await prisma.comentarioFoto.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ComentarioFotoDeleteManyArgs>(args?: SelectSubset<T, ComentarioFotoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ComentarioFotos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFotoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ComentarioFotos
+     * const comentarioFoto = await prisma.comentarioFoto.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ComentarioFotoUpdateManyArgs>(args: SelectSubset<T, ComentarioFotoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ComentarioFoto.
+     * @param {ComentarioFotoUpsertArgs} args - Arguments to update or create a ComentarioFoto.
+     * @example
+     * // Update or create a ComentarioFoto
+     * const comentarioFoto = await prisma.comentarioFoto.upsert({
+     *   create: {
+     *     // ... data to create a ComentarioFoto
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ComentarioFoto we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ComentarioFotoUpsertArgs>(args: SelectSubset<T, ComentarioFotoUpsertArgs<ExtArgs>>): Prisma__ComentarioFotoClient<$Result.GetResult<Prisma.$ComentarioFotoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ComentarioFotos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFotoCountArgs} args - Arguments to filter ComentarioFotos to count.
+     * @example
+     * // Count the number of ComentarioFotos
+     * const count = await prisma.comentarioFoto.count({
+     *   where: {
+     *     // ... the filter for the ComentarioFotos we want to count
+     *   }
+     * })
+    **/
+    count<T extends ComentarioFotoCountArgs>(
+      args?: Subset<T, ComentarioFotoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComentarioFotoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ComentarioFoto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFotoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComentarioFotoAggregateArgs>(args: Subset<T, ComentarioFotoAggregateArgs>): Prisma.PrismaPromise<GetComentarioFotoAggregateType<T>>
+
+    /**
+     * Group by ComentarioFoto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioFotoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ComentarioFotoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ComentarioFotoGroupByArgs['orderBy'] }
+        : { orderBy?: ComentarioFotoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ComentarioFotoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComentarioFotoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ComentarioFoto model
+   */
+  readonly fields: ComentarioFotoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ComentarioFoto.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ComentarioFotoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    comentario<T extends ComentarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ComentarioDefaultArgs<ExtArgs>>): Prisma__ComentarioClient<$Result.GetResult<Prisma.$ComentarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ComentarioFoto model
+   */
+  interface ComentarioFotoFieldRefs {
+    readonly id: FieldRef<"ComentarioFoto", 'Int'>
+    readonly comentarioId: FieldRef<"ComentarioFoto", 'Int'>
+    readonly url: FieldRef<"ComentarioFoto", 'String'>
+    readonly createdAt: FieldRef<"ComentarioFoto", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ComentarioFoto findUnique
+   */
+  export type ComentarioFotoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioFoto to fetch.
+     */
+    where: ComentarioFotoWhereUniqueInput
+  }
+
+  /**
+   * ComentarioFoto findUniqueOrThrow
+   */
+  export type ComentarioFotoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioFoto to fetch.
+     */
+    where: ComentarioFotoWhereUniqueInput
+  }
+
+  /**
+   * ComentarioFoto findFirst
+   */
+  export type ComentarioFotoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioFoto to fetch.
+     */
+    where?: ComentarioFotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioFotos to fetch.
+     */
+    orderBy?: ComentarioFotoOrderByWithRelationInput | ComentarioFotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ComentarioFotos.
+     */
+    cursor?: ComentarioFotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioFotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioFotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ComentarioFotos.
+     */
+    distinct?: ComentarioFotoScalarFieldEnum | ComentarioFotoScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioFoto findFirstOrThrow
+   */
+  export type ComentarioFotoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioFoto to fetch.
+     */
+    where?: ComentarioFotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioFotos to fetch.
+     */
+    orderBy?: ComentarioFotoOrderByWithRelationInput | ComentarioFotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ComentarioFotos.
+     */
+    cursor?: ComentarioFotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioFotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioFotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ComentarioFotos.
+     */
+    distinct?: ComentarioFotoScalarFieldEnum | ComentarioFotoScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioFoto findMany
+   */
+  export type ComentarioFotoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioFotos to fetch.
+     */
+    where?: ComentarioFotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioFotos to fetch.
+     */
+    orderBy?: ComentarioFotoOrderByWithRelationInput | ComentarioFotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ComentarioFotos.
+     */
+    cursor?: ComentarioFotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioFotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioFotos.
+     */
+    skip?: number
+    distinct?: ComentarioFotoScalarFieldEnum | ComentarioFotoScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioFoto create
+   */
+  export type ComentarioFotoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ComentarioFoto.
+     */
+    data: XOR<ComentarioFotoCreateInput, ComentarioFotoUncheckedCreateInput>
+  }
+
+  /**
+   * ComentarioFoto createMany
+   */
+  export type ComentarioFotoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ComentarioFotos.
+     */
+    data: ComentarioFotoCreateManyInput | ComentarioFotoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ComentarioFoto update
+   */
+  export type ComentarioFotoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ComentarioFoto.
+     */
+    data: XOR<ComentarioFotoUpdateInput, ComentarioFotoUncheckedUpdateInput>
+    /**
+     * Choose, which ComentarioFoto to update.
+     */
+    where: ComentarioFotoWhereUniqueInput
+  }
+
+  /**
+   * ComentarioFoto updateMany
+   */
+  export type ComentarioFotoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ComentarioFotos.
+     */
+    data: XOR<ComentarioFotoUpdateManyMutationInput, ComentarioFotoUncheckedUpdateManyInput>
+    /**
+     * Filter which ComentarioFotos to update
+     */
+    where?: ComentarioFotoWhereInput
+    /**
+     * Limit how many ComentarioFotos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ComentarioFoto upsert
+   */
+  export type ComentarioFotoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ComentarioFoto to update in case it exists.
+     */
+    where: ComentarioFotoWhereUniqueInput
+    /**
+     * In case the ComentarioFoto found by the `where` argument doesn't exist, create a new ComentarioFoto with this data.
+     */
+    create: XOR<ComentarioFotoCreateInput, ComentarioFotoUncheckedCreateInput>
+    /**
+     * In case the ComentarioFoto was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ComentarioFotoUpdateInput, ComentarioFotoUncheckedUpdateInput>
+  }
+
+  /**
+   * ComentarioFoto delete
+   */
+  export type ComentarioFotoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+    /**
+     * Filter which ComentarioFoto to delete.
+     */
+    where: ComentarioFotoWhereUniqueInput
+  }
+
+  /**
+   * ComentarioFoto deleteMany
+   */
+  export type ComentarioFotoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ComentarioFotos to delete
+     */
+    where?: ComentarioFotoWhereInput
+    /**
+     * Limit how many ComentarioFotos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ComentarioFoto without action
+   */
+  export type ComentarioFotoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioFoto
+     */
+    select?: ComentarioFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioFoto
+     */
+    omit?: ComentarioFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioFotoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ComentarioIncidente
+   */
+
+  export type AggregateComentarioIncidente = {
+    _count: ComentarioIncidenteCountAggregateOutputType | null
+    _avg: ComentarioIncidenteAvgAggregateOutputType | null
+    _sum: ComentarioIncidenteSumAggregateOutputType | null
+    _min: ComentarioIncidenteMinAggregateOutputType | null
+    _max: ComentarioIncidenteMaxAggregateOutputType | null
+  }
+
+  export type ComentarioIncidenteAvgAggregateOutputType = {
+    id: number | null
+    reporteId: number | null
+    supervisorId: number | null
+  }
+
+  export type ComentarioIncidenteSumAggregateOutputType = {
+    id: number | null
+    reporteId: number | null
+    supervisorId: number | null
+  }
+
+  export type ComentarioIncidenteMinAggregateOutputType = {
+    id: number | null
+    reporteId: number | null
+    supervisorId: number | null
+    texto: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ComentarioIncidenteMaxAggregateOutputType = {
+    id: number | null
+    reporteId: number | null
+    supervisorId: number | null
+    texto: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ComentarioIncidenteCountAggregateOutputType = {
+    id: number
+    reporteId: number
+    supervisorId: number
+    texto: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ComentarioIncidenteAvgAggregateInputType = {
+    id?: true
+    reporteId?: true
+    supervisorId?: true
+  }
+
+  export type ComentarioIncidenteSumAggregateInputType = {
+    id?: true
+    reporteId?: true
+    supervisorId?: true
+  }
+
+  export type ComentarioIncidenteMinAggregateInputType = {
+    id?: true
+    reporteId?: true
+    supervisorId?: true
+    texto?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ComentarioIncidenteMaxAggregateInputType = {
+    id?: true
+    reporteId?: true
+    supervisorId?: true
+    texto?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ComentarioIncidenteCountAggregateInputType = {
+    id?: true
+    reporteId?: true
+    supervisorId?: true
+    texto?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ComentarioIncidenteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ComentarioIncidente to aggregate.
+     */
+    where?: ComentarioIncidenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioIncidentes to fetch.
+     */
+    orderBy?: ComentarioIncidenteOrderByWithRelationInput | ComentarioIncidenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ComentarioIncidenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioIncidentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioIncidentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ComentarioIncidentes
+    **/
+    _count?: true | ComentarioIncidenteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ComentarioIncidenteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ComentarioIncidenteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComentarioIncidenteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComentarioIncidenteMaxAggregateInputType
+  }
+
+  export type GetComentarioIncidenteAggregateType<T extends ComentarioIncidenteAggregateArgs> = {
+        [P in keyof T & keyof AggregateComentarioIncidente]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComentarioIncidente[P]>
+      : GetScalarType<T[P], AggregateComentarioIncidente[P]>
+  }
+
+
+
+
+  export type ComentarioIncidenteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioIncidenteWhereInput
+    orderBy?: ComentarioIncidenteOrderByWithAggregationInput | ComentarioIncidenteOrderByWithAggregationInput[]
+    by: ComentarioIncidenteScalarFieldEnum[] | ComentarioIncidenteScalarFieldEnum
+    having?: ComentarioIncidenteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComentarioIncidenteCountAggregateInputType | true
+    _avg?: ComentarioIncidenteAvgAggregateInputType
+    _sum?: ComentarioIncidenteSumAggregateInputType
+    _min?: ComentarioIncidenteMinAggregateInputType
+    _max?: ComentarioIncidenteMaxAggregateInputType
+  }
+
+  export type ComentarioIncidenteGroupByOutputType = {
+    id: number
+    reporteId: number
+    supervisorId: number
+    texto: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ComentarioIncidenteCountAggregateOutputType | null
+    _avg: ComentarioIncidenteAvgAggregateOutputType | null
+    _sum: ComentarioIncidenteSumAggregateOutputType | null
+    _min: ComentarioIncidenteMinAggregateOutputType | null
+    _max: ComentarioIncidenteMaxAggregateOutputType | null
+  }
+
+  type GetComentarioIncidenteGroupByPayload<T extends ComentarioIncidenteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComentarioIncidenteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComentarioIncidenteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComentarioIncidenteGroupByOutputType[P]>
+            : GetScalarType<T[P], ComentarioIncidenteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ComentarioIncidenteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    reporteId?: boolean
+    supervisorId?: boolean
+    texto?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    reporte?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
+    supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    fotos?: boolean | ComentarioIncidente$fotosArgs<ExtArgs>
+    _count?: boolean | ComentarioIncidenteCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comentarioIncidente"]>
+
+
+
+  export type ComentarioIncidenteSelectScalar = {
+    id?: boolean
+    reporteId?: boolean
+    supervisorId?: boolean
+    texto?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ComentarioIncidenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "reporteId" | "supervisorId" | "texto" | "createdAt" | "updatedAt", ExtArgs["result"]["comentarioIncidente"]>
+  export type ComentarioIncidenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reporte?: boolean | ReporteIncidenteDefaultArgs<ExtArgs>
+    supervisor?: boolean | SupervisorDefaultArgs<ExtArgs>
+    fotos?: boolean | ComentarioIncidente$fotosArgs<ExtArgs>
+    _count?: boolean | ComentarioIncidenteCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ComentarioIncidentePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ComentarioIncidente"
+    objects: {
+      reporte: Prisma.$ReporteIncidentePayload<ExtArgs>
+      supervisor: Prisma.$SupervisorPayload<ExtArgs>
+      fotos: Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      reporteId: number
+      supervisorId: number
+      texto: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["comentarioIncidente"]>
+    composites: {}
+  }
+
+  type ComentarioIncidenteGetPayload<S extends boolean | null | undefined | ComentarioIncidenteDefaultArgs> = $Result.GetResult<Prisma.$ComentarioIncidentePayload, S>
+
+  type ComentarioIncidenteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ComentarioIncidenteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComentarioIncidenteCountAggregateInputType | true
+    }
+
+  export interface ComentarioIncidenteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ComentarioIncidente'], meta: { name: 'ComentarioIncidente' } }
+    /**
+     * Find zero or one ComentarioIncidente that matches the filter.
+     * @param {ComentarioIncidenteFindUniqueArgs} args - Arguments to find a ComentarioIncidente
+     * @example
+     * // Get one ComentarioIncidente
+     * const comentarioIncidente = await prisma.comentarioIncidente.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ComentarioIncidenteFindUniqueArgs>(args: SelectSubset<T, ComentarioIncidenteFindUniqueArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ComentarioIncidente that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ComentarioIncidenteFindUniqueOrThrowArgs} args - Arguments to find a ComentarioIncidente
+     * @example
+     * // Get one ComentarioIncidente
+     * const comentarioIncidente = await prisma.comentarioIncidente.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ComentarioIncidenteFindUniqueOrThrowArgs>(args: SelectSubset<T, ComentarioIncidenteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ComentarioIncidente that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFindFirstArgs} args - Arguments to find a ComentarioIncidente
+     * @example
+     * // Get one ComentarioIncidente
+     * const comentarioIncidente = await prisma.comentarioIncidente.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ComentarioIncidenteFindFirstArgs>(args?: SelectSubset<T, ComentarioIncidenteFindFirstArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ComentarioIncidente that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFindFirstOrThrowArgs} args - Arguments to find a ComentarioIncidente
+     * @example
+     * // Get one ComentarioIncidente
+     * const comentarioIncidente = await prisma.comentarioIncidente.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ComentarioIncidenteFindFirstOrThrowArgs>(args?: SelectSubset<T, ComentarioIncidenteFindFirstOrThrowArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ComentarioIncidentes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ComentarioIncidentes
+     * const comentarioIncidentes = await prisma.comentarioIncidente.findMany()
+     * 
+     * // Get first 10 ComentarioIncidentes
+     * const comentarioIncidentes = await prisma.comentarioIncidente.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const comentarioIncidenteWithIdOnly = await prisma.comentarioIncidente.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ComentarioIncidenteFindManyArgs>(args?: SelectSubset<T, ComentarioIncidenteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ComentarioIncidente.
+     * @param {ComentarioIncidenteCreateArgs} args - Arguments to create a ComentarioIncidente.
+     * @example
+     * // Create one ComentarioIncidente
+     * const ComentarioIncidente = await prisma.comentarioIncidente.create({
+     *   data: {
+     *     // ... data to create a ComentarioIncidente
+     *   }
+     * })
+     * 
+     */
+    create<T extends ComentarioIncidenteCreateArgs>(args: SelectSubset<T, ComentarioIncidenteCreateArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ComentarioIncidentes.
+     * @param {ComentarioIncidenteCreateManyArgs} args - Arguments to create many ComentarioIncidentes.
+     * @example
+     * // Create many ComentarioIncidentes
+     * const comentarioIncidente = await prisma.comentarioIncidente.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ComentarioIncidenteCreateManyArgs>(args?: SelectSubset<T, ComentarioIncidenteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ComentarioIncidente.
+     * @param {ComentarioIncidenteDeleteArgs} args - Arguments to delete one ComentarioIncidente.
+     * @example
+     * // Delete one ComentarioIncidente
+     * const ComentarioIncidente = await prisma.comentarioIncidente.delete({
+     *   where: {
+     *     // ... filter to delete one ComentarioIncidente
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ComentarioIncidenteDeleteArgs>(args: SelectSubset<T, ComentarioIncidenteDeleteArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ComentarioIncidente.
+     * @param {ComentarioIncidenteUpdateArgs} args - Arguments to update one ComentarioIncidente.
+     * @example
+     * // Update one ComentarioIncidente
+     * const comentarioIncidente = await prisma.comentarioIncidente.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ComentarioIncidenteUpdateArgs>(args: SelectSubset<T, ComentarioIncidenteUpdateArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ComentarioIncidentes.
+     * @param {ComentarioIncidenteDeleteManyArgs} args - Arguments to filter ComentarioIncidentes to delete.
+     * @example
+     * // Delete a few ComentarioIncidentes
+     * const { count } = await prisma.comentarioIncidente.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ComentarioIncidenteDeleteManyArgs>(args?: SelectSubset<T, ComentarioIncidenteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ComentarioIncidentes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ComentarioIncidentes
+     * const comentarioIncidente = await prisma.comentarioIncidente.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ComentarioIncidenteUpdateManyArgs>(args: SelectSubset<T, ComentarioIncidenteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ComentarioIncidente.
+     * @param {ComentarioIncidenteUpsertArgs} args - Arguments to update or create a ComentarioIncidente.
+     * @example
+     * // Update or create a ComentarioIncidente
+     * const comentarioIncidente = await prisma.comentarioIncidente.upsert({
+     *   create: {
+     *     // ... data to create a ComentarioIncidente
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ComentarioIncidente we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ComentarioIncidenteUpsertArgs>(args: SelectSubset<T, ComentarioIncidenteUpsertArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ComentarioIncidentes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteCountArgs} args - Arguments to filter ComentarioIncidentes to count.
+     * @example
+     * // Count the number of ComentarioIncidentes
+     * const count = await prisma.comentarioIncidente.count({
+     *   where: {
+     *     // ... the filter for the ComentarioIncidentes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ComentarioIncidenteCountArgs>(
+      args?: Subset<T, ComentarioIncidenteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComentarioIncidenteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ComentarioIncidente.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComentarioIncidenteAggregateArgs>(args: Subset<T, ComentarioIncidenteAggregateArgs>): Prisma.PrismaPromise<GetComentarioIncidenteAggregateType<T>>
+
+    /**
+     * Group by ComentarioIncidente.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ComentarioIncidenteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ComentarioIncidenteGroupByArgs['orderBy'] }
+        : { orderBy?: ComentarioIncidenteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ComentarioIncidenteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComentarioIncidenteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ComentarioIncidente model
+   */
+  readonly fields: ComentarioIncidenteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ComentarioIncidente.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ComentarioIncidenteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    reporte<T extends ReporteIncidenteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReporteIncidenteDefaultArgs<ExtArgs>>): Prisma__ReporteIncidenteClient<$Result.GetResult<Prisma.$ReporteIncidentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    supervisor<T extends SupervisorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SupervisorDefaultArgs<ExtArgs>>): Prisma__SupervisorClient<$Result.GetResult<Prisma.$SupervisorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    fotos<T extends ComentarioIncidente$fotosArgs<ExtArgs> = {}>(args?: Subset<T, ComentarioIncidente$fotosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ComentarioIncidente model
+   */
+  interface ComentarioIncidenteFieldRefs {
+    readonly id: FieldRef<"ComentarioIncidente", 'Int'>
+    readonly reporteId: FieldRef<"ComentarioIncidente", 'Int'>
+    readonly supervisorId: FieldRef<"ComentarioIncidente", 'Int'>
+    readonly texto: FieldRef<"ComentarioIncidente", 'String'>
+    readonly createdAt: FieldRef<"ComentarioIncidente", 'DateTime'>
+    readonly updatedAt: FieldRef<"ComentarioIncidente", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ComentarioIncidente findUnique
+   */
+  export type ComentarioIncidenteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidente to fetch.
+     */
+    where: ComentarioIncidenteWhereUniqueInput
+  }
+
+  /**
+   * ComentarioIncidente findUniqueOrThrow
+   */
+  export type ComentarioIncidenteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidente to fetch.
+     */
+    where: ComentarioIncidenteWhereUniqueInput
+  }
+
+  /**
+   * ComentarioIncidente findFirst
+   */
+  export type ComentarioIncidenteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidente to fetch.
+     */
+    where?: ComentarioIncidenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioIncidentes to fetch.
+     */
+    orderBy?: ComentarioIncidenteOrderByWithRelationInput | ComentarioIncidenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ComentarioIncidentes.
+     */
+    cursor?: ComentarioIncidenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioIncidentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioIncidentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ComentarioIncidentes.
+     */
+    distinct?: ComentarioIncidenteScalarFieldEnum | ComentarioIncidenteScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioIncidente findFirstOrThrow
+   */
+  export type ComentarioIncidenteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidente to fetch.
+     */
+    where?: ComentarioIncidenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioIncidentes to fetch.
+     */
+    orderBy?: ComentarioIncidenteOrderByWithRelationInput | ComentarioIncidenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ComentarioIncidentes.
+     */
+    cursor?: ComentarioIncidenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioIncidentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioIncidentes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ComentarioIncidentes.
+     */
+    distinct?: ComentarioIncidenteScalarFieldEnum | ComentarioIncidenteScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioIncidente findMany
+   */
+  export type ComentarioIncidenteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidentes to fetch.
+     */
+    where?: ComentarioIncidenteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioIncidentes to fetch.
+     */
+    orderBy?: ComentarioIncidenteOrderByWithRelationInput | ComentarioIncidenteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ComentarioIncidentes.
+     */
+    cursor?: ComentarioIncidenteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioIncidentes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioIncidentes.
+     */
+    skip?: number
+    distinct?: ComentarioIncidenteScalarFieldEnum | ComentarioIncidenteScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioIncidente create
+   */
+  export type ComentarioIncidenteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ComentarioIncidente.
+     */
+    data: XOR<ComentarioIncidenteCreateInput, ComentarioIncidenteUncheckedCreateInput>
+  }
+
+  /**
+   * ComentarioIncidente createMany
+   */
+  export type ComentarioIncidenteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ComentarioIncidentes.
+     */
+    data: ComentarioIncidenteCreateManyInput | ComentarioIncidenteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ComentarioIncidente update
+   */
+  export type ComentarioIncidenteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ComentarioIncidente.
+     */
+    data: XOR<ComentarioIncidenteUpdateInput, ComentarioIncidenteUncheckedUpdateInput>
+    /**
+     * Choose, which ComentarioIncidente to update.
+     */
+    where: ComentarioIncidenteWhereUniqueInput
+  }
+
+  /**
+   * ComentarioIncidente updateMany
+   */
+  export type ComentarioIncidenteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ComentarioIncidentes.
+     */
+    data: XOR<ComentarioIncidenteUpdateManyMutationInput, ComentarioIncidenteUncheckedUpdateManyInput>
+    /**
+     * Filter which ComentarioIncidentes to update
+     */
+    where?: ComentarioIncidenteWhereInput
+    /**
+     * Limit how many ComentarioIncidentes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ComentarioIncidente upsert
+   */
+  export type ComentarioIncidenteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ComentarioIncidente to update in case it exists.
+     */
+    where: ComentarioIncidenteWhereUniqueInput
+    /**
+     * In case the ComentarioIncidente found by the `where` argument doesn't exist, create a new ComentarioIncidente with this data.
+     */
+    create: XOR<ComentarioIncidenteCreateInput, ComentarioIncidenteUncheckedCreateInput>
+    /**
+     * In case the ComentarioIncidente was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ComentarioIncidenteUpdateInput, ComentarioIncidenteUncheckedUpdateInput>
+  }
+
+  /**
+   * ComentarioIncidente delete
+   */
+  export type ComentarioIncidenteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+    /**
+     * Filter which ComentarioIncidente to delete.
+     */
+    where: ComentarioIncidenteWhereUniqueInput
+  }
+
+  /**
+   * ComentarioIncidente deleteMany
+   */
+  export type ComentarioIncidenteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ComentarioIncidentes to delete
+     */
+    where?: ComentarioIncidenteWhereInput
+    /**
+     * Limit how many ComentarioIncidentes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ComentarioIncidente.fotos
+   */
+  export type ComentarioIncidente$fotosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    where?: ComentarioIncidenteFotoWhereInput
+    orderBy?: ComentarioIncidenteFotoOrderByWithRelationInput | ComentarioIncidenteFotoOrderByWithRelationInput[]
+    cursor?: ComentarioIncidenteFotoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ComentarioIncidenteFotoScalarFieldEnum | ComentarioIncidenteFotoScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioIncidente without action
+   */
+  export type ComentarioIncidenteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidente
+     */
+    select?: ComentarioIncidenteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidente
+     */
+    omit?: ComentarioIncidenteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ComentarioIncidenteFoto
+   */
+
+  export type AggregateComentarioIncidenteFoto = {
+    _count: ComentarioIncidenteFotoCountAggregateOutputType | null
+    _avg: ComentarioIncidenteFotoAvgAggregateOutputType | null
+    _sum: ComentarioIncidenteFotoSumAggregateOutputType | null
+    _min: ComentarioIncidenteFotoMinAggregateOutputType | null
+    _max: ComentarioIncidenteFotoMaxAggregateOutputType | null
+  }
+
+  export type ComentarioIncidenteFotoAvgAggregateOutputType = {
+    id: number | null
+    comentarioIncidenteId: number | null
+  }
+
+  export type ComentarioIncidenteFotoSumAggregateOutputType = {
+    id: number | null
+    comentarioIncidenteId: number | null
+  }
+
+  export type ComentarioIncidenteFotoMinAggregateOutputType = {
+    id: number | null
+    comentarioIncidenteId: number | null
+    url: string | null
+    createdAt: Date | null
+  }
+
+  export type ComentarioIncidenteFotoMaxAggregateOutputType = {
+    id: number | null
+    comentarioIncidenteId: number | null
+    url: string | null
+    createdAt: Date | null
+  }
+
+  export type ComentarioIncidenteFotoCountAggregateOutputType = {
+    id: number
+    comentarioIncidenteId: number
+    url: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ComentarioIncidenteFotoAvgAggregateInputType = {
+    id?: true
+    comentarioIncidenteId?: true
+  }
+
+  export type ComentarioIncidenteFotoSumAggregateInputType = {
+    id?: true
+    comentarioIncidenteId?: true
+  }
+
+  export type ComentarioIncidenteFotoMinAggregateInputType = {
+    id?: true
+    comentarioIncidenteId?: true
+    url?: true
+    createdAt?: true
+  }
+
+  export type ComentarioIncidenteFotoMaxAggregateInputType = {
+    id?: true
+    comentarioIncidenteId?: true
+    url?: true
+    createdAt?: true
+  }
+
+  export type ComentarioIncidenteFotoCountAggregateInputType = {
+    id?: true
+    comentarioIncidenteId?: true
+    url?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ComentarioIncidenteFotoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ComentarioIncidenteFoto to aggregate.
+     */
+    where?: ComentarioIncidenteFotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioIncidenteFotos to fetch.
+     */
+    orderBy?: ComentarioIncidenteFotoOrderByWithRelationInput | ComentarioIncidenteFotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ComentarioIncidenteFotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioIncidenteFotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioIncidenteFotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ComentarioIncidenteFotos
+    **/
+    _count?: true | ComentarioIncidenteFotoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ComentarioIncidenteFotoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ComentarioIncidenteFotoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComentarioIncidenteFotoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComentarioIncidenteFotoMaxAggregateInputType
+  }
+
+  export type GetComentarioIncidenteFotoAggregateType<T extends ComentarioIncidenteFotoAggregateArgs> = {
+        [P in keyof T & keyof AggregateComentarioIncidenteFoto]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComentarioIncidenteFoto[P]>
+      : GetScalarType<T[P], AggregateComentarioIncidenteFoto[P]>
+  }
+
+
+
+
+  export type ComentarioIncidenteFotoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComentarioIncidenteFotoWhereInput
+    orderBy?: ComentarioIncidenteFotoOrderByWithAggregationInput | ComentarioIncidenteFotoOrderByWithAggregationInput[]
+    by: ComentarioIncidenteFotoScalarFieldEnum[] | ComentarioIncidenteFotoScalarFieldEnum
+    having?: ComentarioIncidenteFotoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComentarioIncidenteFotoCountAggregateInputType | true
+    _avg?: ComentarioIncidenteFotoAvgAggregateInputType
+    _sum?: ComentarioIncidenteFotoSumAggregateInputType
+    _min?: ComentarioIncidenteFotoMinAggregateInputType
+    _max?: ComentarioIncidenteFotoMaxAggregateInputType
+  }
+
+  export type ComentarioIncidenteFotoGroupByOutputType = {
+    id: number
+    comentarioIncidenteId: number
+    url: string
+    createdAt: Date
+    _count: ComentarioIncidenteFotoCountAggregateOutputType | null
+    _avg: ComentarioIncidenteFotoAvgAggregateOutputType | null
+    _sum: ComentarioIncidenteFotoSumAggregateOutputType | null
+    _min: ComentarioIncidenteFotoMinAggregateOutputType | null
+    _max: ComentarioIncidenteFotoMaxAggregateOutputType | null
+  }
+
+  type GetComentarioIncidenteFotoGroupByPayload<T extends ComentarioIncidenteFotoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComentarioIncidenteFotoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComentarioIncidenteFotoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComentarioIncidenteFotoGroupByOutputType[P]>
+            : GetScalarType<T[P], ComentarioIncidenteFotoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ComentarioIncidenteFotoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    comentarioIncidenteId?: boolean
+    url?: boolean
+    createdAt?: boolean
+    comentarioIncidente?: boolean | ComentarioIncidenteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comentarioIncidenteFoto"]>
+
+
+
+  export type ComentarioIncidenteFotoSelectScalar = {
+    id?: boolean
+    comentarioIncidenteId?: boolean
+    url?: boolean
+    createdAt?: boolean
+  }
+
+  export type ComentarioIncidenteFotoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "comentarioIncidenteId" | "url" | "createdAt", ExtArgs["result"]["comentarioIncidenteFoto"]>
+  export type ComentarioIncidenteFotoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comentarioIncidente?: boolean | ComentarioIncidenteDefaultArgs<ExtArgs>
+  }
+
+  export type $ComentarioIncidenteFotoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ComentarioIncidenteFoto"
+    objects: {
+      comentarioIncidente: Prisma.$ComentarioIncidentePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      comentarioIncidenteId: number
+      url: string
+      createdAt: Date
+    }, ExtArgs["result"]["comentarioIncidenteFoto"]>
+    composites: {}
+  }
+
+  type ComentarioIncidenteFotoGetPayload<S extends boolean | null | undefined | ComentarioIncidenteFotoDefaultArgs> = $Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload, S>
+
+  type ComentarioIncidenteFotoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ComentarioIncidenteFotoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComentarioIncidenteFotoCountAggregateInputType | true
+    }
+
+  export interface ComentarioIncidenteFotoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ComentarioIncidenteFoto'], meta: { name: 'ComentarioIncidenteFoto' } }
+    /**
+     * Find zero or one ComentarioIncidenteFoto that matches the filter.
+     * @param {ComentarioIncidenteFotoFindUniqueArgs} args - Arguments to find a ComentarioIncidenteFoto
+     * @example
+     * // Get one ComentarioIncidenteFoto
+     * const comentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ComentarioIncidenteFotoFindUniqueArgs>(args: SelectSubset<T, ComentarioIncidenteFotoFindUniqueArgs<ExtArgs>>): Prisma__ComentarioIncidenteFotoClient<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ComentarioIncidenteFoto that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ComentarioIncidenteFotoFindUniqueOrThrowArgs} args - Arguments to find a ComentarioIncidenteFoto
+     * @example
+     * // Get one ComentarioIncidenteFoto
+     * const comentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ComentarioIncidenteFotoFindUniqueOrThrowArgs>(args: SelectSubset<T, ComentarioIncidenteFotoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ComentarioIncidenteFotoClient<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ComentarioIncidenteFoto that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFotoFindFirstArgs} args - Arguments to find a ComentarioIncidenteFoto
+     * @example
+     * // Get one ComentarioIncidenteFoto
+     * const comentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ComentarioIncidenteFotoFindFirstArgs>(args?: SelectSubset<T, ComentarioIncidenteFotoFindFirstArgs<ExtArgs>>): Prisma__ComentarioIncidenteFotoClient<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ComentarioIncidenteFoto that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFotoFindFirstOrThrowArgs} args - Arguments to find a ComentarioIncidenteFoto
+     * @example
+     * // Get one ComentarioIncidenteFoto
+     * const comentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ComentarioIncidenteFotoFindFirstOrThrowArgs>(args?: SelectSubset<T, ComentarioIncidenteFotoFindFirstOrThrowArgs<ExtArgs>>): Prisma__ComentarioIncidenteFotoClient<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ComentarioIncidenteFotos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFotoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ComentarioIncidenteFotos
+     * const comentarioIncidenteFotos = await prisma.comentarioIncidenteFoto.findMany()
+     * 
+     * // Get first 10 ComentarioIncidenteFotos
+     * const comentarioIncidenteFotos = await prisma.comentarioIncidenteFoto.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const comentarioIncidenteFotoWithIdOnly = await prisma.comentarioIncidenteFoto.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ComentarioIncidenteFotoFindManyArgs>(args?: SelectSubset<T, ComentarioIncidenteFotoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ComentarioIncidenteFoto.
+     * @param {ComentarioIncidenteFotoCreateArgs} args - Arguments to create a ComentarioIncidenteFoto.
+     * @example
+     * // Create one ComentarioIncidenteFoto
+     * const ComentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.create({
+     *   data: {
+     *     // ... data to create a ComentarioIncidenteFoto
+     *   }
+     * })
+     * 
+     */
+    create<T extends ComentarioIncidenteFotoCreateArgs>(args: SelectSubset<T, ComentarioIncidenteFotoCreateArgs<ExtArgs>>): Prisma__ComentarioIncidenteFotoClient<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ComentarioIncidenteFotos.
+     * @param {ComentarioIncidenteFotoCreateManyArgs} args - Arguments to create many ComentarioIncidenteFotos.
+     * @example
+     * // Create many ComentarioIncidenteFotos
+     * const comentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ComentarioIncidenteFotoCreateManyArgs>(args?: SelectSubset<T, ComentarioIncidenteFotoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ComentarioIncidenteFoto.
+     * @param {ComentarioIncidenteFotoDeleteArgs} args - Arguments to delete one ComentarioIncidenteFoto.
+     * @example
+     * // Delete one ComentarioIncidenteFoto
+     * const ComentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.delete({
+     *   where: {
+     *     // ... filter to delete one ComentarioIncidenteFoto
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ComentarioIncidenteFotoDeleteArgs>(args: SelectSubset<T, ComentarioIncidenteFotoDeleteArgs<ExtArgs>>): Prisma__ComentarioIncidenteFotoClient<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ComentarioIncidenteFoto.
+     * @param {ComentarioIncidenteFotoUpdateArgs} args - Arguments to update one ComentarioIncidenteFoto.
+     * @example
+     * // Update one ComentarioIncidenteFoto
+     * const comentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ComentarioIncidenteFotoUpdateArgs>(args: SelectSubset<T, ComentarioIncidenteFotoUpdateArgs<ExtArgs>>): Prisma__ComentarioIncidenteFotoClient<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ComentarioIncidenteFotos.
+     * @param {ComentarioIncidenteFotoDeleteManyArgs} args - Arguments to filter ComentarioIncidenteFotos to delete.
+     * @example
+     * // Delete a few ComentarioIncidenteFotos
+     * const { count } = await prisma.comentarioIncidenteFoto.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ComentarioIncidenteFotoDeleteManyArgs>(args?: SelectSubset<T, ComentarioIncidenteFotoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ComentarioIncidenteFotos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFotoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ComentarioIncidenteFotos
+     * const comentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ComentarioIncidenteFotoUpdateManyArgs>(args: SelectSubset<T, ComentarioIncidenteFotoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ComentarioIncidenteFoto.
+     * @param {ComentarioIncidenteFotoUpsertArgs} args - Arguments to update or create a ComentarioIncidenteFoto.
+     * @example
+     * // Update or create a ComentarioIncidenteFoto
+     * const comentarioIncidenteFoto = await prisma.comentarioIncidenteFoto.upsert({
+     *   create: {
+     *     // ... data to create a ComentarioIncidenteFoto
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ComentarioIncidenteFoto we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ComentarioIncidenteFotoUpsertArgs>(args: SelectSubset<T, ComentarioIncidenteFotoUpsertArgs<ExtArgs>>): Prisma__ComentarioIncidenteFotoClient<$Result.GetResult<Prisma.$ComentarioIncidenteFotoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ComentarioIncidenteFotos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFotoCountArgs} args - Arguments to filter ComentarioIncidenteFotos to count.
+     * @example
+     * // Count the number of ComentarioIncidenteFotos
+     * const count = await prisma.comentarioIncidenteFoto.count({
+     *   where: {
+     *     // ... the filter for the ComentarioIncidenteFotos we want to count
+     *   }
+     * })
+    **/
+    count<T extends ComentarioIncidenteFotoCountArgs>(
+      args?: Subset<T, ComentarioIncidenteFotoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComentarioIncidenteFotoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ComentarioIncidenteFoto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFotoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComentarioIncidenteFotoAggregateArgs>(args: Subset<T, ComentarioIncidenteFotoAggregateArgs>): Prisma.PrismaPromise<GetComentarioIncidenteFotoAggregateType<T>>
+
+    /**
+     * Group by ComentarioIncidenteFoto.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComentarioIncidenteFotoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ComentarioIncidenteFotoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ComentarioIncidenteFotoGroupByArgs['orderBy'] }
+        : { orderBy?: ComentarioIncidenteFotoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ComentarioIncidenteFotoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComentarioIncidenteFotoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ComentarioIncidenteFoto model
+   */
+  readonly fields: ComentarioIncidenteFotoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ComentarioIncidenteFoto.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ComentarioIncidenteFotoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    comentarioIncidente<T extends ComentarioIncidenteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ComentarioIncidenteDefaultArgs<ExtArgs>>): Prisma__ComentarioIncidenteClient<$Result.GetResult<Prisma.$ComentarioIncidentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ComentarioIncidenteFoto model
+   */
+  interface ComentarioIncidenteFotoFieldRefs {
+    readonly id: FieldRef<"ComentarioIncidenteFoto", 'Int'>
+    readonly comentarioIncidenteId: FieldRef<"ComentarioIncidenteFoto", 'Int'>
+    readonly url: FieldRef<"ComentarioIncidenteFoto", 'String'>
+    readonly createdAt: FieldRef<"ComentarioIncidenteFoto", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ComentarioIncidenteFoto findUnique
+   */
+  export type ComentarioIncidenteFotoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidenteFoto to fetch.
+     */
+    where: ComentarioIncidenteFotoWhereUniqueInput
+  }
+
+  /**
+   * ComentarioIncidenteFoto findUniqueOrThrow
+   */
+  export type ComentarioIncidenteFotoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidenteFoto to fetch.
+     */
+    where: ComentarioIncidenteFotoWhereUniqueInput
+  }
+
+  /**
+   * ComentarioIncidenteFoto findFirst
+   */
+  export type ComentarioIncidenteFotoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidenteFoto to fetch.
+     */
+    where?: ComentarioIncidenteFotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioIncidenteFotos to fetch.
+     */
+    orderBy?: ComentarioIncidenteFotoOrderByWithRelationInput | ComentarioIncidenteFotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ComentarioIncidenteFotos.
+     */
+    cursor?: ComentarioIncidenteFotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioIncidenteFotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioIncidenteFotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ComentarioIncidenteFotos.
+     */
+    distinct?: ComentarioIncidenteFotoScalarFieldEnum | ComentarioIncidenteFotoScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioIncidenteFoto findFirstOrThrow
+   */
+  export type ComentarioIncidenteFotoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidenteFoto to fetch.
+     */
+    where?: ComentarioIncidenteFotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioIncidenteFotos to fetch.
+     */
+    orderBy?: ComentarioIncidenteFotoOrderByWithRelationInput | ComentarioIncidenteFotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ComentarioIncidenteFotos.
+     */
+    cursor?: ComentarioIncidenteFotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioIncidenteFotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioIncidenteFotos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ComentarioIncidenteFotos.
+     */
+    distinct?: ComentarioIncidenteFotoScalarFieldEnum | ComentarioIncidenteFotoScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioIncidenteFoto findMany
+   */
+  export type ComentarioIncidenteFotoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * Filter, which ComentarioIncidenteFotos to fetch.
+     */
+    where?: ComentarioIncidenteFotoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ComentarioIncidenteFotos to fetch.
+     */
+    orderBy?: ComentarioIncidenteFotoOrderByWithRelationInput | ComentarioIncidenteFotoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ComentarioIncidenteFotos.
+     */
+    cursor?: ComentarioIncidenteFotoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ComentarioIncidenteFotos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ComentarioIncidenteFotos.
+     */
+    skip?: number
+    distinct?: ComentarioIncidenteFotoScalarFieldEnum | ComentarioIncidenteFotoScalarFieldEnum[]
+  }
+
+  /**
+   * ComentarioIncidenteFoto create
+   */
+  export type ComentarioIncidenteFotoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ComentarioIncidenteFoto.
+     */
+    data: XOR<ComentarioIncidenteFotoCreateInput, ComentarioIncidenteFotoUncheckedCreateInput>
+  }
+
+  /**
+   * ComentarioIncidenteFoto createMany
+   */
+  export type ComentarioIncidenteFotoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ComentarioIncidenteFotos.
+     */
+    data: ComentarioIncidenteFotoCreateManyInput | ComentarioIncidenteFotoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ComentarioIncidenteFoto update
+   */
+  export type ComentarioIncidenteFotoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ComentarioIncidenteFoto.
+     */
+    data: XOR<ComentarioIncidenteFotoUpdateInput, ComentarioIncidenteFotoUncheckedUpdateInput>
+    /**
+     * Choose, which ComentarioIncidenteFoto to update.
+     */
+    where: ComentarioIncidenteFotoWhereUniqueInput
+  }
+
+  /**
+   * ComentarioIncidenteFoto updateMany
+   */
+  export type ComentarioIncidenteFotoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ComentarioIncidenteFotos.
+     */
+    data: XOR<ComentarioIncidenteFotoUpdateManyMutationInput, ComentarioIncidenteFotoUncheckedUpdateManyInput>
+    /**
+     * Filter which ComentarioIncidenteFotos to update
+     */
+    where?: ComentarioIncidenteFotoWhereInput
+    /**
+     * Limit how many ComentarioIncidenteFotos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ComentarioIncidenteFoto upsert
+   */
+  export type ComentarioIncidenteFotoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ComentarioIncidenteFoto to update in case it exists.
+     */
+    where: ComentarioIncidenteFotoWhereUniqueInput
+    /**
+     * In case the ComentarioIncidenteFoto found by the `where` argument doesn't exist, create a new ComentarioIncidenteFoto with this data.
+     */
+    create: XOR<ComentarioIncidenteFotoCreateInput, ComentarioIncidenteFotoUncheckedCreateInput>
+    /**
+     * In case the ComentarioIncidenteFoto was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ComentarioIncidenteFotoUpdateInput, ComentarioIncidenteFotoUncheckedUpdateInput>
+  }
+
+  /**
+   * ComentarioIncidenteFoto delete
+   */
+  export type ComentarioIncidenteFotoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+    /**
+     * Filter which ComentarioIncidenteFoto to delete.
+     */
+    where: ComentarioIncidenteFotoWhereUniqueInput
+  }
+
+  /**
+   * ComentarioIncidenteFoto deleteMany
+   */
+  export type ComentarioIncidenteFotoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ComentarioIncidenteFotos to delete
+     */
+    where?: ComentarioIncidenteFotoWhereInput
+    /**
+     * Limit how many ComentarioIncidenteFotos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ComentarioIncidenteFoto without action
+   */
+  export type ComentarioIncidenteFotoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ComentarioIncidenteFoto
+     */
+    select?: ComentarioIncidenteFotoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ComentarioIncidenteFoto
+     */
+    omit?: ComentarioIncidenteFotoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComentarioIncidenteFotoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -18728,6 +23188,7 @@ export namespace Prisma {
   export const IncidenteAsignadoScalarFieldEnum: {
     id: 'id',
     supervisorId: 'supervisorId',
+    estado: 'estado',
     fechaAsignacion: 'fechaAsignacion',
     panicId: 'panicId',
     latitud: 'latitud',
@@ -18742,8 +23203,7 @@ export namespace Prisma {
     supervisorId: 'supervisorId',
     incidenteAsignadoId: 'incidenteAsignadoId',
     fecha: 'fecha',
-    estado: 'estado',
-    descripcion: 'descripcion'
+    estado: 'estado'
   };
 
   export type ReporteIncidenteScalarFieldEnum = (typeof ReporteIncidenteScalarFieldEnum)[keyof typeof ReporteIncidenteScalarFieldEnum]
@@ -18839,6 +23299,51 @@ export namespace Prisma {
   export type PresenteScalarFieldEnum = (typeof PresenteScalarFieldEnum)[keyof typeof PresenteScalarFieldEnum]
 
 
+  export const ComentarioScalarFieldEnum: {
+    id: 'id',
+    supervisorId: 'supervisorId',
+    texto: 'texto',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    ubicacionLat: 'ubicacionLat',
+    ubicacionLng: 'ubicacionLng'
+  };
+
+  export type ComentarioScalarFieldEnum = (typeof ComentarioScalarFieldEnum)[keyof typeof ComentarioScalarFieldEnum]
+
+
+  export const ComentarioFotoScalarFieldEnum: {
+    id: 'id',
+    comentarioId: 'comentarioId',
+    url: 'url',
+    createdAt: 'createdAt'
+  };
+
+  export type ComentarioFotoScalarFieldEnum = (typeof ComentarioFotoScalarFieldEnum)[keyof typeof ComentarioFotoScalarFieldEnum]
+
+
+  export const ComentarioIncidenteScalarFieldEnum: {
+    id: 'id',
+    reporteId: 'reporteId',
+    supervisorId: 'supervisorId',
+    texto: 'texto',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ComentarioIncidenteScalarFieldEnum = (typeof ComentarioIncidenteScalarFieldEnum)[keyof typeof ComentarioIncidenteScalarFieldEnum]
+
+
+  export const ComentarioIncidenteFotoScalarFieldEnum: {
+    id: 'id',
+    comentarioIncidenteId: 'comentarioIncidenteId',
+    url: 'url',
+    createdAt: 'createdAt'
+  };
+
+  export type ComentarioIncidenteFotoScalarFieldEnum = (typeof ComentarioIncidenteFotoScalarFieldEnum)[keyof typeof ComentarioIncidenteFotoScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -18890,9 +23395,15 @@ export namespace Prisma {
   export type SupervisorOrderByRelevanceFieldEnum = (typeof SupervisorOrderByRelevanceFieldEnum)[keyof typeof SupervisorOrderByRelevanceFieldEnum]
 
 
+  export const IncidenteAsignadoOrderByRelevanceFieldEnum: {
+    estado: 'estado'
+  };
+
+  export type IncidenteAsignadoOrderByRelevanceFieldEnum = (typeof IncidenteAsignadoOrderByRelevanceFieldEnum)[keyof typeof IncidenteAsignadoOrderByRelevanceFieldEnum]
+
+
   export const ReporteIncidenteOrderByRelevanceFieldEnum: {
-    estado: 'estado',
-    descripcion: 'descripcion'
+    estado: 'estado'
   };
 
   export type ReporteIncidenteOrderByRelevanceFieldEnum = (typeof ReporteIncidenteOrderByRelevanceFieldEnum)[keyof typeof ReporteIncidenteOrderByRelevanceFieldEnum]
@@ -18927,6 +23438,34 @@ export namespace Prisma {
   };
 
   export type DeviceTokenOrderByRelevanceFieldEnum = (typeof DeviceTokenOrderByRelevanceFieldEnum)[keyof typeof DeviceTokenOrderByRelevanceFieldEnum]
+
+
+  export const ComentarioOrderByRelevanceFieldEnum: {
+    texto: 'texto'
+  };
+
+  export type ComentarioOrderByRelevanceFieldEnum = (typeof ComentarioOrderByRelevanceFieldEnum)[keyof typeof ComentarioOrderByRelevanceFieldEnum]
+
+
+  export const ComentarioFotoOrderByRelevanceFieldEnum: {
+    url: 'url'
+  };
+
+  export type ComentarioFotoOrderByRelevanceFieldEnum = (typeof ComentarioFotoOrderByRelevanceFieldEnum)[keyof typeof ComentarioFotoOrderByRelevanceFieldEnum]
+
+
+  export const ComentarioIncidenteOrderByRelevanceFieldEnum: {
+    texto: 'texto'
+  };
+
+  export type ComentarioIncidenteOrderByRelevanceFieldEnum = (typeof ComentarioIncidenteOrderByRelevanceFieldEnum)[keyof typeof ComentarioIncidenteOrderByRelevanceFieldEnum]
+
+
+  export const ComentarioIncidenteFotoOrderByRelevanceFieldEnum: {
+    url: 'url'
+  };
+
+  export type ComentarioIncidenteFotoOrderByRelevanceFieldEnum = (typeof ComentarioIncidenteFotoOrderByRelevanceFieldEnum)[keyof typeof ComentarioIncidenteFotoOrderByRelevanceFieldEnum]
 
 
   /**
@@ -19222,6 +23761,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoListRelationFilter
     TurnoProgramado?: TurnoProgramadoListRelationFilter
     Presente?: PresenteListRelationFilter
+    Comentarios?: ComentarioListRelationFilter
+    ComentariosIncidente?: ComentarioIncidenteListRelationFilter
   }
 
   export type SupervisorOrderByWithRelationInput = {
@@ -19234,6 +23775,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoOrderByRelationAggregateInput
     TurnoProgramado?: TurnoProgramadoOrderByRelationAggregateInput
     Presente?: PresenteOrderByRelationAggregateInput
+    Comentarios?: ComentarioOrderByRelationAggregateInput
+    ComentariosIncidente?: ComentarioIncidenteOrderByRelationAggregateInput
     _relevance?: SupervisorOrderByRelevanceInput
   }
 
@@ -19250,6 +23793,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoListRelationFilter
     TurnoProgramado?: TurnoProgramadoListRelationFilter
     Presente?: PresenteListRelationFilter
+    Comentarios?: ComentarioListRelationFilter
+    ComentariosIncidente?: ComentarioIncidenteListRelationFilter
   }, "id" | "userRoleId">
 
   export type SupervisorOrderByWithAggregationInput = {
@@ -19383,6 +23928,7 @@ export namespace Prisma {
     NOT?: IncidenteAsignadoWhereInput | IncidenteAsignadoWhereInput[]
     id?: IntFilter<"IncidenteAsignado"> | number
     supervisorId?: IntFilter<"IncidenteAsignado"> | number
+    estado?: StringFilter<"IncidenteAsignado"> | string
     fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
     panicId?: IntFilter<"IncidenteAsignado"> | number
     latitud?: FloatFilter<"IncidenteAsignado"> | number
@@ -19395,6 +23941,7 @@ export namespace Prisma {
   export type IncidenteAsignadoOrderByWithRelationInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    estado?: SortOrder
     fechaAsignacion?: SortOrder
     panicId?: SortOrder
     latitud?: SortOrder
@@ -19402,6 +23949,7 @@ export namespace Prisma {
     supervisor?: SupervisorOrderByWithRelationInput
     panic?: BotonPanicoOrderByWithRelationInput
     reporte?: ReporteIncidenteOrderByWithRelationInput
+    _relevance?: IncidenteAsignadoOrderByRelevanceInput
   }
 
   export type IncidenteAsignadoWhereUniqueInput = Prisma.AtLeast<{
@@ -19410,6 +23958,7 @@ export namespace Prisma {
     OR?: IncidenteAsignadoWhereInput[]
     NOT?: IncidenteAsignadoWhereInput | IncidenteAsignadoWhereInput[]
     supervisorId?: IntFilter<"IncidenteAsignado"> | number
+    estado?: StringFilter<"IncidenteAsignado"> | string
     fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
     panicId?: IntFilter<"IncidenteAsignado"> | number
     latitud?: FloatFilter<"IncidenteAsignado"> | number
@@ -19422,6 +23971,7 @@ export namespace Prisma {
   export type IncidenteAsignadoOrderByWithAggregationInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    estado?: SortOrder
     fechaAsignacion?: SortOrder
     panicId?: SortOrder
     latitud?: SortOrder
@@ -19439,6 +23989,7 @@ export namespace Prisma {
     NOT?: IncidenteAsignadoScalarWhereWithAggregatesInput | IncidenteAsignadoScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"IncidenteAsignado"> | number
     supervisorId?: IntWithAggregatesFilter<"IncidenteAsignado"> | number
+    estado?: StringWithAggregatesFilter<"IncidenteAsignado"> | string
     fechaAsignacion?: DateTimeWithAggregatesFilter<"IncidenteAsignado"> | Date | string
     panicId?: IntWithAggregatesFilter<"IncidenteAsignado"> | number
     latitud?: FloatWithAggregatesFilter<"IncidenteAsignado"> | number
@@ -19454,10 +24005,10 @@ export namespace Prisma {
     incidenteAsignadoId?: IntFilter<"ReporteIncidente"> | number
     fecha?: DateTimeFilter<"ReporteIncidente"> | Date | string
     estado?: StringNullableFilter<"ReporteIncidente"> | string | null
-    descripcion?: StringFilter<"ReporteIncidente"> | string
     supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
     incidenteAsignado?: XOR<IncidenteAsignadoScalarRelationFilter, IncidenteAsignadoWhereInput>
     fotos?: FotoIncidenteListRelationFilter
+    comentarios?: ComentarioIncidenteListRelationFilter
   }
 
   export type ReporteIncidenteOrderByWithRelationInput = {
@@ -19466,10 +24017,10 @@ export namespace Prisma {
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     estado?: SortOrderInput | SortOrder
-    descripcion?: SortOrder
     supervisor?: SupervisorOrderByWithRelationInput
     incidenteAsignado?: IncidenteAsignadoOrderByWithRelationInput
     fotos?: FotoIncidenteOrderByRelationAggregateInput
+    comentarios?: ComentarioIncidenteOrderByRelationAggregateInput
     _relevance?: ReporteIncidenteOrderByRelevanceInput
   }
 
@@ -19482,10 +24033,10 @@ export namespace Prisma {
     supervisorId?: IntFilter<"ReporteIncidente"> | number
     fecha?: DateTimeFilter<"ReporteIncidente"> | Date | string
     estado?: StringNullableFilter<"ReporteIncidente"> | string | null
-    descripcion?: StringFilter<"ReporteIncidente"> | string
     supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
     incidenteAsignado?: XOR<IncidenteAsignadoScalarRelationFilter, IncidenteAsignadoWhereInput>
     fotos?: FotoIncidenteListRelationFilter
+    comentarios?: ComentarioIncidenteListRelationFilter
   }, "id" | "incidenteAsignadoId">
 
   export type ReporteIncidenteOrderByWithAggregationInput = {
@@ -19494,7 +24045,6 @@ export namespace Prisma {
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     estado?: SortOrderInput | SortOrder
-    descripcion?: SortOrder
     _count?: ReporteIncidenteCountOrderByAggregateInput
     _avg?: ReporteIncidenteAvgOrderByAggregateInput
     _max?: ReporteIncidenteMaxOrderByAggregateInput
@@ -19511,7 +24061,6 @@ export namespace Prisma {
     incidenteAsignadoId?: IntWithAggregatesFilter<"ReporteIncidente"> | number
     fecha?: DateTimeWithAggregatesFilter<"ReporteIncidente"> | Date | string
     estado?: StringNullableWithAggregatesFilter<"ReporteIncidente"> | string | null
-    descripcion?: StringWithAggregatesFilter<"ReporteIncidente"> | string
   }
 
   export type FotoIncidenteWhereInput = {
@@ -20006,6 +24555,252 @@ export namespace Prisma {
     longitud?: FloatWithAggregatesFilter<"Presente"> | number
   }
 
+  export type ComentarioWhereInput = {
+    AND?: ComentarioWhereInput | ComentarioWhereInput[]
+    OR?: ComentarioWhereInput[]
+    NOT?: ComentarioWhereInput | ComentarioWhereInput[]
+    id?: IntFilter<"Comentario"> | number
+    supervisorId?: IntFilter<"Comentario"> | number
+    texto?: StringFilter<"Comentario"> | string
+    createdAt?: DateTimeFilter<"Comentario"> | Date | string
+    updatedAt?: DateTimeFilter<"Comentario"> | Date | string
+    ubicacionLat?: FloatNullableFilter<"Comentario"> | number | null
+    ubicacionLng?: FloatNullableFilter<"Comentario"> | number | null
+    supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    fotos?: ComentarioFotoListRelationFilter
+  }
+
+  export type ComentarioOrderByWithRelationInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ubicacionLat?: SortOrderInput | SortOrder
+    ubicacionLng?: SortOrderInput | SortOrder
+    supervisor?: SupervisorOrderByWithRelationInput
+    fotos?: ComentarioFotoOrderByRelationAggregateInput
+    _relevance?: ComentarioOrderByRelevanceInput
+  }
+
+  export type ComentarioWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ComentarioWhereInput | ComentarioWhereInput[]
+    OR?: ComentarioWhereInput[]
+    NOT?: ComentarioWhereInput | ComentarioWhereInput[]
+    supervisorId?: IntFilter<"Comentario"> | number
+    texto?: StringFilter<"Comentario"> | string
+    createdAt?: DateTimeFilter<"Comentario"> | Date | string
+    updatedAt?: DateTimeFilter<"Comentario"> | Date | string
+    ubicacionLat?: FloatNullableFilter<"Comentario"> | number | null
+    ubicacionLng?: FloatNullableFilter<"Comentario"> | number | null
+    supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    fotos?: ComentarioFotoListRelationFilter
+  }, "id">
+
+  export type ComentarioOrderByWithAggregationInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ubicacionLat?: SortOrderInput | SortOrder
+    ubicacionLng?: SortOrderInput | SortOrder
+    _count?: ComentarioCountOrderByAggregateInput
+    _avg?: ComentarioAvgOrderByAggregateInput
+    _max?: ComentarioMaxOrderByAggregateInput
+    _min?: ComentarioMinOrderByAggregateInput
+    _sum?: ComentarioSumOrderByAggregateInput
+  }
+
+  export type ComentarioScalarWhereWithAggregatesInput = {
+    AND?: ComentarioScalarWhereWithAggregatesInput | ComentarioScalarWhereWithAggregatesInput[]
+    OR?: ComentarioScalarWhereWithAggregatesInput[]
+    NOT?: ComentarioScalarWhereWithAggregatesInput | ComentarioScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Comentario"> | number
+    supervisorId?: IntWithAggregatesFilter<"Comentario"> | number
+    texto?: StringWithAggregatesFilter<"Comentario"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Comentario"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Comentario"> | Date | string
+    ubicacionLat?: FloatNullableWithAggregatesFilter<"Comentario"> | number | null
+    ubicacionLng?: FloatNullableWithAggregatesFilter<"Comentario"> | number | null
+  }
+
+  export type ComentarioFotoWhereInput = {
+    AND?: ComentarioFotoWhereInput | ComentarioFotoWhereInput[]
+    OR?: ComentarioFotoWhereInput[]
+    NOT?: ComentarioFotoWhereInput | ComentarioFotoWhereInput[]
+    id?: IntFilter<"ComentarioFoto"> | number
+    comentarioId?: IntFilter<"ComentarioFoto"> | number
+    url?: StringFilter<"ComentarioFoto"> | string
+    createdAt?: DateTimeFilter<"ComentarioFoto"> | Date | string
+    comentario?: XOR<ComentarioScalarRelationFilter, ComentarioWhereInput>
+  }
+
+  export type ComentarioFotoOrderByWithRelationInput = {
+    id?: SortOrder
+    comentarioId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    comentario?: ComentarioOrderByWithRelationInput
+    _relevance?: ComentarioFotoOrderByRelevanceInput
+  }
+
+  export type ComentarioFotoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ComentarioFotoWhereInput | ComentarioFotoWhereInput[]
+    OR?: ComentarioFotoWhereInput[]
+    NOT?: ComentarioFotoWhereInput | ComentarioFotoWhereInput[]
+    comentarioId?: IntFilter<"ComentarioFoto"> | number
+    url?: StringFilter<"ComentarioFoto"> | string
+    createdAt?: DateTimeFilter<"ComentarioFoto"> | Date | string
+    comentario?: XOR<ComentarioScalarRelationFilter, ComentarioWhereInput>
+  }, "id">
+
+  export type ComentarioFotoOrderByWithAggregationInput = {
+    id?: SortOrder
+    comentarioId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    _count?: ComentarioFotoCountOrderByAggregateInput
+    _avg?: ComentarioFotoAvgOrderByAggregateInput
+    _max?: ComentarioFotoMaxOrderByAggregateInput
+    _min?: ComentarioFotoMinOrderByAggregateInput
+    _sum?: ComentarioFotoSumOrderByAggregateInput
+  }
+
+  export type ComentarioFotoScalarWhereWithAggregatesInput = {
+    AND?: ComentarioFotoScalarWhereWithAggregatesInput | ComentarioFotoScalarWhereWithAggregatesInput[]
+    OR?: ComentarioFotoScalarWhereWithAggregatesInput[]
+    NOT?: ComentarioFotoScalarWhereWithAggregatesInput | ComentarioFotoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ComentarioFoto"> | number
+    comentarioId?: IntWithAggregatesFilter<"ComentarioFoto"> | number
+    url?: StringWithAggregatesFilter<"ComentarioFoto"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ComentarioFoto"> | Date | string
+  }
+
+  export type ComentarioIncidenteWhereInput = {
+    AND?: ComentarioIncidenteWhereInput | ComentarioIncidenteWhereInput[]
+    OR?: ComentarioIncidenteWhereInput[]
+    NOT?: ComentarioIncidenteWhereInput | ComentarioIncidenteWhereInput[]
+    id?: IntFilter<"ComentarioIncidente"> | number
+    reporteId?: IntFilter<"ComentarioIncidente"> | number
+    supervisorId?: IntFilter<"ComentarioIncidente"> | number
+    texto?: StringFilter<"ComentarioIncidente"> | string
+    createdAt?: DateTimeFilter<"ComentarioIncidente"> | Date | string
+    updatedAt?: DateTimeFilter<"ComentarioIncidente"> | Date | string
+    reporte?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
+    supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    fotos?: ComentarioIncidenteFotoListRelationFilter
+  }
+
+  export type ComentarioIncidenteOrderByWithRelationInput = {
+    id?: SortOrder
+    reporteId?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    reporte?: ReporteIncidenteOrderByWithRelationInput
+    supervisor?: SupervisorOrderByWithRelationInput
+    fotos?: ComentarioIncidenteFotoOrderByRelationAggregateInput
+    _relevance?: ComentarioIncidenteOrderByRelevanceInput
+  }
+
+  export type ComentarioIncidenteWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ComentarioIncidenteWhereInput | ComentarioIncidenteWhereInput[]
+    OR?: ComentarioIncidenteWhereInput[]
+    NOT?: ComentarioIncidenteWhereInput | ComentarioIncidenteWhereInput[]
+    reporteId?: IntFilter<"ComentarioIncidente"> | number
+    supervisorId?: IntFilter<"ComentarioIncidente"> | number
+    texto?: StringFilter<"ComentarioIncidente"> | string
+    createdAt?: DateTimeFilter<"ComentarioIncidente"> | Date | string
+    updatedAt?: DateTimeFilter<"ComentarioIncidente"> | Date | string
+    reporte?: XOR<ReporteIncidenteScalarRelationFilter, ReporteIncidenteWhereInput>
+    supervisor?: XOR<SupervisorScalarRelationFilter, SupervisorWhereInput>
+    fotos?: ComentarioIncidenteFotoListRelationFilter
+  }, "id">
+
+  export type ComentarioIncidenteOrderByWithAggregationInput = {
+    id?: SortOrder
+    reporteId?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ComentarioIncidenteCountOrderByAggregateInput
+    _avg?: ComentarioIncidenteAvgOrderByAggregateInput
+    _max?: ComentarioIncidenteMaxOrderByAggregateInput
+    _min?: ComentarioIncidenteMinOrderByAggregateInput
+    _sum?: ComentarioIncidenteSumOrderByAggregateInput
+  }
+
+  export type ComentarioIncidenteScalarWhereWithAggregatesInput = {
+    AND?: ComentarioIncidenteScalarWhereWithAggregatesInput | ComentarioIncidenteScalarWhereWithAggregatesInput[]
+    OR?: ComentarioIncidenteScalarWhereWithAggregatesInput[]
+    NOT?: ComentarioIncidenteScalarWhereWithAggregatesInput | ComentarioIncidenteScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ComentarioIncidente"> | number
+    reporteId?: IntWithAggregatesFilter<"ComentarioIncidente"> | number
+    supervisorId?: IntWithAggregatesFilter<"ComentarioIncidente"> | number
+    texto?: StringWithAggregatesFilter<"ComentarioIncidente"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ComentarioIncidente"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ComentarioIncidente"> | Date | string
+  }
+
+  export type ComentarioIncidenteFotoWhereInput = {
+    AND?: ComentarioIncidenteFotoWhereInput | ComentarioIncidenteFotoWhereInput[]
+    OR?: ComentarioIncidenteFotoWhereInput[]
+    NOT?: ComentarioIncidenteFotoWhereInput | ComentarioIncidenteFotoWhereInput[]
+    id?: IntFilter<"ComentarioIncidenteFoto"> | number
+    comentarioIncidenteId?: IntFilter<"ComentarioIncidenteFoto"> | number
+    url?: StringFilter<"ComentarioIncidenteFoto"> | string
+    createdAt?: DateTimeFilter<"ComentarioIncidenteFoto"> | Date | string
+    comentarioIncidente?: XOR<ComentarioIncidenteScalarRelationFilter, ComentarioIncidenteWhereInput>
+  }
+
+  export type ComentarioIncidenteFotoOrderByWithRelationInput = {
+    id?: SortOrder
+    comentarioIncidenteId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    comentarioIncidente?: ComentarioIncidenteOrderByWithRelationInput
+    _relevance?: ComentarioIncidenteFotoOrderByRelevanceInput
+  }
+
+  export type ComentarioIncidenteFotoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ComentarioIncidenteFotoWhereInput | ComentarioIncidenteFotoWhereInput[]
+    OR?: ComentarioIncidenteFotoWhereInput[]
+    NOT?: ComentarioIncidenteFotoWhereInput | ComentarioIncidenteFotoWhereInput[]
+    comentarioIncidenteId?: IntFilter<"ComentarioIncidenteFoto"> | number
+    url?: StringFilter<"ComentarioIncidenteFoto"> | string
+    createdAt?: DateTimeFilter<"ComentarioIncidenteFoto"> | Date | string
+    comentarioIncidente?: XOR<ComentarioIncidenteScalarRelationFilter, ComentarioIncidenteWhereInput>
+  }, "id">
+
+  export type ComentarioIncidenteFotoOrderByWithAggregationInput = {
+    id?: SortOrder
+    comentarioIncidenteId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+    _count?: ComentarioIncidenteFotoCountOrderByAggregateInput
+    _avg?: ComentarioIncidenteFotoAvgOrderByAggregateInput
+    _max?: ComentarioIncidenteFotoMaxOrderByAggregateInput
+    _min?: ComentarioIncidenteFotoMinOrderByAggregateInput
+    _sum?: ComentarioIncidenteFotoSumOrderByAggregateInput
+  }
+
+  export type ComentarioIncidenteFotoScalarWhereWithAggregatesInput = {
+    AND?: ComentarioIncidenteFotoScalarWhereWithAggregatesInput | ComentarioIncidenteFotoScalarWhereWithAggregatesInput[]
+    OR?: ComentarioIncidenteFotoScalarWhereWithAggregatesInput[]
+    NOT?: ComentarioIncidenteFotoScalarWhereWithAggregatesInput | ComentarioIncidenteFotoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ComentarioIncidenteFoto"> | number
+    comentarioIncidenteId?: IntWithAggregatesFilter<"ComentarioIncidenteFoto"> | number
+    url?: StringWithAggregatesFilter<"ComentarioIncidenteFoto"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ComentarioIncidenteFoto"> | Date | string
+  }
+
   export type UserRoleCreateInput = {
     idFirebase: string
     role: $Enums.Role
@@ -20242,6 +25037,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateInput = {
@@ -20253,6 +25050,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioUncheckedCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUpdateInput = {
@@ -20263,6 +25062,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateInput = {
@@ -20274,6 +25075,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorCreateManyInput = {
@@ -20385,6 +25188,7 @@ export namespace Prisma {
   }
 
   export type IncidenteAsignadoCreateInput = {
+    estado?: string
     fechaAsignacion?: Date | string
     latitud: number
     longitud: number
@@ -20396,6 +25200,7 @@ export namespace Prisma {
   export type IncidenteAsignadoUncheckedCreateInput = {
     id?: number
     supervisorId: number
+    estado?: string
     fechaAsignacion?: Date | string
     panicId: number
     latitud: number
@@ -20404,6 +25209,7 @@ export namespace Prisma {
   }
 
   export type IncidenteAsignadoUpdateInput = {
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
@@ -20415,6 +25221,7 @@ export namespace Prisma {
   export type IncidenteAsignadoUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     panicId?: IntFieldUpdateOperationsInput | number
     latitud?: FloatFieldUpdateOperationsInput | number
@@ -20425,6 +25232,7 @@ export namespace Prisma {
   export type IncidenteAsignadoCreateManyInput = {
     id?: number
     supervisorId: number
+    estado?: string
     fechaAsignacion?: Date | string
     panicId: number
     latitud: number
@@ -20432,6 +25240,7 @@ export namespace Prisma {
   }
 
   export type IncidenteAsignadoUpdateManyMutationInput = {
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
@@ -20440,6 +25249,7 @@ export namespace Prisma {
   export type IncidenteAsignadoUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     panicId?: IntFieldUpdateOperationsInput | number
     latitud?: FloatFieldUpdateOperationsInput | number
@@ -20449,10 +25259,10 @@ export namespace Prisma {
   export type ReporteIncidenteCreateInput = {
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
     supervisor: SupervisorCreateNestedOneWithoutReportesInput
     incidenteAsignado: IncidenteAsignadoCreateNestedOneWithoutReporteInput
     fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
+    comentarios?: ComentarioIncidenteCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteUncheckedCreateInput = {
@@ -20461,17 +25271,17 @@ export namespace Prisma {
     incidenteAsignadoId: number
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
     fotos?: FotoIncidenteUncheckedCreateNestedManyWithoutReporteInput
+    comentarios?: ComentarioIncidenteUncheckedCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteUpdateInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
     supervisor?: SupervisorUpdateOneRequiredWithoutReportesNestedInput
     incidenteAsignado?: IncidenteAsignadoUpdateOneRequiredWithoutReporteNestedInput
     fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
+    comentarios?: ComentarioIncidenteUpdateManyWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateInput = {
@@ -20480,8 +25290,8 @@ export namespace Prisma {
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
     fotos?: FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput
+    comentarios?: ComentarioIncidenteUncheckedUpdateManyWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteCreateManyInput = {
@@ -20490,13 +25300,11 @@ export namespace Prisma {
     incidenteAsignadoId: number
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
   }
 
   export type ReporteIncidenteUpdateManyMutationInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
   }
 
   export type ReporteIncidenteUncheckedUpdateManyInput = {
@@ -20505,7 +25313,6 @@ export namespace Prisma {
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
   }
 
   export type FotoIncidenteCreateInput = {
@@ -20947,6 +25754,228 @@ export namespace Prisma {
     longitud?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type ComentarioCreateInput = {
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ubicacionLat?: number | null
+    ubicacionLng?: number | null
+    supervisor: SupervisorCreateNestedOneWithoutComentariosInput
+    fotos?: ComentarioFotoCreateNestedManyWithoutComentarioInput
+  }
+
+  export type ComentarioUncheckedCreateInput = {
+    id?: number
+    supervisorId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ubicacionLat?: number | null
+    ubicacionLng?: number | null
+    fotos?: ComentarioFotoUncheckedCreateNestedManyWithoutComentarioInput
+  }
+
+  export type ComentarioUpdateInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+    supervisor?: SupervisorUpdateOneRequiredWithoutComentariosNestedInput
+    fotos?: ComentarioFotoUpdateManyWithoutComentarioNestedInput
+  }
+
+  export type ComentarioUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+    fotos?: ComentarioFotoUncheckedUpdateManyWithoutComentarioNestedInput
+  }
+
+  export type ComentarioCreateManyInput = {
+    id?: number
+    supervisorId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ubicacionLat?: number | null
+    ubicacionLng?: number | null
+  }
+
+  export type ComentarioUpdateManyMutationInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type ComentarioUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type ComentarioFotoCreateInput = {
+    url: string
+    createdAt?: Date | string
+    comentario: ComentarioCreateNestedOneWithoutFotosInput
+  }
+
+  export type ComentarioFotoUncheckedCreateInput = {
+    id?: number
+    comentarioId: number
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioFotoUpdateInput = {
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comentario?: ComentarioUpdateOneRequiredWithoutFotosNestedInput
+  }
+
+  export type ComentarioFotoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    comentarioId?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioFotoCreateManyInput = {
+    id?: number
+    comentarioId: number
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioFotoUpdateManyMutationInput = {
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioFotoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    comentarioId?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteCreateInput = {
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reporte: ReporteIncidenteCreateNestedOneWithoutComentariosInput
+    supervisor: SupervisorCreateNestedOneWithoutComentariosIncidenteInput
+    fotos?: ComentarioIncidenteFotoCreateNestedManyWithoutComentarioIncidenteInput
+  }
+
+  export type ComentarioIncidenteUncheckedCreateInput = {
+    id?: number
+    reporteId: number
+    supervisorId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fotos?: ComentarioIncidenteFotoUncheckedCreateNestedManyWithoutComentarioIncidenteInput
+  }
+
+  export type ComentarioIncidenteUpdateInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reporte?: ReporteIncidenteUpdateOneRequiredWithoutComentariosNestedInput
+    supervisor?: SupervisorUpdateOneRequiredWithoutComentariosIncidenteNestedInput
+    fotos?: ComentarioIncidenteFotoUpdateManyWithoutComentarioIncidenteNestedInput
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reporteId?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fotos?: ComentarioIncidenteFotoUncheckedUpdateManyWithoutComentarioIncidenteNestedInput
+  }
+
+  export type ComentarioIncidenteCreateManyInput = {
+    id?: number
+    reporteId: number
+    supervisorId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ComentarioIncidenteUpdateManyMutationInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reporteId?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteFotoCreateInput = {
+    url: string
+    createdAt?: Date | string
+    comentarioIncidente: ComentarioIncidenteCreateNestedOneWithoutFotosInput
+  }
+
+  export type ComentarioIncidenteFotoUncheckedCreateInput = {
+    id?: number
+    comentarioIncidenteId: number
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioIncidenteFotoUpdateInput = {
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comentarioIncidente?: ComentarioIncidenteUpdateOneRequiredWithoutFotosNestedInput
+  }
+
+  export type ComentarioIncidenteFotoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    comentarioIncidenteId?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteFotoCreateManyInput = {
+    id?: number
+    comentarioIncidenteId: number
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioIncidenteFotoUpdateManyMutationInput = {
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteFotoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    comentarioIncidenteId?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -21368,6 +26397,18 @@ export namespace Prisma {
     none?: PresenteWhereInput
   }
 
+  export type ComentarioListRelationFilter = {
+    every?: ComentarioWhereInput
+    some?: ComentarioWhereInput
+    none?: ComentarioWhereInput
+  }
+
+  export type ComentarioIncidenteListRelationFilter = {
+    every?: ComentarioIncidenteWhereInput
+    some?: ComentarioIncidenteWhereInput
+    none?: ComentarioIncidenteWhereInput
+  }
+
   export type UbicacionSupervisorOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -21381,6 +26422,14 @@ export namespace Prisma {
   }
 
   export type PresenteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ComentarioOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ComentarioIncidenteOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -21533,9 +26582,16 @@ export namespace Prisma {
     isNot?: ReporteIncidenteWhereInput | null
   }
 
+  export type IncidenteAsignadoOrderByRelevanceInput = {
+    fields: IncidenteAsignadoOrderByRelevanceFieldEnum | IncidenteAsignadoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type IncidenteAsignadoCountOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    estado?: SortOrder
     fechaAsignacion?: SortOrder
     panicId?: SortOrder
     latitud?: SortOrder
@@ -21553,6 +26609,7 @@ export namespace Prisma {
   export type IncidenteAsignadoMaxOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    estado?: SortOrder
     fechaAsignacion?: SortOrder
     panicId?: SortOrder
     latitud?: SortOrder
@@ -21562,6 +26619,7 @@ export namespace Prisma {
   export type IncidenteAsignadoMinOrderByAggregateInput = {
     id?: SortOrder
     supervisorId?: SortOrder
+    estado?: SortOrder
     fechaAsignacion?: SortOrder
     panicId?: SortOrder
     latitud?: SortOrder
@@ -21603,7 +26661,6 @@ export namespace Prisma {
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     estado?: SortOrder
-    descripcion?: SortOrder
   }
 
   export type ReporteIncidenteAvgOrderByAggregateInput = {
@@ -21618,7 +26675,6 @@ export namespace Prisma {
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     estado?: SortOrder
-    descripcion?: SortOrder
   }
 
   export type ReporteIncidenteMinOrderByAggregateInput = {
@@ -21627,7 +26683,6 @@ export namespace Prisma {
     incidenteAsignadoId?: SortOrder
     fecha?: SortOrder
     estado?: SortOrder
-    descripcion?: SortOrder
   }
 
   export type ReporteIncidenteSumOrderByAggregateInput = {
@@ -22024,6 +27079,205 @@ export namespace Prisma {
     callId?: SortOrder
     latitud?: SortOrder
     longitud?: SortOrder
+  }
+
+  export type ComentarioFotoListRelationFilter = {
+    every?: ComentarioFotoWhereInput
+    some?: ComentarioFotoWhereInput
+    none?: ComentarioFotoWhereInput
+  }
+
+  export type ComentarioFotoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ComentarioOrderByRelevanceInput = {
+    fields: ComentarioOrderByRelevanceFieldEnum | ComentarioOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ComentarioCountOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ubicacionLat?: SortOrder
+    ubicacionLng?: SortOrder
+  }
+
+  export type ComentarioAvgOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    ubicacionLat?: SortOrder
+    ubicacionLng?: SortOrder
+  }
+
+  export type ComentarioMaxOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ubicacionLat?: SortOrder
+    ubicacionLng?: SortOrder
+  }
+
+  export type ComentarioMinOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ubicacionLat?: SortOrder
+    ubicacionLng?: SortOrder
+  }
+
+  export type ComentarioSumOrderByAggregateInput = {
+    id?: SortOrder
+    supervisorId?: SortOrder
+    ubicacionLat?: SortOrder
+    ubicacionLng?: SortOrder
+  }
+
+  export type ComentarioScalarRelationFilter = {
+    is?: ComentarioWhereInput
+    isNot?: ComentarioWhereInput
+  }
+
+  export type ComentarioFotoOrderByRelevanceInput = {
+    fields: ComentarioFotoOrderByRelevanceFieldEnum | ComentarioFotoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ComentarioFotoCountOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ComentarioFotoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioId?: SortOrder
+  }
+
+  export type ComentarioFotoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ComentarioFotoMinOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ComentarioFotoSumOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioId?: SortOrder
+  }
+
+  export type ComentarioIncidenteFotoListRelationFilter = {
+    every?: ComentarioIncidenteFotoWhereInput
+    some?: ComentarioIncidenteFotoWhereInput
+    none?: ComentarioIncidenteFotoWhereInput
+  }
+
+  export type ComentarioIncidenteFotoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ComentarioIncidenteOrderByRelevanceInput = {
+    fields: ComentarioIncidenteOrderByRelevanceFieldEnum | ComentarioIncidenteOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ComentarioIncidenteCountOrderByAggregateInput = {
+    id?: SortOrder
+    reporteId?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ComentarioIncidenteAvgOrderByAggregateInput = {
+    id?: SortOrder
+    reporteId?: SortOrder
+    supervisorId?: SortOrder
+  }
+
+  export type ComentarioIncidenteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    reporteId?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ComentarioIncidenteMinOrderByAggregateInput = {
+    id?: SortOrder
+    reporteId?: SortOrder
+    supervisorId?: SortOrder
+    texto?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ComentarioIncidenteSumOrderByAggregateInput = {
+    id?: SortOrder
+    reporteId?: SortOrder
+    supervisorId?: SortOrder
+  }
+
+  export type ComentarioIncidenteScalarRelationFilter = {
+    is?: ComentarioIncidenteWhereInput
+    isNot?: ComentarioIncidenteWhereInput
+  }
+
+  export type ComentarioIncidenteFotoOrderByRelevanceInput = {
+    fields: ComentarioIncidenteFotoOrderByRelevanceFieldEnum | ComentarioIncidenteFotoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ComentarioIncidenteFotoCountOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioIncidenteId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ComentarioIncidenteFotoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioIncidenteId?: SortOrder
+  }
+
+  export type ComentarioIncidenteFotoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioIncidenteId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ComentarioIncidenteFotoMinOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioIncidenteId?: SortOrder
+    url?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ComentarioIncidenteFotoSumOrderByAggregateInput = {
+    id?: SortOrder
+    comentarioIncidenteId?: SortOrder
   }
 
   export type OperadorCreateNestedOneWithoutUserInput = {
@@ -22469,6 +27723,20 @@ export namespace Prisma {
     connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
   }
 
+  export type ComentarioCreateNestedManyWithoutSupervisorInput = {
+    create?: XOR<ComentarioCreateWithoutSupervisorInput, ComentarioUncheckedCreateWithoutSupervisorInput> | ComentarioCreateWithoutSupervisorInput[] | ComentarioUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: ComentarioCreateOrConnectWithoutSupervisorInput | ComentarioCreateOrConnectWithoutSupervisorInput[]
+    createMany?: ComentarioCreateManySupervisorInputEnvelope
+    connect?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+  }
+
+  export type ComentarioIncidenteCreateNestedManyWithoutSupervisorInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutSupervisorInput, ComentarioIncidenteUncheckedCreateWithoutSupervisorInput> | ComentarioIncidenteCreateWithoutSupervisorInput[] | ComentarioIncidenteUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutSupervisorInput | ComentarioIncidenteCreateOrConnectWithoutSupervisorInput[]
+    createMany?: ComentarioIncidenteCreateManySupervisorInputEnvelope
+    connect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+  }
+
   export type UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput = {
     create?: XOR<UbicacionSupervisorCreateWithoutSupervisorInput, UbicacionSupervisorUncheckedCreateWithoutSupervisorInput> | UbicacionSupervisorCreateWithoutSupervisorInput[] | UbicacionSupervisorUncheckedCreateWithoutSupervisorInput[]
     connectOrCreate?: UbicacionSupervisorCreateOrConnectWithoutSupervisorInput | UbicacionSupervisorCreateOrConnectWithoutSupervisorInput[]
@@ -22502,6 +27770,20 @@ export namespace Prisma {
     connectOrCreate?: PresenteCreateOrConnectWithoutSupervisorInput | PresenteCreateOrConnectWithoutSupervisorInput[]
     createMany?: PresenteCreateManySupervisorInputEnvelope
     connect?: PresenteWhereUniqueInput | PresenteWhereUniqueInput[]
+  }
+
+  export type ComentarioUncheckedCreateNestedManyWithoutSupervisorInput = {
+    create?: XOR<ComentarioCreateWithoutSupervisorInput, ComentarioUncheckedCreateWithoutSupervisorInput> | ComentarioCreateWithoutSupervisorInput[] | ComentarioUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: ComentarioCreateOrConnectWithoutSupervisorInput | ComentarioCreateOrConnectWithoutSupervisorInput[]
+    createMany?: ComentarioCreateManySupervisorInputEnvelope
+    connect?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+  }
+
+  export type ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutSupervisorInput, ComentarioIncidenteUncheckedCreateWithoutSupervisorInput> | ComentarioIncidenteCreateWithoutSupervisorInput[] | ComentarioIncidenteUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutSupervisorInput | ComentarioIncidenteCreateOrConnectWithoutSupervisorInput[]
+    createMany?: ComentarioIncidenteCreateManySupervisorInputEnvelope
+    connect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
   }
 
   export type UserRoleUpdateOneRequiredWithoutSupervisorNestedInput = {
@@ -22582,6 +27864,34 @@ export namespace Prisma {
     deleteMany?: PresenteScalarWhereInput | PresenteScalarWhereInput[]
   }
 
+  export type ComentarioUpdateManyWithoutSupervisorNestedInput = {
+    create?: XOR<ComentarioCreateWithoutSupervisorInput, ComentarioUncheckedCreateWithoutSupervisorInput> | ComentarioCreateWithoutSupervisorInput[] | ComentarioUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: ComentarioCreateOrConnectWithoutSupervisorInput | ComentarioCreateOrConnectWithoutSupervisorInput[]
+    upsert?: ComentarioUpsertWithWhereUniqueWithoutSupervisorInput | ComentarioUpsertWithWhereUniqueWithoutSupervisorInput[]
+    createMany?: ComentarioCreateManySupervisorInputEnvelope
+    set?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+    disconnect?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+    delete?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+    connect?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+    update?: ComentarioUpdateWithWhereUniqueWithoutSupervisorInput | ComentarioUpdateWithWhereUniqueWithoutSupervisorInput[]
+    updateMany?: ComentarioUpdateManyWithWhereWithoutSupervisorInput | ComentarioUpdateManyWithWhereWithoutSupervisorInput[]
+    deleteMany?: ComentarioScalarWhereInput | ComentarioScalarWhereInput[]
+  }
+
+  export type ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutSupervisorInput, ComentarioIncidenteUncheckedCreateWithoutSupervisorInput> | ComentarioIncidenteCreateWithoutSupervisorInput[] | ComentarioIncidenteUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutSupervisorInput | ComentarioIncidenteCreateOrConnectWithoutSupervisorInput[]
+    upsert?: ComentarioIncidenteUpsertWithWhereUniqueWithoutSupervisorInput | ComentarioIncidenteUpsertWithWhereUniqueWithoutSupervisorInput[]
+    createMany?: ComentarioIncidenteCreateManySupervisorInputEnvelope
+    set?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    disconnect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    delete?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    connect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    update?: ComentarioIncidenteUpdateWithWhereUniqueWithoutSupervisorInput | ComentarioIncidenteUpdateWithWhereUniqueWithoutSupervisorInput[]
+    updateMany?: ComentarioIncidenteUpdateManyWithWhereWithoutSupervisorInput | ComentarioIncidenteUpdateManyWithWhereWithoutSupervisorInput[]
+    deleteMany?: ComentarioIncidenteScalarWhereInput | ComentarioIncidenteScalarWhereInput[]
+  }
+
   export type UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput = {
     create?: XOR<UbicacionSupervisorCreateWithoutSupervisorInput, UbicacionSupervisorUncheckedCreateWithoutSupervisorInput> | UbicacionSupervisorCreateWithoutSupervisorInput[] | UbicacionSupervisorUncheckedCreateWithoutSupervisorInput[]
     connectOrCreate?: UbicacionSupervisorCreateOrConnectWithoutSupervisorInput | UbicacionSupervisorCreateOrConnectWithoutSupervisorInput[]
@@ -22650,6 +27960,34 @@ export namespace Prisma {
     update?: PresenteUpdateWithWhereUniqueWithoutSupervisorInput | PresenteUpdateWithWhereUniqueWithoutSupervisorInput[]
     updateMany?: PresenteUpdateManyWithWhereWithoutSupervisorInput | PresenteUpdateManyWithWhereWithoutSupervisorInput[]
     deleteMany?: PresenteScalarWhereInput | PresenteScalarWhereInput[]
+  }
+
+  export type ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput = {
+    create?: XOR<ComentarioCreateWithoutSupervisorInput, ComentarioUncheckedCreateWithoutSupervisorInput> | ComentarioCreateWithoutSupervisorInput[] | ComentarioUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: ComentarioCreateOrConnectWithoutSupervisorInput | ComentarioCreateOrConnectWithoutSupervisorInput[]
+    upsert?: ComentarioUpsertWithWhereUniqueWithoutSupervisorInput | ComentarioUpsertWithWhereUniqueWithoutSupervisorInput[]
+    createMany?: ComentarioCreateManySupervisorInputEnvelope
+    set?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+    disconnect?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+    delete?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+    connect?: ComentarioWhereUniqueInput | ComentarioWhereUniqueInput[]
+    update?: ComentarioUpdateWithWhereUniqueWithoutSupervisorInput | ComentarioUpdateWithWhereUniqueWithoutSupervisorInput[]
+    updateMany?: ComentarioUpdateManyWithWhereWithoutSupervisorInput | ComentarioUpdateManyWithWhereWithoutSupervisorInput[]
+    deleteMany?: ComentarioScalarWhereInput | ComentarioScalarWhereInput[]
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutSupervisorInput, ComentarioIncidenteUncheckedCreateWithoutSupervisorInput> | ComentarioIncidenteCreateWithoutSupervisorInput[] | ComentarioIncidenteUncheckedCreateWithoutSupervisorInput[]
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutSupervisorInput | ComentarioIncidenteCreateOrConnectWithoutSupervisorInput[]
+    upsert?: ComentarioIncidenteUpsertWithWhereUniqueWithoutSupervisorInput | ComentarioIncidenteUpsertWithWhereUniqueWithoutSupervisorInput[]
+    createMany?: ComentarioIncidenteCreateManySupervisorInputEnvelope
+    set?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    disconnect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    delete?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    connect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    update?: ComentarioIncidenteUpdateWithWhereUniqueWithoutSupervisorInput | ComentarioIncidenteUpdateWithWhereUniqueWithoutSupervisorInput[]
+    updateMany?: ComentarioIncidenteUpdateManyWithWhereWithoutSupervisorInput | ComentarioIncidenteUpdateManyWithWhereWithoutSupervisorInput[]
+    deleteMany?: ComentarioIncidenteScalarWhereInput | ComentarioIncidenteScalarWhereInput[]
   }
 
   export type SupervisorCreateNestedOneWithoutUbicacionesInput = {
@@ -22851,11 +28189,25 @@ export namespace Prisma {
     connect?: FotoIncidenteWhereUniqueInput | FotoIncidenteWhereUniqueInput[]
   }
 
+  export type ComentarioIncidenteCreateNestedManyWithoutReporteInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutReporteInput, ComentarioIncidenteUncheckedCreateWithoutReporteInput> | ComentarioIncidenteCreateWithoutReporteInput[] | ComentarioIncidenteUncheckedCreateWithoutReporteInput[]
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutReporteInput | ComentarioIncidenteCreateOrConnectWithoutReporteInput[]
+    createMany?: ComentarioIncidenteCreateManyReporteInputEnvelope
+    connect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+  }
+
   export type FotoIncidenteUncheckedCreateNestedManyWithoutReporteInput = {
     create?: XOR<FotoIncidenteCreateWithoutReporteInput, FotoIncidenteUncheckedCreateWithoutReporteInput> | FotoIncidenteCreateWithoutReporteInput[] | FotoIncidenteUncheckedCreateWithoutReporteInput[]
     connectOrCreate?: FotoIncidenteCreateOrConnectWithoutReporteInput | FotoIncidenteCreateOrConnectWithoutReporteInput[]
     createMany?: FotoIncidenteCreateManyReporteInputEnvelope
     connect?: FotoIncidenteWhereUniqueInput | FotoIncidenteWhereUniqueInput[]
+  }
+
+  export type ComentarioIncidenteUncheckedCreateNestedManyWithoutReporteInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutReporteInput, ComentarioIncidenteUncheckedCreateWithoutReporteInput> | ComentarioIncidenteCreateWithoutReporteInput[] | ComentarioIncidenteUncheckedCreateWithoutReporteInput[]
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutReporteInput | ComentarioIncidenteCreateOrConnectWithoutReporteInput[]
+    createMany?: ComentarioIncidenteCreateManyReporteInputEnvelope
+    connect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
   }
 
   export type SupervisorUpdateOneRequiredWithoutReportesNestedInput = {
@@ -22888,6 +28240,20 @@ export namespace Prisma {
     deleteMany?: FotoIncidenteScalarWhereInput | FotoIncidenteScalarWhereInput[]
   }
 
+  export type ComentarioIncidenteUpdateManyWithoutReporteNestedInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutReporteInput, ComentarioIncidenteUncheckedCreateWithoutReporteInput> | ComentarioIncidenteCreateWithoutReporteInput[] | ComentarioIncidenteUncheckedCreateWithoutReporteInput[]
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutReporteInput | ComentarioIncidenteCreateOrConnectWithoutReporteInput[]
+    upsert?: ComentarioIncidenteUpsertWithWhereUniqueWithoutReporteInput | ComentarioIncidenteUpsertWithWhereUniqueWithoutReporteInput[]
+    createMany?: ComentarioIncidenteCreateManyReporteInputEnvelope
+    set?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    disconnect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    delete?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    connect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    update?: ComentarioIncidenteUpdateWithWhereUniqueWithoutReporteInput | ComentarioIncidenteUpdateWithWhereUniqueWithoutReporteInput[]
+    updateMany?: ComentarioIncidenteUpdateManyWithWhereWithoutReporteInput | ComentarioIncidenteUpdateManyWithWhereWithoutReporteInput[]
+    deleteMany?: ComentarioIncidenteScalarWhereInput | ComentarioIncidenteScalarWhereInput[]
+  }
+
   export type FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput = {
     create?: XOR<FotoIncidenteCreateWithoutReporteInput, FotoIncidenteUncheckedCreateWithoutReporteInput> | FotoIncidenteCreateWithoutReporteInput[] | FotoIncidenteUncheckedCreateWithoutReporteInput[]
     connectOrCreate?: FotoIncidenteCreateOrConnectWithoutReporteInput | FotoIncidenteCreateOrConnectWithoutReporteInput[]
@@ -22900,6 +28266,20 @@ export namespace Prisma {
     update?: FotoIncidenteUpdateWithWhereUniqueWithoutReporteInput | FotoIncidenteUpdateWithWhereUniqueWithoutReporteInput[]
     updateMany?: FotoIncidenteUpdateManyWithWhereWithoutReporteInput | FotoIncidenteUpdateManyWithWhereWithoutReporteInput[]
     deleteMany?: FotoIncidenteScalarWhereInput | FotoIncidenteScalarWhereInput[]
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateManyWithoutReporteNestedInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutReporteInput, ComentarioIncidenteUncheckedCreateWithoutReporteInput> | ComentarioIncidenteCreateWithoutReporteInput[] | ComentarioIncidenteUncheckedCreateWithoutReporteInput[]
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutReporteInput | ComentarioIncidenteCreateOrConnectWithoutReporteInput[]
+    upsert?: ComentarioIncidenteUpsertWithWhereUniqueWithoutReporteInput | ComentarioIncidenteUpsertWithWhereUniqueWithoutReporteInput[]
+    createMany?: ComentarioIncidenteCreateManyReporteInputEnvelope
+    set?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    disconnect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    delete?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    connect?: ComentarioIncidenteWhereUniqueInput | ComentarioIncidenteWhereUniqueInput[]
+    update?: ComentarioIncidenteUpdateWithWhereUniqueWithoutReporteInput | ComentarioIncidenteUpdateWithWhereUniqueWithoutReporteInput[]
+    updateMany?: ComentarioIncidenteUpdateManyWithWhereWithoutReporteInput | ComentarioIncidenteUpdateManyWithWhereWithoutReporteInput[]
+    deleteMany?: ComentarioIncidenteScalarWhereInput | ComentarioIncidenteScalarWhereInput[]
   }
 
   export type ReporteIncidenteCreateNestedOneWithoutFotosInput = {
@@ -23210,6 +28590,160 @@ export namespace Prisma {
     update?: XOR<XOR<ReportenseCallUpdateToOneWithWhereWithoutPresentesInput, ReportenseCallUpdateWithoutPresentesInput>, ReportenseCallUncheckedUpdateWithoutPresentesInput>
   }
 
+  export type SupervisorCreateNestedOneWithoutComentariosInput = {
+    create?: XOR<SupervisorCreateWithoutComentariosInput, SupervisorUncheckedCreateWithoutComentariosInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutComentariosInput
+    connect?: SupervisorWhereUniqueInput
+  }
+
+  export type ComentarioFotoCreateNestedManyWithoutComentarioInput = {
+    create?: XOR<ComentarioFotoCreateWithoutComentarioInput, ComentarioFotoUncheckedCreateWithoutComentarioInput> | ComentarioFotoCreateWithoutComentarioInput[] | ComentarioFotoUncheckedCreateWithoutComentarioInput[]
+    connectOrCreate?: ComentarioFotoCreateOrConnectWithoutComentarioInput | ComentarioFotoCreateOrConnectWithoutComentarioInput[]
+    createMany?: ComentarioFotoCreateManyComentarioInputEnvelope
+    connect?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+  }
+
+  export type ComentarioFotoUncheckedCreateNestedManyWithoutComentarioInput = {
+    create?: XOR<ComentarioFotoCreateWithoutComentarioInput, ComentarioFotoUncheckedCreateWithoutComentarioInput> | ComentarioFotoCreateWithoutComentarioInput[] | ComentarioFotoUncheckedCreateWithoutComentarioInput[]
+    connectOrCreate?: ComentarioFotoCreateOrConnectWithoutComentarioInput | ComentarioFotoCreateOrConnectWithoutComentarioInput[]
+    createMany?: ComentarioFotoCreateManyComentarioInputEnvelope
+    connect?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+  }
+
+  export type SupervisorUpdateOneRequiredWithoutComentariosNestedInput = {
+    create?: XOR<SupervisorCreateWithoutComentariosInput, SupervisorUncheckedCreateWithoutComentariosInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutComentariosInput
+    upsert?: SupervisorUpsertWithoutComentariosInput
+    connect?: SupervisorWhereUniqueInput
+    update?: XOR<XOR<SupervisorUpdateToOneWithWhereWithoutComentariosInput, SupervisorUpdateWithoutComentariosInput>, SupervisorUncheckedUpdateWithoutComentariosInput>
+  }
+
+  export type ComentarioFotoUpdateManyWithoutComentarioNestedInput = {
+    create?: XOR<ComentarioFotoCreateWithoutComentarioInput, ComentarioFotoUncheckedCreateWithoutComentarioInput> | ComentarioFotoCreateWithoutComentarioInput[] | ComentarioFotoUncheckedCreateWithoutComentarioInput[]
+    connectOrCreate?: ComentarioFotoCreateOrConnectWithoutComentarioInput | ComentarioFotoCreateOrConnectWithoutComentarioInput[]
+    upsert?: ComentarioFotoUpsertWithWhereUniqueWithoutComentarioInput | ComentarioFotoUpsertWithWhereUniqueWithoutComentarioInput[]
+    createMany?: ComentarioFotoCreateManyComentarioInputEnvelope
+    set?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+    disconnect?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+    delete?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+    connect?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+    update?: ComentarioFotoUpdateWithWhereUniqueWithoutComentarioInput | ComentarioFotoUpdateWithWhereUniqueWithoutComentarioInput[]
+    updateMany?: ComentarioFotoUpdateManyWithWhereWithoutComentarioInput | ComentarioFotoUpdateManyWithWhereWithoutComentarioInput[]
+    deleteMany?: ComentarioFotoScalarWhereInput | ComentarioFotoScalarWhereInput[]
+  }
+
+  export type ComentarioFotoUncheckedUpdateManyWithoutComentarioNestedInput = {
+    create?: XOR<ComentarioFotoCreateWithoutComentarioInput, ComentarioFotoUncheckedCreateWithoutComentarioInput> | ComentarioFotoCreateWithoutComentarioInput[] | ComentarioFotoUncheckedCreateWithoutComentarioInput[]
+    connectOrCreate?: ComentarioFotoCreateOrConnectWithoutComentarioInput | ComentarioFotoCreateOrConnectWithoutComentarioInput[]
+    upsert?: ComentarioFotoUpsertWithWhereUniqueWithoutComentarioInput | ComentarioFotoUpsertWithWhereUniqueWithoutComentarioInput[]
+    createMany?: ComentarioFotoCreateManyComentarioInputEnvelope
+    set?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+    disconnect?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+    delete?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+    connect?: ComentarioFotoWhereUniqueInput | ComentarioFotoWhereUniqueInput[]
+    update?: ComentarioFotoUpdateWithWhereUniqueWithoutComentarioInput | ComentarioFotoUpdateWithWhereUniqueWithoutComentarioInput[]
+    updateMany?: ComentarioFotoUpdateManyWithWhereWithoutComentarioInput | ComentarioFotoUpdateManyWithWhereWithoutComentarioInput[]
+    deleteMany?: ComentarioFotoScalarWhereInput | ComentarioFotoScalarWhereInput[]
+  }
+
+  export type ComentarioCreateNestedOneWithoutFotosInput = {
+    create?: XOR<ComentarioCreateWithoutFotosInput, ComentarioUncheckedCreateWithoutFotosInput>
+    connectOrCreate?: ComentarioCreateOrConnectWithoutFotosInput
+    connect?: ComentarioWhereUniqueInput
+  }
+
+  export type ComentarioUpdateOneRequiredWithoutFotosNestedInput = {
+    create?: XOR<ComentarioCreateWithoutFotosInput, ComentarioUncheckedCreateWithoutFotosInput>
+    connectOrCreate?: ComentarioCreateOrConnectWithoutFotosInput
+    upsert?: ComentarioUpsertWithoutFotosInput
+    connect?: ComentarioWhereUniqueInput
+    update?: XOR<XOR<ComentarioUpdateToOneWithWhereWithoutFotosInput, ComentarioUpdateWithoutFotosInput>, ComentarioUncheckedUpdateWithoutFotosInput>
+  }
+
+  export type ReporteIncidenteCreateNestedOneWithoutComentariosInput = {
+    create?: XOR<ReporteIncidenteCreateWithoutComentariosInput, ReporteIncidenteUncheckedCreateWithoutComentariosInput>
+    connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutComentariosInput
+    connect?: ReporteIncidenteWhereUniqueInput
+  }
+
+  export type SupervisorCreateNestedOneWithoutComentariosIncidenteInput = {
+    create?: XOR<SupervisorCreateWithoutComentariosIncidenteInput, SupervisorUncheckedCreateWithoutComentariosIncidenteInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutComentariosIncidenteInput
+    connect?: SupervisorWhereUniqueInput
+  }
+
+  export type ComentarioIncidenteFotoCreateNestedManyWithoutComentarioIncidenteInput = {
+    create?: XOR<ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput, ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput> | ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput[] | ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput[]
+    connectOrCreate?: ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput | ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput[]
+    createMany?: ComentarioIncidenteFotoCreateManyComentarioIncidenteInputEnvelope
+    connect?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+  }
+
+  export type ComentarioIncidenteFotoUncheckedCreateNestedManyWithoutComentarioIncidenteInput = {
+    create?: XOR<ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput, ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput> | ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput[] | ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput[]
+    connectOrCreate?: ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput | ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput[]
+    createMany?: ComentarioIncidenteFotoCreateManyComentarioIncidenteInputEnvelope
+    connect?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+  }
+
+  export type ReporteIncidenteUpdateOneRequiredWithoutComentariosNestedInput = {
+    create?: XOR<ReporteIncidenteCreateWithoutComentariosInput, ReporteIncidenteUncheckedCreateWithoutComentariosInput>
+    connectOrCreate?: ReporteIncidenteCreateOrConnectWithoutComentariosInput
+    upsert?: ReporteIncidenteUpsertWithoutComentariosInput
+    connect?: ReporteIncidenteWhereUniqueInput
+    update?: XOR<XOR<ReporteIncidenteUpdateToOneWithWhereWithoutComentariosInput, ReporteIncidenteUpdateWithoutComentariosInput>, ReporteIncidenteUncheckedUpdateWithoutComentariosInput>
+  }
+
+  export type SupervisorUpdateOneRequiredWithoutComentariosIncidenteNestedInput = {
+    create?: XOR<SupervisorCreateWithoutComentariosIncidenteInput, SupervisorUncheckedCreateWithoutComentariosIncidenteInput>
+    connectOrCreate?: SupervisorCreateOrConnectWithoutComentariosIncidenteInput
+    upsert?: SupervisorUpsertWithoutComentariosIncidenteInput
+    connect?: SupervisorWhereUniqueInput
+    update?: XOR<XOR<SupervisorUpdateToOneWithWhereWithoutComentariosIncidenteInput, SupervisorUpdateWithoutComentariosIncidenteInput>, SupervisorUncheckedUpdateWithoutComentariosIncidenteInput>
+  }
+
+  export type ComentarioIncidenteFotoUpdateManyWithoutComentarioIncidenteNestedInput = {
+    create?: XOR<ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput, ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput> | ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput[] | ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput[]
+    connectOrCreate?: ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput | ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput[]
+    upsert?: ComentarioIncidenteFotoUpsertWithWhereUniqueWithoutComentarioIncidenteInput | ComentarioIncidenteFotoUpsertWithWhereUniqueWithoutComentarioIncidenteInput[]
+    createMany?: ComentarioIncidenteFotoCreateManyComentarioIncidenteInputEnvelope
+    set?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+    disconnect?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+    delete?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+    connect?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+    update?: ComentarioIncidenteFotoUpdateWithWhereUniqueWithoutComentarioIncidenteInput | ComentarioIncidenteFotoUpdateWithWhereUniqueWithoutComentarioIncidenteInput[]
+    updateMany?: ComentarioIncidenteFotoUpdateManyWithWhereWithoutComentarioIncidenteInput | ComentarioIncidenteFotoUpdateManyWithWhereWithoutComentarioIncidenteInput[]
+    deleteMany?: ComentarioIncidenteFotoScalarWhereInput | ComentarioIncidenteFotoScalarWhereInput[]
+  }
+
+  export type ComentarioIncidenteFotoUncheckedUpdateManyWithoutComentarioIncidenteNestedInput = {
+    create?: XOR<ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput, ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput> | ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput[] | ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput[]
+    connectOrCreate?: ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput | ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput[]
+    upsert?: ComentarioIncidenteFotoUpsertWithWhereUniqueWithoutComentarioIncidenteInput | ComentarioIncidenteFotoUpsertWithWhereUniqueWithoutComentarioIncidenteInput[]
+    createMany?: ComentarioIncidenteFotoCreateManyComentarioIncidenteInputEnvelope
+    set?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+    disconnect?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+    delete?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+    connect?: ComentarioIncidenteFotoWhereUniqueInput | ComentarioIncidenteFotoWhereUniqueInput[]
+    update?: ComentarioIncidenteFotoUpdateWithWhereUniqueWithoutComentarioIncidenteInput | ComentarioIncidenteFotoUpdateWithWhereUniqueWithoutComentarioIncidenteInput[]
+    updateMany?: ComentarioIncidenteFotoUpdateManyWithWhereWithoutComentarioIncidenteInput | ComentarioIncidenteFotoUpdateManyWithWhereWithoutComentarioIncidenteInput[]
+    deleteMany?: ComentarioIncidenteFotoScalarWhereInput | ComentarioIncidenteFotoScalarWhereInput[]
+  }
+
+  export type ComentarioIncidenteCreateNestedOneWithoutFotosInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutFotosInput, ComentarioIncidenteUncheckedCreateWithoutFotosInput>
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutFotosInput
+    connect?: ComentarioIncidenteWhereUniqueInput
+  }
+
+  export type ComentarioIncidenteUpdateOneRequiredWithoutFotosNestedInput = {
+    create?: XOR<ComentarioIncidenteCreateWithoutFotosInput, ComentarioIncidenteUncheckedCreateWithoutFotosInput>
+    connectOrCreate?: ComentarioIncidenteCreateOrConnectWithoutFotosInput
+    upsert?: ComentarioIncidenteUpsertWithoutFotosInput
+    connect?: ComentarioIncidenteWhereUniqueInput
+    update?: XOR<XOR<ComentarioIncidenteUpdateToOneWithWhereWithoutFotosInput, ComentarioIncidenteUpdateWithoutFotosInput>, ComentarioIncidenteUncheckedUpdateWithoutFotosInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -23485,6 +29019,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutUserInput = {
@@ -23495,6 +29031,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioUncheckedCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutUserInput = {
@@ -23601,6 +29139,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutUserInput = {
@@ -23611,6 +29151,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type PatioUpsertWithoutUserInput = {
@@ -23960,6 +29502,7 @@ export namespace Prisma {
   }
 
   export type IncidenteAsignadoCreateWithoutPanicInput = {
+    estado?: string
     fechaAsignacion?: Date | string
     latitud: number
     longitud: number
@@ -23970,6 +29513,7 @@ export namespace Prisma {
   export type IncidenteAsignadoUncheckedCreateWithoutPanicInput = {
     id?: number
     supervisorId: number
+    estado?: string
     fechaAsignacion?: Date | string
     latitud: number
     longitud: number
@@ -24036,6 +29580,7 @@ export namespace Prisma {
     NOT?: IncidenteAsignadoScalarWhereInput | IncidenteAsignadoScalarWhereInput[]
     id?: IntFilter<"IncidenteAsignado"> | number
     supervisorId?: IntFilter<"IncidenteAsignado"> | number
+    estado?: StringFilter<"IncidenteAsignado"> | string
     fechaAsignacion?: DateTimeFilter<"IncidenteAsignado"> | Date | string
     panicId?: IntFilter<"IncidenteAsignado"> | number
     latitud?: FloatFilter<"IncidenteAsignado"> | number
@@ -24104,9 +29649,9 @@ export namespace Prisma {
   export type ReporteIncidenteCreateWithoutSupervisorInput = {
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
     incidenteAsignado: IncidenteAsignadoCreateNestedOneWithoutReporteInput
     fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
+    comentarios?: ComentarioIncidenteCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteUncheckedCreateWithoutSupervisorInput = {
@@ -24114,8 +29659,8 @@ export namespace Prisma {
     incidenteAsignadoId: number
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
     fotos?: FotoIncidenteUncheckedCreateNestedManyWithoutReporteInput
+    comentarios?: ComentarioIncidenteUncheckedCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteCreateOrConnectWithoutSupervisorInput = {
@@ -24129,6 +29674,7 @@ export namespace Prisma {
   }
 
   export type IncidenteAsignadoCreateWithoutSupervisorInput = {
+    estado?: string
     fechaAsignacion?: Date | string
     latitud: number
     longitud: number
@@ -24138,6 +29684,7 @@ export namespace Prisma {
 
   export type IncidenteAsignadoUncheckedCreateWithoutSupervisorInput = {
     id?: number
+    estado?: string
     fechaAsignacion?: Date | string
     panicId: number
     latitud: number
@@ -24202,6 +29749,62 @@ export namespace Prisma {
 
   export type PresenteCreateManySupervisorInputEnvelope = {
     data: PresenteCreateManySupervisorInput | PresenteCreateManySupervisorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ComentarioCreateWithoutSupervisorInput = {
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ubicacionLat?: number | null
+    ubicacionLng?: number | null
+    fotos?: ComentarioFotoCreateNestedManyWithoutComentarioInput
+  }
+
+  export type ComentarioUncheckedCreateWithoutSupervisorInput = {
+    id?: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ubicacionLat?: number | null
+    ubicacionLng?: number | null
+    fotos?: ComentarioFotoUncheckedCreateNestedManyWithoutComentarioInput
+  }
+
+  export type ComentarioCreateOrConnectWithoutSupervisorInput = {
+    where: ComentarioWhereUniqueInput
+    create: XOR<ComentarioCreateWithoutSupervisorInput, ComentarioUncheckedCreateWithoutSupervisorInput>
+  }
+
+  export type ComentarioCreateManySupervisorInputEnvelope = {
+    data: ComentarioCreateManySupervisorInput | ComentarioCreateManySupervisorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ComentarioIncidenteCreateWithoutSupervisorInput = {
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reporte: ReporteIncidenteCreateNestedOneWithoutComentariosInput
+    fotos?: ComentarioIncidenteFotoCreateNestedManyWithoutComentarioIncidenteInput
+  }
+
+  export type ComentarioIncidenteUncheckedCreateWithoutSupervisorInput = {
+    id?: number
+    reporteId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fotos?: ComentarioIncidenteFotoUncheckedCreateNestedManyWithoutComentarioIncidenteInput
+  }
+
+  export type ComentarioIncidenteCreateOrConnectWithoutSupervisorInput = {
+    where: ComentarioIncidenteWhereUniqueInput
+    create: XOR<ComentarioIncidenteCreateWithoutSupervisorInput, ComentarioIncidenteUncheckedCreateWithoutSupervisorInput>
+  }
+
+  export type ComentarioIncidenteCreateManySupervisorInputEnvelope = {
+    data: ComentarioIncidenteCreateManySupervisorInput | ComentarioIncidenteCreateManySupervisorInput[]
     skipDuplicates?: boolean
   }
 
@@ -24299,7 +29902,6 @@ export namespace Prisma {
     incidenteAsignadoId?: IntFilter<"ReporteIncidente"> | number
     fecha?: DateTimeFilter<"ReporteIncidente"> | Date | string
     estado?: StringNullableFilter<"ReporteIncidente"> | string | null
-    descripcion?: StringFilter<"ReporteIncidente"> | string
   }
 
   export type IncidenteAsignadoUpsertWithWhereUniqueWithoutSupervisorInput = {
@@ -24374,6 +29976,63 @@ export namespace Prisma {
     longitud?: FloatFilter<"Presente"> | number
   }
 
+  export type ComentarioUpsertWithWhereUniqueWithoutSupervisorInput = {
+    where: ComentarioWhereUniqueInput
+    update: XOR<ComentarioUpdateWithoutSupervisorInput, ComentarioUncheckedUpdateWithoutSupervisorInput>
+    create: XOR<ComentarioCreateWithoutSupervisorInput, ComentarioUncheckedCreateWithoutSupervisorInput>
+  }
+
+  export type ComentarioUpdateWithWhereUniqueWithoutSupervisorInput = {
+    where: ComentarioWhereUniqueInput
+    data: XOR<ComentarioUpdateWithoutSupervisorInput, ComentarioUncheckedUpdateWithoutSupervisorInput>
+  }
+
+  export type ComentarioUpdateManyWithWhereWithoutSupervisorInput = {
+    where: ComentarioScalarWhereInput
+    data: XOR<ComentarioUpdateManyMutationInput, ComentarioUncheckedUpdateManyWithoutSupervisorInput>
+  }
+
+  export type ComentarioScalarWhereInput = {
+    AND?: ComentarioScalarWhereInput | ComentarioScalarWhereInput[]
+    OR?: ComentarioScalarWhereInput[]
+    NOT?: ComentarioScalarWhereInput | ComentarioScalarWhereInput[]
+    id?: IntFilter<"Comentario"> | number
+    supervisorId?: IntFilter<"Comentario"> | number
+    texto?: StringFilter<"Comentario"> | string
+    createdAt?: DateTimeFilter<"Comentario"> | Date | string
+    updatedAt?: DateTimeFilter<"Comentario"> | Date | string
+    ubicacionLat?: FloatNullableFilter<"Comentario"> | number | null
+    ubicacionLng?: FloatNullableFilter<"Comentario"> | number | null
+  }
+
+  export type ComentarioIncidenteUpsertWithWhereUniqueWithoutSupervisorInput = {
+    where: ComentarioIncidenteWhereUniqueInput
+    update: XOR<ComentarioIncidenteUpdateWithoutSupervisorInput, ComentarioIncidenteUncheckedUpdateWithoutSupervisorInput>
+    create: XOR<ComentarioIncidenteCreateWithoutSupervisorInput, ComentarioIncidenteUncheckedCreateWithoutSupervisorInput>
+  }
+
+  export type ComentarioIncidenteUpdateWithWhereUniqueWithoutSupervisorInput = {
+    where: ComentarioIncidenteWhereUniqueInput
+    data: XOR<ComentarioIncidenteUpdateWithoutSupervisorInput, ComentarioIncidenteUncheckedUpdateWithoutSupervisorInput>
+  }
+
+  export type ComentarioIncidenteUpdateManyWithWhereWithoutSupervisorInput = {
+    where: ComentarioIncidenteScalarWhereInput
+    data: XOR<ComentarioIncidenteUpdateManyMutationInput, ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorInput>
+  }
+
+  export type ComentarioIncidenteScalarWhereInput = {
+    AND?: ComentarioIncidenteScalarWhereInput | ComentarioIncidenteScalarWhereInput[]
+    OR?: ComentarioIncidenteScalarWhereInput[]
+    NOT?: ComentarioIncidenteScalarWhereInput | ComentarioIncidenteScalarWhereInput[]
+    id?: IntFilter<"ComentarioIncidente"> | number
+    reporteId?: IntFilter<"ComentarioIncidente"> | number
+    supervisorId?: IntFilter<"ComentarioIncidente"> | number
+    texto?: StringFilter<"ComentarioIncidente"> | string
+    createdAt?: DateTimeFilter<"ComentarioIncidente"> | Date | string
+    updatedAt?: DateTimeFilter<"ComentarioIncidente"> | Date | string
+  }
+
   export type SupervisorCreateWithoutUbicacionesInput = {
     codigo?: string | null
     user: UserRoleCreateNestedOneWithoutSupervisorInput
@@ -24381,6 +30040,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutUbicacionesInput = {
@@ -24391,6 +30052,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioUncheckedCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutUbicacionesInput = {
@@ -24416,6 +30079,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutUbicacionesInput = {
@@ -24426,6 +30091,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type UserRoleCreateWithoutCoordinadorInput = {
@@ -24603,6 +30270,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutAsignacionesInput = {
@@ -24613,6 +30282,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioUncheckedCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutAsignacionesInput = {
@@ -24647,9 +30318,9 @@ export namespace Prisma {
   export type ReporteIncidenteCreateWithoutIncidenteAsignadoInput = {
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
     supervisor: SupervisorCreateNestedOneWithoutReportesInput
     fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
+    comentarios?: ComentarioIncidenteCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteUncheckedCreateWithoutIncidenteAsignadoInput = {
@@ -24657,8 +30328,8 @@ export namespace Prisma {
     supervisorId: number
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
     fotos?: FotoIncidenteUncheckedCreateNestedManyWithoutReporteInput
+    comentarios?: ComentarioIncidenteUncheckedCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteCreateOrConnectWithoutIncidenteAsignadoInput = {
@@ -24684,6 +30355,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutAsignacionesInput = {
@@ -24694,6 +30367,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type BotonPanicoUpsertWithoutIncidenteAsignadoInput = {
@@ -24740,9 +30415,9 @@ export namespace Prisma {
   export type ReporteIncidenteUpdateWithoutIncidenteAsignadoInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
     supervisor?: SupervisorUpdateOneRequiredWithoutReportesNestedInput
     fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
+    comentarios?: ComentarioIncidenteUpdateManyWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateWithoutIncidenteAsignadoInput = {
@@ -24750,8 +30425,8 @@ export namespace Prisma {
     supervisorId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
     fotos?: FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput
+    comentarios?: ComentarioIncidenteUncheckedUpdateManyWithoutReporteNestedInput
   }
 
   export type SupervisorCreateWithoutReportesInput = {
@@ -24761,6 +30436,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutReportesInput = {
@@ -24771,6 +30448,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioUncheckedCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutReportesInput = {
@@ -24779,6 +30458,7 @@ export namespace Prisma {
   }
 
   export type IncidenteAsignadoCreateWithoutReporteInput = {
+    estado?: string
     fechaAsignacion?: Date | string
     latitud: number
     longitud: number
@@ -24789,6 +30469,7 @@ export namespace Prisma {
   export type IncidenteAsignadoUncheckedCreateWithoutReporteInput = {
     id?: number
     supervisorId: number
+    estado?: string
     fechaAsignacion?: Date | string
     panicId: number
     latitud: number
@@ -24821,6 +30502,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ComentarioIncidenteCreateWithoutReporteInput = {
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    supervisor: SupervisorCreateNestedOneWithoutComentariosIncidenteInput
+    fotos?: ComentarioIncidenteFotoCreateNestedManyWithoutComentarioIncidenteInput
+  }
+
+  export type ComentarioIncidenteUncheckedCreateWithoutReporteInput = {
+    id?: number
+    supervisorId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    fotos?: ComentarioIncidenteFotoUncheckedCreateNestedManyWithoutComentarioIncidenteInput
+  }
+
+  export type ComentarioIncidenteCreateOrConnectWithoutReporteInput = {
+    where: ComentarioIncidenteWhereUniqueInput
+    create: XOR<ComentarioIncidenteCreateWithoutReporteInput, ComentarioIncidenteUncheckedCreateWithoutReporteInput>
+  }
+
+  export type ComentarioIncidenteCreateManyReporteInputEnvelope = {
+    data: ComentarioIncidenteCreateManyReporteInput | ComentarioIncidenteCreateManyReporteInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SupervisorUpsertWithoutReportesInput = {
     update: XOR<SupervisorUpdateWithoutReportesInput, SupervisorUncheckedUpdateWithoutReportesInput>
     create: XOR<SupervisorCreateWithoutReportesInput, SupervisorUncheckedCreateWithoutReportesInput>
@@ -24839,6 +30547,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutReportesInput = {
@@ -24849,6 +30559,8 @@ export namespace Prisma {
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type IncidenteAsignadoUpsertWithoutReporteInput = {
@@ -24863,6 +30575,7 @@ export namespace Prisma {
   }
 
   export type IncidenteAsignadoUpdateWithoutReporteInput = {
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
@@ -24873,6 +30586,7 @@ export namespace Prisma {
   export type IncidenteAsignadoUncheckedUpdateWithoutReporteInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     panicId?: IntFieldUpdateOperationsInput | number
     latitud?: FloatFieldUpdateOperationsInput | number
@@ -24905,12 +30619,28 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"FotoIncidente"> | Date | string
   }
 
+  export type ComentarioIncidenteUpsertWithWhereUniqueWithoutReporteInput = {
+    where: ComentarioIncidenteWhereUniqueInput
+    update: XOR<ComentarioIncidenteUpdateWithoutReporteInput, ComentarioIncidenteUncheckedUpdateWithoutReporteInput>
+    create: XOR<ComentarioIncidenteCreateWithoutReporteInput, ComentarioIncidenteUncheckedCreateWithoutReporteInput>
+  }
+
+  export type ComentarioIncidenteUpdateWithWhereUniqueWithoutReporteInput = {
+    where: ComentarioIncidenteWhereUniqueInput
+    data: XOR<ComentarioIncidenteUpdateWithoutReporteInput, ComentarioIncidenteUncheckedUpdateWithoutReporteInput>
+  }
+
+  export type ComentarioIncidenteUpdateManyWithWhereWithoutReporteInput = {
+    where: ComentarioIncidenteScalarWhereInput
+    data: XOR<ComentarioIncidenteUpdateManyMutationInput, ComentarioIncidenteUncheckedUpdateManyWithoutReporteInput>
+  }
+
   export type ReporteIncidenteCreateWithoutFotosInput = {
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
     supervisor: SupervisorCreateNestedOneWithoutReportesInput
     incidenteAsignado: IncidenteAsignadoCreateNestedOneWithoutReporteInput
+    comentarios?: ComentarioIncidenteCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteUncheckedCreateWithoutFotosInput = {
@@ -24919,7 +30649,7 @@ export namespace Prisma {
     incidenteAsignadoId: number
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
+    comentarios?: ComentarioIncidenteUncheckedCreateNestedManyWithoutReporteInput
   }
 
   export type ReporteIncidenteCreateOrConnectWithoutFotosInput = {
@@ -24941,9 +30671,9 @@ export namespace Prisma {
   export type ReporteIncidenteUpdateWithoutFotosInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
     supervisor?: SupervisorUpdateOneRequiredWithoutReportesNestedInput
     incidenteAsignado?: IncidenteAsignadoUpdateOneRequiredWithoutReporteNestedInput
+    comentarios?: ComentarioIncidenteUpdateManyWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateWithoutFotosInput = {
@@ -24952,7 +30682,7 @@ export namespace Prisma {
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
+    comentarios?: ComentarioIncidenteUncheckedUpdateManyWithoutReporteNestedInput
   }
 
   export type UserRoleCreateWithoutPatioInput = {
@@ -25384,6 +31114,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutTurnoProgramadoInput = {
@@ -25394,6 +31126,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
     Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioUncheckedCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutTurnoProgramadoInput = {
@@ -25435,6 +31169,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutTurnoProgramadoInput = {
@@ -25445,6 +31181,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
     Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type CoordinadorUpsertWithoutTurnoProgramadoInput = {
@@ -25555,6 +31293,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorUncheckedCreateWithoutPresenteInput = {
@@ -25565,6 +31305,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
     asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
     TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioUncheckedCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
   }
 
   export type SupervisorCreateOrConnectWithoutPresenteInput = {
@@ -25608,6 +31350,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput
   }
 
   export type SupervisorUncheckedUpdateWithoutPresenteInput = {
@@ -25618,6 +31362,8 @@ export namespace Prisma {
     reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
     asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
     TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
   }
 
   export type ReportenseCallUpsertWithoutPresentesInput = {
@@ -25642,6 +31388,378 @@ export namespace Prisma {
     coordinadorId?: IntFieldUpdateOperationsInput | number
     turno?: EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SupervisorCreateWithoutComentariosInput = {
+    codigo?: string | null
+    user: UserRoleCreateNestedOneWithoutSupervisorInput
+    ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorUncheckedCreateWithoutComentariosInput = {
+    id?: number
+    userRoleId: number
+    codigo?: string | null
+    ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorCreateOrConnectWithoutComentariosInput = {
+    where: SupervisorWhereUniqueInput
+    create: XOR<SupervisorCreateWithoutComentariosInput, SupervisorUncheckedCreateWithoutComentariosInput>
+  }
+
+  export type ComentarioFotoCreateWithoutComentarioInput = {
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioFotoUncheckedCreateWithoutComentarioInput = {
+    id?: number
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioFotoCreateOrConnectWithoutComentarioInput = {
+    where: ComentarioFotoWhereUniqueInput
+    create: XOR<ComentarioFotoCreateWithoutComentarioInput, ComentarioFotoUncheckedCreateWithoutComentarioInput>
+  }
+
+  export type ComentarioFotoCreateManyComentarioInputEnvelope = {
+    data: ComentarioFotoCreateManyComentarioInput | ComentarioFotoCreateManyComentarioInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SupervisorUpsertWithoutComentariosInput = {
+    update: XOR<SupervisorUpdateWithoutComentariosInput, SupervisorUncheckedUpdateWithoutComentariosInput>
+    create: XOR<SupervisorCreateWithoutComentariosInput, SupervisorUncheckedCreateWithoutComentariosInput>
+    where?: SupervisorWhereInput
+  }
+
+  export type SupervisorUpdateToOneWithWhereWithoutComentariosInput = {
+    where?: SupervisorWhereInput
+    data: XOR<SupervisorUpdateWithoutComentariosInput, SupervisorUncheckedUpdateWithoutComentariosInput>
+  }
+
+  export type SupervisorUpdateWithoutComentariosInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
+    ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type SupervisorUncheckedUpdateWithoutComentariosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    ComentariosIncidente?: ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type ComentarioFotoUpsertWithWhereUniqueWithoutComentarioInput = {
+    where: ComentarioFotoWhereUniqueInput
+    update: XOR<ComentarioFotoUpdateWithoutComentarioInput, ComentarioFotoUncheckedUpdateWithoutComentarioInput>
+    create: XOR<ComentarioFotoCreateWithoutComentarioInput, ComentarioFotoUncheckedCreateWithoutComentarioInput>
+  }
+
+  export type ComentarioFotoUpdateWithWhereUniqueWithoutComentarioInput = {
+    where: ComentarioFotoWhereUniqueInput
+    data: XOR<ComentarioFotoUpdateWithoutComentarioInput, ComentarioFotoUncheckedUpdateWithoutComentarioInput>
+  }
+
+  export type ComentarioFotoUpdateManyWithWhereWithoutComentarioInput = {
+    where: ComentarioFotoScalarWhereInput
+    data: XOR<ComentarioFotoUpdateManyMutationInput, ComentarioFotoUncheckedUpdateManyWithoutComentarioInput>
+  }
+
+  export type ComentarioFotoScalarWhereInput = {
+    AND?: ComentarioFotoScalarWhereInput | ComentarioFotoScalarWhereInput[]
+    OR?: ComentarioFotoScalarWhereInput[]
+    NOT?: ComentarioFotoScalarWhereInput | ComentarioFotoScalarWhereInput[]
+    id?: IntFilter<"ComentarioFoto"> | number
+    comentarioId?: IntFilter<"ComentarioFoto"> | number
+    url?: StringFilter<"ComentarioFoto"> | string
+    createdAt?: DateTimeFilter<"ComentarioFoto"> | Date | string
+  }
+
+  export type ComentarioCreateWithoutFotosInput = {
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ubicacionLat?: number | null
+    ubicacionLng?: number | null
+    supervisor: SupervisorCreateNestedOneWithoutComentariosInput
+  }
+
+  export type ComentarioUncheckedCreateWithoutFotosInput = {
+    id?: number
+    supervisorId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ubicacionLat?: number | null
+    ubicacionLng?: number | null
+  }
+
+  export type ComentarioCreateOrConnectWithoutFotosInput = {
+    where: ComentarioWhereUniqueInput
+    create: XOR<ComentarioCreateWithoutFotosInput, ComentarioUncheckedCreateWithoutFotosInput>
+  }
+
+  export type ComentarioUpsertWithoutFotosInput = {
+    update: XOR<ComentarioUpdateWithoutFotosInput, ComentarioUncheckedUpdateWithoutFotosInput>
+    create: XOR<ComentarioCreateWithoutFotosInput, ComentarioUncheckedCreateWithoutFotosInput>
+    where?: ComentarioWhereInput
+  }
+
+  export type ComentarioUpdateToOneWithWhereWithoutFotosInput = {
+    where?: ComentarioWhereInput
+    data: XOR<ComentarioUpdateWithoutFotosInput, ComentarioUncheckedUpdateWithoutFotosInput>
+  }
+
+  export type ComentarioUpdateWithoutFotosInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+    supervisor?: SupervisorUpdateOneRequiredWithoutComentariosNestedInput
+  }
+
+  export type ComentarioUncheckedUpdateWithoutFotosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type ReporteIncidenteCreateWithoutComentariosInput = {
+    fecha?: Date | string
+    estado?: string | null
+    supervisor: SupervisorCreateNestedOneWithoutReportesInput
+    incidenteAsignado: IncidenteAsignadoCreateNestedOneWithoutReporteInput
+    fotos?: FotoIncidenteCreateNestedManyWithoutReporteInput
+  }
+
+  export type ReporteIncidenteUncheckedCreateWithoutComentariosInput = {
+    id?: number
+    supervisorId: number
+    incidenteAsignadoId: number
+    fecha?: Date | string
+    estado?: string | null
+    fotos?: FotoIncidenteUncheckedCreateNestedManyWithoutReporteInput
+  }
+
+  export type ReporteIncidenteCreateOrConnectWithoutComentariosInput = {
+    where: ReporteIncidenteWhereUniqueInput
+    create: XOR<ReporteIncidenteCreateWithoutComentariosInput, ReporteIncidenteUncheckedCreateWithoutComentariosInput>
+  }
+
+  export type SupervisorCreateWithoutComentariosIncidenteInput = {
+    codigo?: string | null
+    user: UserRoleCreateNestedOneWithoutSupervisorInput
+    ubicaciones?: UbicacionSupervisorCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorUncheckedCreateWithoutComentariosIncidenteInput = {
+    id?: number
+    userRoleId: number
+    codigo?: string | null
+    ubicaciones?: UbicacionSupervisorUncheckedCreateNestedManyWithoutSupervisorInput
+    reportes?: ReporteIncidenteUncheckedCreateNestedManyWithoutSupervisorInput
+    asignaciones?: IncidenteAsignadoUncheckedCreateNestedManyWithoutSupervisorInput
+    TurnoProgramado?: TurnoProgramadoUncheckedCreateNestedManyWithoutSupervisorInput
+    Presente?: PresenteUncheckedCreateNestedManyWithoutSupervisorInput
+    Comentarios?: ComentarioUncheckedCreateNestedManyWithoutSupervisorInput
+  }
+
+  export type SupervisorCreateOrConnectWithoutComentariosIncidenteInput = {
+    where: SupervisorWhereUniqueInput
+    create: XOR<SupervisorCreateWithoutComentariosIncidenteInput, SupervisorUncheckedCreateWithoutComentariosIncidenteInput>
+  }
+
+  export type ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput = {
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput = {
+    id?: number
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioIncidenteFotoCreateOrConnectWithoutComentarioIncidenteInput = {
+    where: ComentarioIncidenteFotoWhereUniqueInput
+    create: XOR<ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput, ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput>
+  }
+
+  export type ComentarioIncidenteFotoCreateManyComentarioIncidenteInputEnvelope = {
+    data: ComentarioIncidenteFotoCreateManyComentarioIncidenteInput | ComentarioIncidenteFotoCreateManyComentarioIncidenteInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReporteIncidenteUpsertWithoutComentariosInput = {
+    update: XOR<ReporteIncidenteUpdateWithoutComentariosInput, ReporteIncidenteUncheckedUpdateWithoutComentariosInput>
+    create: XOR<ReporteIncidenteCreateWithoutComentariosInput, ReporteIncidenteUncheckedCreateWithoutComentariosInput>
+    where?: ReporteIncidenteWhereInput
+  }
+
+  export type ReporteIncidenteUpdateToOneWithWhereWithoutComentariosInput = {
+    where?: ReporteIncidenteWhereInput
+    data: XOR<ReporteIncidenteUpdateWithoutComentariosInput, ReporteIncidenteUncheckedUpdateWithoutComentariosInput>
+  }
+
+  export type ReporteIncidenteUpdateWithoutComentariosInput = {
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
+    supervisor?: SupervisorUpdateOneRequiredWithoutReportesNestedInput
+    incidenteAsignado?: IncidenteAsignadoUpdateOneRequiredWithoutReporteNestedInput
+    fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
+  }
+
+  export type ReporteIncidenteUncheckedUpdateWithoutComentariosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    estado?: NullableStringFieldUpdateOperationsInput | string | null
+    fotos?: FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput
+  }
+
+  export type SupervisorUpsertWithoutComentariosIncidenteInput = {
+    update: XOR<SupervisorUpdateWithoutComentariosIncidenteInput, SupervisorUncheckedUpdateWithoutComentariosIncidenteInput>
+    create: XOR<SupervisorCreateWithoutComentariosIncidenteInput, SupervisorUncheckedCreateWithoutComentariosIncidenteInput>
+    where?: SupervisorWhereInput
+  }
+
+  export type SupervisorUpdateToOneWithWhereWithoutComentariosIncidenteInput = {
+    where?: SupervisorWhereInput
+    data: XOR<SupervisorUpdateWithoutComentariosIncidenteInput, SupervisorUncheckedUpdateWithoutComentariosIncidenteInput>
+  }
+
+  export type SupervisorUpdateWithoutComentariosIncidenteInput = {
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserRoleUpdateOneRequiredWithoutSupervisorNestedInput
+    ubicaciones?: UbicacionSupervisorUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type SupervisorUncheckedUpdateWithoutComentariosIncidenteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userRoleId?: IntFieldUpdateOperationsInput | number
+    codigo?: NullableStringFieldUpdateOperationsInput | string | null
+    ubicaciones?: UbicacionSupervisorUncheckedUpdateManyWithoutSupervisorNestedInput
+    reportes?: ReporteIncidenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    asignaciones?: IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    TurnoProgramado?: TurnoProgramadoUncheckedUpdateManyWithoutSupervisorNestedInput
+    Presente?: PresenteUncheckedUpdateManyWithoutSupervisorNestedInput
+    Comentarios?: ComentarioUncheckedUpdateManyWithoutSupervisorNestedInput
+  }
+
+  export type ComentarioIncidenteFotoUpsertWithWhereUniqueWithoutComentarioIncidenteInput = {
+    where: ComentarioIncidenteFotoWhereUniqueInput
+    update: XOR<ComentarioIncidenteFotoUpdateWithoutComentarioIncidenteInput, ComentarioIncidenteFotoUncheckedUpdateWithoutComentarioIncidenteInput>
+    create: XOR<ComentarioIncidenteFotoCreateWithoutComentarioIncidenteInput, ComentarioIncidenteFotoUncheckedCreateWithoutComentarioIncidenteInput>
+  }
+
+  export type ComentarioIncidenteFotoUpdateWithWhereUniqueWithoutComentarioIncidenteInput = {
+    where: ComentarioIncidenteFotoWhereUniqueInput
+    data: XOR<ComentarioIncidenteFotoUpdateWithoutComentarioIncidenteInput, ComentarioIncidenteFotoUncheckedUpdateWithoutComentarioIncidenteInput>
+  }
+
+  export type ComentarioIncidenteFotoUpdateManyWithWhereWithoutComentarioIncidenteInput = {
+    where: ComentarioIncidenteFotoScalarWhereInput
+    data: XOR<ComentarioIncidenteFotoUpdateManyMutationInput, ComentarioIncidenteFotoUncheckedUpdateManyWithoutComentarioIncidenteInput>
+  }
+
+  export type ComentarioIncidenteFotoScalarWhereInput = {
+    AND?: ComentarioIncidenteFotoScalarWhereInput | ComentarioIncidenteFotoScalarWhereInput[]
+    OR?: ComentarioIncidenteFotoScalarWhereInput[]
+    NOT?: ComentarioIncidenteFotoScalarWhereInput | ComentarioIncidenteFotoScalarWhereInput[]
+    id?: IntFilter<"ComentarioIncidenteFoto"> | number
+    comentarioIncidenteId?: IntFilter<"ComentarioIncidenteFoto"> | number
+    url?: StringFilter<"ComentarioIncidenteFoto"> | string
+    createdAt?: DateTimeFilter<"ComentarioIncidenteFoto"> | Date | string
+  }
+
+  export type ComentarioIncidenteCreateWithoutFotosInput = {
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reporte: ReporteIncidenteCreateNestedOneWithoutComentariosInput
+    supervisor: SupervisorCreateNestedOneWithoutComentariosIncidenteInput
+  }
+
+  export type ComentarioIncidenteUncheckedCreateWithoutFotosInput = {
+    id?: number
+    reporteId: number
+    supervisorId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ComentarioIncidenteCreateOrConnectWithoutFotosInput = {
+    where: ComentarioIncidenteWhereUniqueInput
+    create: XOR<ComentarioIncidenteCreateWithoutFotosInput, ComentarioIncidenteUncheckedCreateWithoutFotosInput>
+  }
+
+  export type ComentarioIncidenteUpsertWithoutFotosInput = {
+    update: XOR<ComentarioIncidenteUpdateWithoutFotosInput, ComentarioIncidenteUncheckedUpdateWithoutFotosInput>
+    create: XOR<ComentarioIncidenteCreateWithoutFotosInput, ComentarioIncidenteUncheckedCreateWithoutFotosInput>
+    where?: ComentarioIncidenteWhereInput
+  }
+
+  export type ComentarioIncidenteUpdateToOneWithWhereWithoutFotosInput = {
+    where?: ComentarioIncidenteWhereInput
+    data: XOR<ComentarioIncidenteUpdateWithoutFotosInput, ComentarioIncidenteUncheckedUpdateWithoutFotosInput>
+  }
+
+  export type ComentarioIncidenteUpdateWithoutFotosInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reporte?: ReporteIncidenteUpdateOneRequiredWithoutComentariosNestedInput
+    supervisor?: SupervisorUpdateOneRequiredWithoutComentariosIncidenteNestedInput
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateWithoutFotosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reporteId?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DeviceTokenCreateManyUserRoleInput = {
@@ -25785,12 +31903,14 @@ export namespace Prisma {
   export type IncidenteAsignadoCreateManyPanicInput = {
     id?: number
     supervisorId: number
+    estado?: string
     fechaAsignacion?: Date | string
     latitud: number
     longitud: number
   }
 
   export type IncidenteAsignadoUpdateWithoutPanicInput = {
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
@@ -25801,6 +31921,7 @@ export namespace Prisma {
   export type IncidenteAsignadoUncheckedUpdateWithoutPanicInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
@@ -25810,6 +31931,7 @@ export namespace Prisma {
   export type IncidenteAsignadoUncheckedUpdateManyWithoutPanicInput = {
     id?: IntFieldUpdateOperationsInput | number
     supervisorId?: IntFieldUpdateOperationsInput | number
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
@@ -25827,11 +31949,11 @@ export namespace Prisma {
     incidenteAsignadoId: number
     fecha?: Date | string
     estado?: string | null
-    descripcion: string
   }
 
   export type IncidenteAsignadoCreateManySupervisorInput = {
     id?: number
+    estado?: string
     fechaAsignacion?: Date | string
     panicId: number
     latitud: number
@@ -25852,6 +31974,23 @@ export namespace Prisma {
     timestamp?: Date | string
     latitud: number
     longitud: number
+  }
+
+  export type ComentarioCreateManySupervisorInput = {
+    id?: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ubicacionLat?: number | null
+    ubicacionLng?: number | null
+  }
+
+  export type ComentarioIncidenteCreateManySupervisorInput = {
+    id?: number
+    reporteId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UbicacionSupervisorUpdateWithoutSupervisorInput = {
@@ -25877,9 +32016,9 @@ export namespace Prisma {
   export type ReporteIncidenteUpdateWithoutSupervisorInput = {
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
     incidenteAsignado?: IncidenteAsignadoUpdateOneRequiredWithoutReporteNestedInput
     fotos?: FotoIncidenteUpdateManyWithoutReporteNestedInput
+    comentarios?: ComentarioIncidenteUpdateManyWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateWithoutSupervisorInput = {
@@ -25887,8 +32026,8 @@ export namespace Prisma {
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
     fotos?: FotoIncidenteUncheckedUpdateManyWithoutReporteNestedInput
+    comentarios?: ComentarioIncidenteUncheckedUpdateManyWithoutReporteNestedInput
   }
 
   export type ReporteIncidenteUncheckedUpdateManyWithoutSupervisorInput = {
@@ -25896,10 +32035,10 @@ export namespace Prisma {
     incidenteAsignadoId?: IntFieldUpdateOperationsInput | number
     fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     estado?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: StringFieldUpdateOperationsInput | string
   }
 
   export type IncidenteAsignadoUpdateWithoutSupervisorInput = {
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
@@ -25909,6 +32048,7 @@ export namespace Prisma {
 
   export type IncidenteAsignadoUncheckedUpdateWithoutSupervisorInput = {
     id?: IntFieldUpdateOperationsInput | number
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     panicId?: IntFieldUpdateOperationsInput | number
     latitud?: FloatFieldUpdateOperationsInput | number
@@ -25918,6 +32058,7 @@ export namespace Prisma {
 
   export type IncidenteAsignadoUncheckedUpdateManyWithoutSupervisorInput = {
     id?: IntFieldUpdateOperationsInput | number
+    estado?: StringFieldUpdateOperationsInput | string
     fechaAsignacion?: DateTimeFieldUpdateOperationsInput | Date | string
     panicId?: IntFieldUpdateOperationsInput | number
     latitud?: FloatFieldUpdateOperationsInput | number
@@ -25968,6 +32109,59 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ComentarioUpdateWithoutSupervisorInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+    fotos?: ComentarioFotoUpdateManyWithoutComentarioNestedInput
+  }
+
+  export type ComentarioUncheckedUpdateWithoutSupervisorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+    fotos?: ComentarioFotoUncheckedUpdateManyWithoutComentarioNestedInput
+  }
+
+  export type ComentarioUncheckedUpdateManyWithoutSupervisorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ubicacionLat?: NullableFloatFieldUpdateOperationsInput | number | null
+    ubicacionLng?: NullableFloatFieldUpdateOperationsInput | number | null
+  }
+
+  export type ComentarioIncidenteUpdateWithoutSupervisorInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reporte?: ReporteIncidenteUpdateOneRequiredWithoutComentariosNestedInput
+    fotos?: ComentarioIncidenteFotoUpdateManyWithoutComentarioIncidenteNestedInput
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateWithoutSupervisorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reporteId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fotos?: ComentarioIncidenteFotoUncheckedUpdateManyWithoutComentarioIncidenteNestedInput
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateManyWithoutSupervisorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    reporteId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TurnoProgramadoCreateManyCoordinadorInput = {
@@ -26032,6 +32226,14 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type ComentarioIncidenteCreateManyReporteInput = {
+    id?: number
+    supervisorId: number
+    texto: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type FotoIncidenteUpdateWithoutReporteInput = {
     url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26047,6 +32249,31 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteUpdateWithoutReporteInput = {
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    supervisor?: SupervisorUpdateOneRequiredWithoutComentariosIncidenteNestedInput
+    fotos?: ComentarioIncidenteFotoUpdateManyWithoutComentarioIncidenteNestedInput
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateWithoutReporteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    fotos?: ComentarioIncidenteFotoUncheckedUpdateManyWithoutComentarioIncidenteNestedInput
+  }
+
+  export type ComentarioIncidenteUncheckedUpdateManyWithoutReporteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    supervisorId?: IntFieldUpdateOperationsInput | number
+    texto?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RegistroSalidaUnidadCreateManyPatioInput = {
@@ -26156,6 +32383,52 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     latitud?: FloatFieldUpdateOperationsInput | number
     longitud?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type ComentarioFotoCreateManyComentarioInput = {
+    id?: number
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioFotoUpdateWithoutComentarioInput = {
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioFotoUncheckedUpdateWithoutComentarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioFotoUncheckedUpdateManyWithoutComentarioInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteFotoCreateManyComentarioIncidenteInput = {
+    id?: number
+    url: string
+    createdAt?: Date | string
+  }
+
+  export type ComentarioIncidenteFotoUpdateWithoutComentarioIncidenteInput = {
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteFotoUncheckedUpdateWithoutComentarioIncidenteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComentarioIncidenteFotoUncheckedUpdateManyWithoutComentarioIncidenteInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
