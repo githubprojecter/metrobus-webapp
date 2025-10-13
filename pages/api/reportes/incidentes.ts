@@ -32,17 +32,22 @@ export default requireRole(["Coordinador"])(async (
     to?: string;
   };
 
-  console.log(mode)
-
-  // === Rango temporal (CDMX) ===
-  const now = new Date();
-  let fromDate: Date;
-  let toDate: Date;
-
   const isAllFinalizados = mode === "all-finalizados";
 
-  if(!isAllFinalizados){
+  // === Armamos `where` por rama para evitar usar variables sin asignar ===
+  let where: any = {};
+
+  if (isAllFinalizados) {
+    // Sólo finalizados (sin rango)
+    where = { estado: "Finalizado" };
+  } else {
+    // Calculamos el rango temporal aquí mismo
+    const now = new Date();
+    let fromDate: Date;
+    let toDate: Date;
+
     if (mode === "day") {
+      // Día actual en CDMX
       const y = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, year: "numeric" }).format(now);
       const m = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, month: "2-digit" }).format(now);
       const d = new Intl.DateTimeFormat("en-CA", { timeZone: MX_TZ, day: "2-digit" }).format(now);
@@ -52,22 +57,17 @@ export default requireRole(["Coordinador"])(async (
       fromDate = new Date(from);
       toDate = new Date(to);
     } else {
-      // semana por defecto
+      // Por defecto: última semana
       toDate = new Date();
       fromDate = new Date(toDate);
       fromDate.setDate(fromDate.getDate() - 7);
       fromDate.setHours(0, 0, 0, 0);
     }
-  }
-    // === Armamos where dinámico según el modo ===
-  const where: any = {};
-  if (isAllFinalizados) {
-    where.estado = "Finalizado";
-  } else {
-    where.fecha = { gte: fromDate, lte: toDate }; // ← lo que ya tenías
+
+    where = { fecha: { gte: fromDate, lte: toDate } };
   }
 
-  // === Consulta principal (corrigiendo includes y nombres) ===
+  // === Consulta principal ===
   const rows = await prisma.reporteIncidente.findMany({
     where,
     orderBy: { fecha: "desc" },
@@ -97,22 +97,18 @@ export default requireRole(["Coordinador"])(async (
   const data: ReportItemDTO[] = rows.map((r) => {
     const supervisorNombre = fullName(r.supervisor?.user ?? null);
 
-    // Asignación: en tu schema es fechaAsignacion (no createdAt)
     const asignadoAt =
       r.incidenteAsignado?.fechaAsignacion
         ? new Date(r.incidenteAsignado.fechaAsignacion).toISOString()
         : null;
 
-    // Inicio del reporte = fecha del reporte
     const reporteInicioAt = r.fecha ? new Date(r.fecha).toISOString() : null;
 
-    // Botón de pánico: timestamp (no createdAt)
     const panicoAt =
       r.incidenteAsignado?.panic?.timestamp
         ? new Date(r.incidenteAsignado.panic.timestamp).toISOString()
         : null;
 
-    // Operador (si existe): panic -> operador -> user
     const operadorNombre = fullName(r.incidenteAsignado?.panic?.operador?.user ?? null);
 
     return {
@@ -123,7 +119,8 @@ export default requireRole(["Coordinador"])(async (
       operadorNombre: operadorNombre ?? null,
       panicoAt,
       fotos: (r.fotos ?? []).map((f) => f.url),
-      comentarios: r.descripcion ?? null,
+      // `descripcion` no existe en tu schema; devolvemos null para mantener el DTO
+      comentarios: null,
       estado: r.estado ?? null,
     };
   });
